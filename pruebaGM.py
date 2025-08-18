@@ -3,8 +3,11 @@ import requests
 import csv
 import os
 import time
+from dotenv import load_dotenv
 
-apiKey = "AIzaSyBanzvhzan1snXRz_J8PSr9qz4OVdRXKeA"
+load_dotenv()  # load from .env file
+apiKey = os.getenv("GOOGLE_MAPS_API_KEY")
+
 input_file_list=["data/tienda_ara.csv", "data/d1.csv", "data/justo_y_bueno.csv", "data/oxxos.csv"]
 temp_file_list=["data/tienda_ara_shops_progress.csv", "data/d1_shops_progress.csv", "data/justo_y_bueno_shops_progress.csv", "data/oxxo_shops_progress.csv"]
 

@@ -1,3 +1,0 @@
-cd "/Users/sophiaaristizabal/Desktop/1 economia/7/econometría avanzada/proyecto"
-
-import delimited "oxxos.csv", clear
