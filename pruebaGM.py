@@ -39,7 +39,7 @@ def obtain_coordinates(input_file, temp_file):
             row = reader[i]
 
             # Construir query
-            query = f"{row['Nombre']}, {row['Cámara de Comercio']}, Colombia"
+            query = f"{row['Nombre']}, Colombia"
             url = f"https://maps.googleapis.com/maps/api/place/textsearch/json?query={query}&key={apiKey}&language=es"
 
             try:
