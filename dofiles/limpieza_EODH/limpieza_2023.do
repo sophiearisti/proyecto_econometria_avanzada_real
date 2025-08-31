@@ -3,10 +3,6 @@
 *limpieza datos de la encuesta de movilidad del 2023
 *******************************************************
 
-global dir_BDD_2023 "/Users/sophiaaristizabal/Desktop/1 economia/7/econometría avanzada/proyecto_econometria_avanzada/data/EODH/sample 2023"
-
-global dir_BDD_limpios "$dir_BDD_2023/dta_limpios"
-
 cd "$dir_BDD_2023"
 
 ********************************************************
@@ -75,7 +71,9 @@ label variable perstotal_hg "personas totales en el hogar"
 
 label variable ingre_mes_hg "ingresos mensuales del hogar"
 
-cd "$dir_BDD_limpios"
+rename cod_hog cod_hg
+
+cd "$dir_BDD_clean"
 
 save "nuevo_MOD_hogar.dta", replace
 
@@ -123,9 +121,7 @@ label variable Mujer "1 si es mujer"
 
 label variable cod_per "codigo de la persona"
 
-rename cod_hg cod_hog
-
-label variable cod_hog "codigo del hogar"
+label variable cod_hg "codigo del hogar"
 
 label variable nom_mun_hg "nombre municipio del hogar"
 
@@ -143,7 +139,7 @@ label variable ocupacion_principal "ocupacion principal"
 
 label variable actividad_economica "actividad economica"
 
-cd "$dir_BDD_limpios"
+cd "$dir_BDD_clean"
 
 save "nuevo_MOD_persona.dta", replace
 
@@ -167,9 +163,8 @@ foreach var of local dropVars {
 *******************************************************
 //renombrar variables para no volverme loca y hacer el casting apropiedo de ellas
 *******************************************************
-rename cod_hg cod_hog
 
-label variable cod_hog "codigo del hogar"
+label variable cod_hg "codigo del hogar"
 
 replace estra_hg = "0" if estra_hg=="No aplica"
 
@@ -235,7 +230,7 @@ label variable key_pers_viaja "Clave de la persona que viaja"
 label variable key_viaje "Clave del viaje"
 
 
-cd "$dir_BDD_limpios"
+cd "$dir_BDD_clean"
 
 save "nuevo_MOD_viajes.dta", replace
 

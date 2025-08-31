@@ -3,10 +3,6 @@
 *limpieza datos de la encuesta de movilidad del 2011
 *******************************************************
 
-global dir_BDD_2011 "/Users/sophiaaristizabal/Desktop/1 economia/7/econometría avanzada/proyecto_econometria_avanzada/data/EODH/sample 2011"
-
-global dir_BDD_limpios "$dir_BDD_2011/csv_limpios"
-
 cd "$dir_BDD_2011"
 
 ********************************************************
@@ -55,7 +51,7 @@ label variable localidad "Localidad donde reside este hogar"
 
 label variable ingreso "Ingreso mensual del hogar en pesos colombianos"
 
-cd "$dir_BDD_limpios"
+cd "$dir_BDD_clean"
 
 save "nuevo_MOD_A.dta", replace
 
@@ -285,7 +281,7 @@ rename mun_d mun_origen
 
 label variable mun_origen "Código del municipio dónde inició su día"
 
-cd "$dir_BDD_limpios"
+cd "$dir_BDD_clean"
 
 save "nuevo_MOD_B.dta", replace
 
@@ -354,7 +350,7 @@ rename zat zat_destino
 
 label variable zat_destino "Zona de transporte destino de viaje"
 
-cd "$dir_BDD_limpios"
+cd "$dir_BDD_clean"
 
 save "nuevo_MOD_D.dta", replace
 

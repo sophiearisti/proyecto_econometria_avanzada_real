@@ -8,8 +8,8 @@ from dotenv import load_dotenv
 load_dotenv()  # load from .env file
 apiKey = os.getenv("GOOGLE_MAPS_API_KEY")
 
-input_file_list=["data/tienda_ara.csv", "data/d1.csv", "data/justo_y_bueno.csv", "data/oxxos.csv"]
-temp_file_list=["data/tienda_ara_shops_progress.csv", "data/d1_shops_progress.csv", "data/justo_y_bueno_shops_progress.csv", "data/oxxo_shops_progress.csv"]
+input_file_list=["data/negocios/tienda_ara.csv", "data/negocios/d1.csv", "data/negocios/justo_y_bueno.csv", "data/negocios/oxxos.csv"]
+temp_file_list=["data/negocios/tienda_ara_shops_progress.csv", "data/negocios/d1_shops_progress.csv", "data/negocios/justo_y_bueno_shops_progress.csv", "data/negocios/oxxo_shops_progress.csv"]
 
 batch_size = 100  # Guardar resultados cada 100 filas
 sleep_time = 0.1  # Pausa entre consultas para no exceder límites

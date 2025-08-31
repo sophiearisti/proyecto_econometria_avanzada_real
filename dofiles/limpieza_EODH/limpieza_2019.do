@@ -4,11 +4,8 @@
 //LIMPIEZA BDD 2019
 *********************************************************
 
-global main_BDD_dir "/Users/sophiaaristizabal/Desktop/1 economia/7/econometría avanzada/proyecto_econometria_avanzada/data/EODH/sample 2019"
 
-global clean_dta_dir "$main_BDD_dir/dta_limpios"
-
-cd "$main_BDD_dir"
+cd "$dir_BDD_2019"
 
 *********************************************************
 //limpieza etapas muestra donde se baja la persona
@@ -48,7 +45,7 @@ rename p25_lugar_descenso lugar_descenso
 label variable lugar_descenso "Lugar de descenso del vehículo"
 
 
-cd "$clean_dta_dir"
+cd "$dir_BDD_clean"
 
 save "etapas_clean.dta", replace
 
@@ -56,7 +53,7 @@ save "etapas_clean.dta", replace
 *Esta es la parte que indica literalmente los datos basicos del hogar tipico
 *******************************************************
 
-cd "$main_BDD_dir"
+cd "$dir_BDD_2019"
 
 import delimited "HogaresEODH2019.csv", clear
 
@@ -124,7 +121,7 @@ label variable municipio "municipio"
 
 label variable localidad "localidad"
 
-cd "$clean_dta_dir"
+cd "$dir_BDD_clean"
 
 save "origen_hogar_clean.dta", replace
 
@@ -132,7 +129,7 @@ save "origen_hogar_clean.dta", replace
 *Esta es la parte que indica literalmente los datos SOCIOECONOMICOS de las personas por id y hogar
 *******************************************************
 
-cd "$main_BDD_dir"
+cd "$dir_BDD_2019"
 
 import delimited "PersonasEODH2019.csv", clear
 
@@ -300,7 +297,7 @@ label define lugar_lbl 1 "Hogar" 2 "Otro"
 
 label values lugar_origen lugar_lbl
 
-	cd "$clean_dta_dir"
+	cd "$dir_BDD_clean"
 
 	save "persona_clean.dta", replace
 
@@ -309,7 +306,7 @@ label values lugar_origen lugar_lbl
 *ACA HABLA DEL ZAT DE DESTINO, lo mas importante
 *******************************************************				
 
-cd "$main_BDD_dir"
+cd "$dir_BDD_2019"
 
 import delimited "ViajesEODH2019.csv", clear
 
@@ -403,7 +400,7 @@ qui foreach var of varlist `r(varlist)' {
 
 
 
-cd "$clean_dta_dir"
+cd "$dir_BDD_clean"
 
 save "viaje_clean.dta", replace
 
