@@ -8,8 +8,8 @@ from dotenv import load_dotenv
 load_dotenv()  # load from .env file
 apiKey = os.getenv("GOOGLE_MAPS_API_KEY")
 
-input_file_list=["data/negocios/tienda_ara.csv", "data/negocios/d1.csv", "data/negocios/justo_y_bueno.csv"]
-temp_file_list=["data/negocios/tienda_ara_shops_progress.csv", "data/negocios/d1_shops_progress.csv", "data/negocios/justo_y_bueno_shops_progress.csv"]
+input_file_list=["../data/negocios/tienda_ara.csv", "../data/negocios/D1.csv", "../data/negocios/justo_y_bueno.csv", "../data/negocios/oxxo.csv"]
+temp_file_list=["../data/negocios/tienda_ara_shops_progress.csv", "../data/negocios/d1_shops_progress.csv", "../data/negocios/justo_y_bueno_shops_progress.csv", "../data/negocios/oxxo_shops_progress.csv"]
 
 batch_size = 100  # Guardar resultados cada 100 filas
 sleep_time = 0.1  # Pausa entre consultas para no exceder límites
@@ -40,7 +40,7 @@ def obtain_coordinates(input_file, temp_file):
 
             # Construir query
             #OJO QUE TOCA QUITAR {row['Cámara de Comercio']} NO NECESARIAMENTE FUNCIONA
-            query = f"{row['Nombre']}, {row['Cámara de Comercio']}, Colombia"
+            query = f"{row['Nombre']}, Colombia"
             url = f"https://maps.googleapis.com/maps/api/place/textsearch/json?query={query}&key={apiKey}&language=es"
 
             try:
