@@ -1,0 +1,11 @@
+{
+    "timestamp": "2025-08-31T13:11:24.130277",
+    "status": 440,
+    "message": "Keyboard Interrupt: Query was interrupted by the user.",
+    "requestUrl": "https://api.ohsome.org/v1/elements/geometry",
+    "parameters": {
+        "bboxes": "-79,-4,-66,13",
+        "time": "2020-01-01",
+        "filter": "name=\"BODEGA DE TRANSFERENCIA JUSTO Y BUENO BOSCONIA\" and shop=*"
+    }
+}
