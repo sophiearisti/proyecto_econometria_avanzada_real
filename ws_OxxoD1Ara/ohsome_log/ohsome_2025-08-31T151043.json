@@ -1,0 +1,11 @@
+{
+    "timestamp": "2025-08-31T15:10:43.326769",
+    "status": 440,
+    "message": "Keyboard Interrupt: Query was interrupted by the user.",
+    "requestUrl": "https://api.ohsome.org/v1/elements/geometry",
+    "parameters": {
+        "bboxes": "-79,-4,-66,13",
+        "time": "2016-12-31",
+        "filter": "shop=*"
+    }
+}

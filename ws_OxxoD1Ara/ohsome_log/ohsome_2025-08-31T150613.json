@@ -1,0 +1,11 @@
+{
+    "timestamp": "2025-08-31T15:06:13.096221",
+    "status": 400,
+    "message": "The provided time parameter is not ISO-8601 conform.",
+    "requestUrl": "https://api.ohsome.org/v1/elements/geometry",
+    "parameters": {
+        "bboxes": "-79,-4,-66,13",
+        "time": "-1-12-31",
+        "filter": "shop=*"
+    }
+}

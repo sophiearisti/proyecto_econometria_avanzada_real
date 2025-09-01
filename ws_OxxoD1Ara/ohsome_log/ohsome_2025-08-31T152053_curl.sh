@@ -1,0 +1,1 @@
+curl -X POST -H "user-agent: ohsome-py/0.3.0" -H "Accept-Encoding: gzip, deflate" -H "Accept: */*" -H "Connection: keep-alive" -H "Content-Length: 58" -H "Content-Type: application/x-www-form-urlencoded" -d 'bboxes=-79%2C-4%2C-66%2C13&time=-1-12-31&filter=shop%3D%2A' https://api.ohsome.org/v1/elements/geometry

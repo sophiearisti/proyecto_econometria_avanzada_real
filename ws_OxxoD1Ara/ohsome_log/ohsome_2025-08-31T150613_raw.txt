@@ -1,0 +1,6 @@
+{
+  "timestamp" : "2025-08-31T20:06:13.156115917",
+  "status" : 400,
+  "message" : "The provided time parameter is not ISO-8601 conform.",
+  "requestUrl" : "https://api.ohsome.org/v1/elements/geometry"
+}

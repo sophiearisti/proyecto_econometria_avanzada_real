@@ -1,0 +1,6 @@
+{
+  "timestamp" : "2025-08-31T20:50:24.760305812",
+  "status" : 413,
+  "message" : "The given query is too large in respect to the given timeout. Please use a smaller region and/or coarser time period.",
+  "requestUrl" : "https://api.ohsome.org/v1/elements/geometry"
+}

@@ -33,7 +33,7 @@ for year in years:
             filter="shop=*",
             time=fecha
         )
-        features = resp.as_dict().get("features", [])
+        features = resp.data.get("features", [])
         gdf = gpd.GeoDataFrame.from_features(features, crs="EPSG:4326")
         year_data[year] = gdf
         print(f"   → {len(gdf)} elementos encontrados")
