@@ -1,5 +1,5 @@
 ********************************************************
-*version 1:
+*version 2:
 *limpieza datos de la encuesta de movilidad del 2011
 *******************************************************
 
@@ -15,7 +15,7 @@ import delimited "MOD_A_ID_HOGAR_Tipico.csv", clear
 //haremos drop de variables que no nos importan
 *******************************************************
 
-local dropVars dia dia_mes mes nveh nvisita c_result tiposup enctador superv digita corte codif tel_3 p4_a p5_a p6_a p7_a verbaveh
+local dropVars dia dia_mes mes nveh nvisita c_result tiposup enctador superv digita corte codif tel_3 p4_a p6_a verbaveh
 
 foreach var of local dropVars {
     drop `var'
@@ -32,6 +32,19 @@ label variable idm "Número consecutivo de base de predios"
 destring estrato, replace
 
 recast byte estrato
+
+rename p7_a tipo_propiedad_vivienda
+
+destring tipo_propiedad_vivienda, replace
+
+recast byte tipo_propiedad_vivienda
+
+label variable tipo_propiedad_vivienda "tipo de propiedad vivienda"
+
+label define tipo_propiedad_vivienda_lbl 1 "Propia pagada" 2 "Propia pagando" 3 "Arriendo o subarriendo" 4 "En usufructo" 5 "Ocupante de hecho"
+
+label values tipo_propiedad_vivienda tipo_propiedad_vivienda_lbl
+
 
 rename p3_a tipo_vivienda
 
@@ -51,6 +64,25 @@ label variable localidad "Localidad donde reside este hogar"
 
 label variable ingreso "Ingreso mensual del hogar en pesos colombianos"
 
+replace ingreso = . if ingreso == 9
+
+label define ingreso_lbl ///
+    1 "0 - 535.600" ///
+    2 "535.601 – 1.200.000" ///
+    3 "1.200.001 – 2.000.000" ///
+    4 "2.000.001 – 2.800.000" ///
+    5 "2.800.001 – 4.000.000" ///
+    6 "4.000.001 – 5.500.000" ///
+    7 "5.500.001 – 8.000.000" ///
+    8 "Más de 8.000.000" ///
+    9 "No responde"
+
+label values ingreso ingreso_lbl
+
+rename p5_a total_personas
+
+label variable total_personas "Número total de personas que viven en el hogar."
+
 cd "$dir_BDD_clean"
 
 save "nuevo_MOD_A.dta", replace
@@ -67,7 +99,7 @@ import delimited "MOD_B_PERSONAS_Tipico.csv", clear
 //haremos drop de variables que no nos importan
 *******************************************************
 
-local dropVars p11_b p12_b p13_b p14_b p15_b p16_b p17_b p5dia_d p5mes_d p5ano_d p9hi_d p9mi_d p10_d p11_d horario p6tdir_d modifica
+local dropVars p11_b  p13_b p14_b p15_b p16_b p17_b p5dia_d p5mes_d p5ano_d p9hi_d p9mi_d p10_d p11_d horario p6tdir_d modifica
 
 foreach var of local dropVars {
     drop `var'
@@ -76,6 +108,7 @@ foreach var of local dropVars {
 drop viaje*
 
 drop *mujer
+
 
 *******************************************************
 //renombrar variables para no volverme loca y hacer el casting apropiado de ellas
@@ -133,13 +166,13 @@ recast byte edad
 
 label variable edad "Edad en años cumplidos"
 
-rename p6_b educacion
+rename p6_b nivel_educativo
 
-destring educacion, replace
+destring nivel_educativo, replace
 
-recast byte educacion
+recast byte nivel_educativo
 
-label variable educacion "Maximo nivel educativo aprobado"
+label variable nivel_educativo "Maximo nivel educativo aprobado"
 
 label define educ_lbl 1 "Preescolar" ///
                      2 "Primaria incompleta" ///
@@ -152,10 +185,11 @@ label define educ_lbl 1 "Preescolar" ///
                      9 "Universitario completo" ///
                      10 "Postgrado incompleto" ///
                      11 "Postgrado completo" ///
-                     12 "Ninguno" ///
-                     99 "No responde"
+                     12 "Ninguno"
+					 
+replace nivel_educativo = . if nivel_educativo == 99
 
-label values educacion educ_lbl
+label values nivel_educativo educ_lbl
 
 
 rename p7_b ocupacion1
@@ -281,6 +315,10 @@ rename mun_d mun_origen
 
 label variable mun_origen "Código del municipio dónde inició su día"
 
+gen limitaciones_fisicas = cond(missing(p12_b), 0, 1)
+
+drop p12_b
+
 cd "$dir_BDD_clean"
 
 save "nuevo_MOD_B.dta", replace
@@ -299,7 +337,7 @@ import delimited "MOD_D_VIAJES_Tipico.csv", clear
 //haremos drop de variables que no nos importan
 *******************************************************
 
-local dropVars p16_d p17c_d p14_d p17m_d p18hf_d p18mf_d p19hi_d p19mi_d p15td_d
+local dropVars p16_d p14_d p18hf_d p18mf_d p19hi_d p19mi_d p15td_d
 
 foreach var of local dropVars {
     drop `var'
@@ -310,6 +348,12 @@ drop e*
 *******************************************************
 //renombrar variables para no volverme loca y hacer el casting apropiado de ellas
 *******************************************************
+
+rename p17c_d camino_cuadras
+label variable camino_cuadras "Cuadras caminadas"
+
+rename p17m_d camino_minutos
+label variable camino_minutos "Tiempo caminado"
 
 label variable id_perso "Número de orden de una persona dentro de la composición del hogar"
 

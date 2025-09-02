@@ -1,5 +1,5 @@
 *********************************************************
-//VERSION 1
+//VERSION 2
 
 //LIMPIEZA BDD 2019
 *********************************************************
@@ -61,7 +61,7 @@ import delimited "HogaresEODH2019.csv", clear
 //drop de variables que no se necesitan
 *********************************************************
 
-local dropVars p2_supervisor p5_fecha p8_hora_inicio_encuesta p4_id_vivienda_propia p8_mayores_cinco_anios p6_hogares_vivienda colaboracion p4_nro_manzana
+local dropVars p2_supervisor p5_fecha p8_hora_inicio_encuesta p8_mayores_cinco_anios p6_hogares_vivienda colaboracion p4_nro_manzana
 
 foreach var of local dropVars {
     drop `var'
@@ -87,9 +87,27 @@ rename p3_id_tipo_vivienda tipo_vivienda
 
 label variable tipo_vivienda "Tipo de la vivienda (casa, apartamento, cuarto en inquilinato, etc.)."
 
-*******************************************************
-//falta asignar labels a vivienda pero no me los se y no salen
-*******************************************************
+rename p4_id_vivienda_propia tipo_propiedad_vivienda
+
+destring tipo_propiedad_vivienda, replace
+
+recast byte tipo_propiedad_vivienda
+
+**********************************************************************************
+*para dejar nivel tipo_propiedad_vivienda de la misma forma que en el 2011
+**********************************************************************************
+
+replace tipo_propiedad_vivienda = 3 if tipo_propiedad_vivienda == 4
+
+replace tipo_propiedad_vivienda = 4 if tipo_propiedad_vivienda == 5
+
+replace tipo_propiedad_vivienda = 5 if tipo_propiedad_vivienda == 6
+
+label variable tipo_propiedad_vivienda "tipo de propiedad vivienda"
+
+label define tipo_propiedad_vivienda_lbl 1 "Propia pagada" 2 "Propia pagando" 3 "Arriendo o subarriendo" 4 "En usufructo" 5 "Ocupante de hecho"
+
+label values tipo_propiedad_vivienda tipo_propiedad_vivienda_lbl
 
 rename p5_estrato estrato
 
@@ -99,7 +117,13 @@ rename p7_total_personas total_personas
 
 label variable total_personas "Número total de personas que viven en el hogar."
 
-label variable id_rango_ingresos "Ingresos por hogar."
+rename id_rango_ingresos ingreso
+
+label variable ingreso "Ingresos por hogar."
+
+replace ingreso = . if ingreso == 10
+
+replace ingreso = . if ingreso == 9
 
 label define ingreso_lbl 0 "$ 0 - $ 828.116" ///
                          1 "$ 828.117 - $ 1.500.000" ///
@@ -113,7 +137,7 @@ label define ingreso_lbl 0 "$ 0 - $ 828.116" ///
                          9 "NS/NR" ///
                          10 "Sin información"
 
-label values id_rango_ingresos ingreso_lbl
+label values ingreso ingreso_lbl
 
 label variable vivienda "Número de vivienda"
 
@@ -136,6 +160,7 @@ import delimited "PersonasEODH2019.csv", clear
 *********************************************************
 //drop de variables que no se necesitan
 *********************************************************
+rename p8me_poblacion_pertenece_6 discapacidad
 
 drop p15* p16* p17* p14* p13* p12* p8* p10* p8* p9* p11* p7m* v*
 *******************************************************
@@ -162,8 +187,9 @@ label define parentesco_lbl 1 "Jefe" ///
                            14 "Otros parientes" ///
                            15 "Servicio doméstico" ///
                            16 "Hijos servicio doméstico" ///
-                           17 "No parientes" ///
-                           99 "Sin información"
+                           17 "No parientes"
+
+replace parentesco = . if parentesco == 99
 
 label values parentesco parentesco_lbl
 
@@ -175,21 +201,33 @@ rename p5_id_nivel_educativo nivel_educativo
 
 label variable nivel_educativo "Máximo nivel educativo alcanzado."
 
+**********************************************************************************
+*para dejar nivel educativo de la misma forma que en el 2011
+**********************************************************************************
+
+replace nivel_educativo = . if nivel_educativo == 99
+replace nivel_educativo = 4 if nivel_educativo == 4 | nivel_educativo == 6 
+replace nivel_educativo = 5 if nivel_educativo == 5 | nivel_educativo == 7 
+replace nivel_educativo = 6 if nivel_educativo == 8
+replace nivel_educativo = 7 if nivel_educativo == 9
+replace nivel_educativo = 8 if nivel_educativo == 10
+replace nivel_educativo = 9 if nivel_educativo == 11
+replace nivel_educativo = 10 if nivel_educativo == 12
+replace nivel_educativo = 11 if nivel_educativo == 13
+replace nivel_educativo = 12 if nivel_educativo == 14
+
 label define educ_lbl 1 "Preescolar" ///
                      2 "Primaria incompleta" ///
                      3 "Primaria completa" ///
-                     4 "Secundaria incompleta" ///
-                     5 "Secundaria completa" ///
-                     6 "Media incompleta (10º y 11º)" ///
-                     7 "Media completa (10º y 11º)" ///
-                     8 "Técnico/Tecnológico incompleta" ///
-                     9 "Técnico/Tecnológico completa" ///
-                     10 "Universitario incompleto" ///
-                     11 "Universitario completo" ///
-                     12 "Posgrado incompleto" ///
-                     13 "Posgrado completo" ///
-                     14 "Ninguno" ///
-                     99 "Sin información"
+                     4 "Secundaria básica y media incompleta" ///
+                     5 "Secundaria básica y media completa" ///
+                     6 "Técnico tecnológico incompleto" ///
+                     7 "Técnico tecnológico completo" ///
+                     8 "Universitario incompleto" ///
+                     9 "Universitario completo" ///
+                     10 "Postgrado incompleto" ///
+                     11 "Postgrado completo" ///
+                     12 "Ninguno"
 
 label values nivel_educativo educ_lbl
 
@@ -218,6 +256,7 @@ label define ocupacion_lbl 1 "Colegio o escuela" ///
                             37 "No ocupado" ///
                             38 "Otra actividad"
 							
+							
 rename p6_id_ocupacion ocupacion1
 
 label variable ocupacion1 "Ocupación principal en la semana anterior"
@@ -243,19 +282,21 @@ label variable ocupacion4 "Otra ocupación"
 label values ocupacion4 ocupacion_lbl
 
 
-gen Mujer=.
+gen mujer=.
 
-replace Mujer = 1 if sexo == "Mujer"
-replace Mujer = 0 if sexo == "Hombre"
+replace mujer = 1 if sexo == "Mujer"
+replace mujer = 0 if sexo == "Hombre"
 
 drop sexo
 
 label define mujer_lbl 0 "Hombre" 1 "Mujer"
-label values Mujer mujer_lbl
+label values mujer mujer_lbl
 
-label variable Mujer "1 si es mujer"
+label variable mujer "1 si es mujer"
 
-rename p7_id_actividad_economica actividad_economica
+rename p7_id_actividad_economica actividad_economica1
+
+replace actividad_economica1=. if actividad_economica1==99
 
 label define actividad_lbl 1 "Agricultura, ganadería, caza y silvicultura" ///
                            2 "Explotación de minas y canteras" ///
@@ -277,10 +318,9 @@ label define actividad_lbl 1 "Agricultura, ganadería, caza y silvicultura" ///
                            18 "Actividades artísticas, de entretenimiento y recreación" ///
                            19 "Otras actividades de servicios" ///
                            20 "Actividades de los hogares individuales en calidad de empleadores; actividades no diferenciadas de los hogares individuales como productores de bienes y servicios para uso propio" ///
-                           21 "Actividades de organizaciones y entidades extraterritoriales" ///
-                           99 "Sin información"
+                           21 "Actividades de organizaciones y entidades extraterritoriales" 
 
-label values actividad_economica actividad_lbl
+label values actividad_economica1 actividad_lbl
 
 ***************************************************************
 
@@ -342,6 +382,8 @@ rename p17_id_motivo_viaje motivo_viaje
 
 label variable motivo_viaje "motivo del viaje"
 
+replace motivo_viaje=. if motivo_viaje==99
+
 label define motivo_viaje_lbl 1 "Trabajar" ///
                              2 "Asuntos de trabajo" ///
                              3 "Estudiar" ///
@@ -358,8 +400,7 @@ label define motivo_viaje_lbl 1 "Trabajar" ///
                              14 "Actividades con fines religiosos" ///
                              15 "Cuidado de personas" ///
                              16 "Actividad física y deporte" ///
-                             77 "Otro" ///
-                             99 "NR"
+                             77 "Otro"
 
 							 
 label values motivo_viaje motivo_viaje_lbl
