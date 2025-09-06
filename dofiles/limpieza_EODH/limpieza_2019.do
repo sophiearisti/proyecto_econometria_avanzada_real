@@ -61,7 +61,7 @@ import delimited "HogaresEODH2019.csv", clear
 //drop de variables que no se necesitan
 *********************************************************
 
-local dropVars p2_supervisor p5_fecha p8_hora_inicio_encuesta p8_mayores_cinco_anios p6_hogares_vivienda colaboracion p4_nro_manzana
+local dropVars p2_supervisor p5_fecha p8_hora_inicio_encuesta p6_hogares_vivienda colaboracion p4_nro_manzana
 
 foreach var of local dropVars {
     drop `var'
@@ -87,6 +87,12 @@ rename p3_id_tipo_vivienda tipo_vivienda
 
 label variable tipo_vivienda "Tipo de la vivienda (casa, apartamento, cuarto en inquilinato, etc.)."
 
+replace tipo_vivienda=5 if tipo_vivienda==6
+
+label define tipo_vivienda_lbl 1 "Casa" 2 "Apartamento" 3 "Cuarto(s) en inquilinato" 4 "Cuarto(s) en otro tipo de estructura" 5 "Otro tipo de vivienda"
+
+label values tipo_vivienda tipo_vivienda_lbl
+
 rename p4_id_vivienda_propia tipo_propiedad_vivienda
 
 destring tipo_propiedad_vivienda, replace
@@ -105,13 +111,19 @@ replace tipo_propiedad_vivienda = 5 if tipo_propiedad_vivienda == 6
 
 label variable tipo_propiedad_vivienda "tipo de propiedad vivienda"
 
-label define tipo_propiedad_vivienda_lbl 1 "Propia pagada" 2 "Propia pagando" 3 "Arriendo o subarriendo" 4 "En usufructo" 5 "Ocupante de hecho"
+label define tipo_propiedad_vivienda_lbl 1 "Propia pagada" 2 "Propia pagando" 3 "Arriendo o subarriendo" 4 "En usufructo" 5 "Ocupante de hecho" 7 "Agregado, cuidandero o mayordomo"
 
 label values tipo_propiedad_vivienda tipo_propiedad_vivienda_lbl
 
 rename p5_estrato estrato
 
-label variable estrato "Estrato (1, 2, 3, 4, 5, o 6), 0: Sin estratificar"
+replace estrato=. if estrato==0
+
+label variable estrato "Estrato (1, 2, 3, 4, 5, o 6)"
+
+rename p8_mayores_cinco_anios total_personas_mas_5
+
+label variable total_personas_mas_5 "Número de personas de 5 años y más que viven en el hogar."
 
 rename p7_total_personas total_personas
 
@@ -204,8 +216,8 @@ label variable nivel_educativo "Máximo nivel educativo alcanzado."
 **********************************************************************************
 
 replace nivel_educativo = . if nivel_educativo == 99
-replace nivel_educativo = 4 if nivel_educativo == 4 | nivel_educativo == 6 
-replace nivel_educativo = 5 if nivel_educativo == 5 | nivel_educativo == 7 
+replace nivel_educativo = 4 if nivel_educativo == 4 | nivel_educativo == 6 | nivel_educativo == 5
+replace nivel_educativo = 5 if nivel_educativo == 7 
 replace nivel_educativo = 6 if nivel_educativo == 8
 replace nivel_educativo = 7 if nivel_educativo == 9
 replace nivel_educativo = 8 if nivel_educativo == 10
@@ -229,33 +241,47 @@ label define educ_lbl 1 "Preescolar" ///
 
 label values nivel_educativo educ_lbl
 
-label define ocupacion_lbl 1 "Colegio o escuela" ///
-                            2 "Universidad - Pregrado" ///
-                            3 "Universidad - Posgrado" ///
-                            4 "Inst. Técnico / Tecnológico" ///
-                            5 "Inst. educación no formal" ///
-                            11 "Obrero" ///
-                            12 "Jornalero/agricultor" ///
-                            13 "Empleado doméstico" ///
-                            14 "Conductor/mensajero" ///
-                            15 "Trabajador sin remuneración" ///
-                            16 "Empleado de empresa particular" ///
-                            17 "Empleado público" ///
-                            18 "Profesional independiente" ///
-                            19 "Trabajador independiente" ///
-                            20 "Patrón/empleador" ///
-                            21 "Vendedor informal" ///
-                            31 "Dedicado al hogar" ///
-                            32 "Jubilado/pensionado" ///
-                            33 "Buscar trabajo" ///
-                            34 "Incapacitado permanente" ///
-                            35 "Va a jardín" ///
-                            36 "Rentista" ///
-                            37 "No ocupado" ///
-                            38 "Otra actividad"
-							
-							
 rename p6_id_ocupacion ocupacion1
+
+recode ocupacion1 ///
+    (11 = 1) (13 = 4) (19 = 5) (18 = 6) (20 = 7) (15 = 8) (14 = 10) ///
+    (1 = 13) (2 = 14) (3 = 15) (4 = 16) (5 = 17) (31 = 18) (32 = 19) ///
+    (33 = 20) (34 = 21) (35 = 22) (36 = 23) (38 = 24) (37 = 25) ///
+    (21 = 26) (17 = 27) (16 = 28) (12 = 29), gen(ocupacion_new1)
+
+drop ocupacion1
+
+rename ocupacion_new1 ocupacion1
+
+label define ocupacion_lbl ///
+    1 "Obrero" ///
+    2 "Empleado de nómina" ///
+    3 "Contratista (prestación servicios)" ///
+    4 "Empleado doméstico" ///
+    5 "Trabajador independiente" ///
+    6 "Profesional independiente" ///
+    7 "Patrón o empleador" ///
+    8 "Trabajo familiar (sin remuneración)" ///
+    9 "Trabajo desde la casa" ///
+    10 "Conductor/mensajero" ///
+    13 "Estudiante en colegio o escuela" ///
+    14 "Estudiante en Universidad - pregrado" ///
+    15 "Estudiante en Universidad - postgrado" ///
+    16 "Estudiante en Instituto técnico/tecnológico" ///
+    17 "Estudiante en Instituto educación no formal" ///
+    18 "Dedicado al hogar" ///
+    19 "Jubilado" ///
+    20 "Buscar trabajo" ///
+    21 "Incapacitado permanente" ///
+    22 "Va a jardín" ///
+    23 "Rentista" ///
+    24 "Otra actividad" ///
+    25 "No ocupado" ///
+    26 "Vendedor informal" ///
+    27 "Empleado público" ///
+    28 "Empleado de empresa particular" ///
+    29 "Jornalero/agricultor"
+											
 
 label variable ocupacion1 "Ocupación principal en la semana anterior"
 
@@ -265,17 +291,47 @@ rename p6_id_ocupacion_o1 ocupacion2
 
 label variable ocupacion2 "Otra ocupación"
 
+recode ocupacion2 ///
+    (11 = 1) (13 = 4) (19 = 5) (18 = 6) (20 = 7) (15 = 8) (14 = 10) ///
+    (1 = 13) (2 = 14) (3 = 15) (4 = 16) (5 = 17) (31 = 18) (32 = 19) ///
+    (33 = 20) (34 = 21) (35 = 22) (36 = 23) (38 = 24) (37 = 25) ///
+    (21 = 26) (17 = 27) (16 = 28) (12 = 29), gen(ocupacion_new2)
+	
+drop ocupacion2
+
+rename ocupacion_new2 ocupacion2
+
 label values ocupacion2 ocupacion_lbl
 
 rename p6_id_ocupacion_o2 ocupacion3
 
 label variable ocupacion3 "Otra ocupación"
 
+recode ocupacion3 ///
+    (11 = 1) (13 = 4) (19 = 5) (18 = 6) (20 = 7) (15 = 8) (14 = 10) ///
+    (1 = 13) (2 = 14) (3 = 15) (4 = 16) (5 = 17) (31 = 18) (32 = 19) ///
+    (33 = 20) (34 = 21) (35 = 22) (36 = 23) (38 = 24) (37 = 25) ///
+    (21 = 26) (17 = 27) (16 = 28) (12 = 29), gen(ocupacion_new3)
+
+drop ocupacion3
+
+rename ocupacion_new3 ocupacion3
+
 label values ocupacion3 ocupacion_lbl
 
 rename p6_id_ocupacion_o3 ocupacion4
 
 label variable ocupacion4 "Otra ocupación"
+
+recode ocupacion4 ///
+    (11 = 1) (13 = 4) (19 = 5) (18 = 6) (20 = 7) (15 = 8) (14 = 10) ///
+    (1 = 13) (2 = 14) (3 = 15) (4 = 16) (5 = 17) (31 = 18) (32 = 19) ///
+    (33 = 20) (34 = 21) (35 = 22) (36 = 23) (38 = 24) (37 = 25) ///
+    (21 = 26) (17 = 27) (16 = 28) (12 = 29), gen(ocupacion_new4)
+	
+drop ocupacion4
+
+rename ocupacion_new4 ocupacion4
 
 label values ocupacion4 ocupacion_lbl
 
@@ -294,29 +350,38 @@ label variable mujer "1 si es mujer"
 
 rename p7_id_actividad_economica actividad_economica1
 
+recode actividad ///
+    (1 = 1) (2 = 3) (3 = 4) (4 = 5) (5 = 18) (6 = 6) (7 = 7) ///
+    (8 = 9) (9 = 8) (10 = 9) (11 = 10) (12 = 11) (13 = 19) ///
+    (14 = 15) (15 = 12) (16 = 13) (17 = 14) (18 = 15) (19 = 15) ///
+    (20 = 16) (21 = 17), gen(actividad_new)
+	
+drop actividad_economica1
+
+rename actividad_new actividad_economica1
+
 replace actividad_economica1=. if actividad_economica1==99
 
-label define actividad_lbl 1 "Agricultura, ganadería, caza y silvicultura" ///
-                           2 "Explotación de minas y canteras" ///
-                           3 "Industrias manufactureras" ///
-                           4 "Suministro de electricidad, gas, vapor y aire acondicionado" ///
-                           5 "Distribución de agua; evacuación y tratamiento de aguas residuales, gestión de desechos y actividades de saneamiento ambiental" ///
-                           6 "Construcción" ///
-                           7 "Comercio al por mayor y al por menor; reparación de vehículos automotores y motocicletas" ///
-                           8 "Transporte y almacenamiento" ///
-                           9 "Alojamiento y servicios de comida" ///
-                           10 "Información y comunicaciones" ///
-                           11 "Actividades financieras y de seguros" ///
-                           12 "Actividades inmobiliarias" ///
-                           13 "Actividades profesionales, científicas y técnicas" ///
-                           14 "Actividades de servicios administrativos y de apoyo" ///
-                           15 "Administración pública y defensa; planes de seguridad social de afiliación obligatoria" ///
-                           16 "Educación" ///
-                           17 "Actividades de atención de la salud humana y de asistencia social" ///
-                           18 "Actividades artísticas, de entretenimiento y recreación" ///
-                           19 "Otras actividades de servicios" ///
-                           20 "Actividades de los hogares individuales en calidad de empleadores; actividades no diferenciadas de los hogares individuales como productores de bienes y servicios para uso propio" ///
-                           21 "Actividades de organizaciones y entidades extraterritoriales" 
+label define actividad1_lbl ///
+    1 "Agricultura, ganadería, caza y silvicultura" ///
+    2 "Pesca" ///
+    3 "Explotación de minas y canteras" ///
+    4 "Industrias manufactureras" ///
+    5 "Suministro de electricidad, gas y agua" ///
+    6 "Construcción" ///
+    7 "Comercio al por mayor y al por menor de vehículos automotores, motocicletas, efectos personales y enseres domésticos" ///
+    8 "Hoteles y restaurantes" ///
+    9 "Transporte, almacenamiento y comunicaciones" ///
+    10 "Intermediación financiera" ///
+    11 "Actividades inmobiliarias, empresariales y de alquiler" ///
+    12 "Administración pública y defensa, seguridad social de afiliación obligatoria" ///
+    13 "Educación" ///
+    14 "Servicios sociales y de salud" ///
+    15 "Otras actividades de servicios comunitarios, sociales y personales" ///
+    16 "Hogares privados con servicio doméstico" ///
+    17 "Organizaciones y órganos extraterritoriales" ///
+    18 "Distribución de agua; evacuación y tratamiento de aguas residuales, gestión de desechos y actividades de saneamiento ambiental" ///
+    19 "Actividades profesionales, científicas y técnicas"
 
 label values actividad_economica1 actividad_lbl
 
@@ -428,6 +493,7 @@ rename p30_camino_minutos camino_minutos
 label variable camino_minutos "Cantidad de minutos caminadas después del medio de transporte"
 
 qui ds p32_*   // Lista todas las variables que empiezan con p32_
+
 qui foreach var of varlist `r(varlist)' {
     local newname = substr("`var'", 5, .)   // Quita los primeros 4 caracteres "p32_"
     rename `var' `newname'
@@ -436,8 +502,6 @@ qui foreach var of varlist `r(varlist)' {
 	
 	replace `newname' = 0 if missing(`newname')
 }
-
-
 
 cd "$dir_BDD_clean"
 

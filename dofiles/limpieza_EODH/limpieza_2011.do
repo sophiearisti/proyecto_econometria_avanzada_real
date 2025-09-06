@@ -271,30 +271,37 @@ recast byte ocupacion1
 
 label variable ocupacion1 "principal ocupación semana anterior"
 
-label define ocupacion_lbl 1 "Obrero" ///
-                          2 "Empleado de nómina" ///
-                          3 "Contratista (prestación servicios)" ///
-                          4 "Empleado doméstico" ///
-                          5 "Trabajador independiente" ///
-                          6 "Profesional independiente" ///
-                          7 "Patrón o empleador" ///
-                          8 "Trabajo familiar (sin remuneración)" ///
-                          9 "Trabajo desde la casa" ///
-                          10 "Conductor de bus/buseta/micro" ///
-                          11 "Conductor de taxi" ///
-                          12 "Mensajero" ///
-                          13 "Estudiante en colegio o escuela" ///
-                          14 "Estudiante en Universidad - pregrado" ///
-                          15 "Estudiante en Universidad - postgrado" ///
-                          16 "Estudiante en Instituto técnico/tecnológico" ///
-                          17 "Estudiante en Instituto educación no formal" ///
-                          18 "Dedicado al hogar" ///
-                          19 "Jubilado" ///
-                          20 "Buscar trabajo" ///
-                          21 "Incapacitado permanente" ///
-                          22 "Va a jardín" ///
-                          23 "Rentista" ///
-                          24 "Otra actividad"
+replace ocupacion1=10 if ocupacion1== 11 | ocupacion1== 12
+
+label define ocupacion_lbl ///
+    1 "Obrero" ///
+    2 "Empleado de nómina" ///
+    3 "Contratista (prestación servicios)" ///
+    4 "Empleado doméstico" ///
+    5 "Trabajador independiente" ///
+    6 "Profesional independiente" ///
+    7 "Patrón o empleador" ///
+    8 "Trabajo familiar (sin remuneración)" ///
+    9 "Trabajo desde la casa" ///
+    10 "Conductor/mensajero" ///
+    13 "Estudiante en colegio o escuela" ///
+    14 "Estudiante en Universidad - pregrado" ///
+    15 "Estudiante en Universidad - postgrado" ///
+    16 "Estudiante en Instituto técnico/tecnológico" ///
+    17 "Estudiante en Instituto educación no formal" ///
+    18 "Dedicado al hogar" ///
+    19 "Jubilado" ///
+    20 "Buscar trabajo" ///
+    21 "Incapacitado permanente" ///
+    22 "Va a jardín" ///
+    23 "Rentista" ///
+    24 "Otra actividad" ///
+    25 "No ocupado" ///
+    26 "Vendedor informal" ///
+    27 "Empleado público" ///
+    28 "Empleado de empresa particular" ///
+    29 "Jornalero/agricultor"
+
 
 label values ocupacion1 ocupacion_lbl
 
@@ -318,24 +325,28 @@ recast byte actividad_economica1
 
 label variable actividad_economica1 "actividad económica ocupacion 1"
 
-label define actividad1_lbl 1 "Agricultura, ganadería, caza y silvicultura" ///
-                           2 "Pesca" ///
-                           3 "Explotación de minas y canteras" ///
-                           4 "Industrias manufactureras" ///
-                           5 "Suministro de electricidad, gas y agua" ///
-                           6 "Construcción" ///
-                           7 "Comercio al por mayor y al por menor de vehículos automotores, motocicletas, efectos personales y enseres domésticos" ///
-                           8 "Hoteles y restaurantes" ///
-                           9 "Transporte, almacenamiento y comunicaciones" ///
-                           10 "Intermediación financiera" ///
-                           11 "Actividades inmobiliarias, empresariales y de alquiler" ///
-                           12 "Administración pública y defensa, seguridad social de afiliación obligatoria" ///
-                           13 "Educación" ///
-                           14 "Servicios sociales y de salud" ///
-                           15 "Otras actividades de servicios comunitarios, sociales y personales" ///
-                           16 "Hogares privados con servicio doméstico" ///
-                           17 "Organizaciones y órganos extraterritoriales" ///
-                           99 "No responde"
+replace actividad_economica1=. if actividad_economica1==99
+
+label define actividad1_lbl ///
+    1 "Agricultura, ganadería, caza y silvicultura" ///
+    2 "Pesca" ///
+    3 "Explotación de minas y canteras" ///
+    4 "Industrias manufactureras" ///
+    5 "Suministro de electricidad, gas y agua" ///
+    6 "Construcción" ///
+    7 "Comercio al por mayor y al por menor de vehículos automotores, motocicletas, efectos personales y enseres domésticos" ///
+    8 "Hoteles y restaurantes" ///
+    9 "Transporte, almacenamiento y comunicaciones" ///
+    10 "Intermediación financiera" ///
+    11 "Actividades inmobiliarias, empresariales y de alquiler" ///
+    12 "Administración pública y defensa, seguridad social de afiliación obligatoria" ///
+    13 "Educación" ///
+    14 "Servicios sociales y de salud" ///
+    15 "Otras actividades de servicios comunitarios, sociales y personales" ///
+    16 "Hogares privados con servicio doméstico" ///
+    17 "Organizaciones y órganos extraterritoriales" ///
+    18 "Distribución de agua; evacuación y tratamiento de aguas residuales, gestión de desechos y actividades de saneamiento ambiental" ///
+    19 "Actividades profesionales, científicas y técnicas"
 
 label values actividad_economica1 actividad1_lbl
 
@@ -348,6 +359,8 @@ recast byte actividad_economica2
 label variable actividad_economica2 "actividad económica ocupacion 2"
 
 label values actividad_economica2 actividad1_lbl
+
+replace actividad_economica2=. if actividad_economica1==99
 
 rename zat zat_origen
 
@@ -469,4 +482,5 @@ save "nuevo_MOD_viajeTipico.dta", replace
 
 
 
+//si ya tienes trabajo (ocupacion) y que no se desplazo entonces lit ellos si cuentan en el trabajo
 

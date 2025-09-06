@@ -15,7 +15,7 @@ import delimited "a. Modulo hogares.csv", clear
 //haremos drop de variables que no nos importan
 *******************************************************
 
-local dropVars fecha tipo_enc pers5años_hg pers18años_hg cómo_enteró cant_hg_viv
+local dropVars fecha tipo_enc pers18años_hg cómo_enteró cant_hg_viv
 
 foreach var of local dropVars {
     drop `var'
@@ -24,6 +24,10 @@ foreach var of local dropVars {
 *******************************************************
 //renombrar variables para no volverme loca y hacer el casting apropiedo de ellas
 *******************************************************
+
+rename pers5años_hg total_personas_mas_5
+
+label variable total_personas_mas_5 "Número de personas de 5 años y más que viven en el hogar."
 
 rename perstotal_hg total_personas
 
@@ -71,7 +75,27 @@ label variable nom_barrio_vereda_hg "nombre barrio o vereda del hogar"
 
 label variable nom_barrio_vereda_hg "nombre barrio o vereda del hogar"
 
-label variable tipo_viv "tipo de vivienda"
+levelsof tipo_viv
+
+gen tipo_vivienda=.
+
+replace tipo_vivienda=1  if tipo_viv=="Casa"
+
+replace tipo_vivienda=2  if tipo_viv=="Apartamento"
+
+replace tipo_vivienda=3  if tipo_viv=="Cuarto inquilinato"
+
+replace tipo_vivienda=4  if tipo_viv=="Cuarto otro"
+
+replace tipo_vivienda=5  if tipo_viv=="Otro tipo"
+
+label variable tipo_vivienda "tipo de vivienda"
+
+label define tipo_vivienda_lbl 1 "Casa" 2 "Apartamento" 3 "Cuarto(s) en inquilinato" 4 "Cuarto(s) en otro tipo de estructura" 5 "Otro tipo de vivienda"
+
+label values tipo_vivienda tipo_vivienda_lbl
+
+drop tipo_viv
 
 * Generar variable numérica vacía
 gen ingreso = .
@@ -101,7 +125,7 @@ label define ingreso_lbl ///
     7 "3500001-4900000" ///
     8 "4900001-6800000" ///
     9 "6800001-9000000" ///
-    10 ">9000000" ///
+    10 ">9000000"
 
 * Asignar etiqueta a la variable
 label values ingreso ingreso_lbl
@@ -185,8 +209,8 @@ gen nivel_educativo = .
 replace nivel_educativo = 1  if max_nivel_edu == "Preescolar"
 replace nivel_educativo = 2  if max_nivel_edu == "Primaria incompleta"
 replace nivel_educativo = 3  if max_nivel_edu == "Primaria completa"
-replace nivel_educativo = 4  if inlist(max_nivel_edu, "Secundaria incompleta", "Media incompleta (10° y 11°)")
-replace nivel_educativo = 5  if inlist(max_nivel_edu, "Secundaria completa", "Media completa (10° y 11°)")
+replace nivel_educativo = 4  if inlist(max_nivel_edu, "Secundaria incompleta", "Media incompleta (10° y 11°)", "Secundaria completa")
+replace nivel_educativo = 5  if inlist(max_nivel_edu, "Media completa (10° y 11°)")
 replace nivel_educativo = 6  if max_nivel_edu == "Técnico/Tecnológico incompleta"
 replace nivel_educativo = 7  if max_nivel_edu == "Técnico/Tecnológico completa"
 replace nivel_educativo = 8  if max_nivel_edu == "Universitario incompleto"
@@ -220,61 +244,65 @@ drop max_nivel_edu
 gen ocupacion1 = .
 
 * Estudiantes
-replace ocupacion1 = 1 if strpos(ocupacion_principal, "Colegio o escuela")
-replace ocupacion1 = 2 if strpos(ocupacion_principal, "Universidad") & strpos(ocupacion_principal, "Pregrado")
-replace ocupacion1 = 3 if strpos(ocupacion_principal, "Universidad") & strpos(ocupacion_principal, "Posgrado")
-replace ocupacion1 = 4 if strpos(ocupacion_principal, "Inst Técnico") | strpos(ocupacion_principal, "Inst Técnico / Tecnológico")
-replace ocupacion1 = 5 if strpos(ocupacion_principal, "Inst educación no formal")
+replace ocupacion1 = 13 if strpos(ocupacion_principal, "Colegio o escuela")
+replace ocupacion1 = 14 if strpos(ocupacion_principal, "Universidad") & strpos(ocupacion_principal, "Pregrado")
+replace ocupacion1 = 15 if strpos(ocupacion_principal, "Universidad") & strpos(ocupacion_principal, "Posgrado")
+replace ocupacion1 = 16 if strpos(ocupacion_principal, "Inst Técnico") | strpos(ocupacion_principal, "Inst Técnico / Tecnológico")
+replace ocupacion1 = 17 if strpos(ocupacion_principal, "Inst educación no formal")
 
 * Trabajadores
-replace ocupacion1 = 11 if strpos(ocupacion_principal, "Obrero")
-replace ocupacion1 = 12 if strpos(ocupacion_principal, "Jornalero") | strpos(ocupacion_principal, "agricultor")
-replace ocupacion1 = 13 if strpos(ocupacion_principal, "Empleado doméstico")
-replace ocupacion1 = 14 if strpos(ocupacion_principal, "Conductor") | strpos(ocupacion_principal, "mensajero")
-replace ocupacion1 = 15 if strpos(ocupacion_principal, "Trabajador sin remuneración")
-replace ocupacion1 = 16 if strpos(ocupacion_principal, "Empleado de empresa particular")
-replace ocupacion1 = 17 if strpos(ocupacion_principal, "Empleado público")
-replace ocupacion1 = 18 if strpos(ocupacion_principal, "Profesional independiente")
-replace ocupacion1 = 19 if strpos(ocupacion_principal, "Trabajador independiente")
-replace ocupacion1 = 20 if strpos(ocupacion_principal, "Patrón") | strpos(ocupacion_principal, "empleador")
-replace ocupacion1 = 21 if strpos(ocupacion_principal, "Vendedor informal")
+replace ocupacion1 = 1 if strpos(ocupacion_principal, "Obrero")
+replace ocupacion1 = 29 if strpos(ocupacion_principal, "Jornalero") | strpos(ocupacion_principal, "agricultor")
+replace ocupacion1 = 4 if strpos(ocupacion_principal, "Empleado doméstico")
+replace ocupacion1 = 10 if strpos(ocupacion_principal, "Conductor") | strpos(ocupacion_principal, "mensajero")
+replace ocupacion1 = 8 if strpos(ocupacion_principal, "Trabajador sin remuneración")
+replace ocupacion1 = 28 if strpos(ocupacion_principal, "Empleado de empresa particular")
+replace ocupacion1 = 27 if strpos(ocupacion_principal, "Empleado público")
+replace ocupacion1 = 6 if strpos(ocupacion_principal, "Profesional independiente")
+replace ocupacion1 = 5 if strpos(ocupacion_principal, "Trabajador independiente")
+replace ocupacion1 = 7 if strpos(ocupacion_principal, "Patrón") | strpos(ocupacion_principal, "empleador")
+replace ocupacion1 = 26 if strpos(ocupacion_principal, "Vendedor informal")
 
 * Condiciones de inactividad
-replace ocupacion1 = 31 if strpos(ocupacion_principal, "Dedicado al hogar")
-replace ocupacion1 = 32 if strpos(ocupacion_principal, "Jubilado") | strpos(ocupacion_principal, "pensionado")
-replace ocupacion1 = 33 if strpos(ocupacion_principal, "Buscar trabajo")
-replace ocupacion1 = 34 if strpos(ocupacion_principal, "Incapacitado permanente")
-replace ocupacion1 = 35 if strpos(ocupacion_principal, "Va a jardín")
-replace ocupacion1 = 36 if strpos(ocupacion_principal, "Rentista")
-replace ocupacion1 = 37 if strpos(ocupacion_principal, "No ocupado")
-replace ocupacion1 = 38 if strpos(ocupacion_principal, "Otra actividad")
+replace ocupacion1 = 18 if strpos(ocupacion_principal, "Dedicado al hogar")
+replace ocupacion1 = 19 if strpos(ocupacion_principal, "Jubilado") | strpos(ocupacion_principal, "pensionado")
+replace ocupacion1 = 20 if strpos(ocupacion_principal, "Buscar trabajo")
+replace ocupacion1 = 21 if strpos(ocupacion_principal, "Incapacitado permanente")
+replace ocupacion1 = 22 if strpos(ocupacion_principal, "Va a jardín")
+replace ocupacion1 = 23 if strpos(ocupacion_principal, "Rentista")
+replace ocupacion1 = 25 if strpos(ocupacion_principal, "No ocupado")
+replace ocupacion1 = 24 if strpos(ocupacion_principal, "Otra actividad")
 
 
 * Definir etiquetas
-label define ocupacion_lbl 1  "Colegio o escuela" ///
-                            2  "Universidad - Pregrado" ///
-                            3  "Universidad - Posgrado" ///
-                            4  "Inst. Técnico / Tecnológico" ///
-                            5  "Inst. educación no formal" ///
-                            11 "Obrero" ///
-                            12 "Jornalero/agricultor" ///
-                            13 "Empleado doméstico" ///
-                            14 "Conductor/mensajero" ///
-                            15 "Trabajador sin remuneración" ///
-                            16 "Empleado de empresa particular" ///
-                            17 "Empleado público" ///
-                            18 "Profesional independiente" ///
-                            19 "Trabajador independiente" ///
-                            20 "Patrón/empleador" ///
-                            21 "Vendedor informal" ///
-                            31 "Dedicado al hogar" ///
-                            32 "Jubilado/pensionado" ///
-                            33 "Buscar trabajo" ///
-                            34 "Incapacitado permanente" ///
-                            35 "Va a jardín" ///
-                            36 "Rentista" ///
-                            37 "No ocupado" ///
-                            38 "Otra actividad"
+label define ocupacion_lbl ///
+    1 "Obrero" ///
+    2 "Empleado de nómina" ///
+    3 "Contratista (prestación servicios)" ///
+    4 "Empleado doméstico" ///
+    5 "Trabajador independiente" ///
+    6 "Profesional independiente" ///
+    7 "Patrón o empleador" ///
+    8 "Trabajo familiar (sin remuneración)" ///
+    9 "Trabajo desde la casa" ///
+    10 "Conductor/mensajero" ///
+    13 "Estudiante en colegio o escuela" ///
+    14 "Estudiante en Universidad - pregrado" ///
+    15 "Estudiante en Universidad - postgrado" ///
+    16 "Estudiante en Instituto técnico/tecnológico" ///
+    17 "Estudiante en Instituto educación no formal" ///
+    18 "Dedicado al hogar" ///
+    19 "Jubilado" ///
+    20 "Buscar trabajo" ///
+    21 "Incapacitado permanente" ///
+    22 "Va a jardín" ///
+    23 "Rentista" ///
+    24 "Otra actividad" ///
+    25 "No ocupado" ///
+    26 "Vendedor informal" ///
+    27 "Empleado público" ///
+    28 "Empleado de empresa particular" ///
+    29 "Jornalero/agricultor"
 
 label values ocupacion1 ocupacion_lbl
 
@@ -285,53 +313,51 @@ drop ocupacion_principal
 gen actividad = .
 
 replace actividad = 1  if actividad_economica == "Agricultura, ganadería, caza, silvic.."
-replace actividad = 2  if actividad_economica == "Explotación de minas y canteras"
-replace actividad = 3  if actividad_economica == "Industrias manufactureras"
-replace actividad = 4  if actividad_economica == "Suministro de electricidad, gas, vap.."
-replace actividad = 5  if actividad_economica == "Distribución agua, evacuación tratam.."
+replace actividad = 3  if actividad_economica == "Explotación de minas y canteras"
+replace actividad = 4  if actividad_economica == "Industrias manufactureras"
+replace actividad = 5  if actividad_economica == "Suministro de electricidad, gas, vap.."
+replace actividad = 18  if actividad_economica == "Distribución agua, evacuación tratam.."
 replace actividad = 6  if actividad_economica == "Construcción"
 replace actividad = 7  if actividad_economica == "Comercio al por mayor y al por menor.."
-replace actividad = 8  if actividad_economica == "Transporte y almacenamiento"
-replace actividad = 9  if actividad_economica == "Alojamiento y servicios de comida"
-replace actividad = 10 if actividad_economica == "Información y comunicaciones"
-replace actividad = 11 if actividad_economica == "Actividades financieras y de seguros"
-replace actividad = 12 if actividad_economica == "Actividades inmobiliarias"
-replace actividad = 13 if actividad_economica == "Actividades profesionales, científic.."
-replace actividad = 14 if actividad_economica == "Actividades de servicios administrat.."
-replace actividad = 15 if actividad_economica == "Administración pública y defensa; pl.."
-replace actividad = 16 if actividad_economica == "Educación"
-replace actividad = 17 if actividad_economica == "Actividades de atención de la salud .."
-replace actividad = 18 if actividad_economica == "Actividades artísticas, de entreteni.."
-replace actividad = 19 if actividad_economica == "Otras actividades de servicios"
-replace actividad = 20 if actividad_economica == "Actividades hogares individuales cal.."
-replace actividad = 21 if actividad_economica == "Actividades de organizaciones y enti.."
+replace actividad = 9  if actividad_economica == "Transporte y almacenamiento"
+replace actividad = 8  if actividad_economica == "Alojamiento y servicios de comida"
+replace actividad = 9 if actividad_economica == "Información y comunicaciones"
+replace actividad = 10 if actividad_economica == "Actividades financieras y de seguros"
+replace actividad = 11 if actividad_economica == "Actividades inmobiliarias"
+replace actividad = 19 if actividad_economica == "Actividades profesionales, científic.."
+replace actividad = 15 if actividad_economica == "Actividades de servicios administrat.."
+replace actividad = 12 if actividad_economica == "Administración pública y defensa; pl.."
+replace actividad = 13 if actividad_economica == "Educación"
+replace actividad = 14 if actividad_economica == "Actividades de atención de la salud .."
+replace actividad = 15 if actividad_economica == "Actividades artísticas, de entreteni.."
+replace actividad = 15 if actividad_economica == "Otras actividades de servicios"
+replace actividad = 16 if actividad_economica == "Actividades hogares individuales cal.."
+replace actividad = 17 if actividad_economica == "Actividades de organizaciones y enti.."
 
 * "No aplica" → missing
 replace actividad = . if actividad_economica == "No aplica"
 
 * Definir etiquetas
-label define actividad_lbl 1  "Agricultura, ganadería, caza y silvicultura" ///
-                           2  "Explotación de minas y canteras" ///
-                           3  "Industrias manufactureras" ///
-                           4  "Suministro de electricidad, gas, vapor y aire acondicionado" ///
-                           5  "Distribución de agua; evacuación y tratamiento de aguas residuales, gestión de desechos y actividades de saneamiento ambiental" ///
-                           6  "Construcción" ///
-                           7  "Comercio al por mayor y al por menor; reparación de vehículos automotores y motocicletas" ///
-                           8  "Transporte y almacenamiento" ///
-                           9  "Alojamiento y servicios de comida" ///
-                           10 "Información y comunicaciones" ///
-                           11 "Actividades financieras y de seguros" ///
-                           12 "Actividades inmobiliarias" ///
-                           13 "Actividades profesionales, científicas y técnicas" ///
-                           14 "Actividades de servicios administrativos y de apoyo" ///
-                           15 "Administración pública y defensa; planes de seguridad social de afiliación obligatoria" ///
-                           16 "Educación" ///
-                           17 "Actividades de atención de la salud humana y de asistencia social" ///
-                           18 "Actividades artísticas, de entretenimiento y recreación" ///
-                           19 "Otras actividades de servicios" ///
-                           20 "Actividades de los hogares individuales en calidad de empleadores; actividades no diferenciadas de los hogares individuales como productores de bienes y servicios para uso propio" ///
-                           21 "Actividades de organizaciones y entidades extraterritoriales" ///
-                           99 "Sin información"
+label define actividad1_lbl ///
+    1 "Agricultura, ganadería, caza y silvicultura" ///
+    2 "Pesca" ///
+    3 "Explotación de minas y canteras" ///
+    4 "Industrias manufactureras" ///
+    5 "Suministro de electricidad, gas y agua" ///
+    6 "Construcción" ///
+    7 "Comercio al por mayor y al por menor de vehículos automotores, motocicletas, efectos personales y enseres domésticos" ///
+    8 "Hoteles y restaurantes" ///
+    9 "Transporte, almacenamiento y comunicaciones" ///
+    10 "Intermediación financiera" ///
+    11 "Actividades inmobiliarias, empresariales y de alquiler" ///
+    12 "Administración pública y defensa, seguridad social de afiliación obligatoria" ///
+    13 "Educación" ///
+    14 "Servicios sociales y de salud" ///
+    15 "Otras actividades de servicios comunitarios, sociales y personales" ///
+    16 "Hogares privados con servicio doméstico" ///
+    17 "Organizaciones y órganos extraterritoriales" ///
+    18 "Distribución de agua; evacuación y tratamiento de aguas residuales, gestión de desechos y actividades de saneamiento ambiental" ///
+    19 "Actividades profesionales, científicas y técnicas"
 
 label values actividad actividad_lbl
 
