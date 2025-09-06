@@ -428,6 +428,7 @@ rename p30_camino_minutos camino_minutos
 label variable camino_minutos "Cantidad de minutos caminadas después del medio de transporte"
 
 qui ds p32_*   // Lista todas las variables que empiezan con p32_
+
 qui foreach var of varlist `r(varlist)' {
     local newname = substr("`var'", 5, .)   // Quita los primeros 4 caracteres "p32_"
     rename `var' `newname'
@@ -436,8 +437,6 @@ qui foreach var of varlist `r(varlist)' {
 	
 	replace `newname' = 0 if missing(`newname')
 }
-
-
 
 cd "$dir_BDD_clean"
 

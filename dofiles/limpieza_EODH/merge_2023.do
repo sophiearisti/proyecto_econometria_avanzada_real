@@ -185,7 +185,7 @@ label variable max_nivel_edu_num "Máximo nivel educativo (ordenado)"
 
 
 * colapsamos al nivel ZAT destino
-collapse (mean) Mujer edad max_nivel_edu_num ///
+collapse (mean) mujer edad max_nivel_edu_num ///
          (sum) formal informal, by(zat_des)
 
 cd "$dir_BDD_buffers"

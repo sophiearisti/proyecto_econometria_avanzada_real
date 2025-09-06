@@ -62,22 +62,28 @@ drop _merge
 **************************************************************
 
 //variables redundantes
-drop nro_mapa utam tipo_vivienda id_rango_ingresos vivienda factor municipio lugar_origen lugar_destino camino_cuadras camino_minutos
+drop nro_mapa utam tipo_vivienda vivienda factor municipio lugar_origen lugar_destino camino_cuadras camino_minutos
 
 
 //con esto solo nos quedamos con las razones de viaje de:
-//Trabajar (1), Asuntos de trabajo (2), Trámites (11) y Buscar trabajo (13)
+//Trabajar (1) y Buscar trabajo (13)
 //lo otro se dropea
-keep if inlist(motivo_viaje, 1, 2, 11, 13)
+keep if inlist(motivo_viaje, 1, 13)
 
 //solo dejar los que en ocupacion 1 o en ocupacion 2 o en 3 o en 4 sean:
-//  Trabajador sin remuneración (15), Empleado de empresa particular (16), Profesional independiente (18), Trabajador independiente (19), Vendedor informal (21), Patrón o empleador (20),  Buscar trabajo (33)
-
+//  Trabajador sin remuneración (15), Empleado de empresa particular (16), Profesional independiente (18), Trabajador independiente (19), Vendedor informal (21), Patrón o empleador (20),  Buscar trabajo (33), Empleado público
 keep if inlist(ocupacion1, 15, 16, 18, 19, 20, 21, 33) | inlist(ocupacion2, 15, 16, 18, 19, 20, 21, 33) | inlist(ocupacion3, 15, 16, 18, 19, 20, 21, 33) | inlist(ocupacion4, 15, 16, 18, 19, 20, 21, 33)
 
-//quitar las actividades economicas que nada que ver con mi pregunta de investigacion
+//dejar las actividades economicas que tinen que ver con mi pregunta de investigacion
 
-drop if inlist(actividad_economica, 1,2,3,4,5,6,8,9,10,11,12,13,14,15,16,17,18,20,21,99) 
+/****************************************************************************
+	Nota, ya no se si es verdaderamente necesario, porque igual esta bien con todos, no?	
+****************************************************************************/
+
+
+//tab actividad_economica, nolabel
+
+//keep if inlist(actividad_economica,7,) 
 
 //no me sirve si el viaje es ocasional
 drop if ocasional==1
@@ -88,13 +94,14 @@ label variable id_hogar "ID del hogar"
 
 label variable id_persona "ID de la persona"
 
-label variable actividad_economica "actividad economica a la que se dedica"
+label variable actividad_economica1 "actividad economica a la que se dedica"
 
 //generar dos variables multicolineales
 
 
 gen formal = .
-gen informal = .
+gen vendedor_informal = .
+gen independiente= .
 
 replace formal = 1 if ocupacion2 == 16 | ocupacion2 == 20 | ocupacion1 == 16 | ocupacion1 == 20 | ocupacion3 == 16 | ocupacion3 == 20 | ocupacion4 == 16 | ocupacion4 == 20 
 
@@ -124,7 +131,7 @@ save "merge_2019.dta", replace
 preserve
 
 * colapsamos al nivel ZAT destino
-collapse (mean) Mujer edad nivel_educativo ///
+collapse (mean) mujer edad nivel_educativo ingreso///
          (sum) formal informal, by(zat_destino)
 
 cd "$dir_BDD_buffers"
