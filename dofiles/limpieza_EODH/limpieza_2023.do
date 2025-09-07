@@ -1,5 +1,5 @@
 ********************************************************
-*version 1:
+*version 2:
 *limpieza datos de la encuesta de movilidad del 2023
 *******************************************************
 
@@ -15,11 +15,7 @@ import delimited "a. Modulo hogares.csv", clear
 //haremos drop de variables que no nos importan
 *******************************************************
 
-local dropVars fecha tipo_enc pers18años_hg cómo_enteró cant_hg_viv
-
-foreach var of local dropVars {
-    drop `var'
-}
+drop fecha tipo_enc pers18años_hg cómo_enteró cant_hg_viv
 
 *******************************************************
 //renombrar variables para no volverme loca y hacer el casting apropiedo de ellas
@@ -64,6 +60,9 @@ destring estrato, replace
 recast byte estrato
 
 label variable estrato "estrato del hogar"
+
+replace estrato = . if estrato==0
+
 
 label variable cod_dane_manzana_hg "codigo manzana del hogar"
 
@@ -172,7 +171,11 @@ label variable estra_hg "estrato del hogar"
 
 rename estra_hg estrato
 
-gen discapacidad = cond(condicion_discapacidad == "Ninguna", 0, 1)
+replace estrato=. if estrato==0
+
+gen limitaciones_fisicas = cond(condicion_discapacidad == "Ninguna", 0, 1)
+
+label variable limitaciones_fisicas "1 si la persona presenta limitaciones fisicas"
 
 drop condicion_discapacidad
 
@@ -273,7 +276,6 @@ replace ocupacion1 = 23 if strpos(ocupacion_principal, "Rentista")
 replace ocupacion1 = 25 if strpos(ocupacion_principal, "No ocupado")
 replace ocupacion1 = 24 if strpos(ocupacion_principal, "Otra actividad")
 
-
 * Definir etiquetas
 label define ocupacion_lbl ///
     1 "Obrero" ///
@@ -312,30 +314,30 @@ drop ocupacion_principal
 
 gen actividad = .
 
-replace actividad = 1  if actividad_economica == "Agricultura, ganadería, caza, silvic.."
-replace actividad = 3  if actividad_economica == "Explotación de minas y canteras"
-replace actividad = 4  if actividad_economica == "Industrias manufactureras"
-replace actividad = 5  if actividad_economica == "Suministro de electricidad, gas, vap.."
-replace actividad = 18  if actividad_economica == "Distribución agua, evacuación tratam.."
-replace actividad = 6  if actividad_economica == "Construcción"
-replace actividad = 7  if actividad_economica == "Comercio al por mayor y al por menor.."
-replace actividad = 9  if actividad_economica == "Transporte y almacenamiento"
-replace actividad = 8  if actividad_economica == "Alojamiento y servicios de comida"
-replace actividad = 9 if actividad_economica == "Información y comunicaciones"
-replace actividad = 10 if actividad_economica == "Actividades financieras y de seguros"
-replace actividad = 11 if actividad_economica == "Actividades inmobiliarias"
-replace actividad = 19 if actividad_economica == "Actividades profesionales, científic.."
-replace actividad = 15 if actividad_economica == "Actividades de servicios administrat.."
-replace actividad = 12 if actividad_economica == "Administración pública y defensa; pl.."
-replace actividad = 13 if actividad_economica == "Educación"
-replace actividad = 14 if actividad_economica == "Actividades de atención de la salud .."
-replace actividad = 15 if actividad_economica == "Actividades artísticas, de entreteni.."
-replace actividad = 15 if actividad_economica == "Otras actividades de servicios"
-replace actividad = 16 if actividad_economica == "Actividades hogares individuales cal.."
-replace actividad = 17 if actividad_economica == "Actividades de organizaciones y enti.."
+replace actividad = 1  if strpos(actividad_economica, "Agricultura, ganadería, caza,")
+replace actividad = 3  if strpos(actividad_economica,"minas")
+replace actividad = 4  if strpos(actividad_economica, "manufactureras")
+replace actividad = 5  if strpos(actividad_economica,"Suministro de electricidad, gas")
+replace actividad = 18  if strpos(actividad_economica,"Distribución agua, evacuación tratam")
+replace actividad = 6  if strpos(actividad_economica,"Construcción")
+replace actividad = 7  if strpos(actividad_economica,"Comercio al por mayor y al por menor")
+replace actividad = 9  if strpos(actividad_economica,"Transporte y almacenamiento")
+replace actividad = 8  if strpos(actividad_economica,"Alojamiento y servicios de comida")
+replace actividad = 9 if strpos(actividad_economica,"Información y comunicaciones")
+replace actividad = 10 if strpos(actividad_economica,"Actividades financieras y de seguros")
+replace actividad = 11 if strpos(actividad_economica,"Actividades inmobiliarias")
+replace actividad = 19 if strpos(actividad_economica,"Actividades profesionales")
+replace actividad = 15 if strpos(actividad_economica,"Actividades de servicios")
+replace actividad = 12 if strpos(actividad_economica,"Administración pública y defensa")
+replace actividad = 13 if strpos(actividad_economica,"Educación")
+replace actividad = 14 if strpos(actividad_economica,"Actividades de atención de la salud")
+replace actividad = 15 if strpos(actividad_economica,"Actividades artísticas")
+replace actividad = 15 if strpos(actividad_economica,"Otras actividades de servicios")
+replace actividad = 16 if strpos(actividad_economica,"Actividades hogares individuales")
+replace actividad = 17 if strpos(actividad_economica,"Actividades de organizaciones y")
 
 * "No aplica" → missing
-replace actividad = . if actividad_economica == "No aplica"
+//replace actividad = . if strpos(actividad_economica,"No aplica")
 
 * Definir etiquetas
 label define actividad1_lbl ///
@@ -359,14 +361,13 @@ label define actividad1_lbl ///
     18 "Distribución de agua; evacuación y tratamiento de aguas residuales, gestión de desechos y actividades de saneamiento ambiental" ///
     19 "Actividades profesionales, científicas y técnicas"
 
-label values actividad actividad_lbl
-
+label values actividad actividad1_lbl
 
 label variable actividad "actividad economica"
 
 drop actividad_economica
 
-rename actividad actividad_economica
+rename actividad actividad_economica1
 
 cd "$dir_BDD_clean"
 
@@ -383,7 +384,7 @@ import delimited "d. Modulo viajes.csv", clear
 //haremos drop de variables que no nos importan
 *******************************************************
 
-local dropVars hora_ini hora_fin duracion_min t_acceso_min t_espera_min t_egreso_min modo_principal_agrupado modo_principal_desagrupado etapas app_antes_vj app_durante_vj genero orien_sexual identidad_etnica madre_cab_familia
+local dropVars hora_ini hora_fin duracion_min t_acceso_min t_espera_min t_egreso_min modo_principal_agrupado modo_principal_desagrupado etapas app_antes_vj app_durante_vj genero orien_sexual identidad_etnica madre_cab_familia max_nivel_edu ocupacion_principal estra_hg
 
 foreach var of local dropVars {
     drop `var'
@@ -394,14 +395,6 @@ foreach var of local dropVars {
 *******************************************************
 
 label variable cod_hg "codigo del hogar"
-
-replace estra_hg = "0" if estra_hg=="No aplica"
-
-destring estra_hg, replace
-
-recast byte estra_hg
-
-label variable estra_hg "estrato del hogar"
 
 gen mujer=.
 
@@ -436,21 +429,62 @@ label variable utam_ori "UTAM de origen"
 label variable upl_ori "UPL de origen"
 label variable nom_mun_ori "Nombre municipio de origen"
 label variable localidad_ori "Localidad de origen"
-label variable zat_des "ZAT de destino"
+rename zat_des zat_destino
+label variable zat_destino "ZAT de destino"
 label variable utam_des "UTAM de destino"
 label variable upl_des "UPL de destino"
 label variable localidad_des "Localidad de destino"
 label variable nom_mun_des "Nombre municipio de destino"
 
 * Motivo y frecuencia del viaje
-label variable motivo_viaje "Motivo principal del viaje"
+
+gen razon_viaje=.
+
+replace razon_viaje= 3 if strpos(motivo_viaje, "Estudiar")
+replace razon_viaje= 15 if strpos(motivo_viaje, "A acompañar a")
+replace razon_viaje= 14 if strpos(motivo_viaje, "religioso")
+replace razon_viaje= 4 if strpos(motivo_viaje, "médicos")
+replace razon_viaje= 13 if strpos(motivo_viaje, "buscar trabajo")
+replace razon_viaje= 8 if strpos(motivo_viaje, "dejar algo")
+replace razon_viaje= 16 if strpos(motivo_viaje, "deportivas")
+replace razon_viaje= 12 if strpos(motivo_viaje, "recreativas")
+replace razon_viaje= 11 if strpos(motivo_viaje, "trámite")
+replace razon_viaje= 10 if strpos(motivo_viaje, "compras")
+replace razon_viaje= 6 if strpos(motivo_viaje, "hogar")
+replace razon_viaje= 1 if strpos(motivo_viaje, "A trabajar")
+replace razon_viaje= 5 if strpos(motivo_viaje, "visitar")
+replace razon_viaje= 17 if strpos(motivo_viaje, "vehículo")
+
+drop motivo_viaje
+
+label variable razon_viaje "Motivo principal del viaje" 
+
+label define razon_viaje_lbl 1 "Trabajar" ///
+                             2 "Asuntos de trabajo" ///
+                             3 "Estudiar" ///
+                             4 "Recibir atención en salud" ///
+                             5 "Ver a alguien" ///
+                             6 "Volver a casa" ///
+                             7 "Buscar/Dejar a alguien" ///
+                             8 "Buscar/Dejar algo" ///
+                             9 "Comer/Tomar algo" ///
+                             10 "Compras" ///
+                             11 "Trámites" ///
+                             12 "Recreación y cultura" ///
+                             13 "Buscar trabajo" ///
+                             14 "Actividades con fines religiosos" ///
+                             15 "Cuidado de personas" ///
+                             16 "Actividad física y deporte" ///
+                             77 "Otro" ///
+							 17 "Conduzco vehículo como forma de trabajo"
+
+
+
 label variable motivo_viaje_cuidado "Motivo relacionado con cuidado"
 label variable frecuencia_viaje "Frecuencia del viaje"
 
 * Datos personales
 label variable edad "Edad de la persona"
-label variable max_nivel_edu "Máximo nivel educativo alcanzado"
-label variable ocupacion_principal "Ocupación principal"
 
 * Claves y códigos
 label variable key_hg "Clave del hogar"

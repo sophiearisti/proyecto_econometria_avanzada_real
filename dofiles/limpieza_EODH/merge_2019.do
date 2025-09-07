@@ -1,8 +1,8 @@
-**********************************************************
-*VERSION 1
+******************************************************
+*VERSION 3
 *MERGE de los datos de la encuesta de movilidad del 2019
 *tambien se limpiara aun mas la bdd, esto con el objetivo de dejar todo listo para crear los buffers
-**********************************************************
+******************************************************
 
 cd "$dir_BDD_2019"
 cd "$dir_BDD_clean"
@@ -56,34 +56,31 @@ en hogares no todos tienen info del viaje
 keep if _merge==3
 drop _merge
 
-
 **************************************************************
 *vamos a borrar algunas variables redundantes y otras les cambiaremos el label
 **************************************************************
 
 //variables redundantes
-drop nro_mapa utam tipo_vivienda vivienda factor municipio lugar_origen lugar_destino camino_cuadras camino_minutos
+drop nro_mapa utam factor municipio lugar_origen lugar_destino otro_motivo_viaje
 
+//drop variables uqe en otra investigacion pueden servir pero aca no
+
+drop parentesco f_exp id_viaje zat_origen mun_origen mun_destino utam_origen utam_destino estado sector seccion manzana barrio_vivienda latitud longitud zat_hogar vivienda localidad
 
 //con esto solo nos quedamos con las razones de viaje de:
 //Trabajar (1) y Buscar trabajo (13)
 //lo otro se dropea
-keep if inlist(motivo_viaje, 1, 13)
+keep if inlist(razon_viaje, 1, 13)
 
-//solo dejar los que en ocupacion 1 o en ocupacion 2 o en 3 o en 4 sean:
-//  Trabajador sin remuneración (15), Empleado de empresa particular (16), Profesional independiente (18), Trabajador independiente (19), Vendedor informal (21), Patrón o empleador (20),  Buscar trabajo (33), Empleado público
-keep if inlist(ocupacion1, 15, 16, 18, 19, 20, 21, 33) | inlist(ocupacion2, 15, 16, 18, 19, 20, 21, 33) | inlist(ocupacion3, 15, 16, 18, 19, 20, 21, 33) | inlist(ocupacion4, 15, 16, 18, 19, 20, 21, 33)
+/*
+la persona pudo haber hecho varios viajes al mismo lugar, por la misma razon entonces esos no nos interesa
+*/
 
-//dejar las actividades economicas que tinen que ver con mi pregunta de investigacion
+duplicates report id_hogar id_persona zat_destino
 
-/****************************************************************************
-	Nota, ya no se si es verdaderamente necesario, porque igual esta bien con todos, no?	
-****************************************************************************/
+duplicates drop id_hogar id_persona zat_destino, force   // borrar duplicados que tengan esa combinacion
 
-
-//tab actividad_economica, nolabel
-
-//keep if inlist(actividad_economica,7,) 
+duplicates report id_hogar id_persona zat_destino   // comprobar que ya no haya duplicados
 
 //no me sirve si el viaje es ocasional
 drop if ocasional==1
@@ -96,24 +93,82 @@ label variable id_persona "ID de la persona"
 
 label variable actividad_economica1 "actividad economica a la que se dedica"
 
-//generar dos variables multicolineales
+*******************************************************************************
+*GENERAR DUMMIES PARA LAS CATEGORICAS
+*******************************************************************************
+//actividad_economica1 tipo_vivienda tipo_propiedad_vivienda razon_viaje nivel_educativo ocupacion1 ocupacion2 ocupacion3 ocupacion4
 
+//PARA actividad_economica1 tipo_vivienda tipo_propiedad_vivienda razon_viaje nivel_educativo usar la misma funcion 
 
-gen formal = .
+//llamar a la funcion general que se creo en el main
+
+makedummies actividad_economica1 tipo_vivienda tipo_propiedad_vivienda razon_viaje nivel_educativo
+
+//para ocupacion1 ocupacion2 ocupacion3 ocupacion4, toca hacerlo CON OTRA FUNCION
+
+makemultidummies ocupacion1 ocupacion2 ocupacion3 ocupacion4, genprefix(ocupacion1)
+
+*******************************************************************************
+*GENERAR DUMMIES PARA LA VARIABLE DEPENDIENTE
+*******************************************************************************
+
+//en formal pero no independiente
+//(27) "Empleado público", (28) "Empleado de empresa particular" (7) "Patrón o empleador" 
+gen formal_no_indep = .
+replace formal_no_indep = 1 if inlist(ocupacion1,27,28,7) | inlist(ocupacion2,27,28,7) | inlist(ocupacion3,27,28,7) | inlist(ocupacion4,27,28,7)
+replace formal_no_indep = 0 if !inlist(ocupacion1,27,28,7) & !inlist(ocupacion2,27,28,7) & !inlist(ocupacion3,27,28,7) & !inlist(ocupacion4,27,28,7)
+label variable formal_no_indep "ocupacion Empleado público, Empleado de empresa particular, Patrón o empleador"
+
 gen vendedor_informal = .
-gen independiente= .
+replace vendedor_informal = 1 if ocupacion2==26 | ocupacion1==26 | ocupacion3==26 |ocupacion4==26
+replace vendedor_informal = 0 if ocupacion2!=26 & ocupacion1!=26 & ocupacion3!=26 & ocupacion4!=26
+label variable vendedor_informal "ocupacion vendedor informal"
 
-replace formal = 1 if ocupacion2 == 16 | ocupacion2 == 20 | ocupacion1 == 16 | ocupacion1 == 20 | ocupacion3 == 16 | ocupacion3 == 20 | ocupacion4 == 16 | ocupacion4 == 20 
+// (5) "Trabajador independiente"  (6) "Profesional independiente" 
 
-replace formal = 0 if ocupacion2 != 16 & ocupacion2 != 20 & ocupacion2 != 33 & ocupacion1 != 16 & ocupacion1 != 20 & ocupacion1 != 33 & ocupacion3 != 16 & ocupacion3 != 20 & ocupacion3 != 33 & ocupacion4 != 16 & ocupacion4 != 20 & ocupacion4 != 33
+* Dummy independientes
+gen independiente_total = .
+replace independiente_total = 1 if inlist(ocupacion1,5,6) | inlist(ocupacion2,5,6) | inlist(ocupacion3,5,6) | inlist(ocupacion4,5,6)
+replace independiente_total = 0 if !inlist(ocupacion1,5,6) & !inlist(ocupacion2,5,6) & !inlist(ocupacion3,5,6) & !inlist(ocupacion4,5,6)
+label variable independiente_total "ocupacion trabajador independiente"
 
-replace informal = 1 if inlist(ocupacion2, 15, 18, 19, 21) | inlist(ocupacion1, 15, 18, 19, 21) | inlist(ocupacion3, 15, 18, 19, 21) | inlist(ocupacion4, 15, 18, 19, 21)
+gen independiente_trabajando = .
+replace independiente_trabajando = 1 if (inlist(ocupacion1,5,6) | inlist(ocupacion2,5,6) | inlist(ocupacion3,5,6) | inlist(ocupacion4,5,6)) & razon_viaje==1
+replace independiente_trabajando = 0 if !inlist(ocupacion1,5,6) & !inlist(ocupacion2,5,6) & !inlist(ocupacion3,5,6) & !inlist(ocupacion4,5,6)
+label variable independiente_trabajando "trabajador independiente yendo a trabajar"
 
-replace informal = 0 if !inlist(ocupacion2, 15, 18, 19, 21, 33) & !inlist(ocupacion1, 15, 18, 19, 21, 33) & !inlist(ocupacion3, 15, 18, 19, 21, 33) & !inlist(ocupacion4, 15, 18, 19, 21, 33)
+gen independiente_buscando = .
+replace independiente_buscando = 1 if (inlist(ocupacion1,5,6) | inlist(ocupacion2,5,6) | inlist(ocupacion3,5,6) | inlist(ocupacion4,5,6)) & razon_viaje==13
+replace independiente_buscando = 0 if !inlist(ocupacion1,5,6) & !inlist(ocupacion2,5,6) & !inlist(ocupacion3,5,6) & !inlist(ocupacion4,5,6)
+label variable independiente_buscando "trabajador independiente yendo a buscar trabajo"	
 
-label variable formal "ocupacion formal"
 
-label variable informal "ocupacion informal"
+//toca usar mejor motivo del viajes
+//hay personas que tienen una ocupacion pero estan buscando trabajo
+gen buscar_trabajo=.
+replace buscar_trabajo = 1 if inlist(razon_viaje,13)
+replace buscar_trabajo = 0 if !inlist(razon_viaje,13)
+label variable buscar_trabajo "la persona busca trabajo"
+
+
+gen desempleado=.
+replace desempleado = 1 if inlist(ocupacion1,20) | inlist(ocupacion2,20) | inlist(ocupacion3,20) | inlist(ocupacion4,20)
+replace desempleado = 0 if !inlist(ocupacion1,20) & !inlist(ocupacion2,20) & !inlist(ocupacion3,20) & !inlist(ocupacion4,20)
+label variable desempleado "desempleado que dice que ocupacion es buscar trabajo"
+
+//toca usar mejor motivo del viajes
+//hay personas que no tienen una ocupacion pero estan  trabajando
+gen con_trabajo=.
+replace con_trabajo = 1 if !inlist(ocupacion1,13)
+replace con_trabajo = 0 if inlist(ocupacion1,13)
+label variable con_trabajo "empleado"
+
+gen tot=1
+
+
+gen a2019=1
+
+label variable a2019 "=1 si ano 2019"
 
 save "merge_2019.dta", replace
 
@@ -127,13 +182,52 @@ save "merge_2019.dta", replace
 //mean mujer, mean edad, mean educacion, count formal, count informal
 
 //me debe quedar un dato por zat 
+bysort zat_destino: summarize tot
 
 preserve
 
-* colapsamos al nivel ZAT destino
-collapse (mean) mujer edad nivel_educativo ingreso///
-         (sum) formal informal, by(zat_destino)
+rename estrato estrato_trabajador
 
+//falta poner minutos caminados y cuadras caminadas
+
+* colapsamos al nivel ZAT destino
+collapse (mean) mujer edad nivel_educativo  estrato_trabajador limitaciones_fisicas ingreso tipo_vivienda total_personas total_personas_mas_5 tipo_propiedad_vivienda (sum) formal_no_indep vendedor_informal independiente_total independiente_trabajando independiente_buscando buscar_trabajo con_trabajo tot desempleado, by(zat_destino)
+
+//dividir (sum) nomina_patron (sum) independiente por cantTrabajadores DE ESA ZAT
+//dividir buscar_trabajo por cantTotal DE ESA ZAT
+
+gen prop_formal_no_indep       = formal_no_indep / tot
+
+gen prop_independiente_total = independiente_total / tot
+
+gen prop_independiente_trabajando = independiente_trabajando / tot
+
+gen prop_independiente_buscando = independiente_buscando / tot
+
+gen prop_buscar      = buscar_trabajo / tot
+
+gen prop_desempleado      = desempleado / tot
+
+
+label variable mujer               "Promedio de mujeres (dummy) por ZAT"
+label variable edad                "Edad promedio por ZAT"
+label variable nivel_educativo     "Educación promedio por ZAT" //toca cambiar
+label variable estrato_trabajador  "Estrato socioeconómico promedio por ZAT"
+label variable limitaciones_fisicas "Promedio de limitaciones físicas (dummy) por ZAT" 
+
+label variable formal_no_indep       "Total trabajadores de nomina y patrones por ZAT"
+label variable independiente_total       "Total trabajadores independientes por ZAT"
+label variable independiente_trabajando       "Total trabajadores independientes que fueron a trabajar por ZAT"
+label variable independiente_buscando      "Total trabajadores independientes que fueron a buscar trabajo por ZAT"
+label variable buscar_trabajo      "Total personas buscando trabajo por ZAT"
+
+label variable prop_formal_no_indep         "Proporción de nomina y patrones sobre total población en dicho ZAT"
+label variable prop_independiente_total  "independientes/tot_ZAT"
+label variable prop_independiente_trabajando  "independientes a trabajar/total_ZAT"
+label variable prop_independiente_buscando  "independientes buscando/total_ZAT"
+label variable prop_buscar         "buscando/total_ZAT"
+label variable prop_desempleado         "desempleado/tot_ZAT"
+ 
 cd "$dir_BDD_buffers"
 
 save collapsed_2019.dta, replace

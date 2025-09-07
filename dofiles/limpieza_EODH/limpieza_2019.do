@@ -1,15 +1,13 @@
-*********************************************************
+********************************************************
 //VERSION 2
-
 //LIMPIEZA BDD 2019
-*********************************************************
-
+********************************************************
 
 cd "$dir_BDD_2019"
 
-*********************************************************
+********************************************************
 //limpieza etapas muestra donde se baja la persona
-*********************************************************
+********************************************************
 
 import delimited "EtapasEODH2019.csv", clear
 
@@ -44,6 +42,7 @@ rename p25_lugar_descenso lugar_descenso
 
 label variable lugar_descenso "Lugar de descenso del vehículo"
 
+//tiene la misma situacion que el anterior. Hay varios viajes para una misma persona entonces toca controlarse, solo que no sabemos la razon del viaje
 
 cd "$dir_BDD_clean"
 
@@ -170,7 +169,9 @@ import delimited "PersonasEODH2019.csv", clear
 *********************************************************
 //drop de variables que no se necesitan
 *********************************************************
-rename p8me_poblacion_pertenece_6 discapacidad
+rename p8me_poblacion_pertenece_6 limitaciones_fisicas
+
+label variable limitaciones_fisicas "=1 posee limitaciones fisicas"
 
 drop p15* p16* p17* p14* p13* p12* p8* p10* p8* p9* p11* p7m* v*
 *******************************************************
@@ -441,13 +442,13 @@ label variable lugar_origen "lugar de origen del viaje"
 
 label variable zat_origen "zat origen"
 
-rename p17_id_motivo_viaje motivo_viaje
+rename p17_id_motivo_viaje razon_viaje
 
-label variable motivo_viaje "motivo del viaje"
+label variable razon_viaje "motivo del viaje"
 
-replace motivo_viaje=. if motivo_viaje==99
+replace razon_viaje=. if razon_viaje==99
 
-label define motivo_viaje_lbl 1 "Trabajar" ///
+label define razon_viaje_lbl 1 "Trabajar" ///
                              2 "Asuntos de trabajo" ///
                              3 "Estudiar" ///
                              4 "Recibir atención en salud" ///
@@ -466,7 +467,7 @@ label define motivo_viaje_lbl 1 "Trabajar" ///
                              77 "Otro"
 
 							 
-label values motivo_viaje motivo_viaje_lbl
+label values razon_viaje razon_viaje_lbl
 
 rename p17_otro_motivo otro_motivo_viaje
 
