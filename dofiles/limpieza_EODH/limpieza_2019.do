@@ -246,8 +246,8 @@ rename p6_id_ocupacion ocupacion1
 
 recode ocupacion1 ///
     (11 = 1) (13 = 4) (19 = 5) (18 = 6) (20 = 7) (15 = 8) (14 = 10) ///
-    (1 = 13) (2 = 14) (3 = 15) (4 = 16) (5 = 17) (31 = 18) (32 = 19) ///
-    (33 = 20) (34 = 21) (35 = 22) (36 = 23) (38 = 24) (37 = 25) ///
+    (1 = 13) (2 = 13) (3 = 13) (4 = 13) (5 = 13) (31 = 18) (32 = 19) ///
+    (33 = 20) (34 = 21) (35 = 13) (36 = 23) (38 = 24) (37 = 25) ///
     (21 = 26) (17 = 27) (16 = 28) (12 = 29), gen(ocupacion_new1)
 
 drop ocupacion1
@@ -265,16 +265,11 @@ label define ocupacion_lbl ///
     8 "Trabajo familiar (sin remuneración)" ///
     9 "Trabajo desde la casa" ///
     10 "Conductor/mensajero" ///
-    13 "Estudiante en colegio o escuela" ///
-    14 "Estudiante en Universidad - pregrado" ///
-    15 "Estudiante en Universidad - postgrado" ///
-    16 "Estudiante en Instituto técnico/tecnológico" ///
-    17 "Estudiante en Instituto educación no formal" ///
+    13 "Estudia" ///
     18 "Dedicado al hogar" ///
     19 "Jubilado" ///
     20 "Buscar trabajo" ///
     21 "Incapacitado permanente" ///
-    22 "Va a jardín" ///
     23 "Rentista" ///
     24 "Otra actividad" ///
     25 "No ocupado" ///
@@ -294,10 +289,10 @@ label variable ocupacion2 "Otra ocupación"
 
 recode ocupacion2 ///
     (11 = 1) (13 = 4) (19 = 5) (18 = 6) (20 = 7) (15 = 8) (14 = 10) ///
-    (1 = 13) (2 = 14) (3 = 15) (4 = 16) (5 = 17) (31 = 18) (32 = 19) ///
-    (33 = 20) (34 = 21) (35 = 22) (36 = 23) (38 = 24) (37 = 25) ///
+    (1 = 13) (2 = 13) (3 = 13) (4 = 13) (5 = 13) (31 = 18) (32 = 19) ///
+    (33 = 20) (34 = 21) (35 = 13) (36 = 23) (38 = 24) (37 = 25) ///
     (21 = 26) (17 = 27) (16 = 28) (12 = 29), gen(ocupacion_new2)
-	
+
 drop ocupacion2
 
 rename ocupacion_new2 ocupacion2
@@ -310,8 +305,8 @@ label variable ocupacion3 "Otra ocupación"
 
 recode ocupacion3 ///
     (11 = 1) (13 = 4) (19 = 5) (18 = 6) (20 = 7) (15 = 8) (14 = 10) ///
-    (1 = 13) (2 = 14) (3 = 15) (4 = 16) (5 = 17) (31 = 18) (32 = 19) ///
-    (33 = 20) (34 = 21) (35 = 22) (36 = 23) (38 = 24) (37 = 25) ///
+    (1 = 13) (2 = 13) (3 = 13) (4 = 13) (5 = 13) (31 = 18) (32 = 19) ///
+    (33 = 20) (34 = 21) (35 = 13) (36 = 23) (38 = 24) (37 = 25) ///
     (21 = 26) (17 = 27) (16 = 28) (12 = 29), gen(ocupacion_new3)
 
 drop ocupacion3
@@ -326,10 +321,10 @@ label variable ocupacion4 "Otra ocupación"
 
 recode ocupacion4 ///
     (11 = 1) (13 = 4) (19 = 5) (18 = 6) (20 = 7) (15 = 8) (14 = 10) ///
-    (1 = 13) (2 = 14) (3 = 15) (4 = 16) (5 = 17) (31 = 18) (32 = 19) ///
-    (33 = 20) (34 = 21) (35 = 22) (36 = 23) (38 = 24) (37 = 25) ///
+    (1 = 13) (2 = 13) (3 = 13) (4 = 13) (5 = 13) (31 = 18) (32 = 19) ///
+    (33 = 20) (34 = 21) (35 = 13) (36 = 23) (38 = 24) (37 = 25) ///
     (21 = 26) (17 = 27) (16 = 28) (12 = 29), gen(ocupacion_new4)
-	
+
 drop ocupacion4
 
 rename ocupacion_new4 ocupacion4

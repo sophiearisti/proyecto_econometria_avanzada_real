@@ -273,6 +273,8 @@ label variable ocupacion1 "principal ocupación semana anterior"
 
 replace ocupacion1=10 if ocupacion1== 11 | ocupacion1== 12
 
+replace ocupacion1=13 if ocupacion1== 14 | ocupacion1== 15 | ocupacion1== 16 | ocupacion1== 17 | ocupacion1== 22
+
 label define ocupacion_lbl ///
     1 "Obrero" ///
     2 "Empleado de nómina" ///
@@ -285,15 +287,10 @@ label define ocupacion_lbl ///
     9 "Trabajo desde la casa" ///
     10 "Conductor/mensajero" ///
     13 "Estudiante en colegio o escuela" ///
-    14 "Estudiante en Universidad - pregrado" ///
-    15 "Estudiante en Universidad - postgrado" ///
-    16 "Estudiante en Instituto técnico/tecnológico" ///
-    17 "Estudiante en Instituto educación no formal" ///
     18 "Dedicado al hogar" ///
     19 "Jubilado" ///
     20 "Buscar trabajo" ///
     21 "Incapacitado permanente" ///
-    22 "Va a jardín" ///
     23 "Rentista" ///
     24 "Otra actividad" ///
     25 "No ocupado" ///
@@ -316,6 +313,10 @@ label variable ocupacion2 "segunda ocupación semana anterior"
 label define ocupacion1_lbl 0 "No tiene ninguna otra ocupación", add
 
 label values ocupacion2 ocupacion1_lbl
+
+replace ocupacion2=10 if ocupacion2== 11 | ocupacion2== 12
+
+replace ocupacion2=13 if ocupacion2== 14 | ocupacion2== 15 | ocupacion2== 16 | ocupacion2== 17 | ocupacion2== 22
 
 rename p9_b actividad_economica1 
 
@@ -480,7 +481,4 @@ save "nuevo_MOD_viajeTipico.dta", replace
 
 
 
-
-
-//si ya tienes trabajo (ocupacion) y que no se desplazo entonces lit ellos si cuentan en el trabajo
 

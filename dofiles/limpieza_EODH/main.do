@@ -11,6 +11,7 @@ global dir_data "$global_dir/data/EODH"
 global dir_dofile "$global_dir/dofiles" //dirección de los dofiles
 global dir_dofile_EODH "$dir_dofile/limpieza_EODH"
 global dir_BDD_2011 "$dir_data/sample 2011"
+global dir_BDD_2015 "$dir_data/sample 2015"
 global dir_BDD_2019 "$dir_data/sample 2019"
 global dir_BDD_2023 "$dir_data/sample 2023"
 global dir_BDD_clean "dta_limpios"
@@ -63,6 +64,11 @@ end
 do "$dir_dofile_EODH/limpieza_2011.do"
 
 do "$dir_dofile_EODH/merge_2011.do"
+
+*2015
+do "$dir_dofile_EODH/limpieza_2015.do"
+
+do "$dir_dofile_EODH/merge_2015.do"
 
 *2019
 do "$dir_dofile_EODH/limpieza_2019.do"

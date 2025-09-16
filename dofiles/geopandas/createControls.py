@@ -482,7 +482,7 @@ print(gdf_final.head())
 print(gdf_final.columns)
 # --- 5. Guardar resultado final ---
 gdf_final.drop(columns=["geometry"]).to_csv(
-   "../../data/buffer_data/res_merges/zat_all_controls.csv",
+   "../../data/buffer_data/zat_all_controls.csv",
    index=False
 )
 
