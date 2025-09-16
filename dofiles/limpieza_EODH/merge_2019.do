@@ -70,6 +70,7 @@ drop parentesco f_exp id_viaje zat_origen mun_origen mun_destino utam_origen uta
 //con esto solo nos quedamos con las razones de viaje de:
 //Trabajar (1) y Buscar trabajo (13)
 //lo otro se dropea
+
 keep if inlist(razon_viaje, 1, 13)
 
 /*
@@ -171,68 +172,3 @@ gen a2019=1
 label variable a2019 "=1 si ano 2019"
 
 save "merge_2019.dta", replace
-
-***************************************************************
-*con esto haremos el collapse segun el ZAT
-***************************************************************
-
-//este se guardara en el data de los buffers porque con eso se crea el panel georeferenciado
-
-//en este no vamos a tener en cuenta las siguientes vars  (las otras no las tendremos en cuenta y se desaparecen):
-//mean mujer, mean edad, mean educacion, count formal, count informal
-
-//me debe quedar un dato por zat 
-bysort zat_destino: summarize tot
-
-preserve
-
-rename estrato estrato_trabajador
-
-//falta poner minutos caminados y cuadras caminadas
-
-* colapsamos al nivel ZAT destino
-collapse (mean) mujer edad nivel_educativo  estrato_trabajador limitaciones_fisicas ingreso tipo_vivienda total_personas total_personas_mas_5 tipo_propiedad_vivienda (sum) formal_no_indep vendedor_informal independiente_total independiente_trabajando independiente_buscando buscar_trabajo con_trabajo tot desempleado, by(zat_destino)
-
-//dividir (sum) nomina_patron (sum) independiente por cantTrabajadores DE ESA ZAT
-//dividir buscar_trabajo por cantTotal DE ESA ZAT
-
-gen prop_formal_no_indep       = formal_no_indep / tot
-
-gen prop_independiente_total = independiente_total / tot
-
-gen prop_independiente_trabajando = independiente_trabajando / tot
-
-gen prop_independiente_buscando = independiente_buscando / tot
-
-gen prop_buscar      = buscar_trabajo / tot
-
-gen prop_desempleado      = desempleado / tot
-
-
-label variable mujer               "Promedio de mujeres (dummy) por ZAT"
-label variable edad                "Edad promedio por ZAT"
-label variable nivel_educativo     "Educación promedio por ZAT" //toca cambiar
-label variable estrato_trabajador  "Estrato socioeconómico promedio por ZAT"
-label variable limitaciones_fisicas "Promedio de limitaciones físicas (dummy) por ZAT" 
-
-label variable formal_no_indep       "Total trabajadores de nomina y patrones por ZAT"
-label variable independiente_total       "Total trabajadores independientes por ZAT"
-label variable independiente_trabajando       "Total trabajadores independientes que fueron a trabajar por ZAT"
-label variable independiente_buscando      "Total trabajadores independientes que fueron a buscar trabajo por ZAT"
-label variable buscar_trabajo      "Total personas buscando trabajo por ZAT"
-
-label variable prop_formal_no_indep         "Proporción de nomina y patrones sobre total población en dicho ZAT"
-label variable prop_independiente_total  "independientes/tot_ZAT"
-label variable prop_independiente_trabajando  "independientes a trabajar/total_ZAT"
-label variable prop_independiente_buscando  "independientes buscando/total_ZAT"
-label variable prop_buscar         "buscando/total_ZAT"
-label variable prop_desempleado         "desempleado/tot_ZAT"
- 
-cd "$dir_BDD_buffers"
-
-save collapsed_2019.dta, replace
-
-restore 
-
-clear
-

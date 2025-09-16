@@ -113,6 +113,13 @@ tiendas_counts = pd.concat(oxxo_counts_list, ignore_index=True)
 tiendas_counts.to_csv("../../data/buffer_data/oxxo_counts.csv", index=False)
 print(tiendas_counts)
 
+####################################################
+# Spill over effects:
+# variable de zat cercano a un oxxo (que no tiene oxxo)
+####################################################
+
+
+
 #finalmente hacer el merge con zat_data_list
 #zat_data en este es segun zat y year 
 # oxxo_counts es en ZAT y year

@@ -213,26 +213,3 @@ save collapsed_2011.dta, replace
 restore 
 
 use "collapsed_2011.dta"
-
-
-
-
-//solo dejar los que en ocupacion 1 o en ocupacion 2 sean:
-//  Empleado de nómina (1), Trabajador independiente (5), Profesional independiente (6), Patrón o empleador (7),  Buscar trabajo (20)
-
-/*
-Componentes de la nómina en Colombia
-Una nómina en Colombia incluye varios componentes, tanto devengos como deducciones: 
-Salario base: El sueldo principal acordado en el contrato. 
-Horas extras y recargos: Pago adicional por horas trabajadas más allá del horario legal, o por trabajo nocturno, dominical o festivo. 
-Bonificaciones y comisiones: Pagos adicionales según el desempeño o acuerdos contractuales. 
-Subsidio de transporte: Auxilio de transporte para empleados con ingresos inferiores a dos salarios mínimos. 
-Deducciones:
-Seguridad Social: Aportes a salud (EPS) y pensión. 
-Fondo de Solidaridad Pensional: Obligatorio para quienes ganan más de cuatro salarios mínimos. 
-Retención en la fuente: Un anticipo del impuesto de renta para empleados con ingresos superiores a 95 UVT. 
-Prestaciones sociales: Beneficios como cesantías y prima. 
-*/
-
-//keep if inlist(ocupacion1, 1, 5, 6, 7, 20) | inlist(ocupacion2, 1, 5, 6, 7, 20)
-

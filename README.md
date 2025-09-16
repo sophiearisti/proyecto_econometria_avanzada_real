@@ -8,6 +8,7 @@ pip3 install lxml
 pip3 install selenium
 pip3 install ohsome
 pip3 install matplotlib
+pip3 install unidecode
 
 To use this proyect remember to activate a python envirtonment. This is the command line that should be used in the terminal: source venv/bin/activate 
 

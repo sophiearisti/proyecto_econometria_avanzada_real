@@ -73,3 +73,7 @@ do "$dir_dofile_EODH/merge_2019.do"
 do "$dir_dofile_EODH/limpieza_2023.do"
 
 do "$dir_dofile_EODH/merge_2023.do"
+
+*dif medias entre cohortes para ver homogeneidad cortes transversales
+*aca tambien se crean los buffers iniciales 
+do "$dir_dofile_EODH/dif_medias_entre_anos.do"

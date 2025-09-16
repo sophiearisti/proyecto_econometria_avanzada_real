@@ -40,7 +40,7 @@ replace a2019=0 if a2019==.
 global evalVars estrato edad limitaciones_fisicas mujer total_personas total_personas_mas_5 ///
     camino_cuadras camino_minutos ///
     nivel_educativo_d* tipo_vivienda_d* tipo_propiedad_vivienda_d* ///
-	ocupacion1_d* actividad_economica1_d*
+	ocupacion1_d* actividad_economica1_d* 
 	
 cd "$dir_reg_dif_med_results"
 
@@ -60,7 +60,7 @@ replace a2019=0 if a2019==.
 
 global evalVars estrato edad limitaciones_fisicas mujer total_personas total_personas_mas_5 ///
     nivel_educativo_d* tipo_vivienda_d* ///
-	ocupacion1_d* actividad_economica1_d*
+	ocupacion1_d* actividad_economica1_d* 
 	
 cd "$dir_reg_dif_med_results"
 
@@ -87,3 +87,222 @@ cd "$dir_reg_dif_med_results"
 iebaltab $evalVars , groupvar(a2011) control(0) savexlsx(difmedias_entre_anos_2011x2023) replace
 
 restore 
+
+
+***************************************************************
+*con esto haremos el collapse segun el ZAT
+***************************************************************
+
+//este se guardara en el data de los buffers porque con eso se crea el panel georeferenciado
+
+//en este no vamos a tener en cuenta las siguientes vars  (las otras no las tendremos en cuenta y se desaparecen):
+//mean mujer, mean edad, mean educacion, count formal, count informal
+
+//me debe quedar un dato por zat 
+
+**************************************************************************
+*2019
+**************************************************************************
+
+cd "$dir_BDD_2019"
+cd "$dir_BDD_clean"
+
+use "merge_2019.dta", clear
+
+bysort zat_destino: summarize tot
+
+preserve
+
+rename estrato estrato_trabajador
+
+//falta poner minutos caminados y cuadras caminadas
+
+* colapsamos al nivel ZAT destino
+//edad nivel_educativo limitaciones_fisicas i.ocupacion1 mujer i.actividad_economica1 camino_cuadras camino_minutos i.tipo_vivienda i.tipo_propiedad_vivienda estrato total_personas total_personas_mas_5
+
+
+collapse (mean) mujer edad nivel_educativo estrato_trabajador limitaciones_fisicas total_personas total_personas_mas_5 ///
+tipo_propiedad_vivienda_d1 tipo_propiedad_vivienda_d2 tipo_propiedad_vivienda_d3 tipo_propiedad_vivienda_d4 tipo_propiedad_vivienda_d5 tipo_propiedad_vivienda_d7 ///
+tipo_vivienda_d2 tipo_vivienda_d3 tipo_vivienda_d4 tipo_vivienda_d5 ///
+nivel_educativo_d2 nivel_educativo_d3 nivel_educativo_d4 nivel_educativo_d5 nivel_educativo_d6 nivel_educativo_d7 nivel_educativo_d8 nivel_educativo_d9 nivel_educativo_d10 nivel_educativo_d11 nivel_educativo_d12 ///
+ocupacion1_d1 ocupacion1_d4 ocupacion1_d5 ocupacion1_d6 ocupacion1_d7 ocupacion1_d8 ocupacion1_d10 ocupacion1_d13 ocupacion1_d14 ocupacion1_d15 ocupacion1_d16 ocupacion1_d17 ocupacion1_d18 ocupacion1_d19 ocupacion1_d20 ocupacion1_d21 ocupacion1_d22 ocupacion1_d23 ocupacion1_d24 ocupacion1_d25 ocupacion1_d26 ocupacion1_d27 ///
+actividad_economica1_d3 actividad_economica1_d4 actividad_economica1_d5 actividad_economica1_d6 actividad_economica1_d7 actividad_economica1_d8 actividad_economica1_d9 actividad_economica1_d10 actividad_economica1_d11 actividad_economica1_d12 actividad_economica1_d13 actividad_economica1_d14 actividad_economica1_d15 actividad_economica1_d16 actividad_economica1_d17 actividad_economica1_d18 actividad_economica1_d19 ///
+(sum) formal_no_indep vendedor_informal independiente_total independiente_trabajando independiente_buscando buscar_trabajo con_trabajo tot desempleado, by(zat_destino)
+
+//dividir (sum) nomina_patron (sum) independiente por cantTrabajadores DE ESA ZAT
+//dividir buscar_trabajo por cantTotal DE ESA ZAT
+
+gen prop_formal_no_indep       = formal_no_indep / tot
+
+gen prop_independiente_total = independiente_total / tot
+
+gen prop_independiente_trabajando = independiente_trabajando / tot
+
+gen prop_independiente_buscando = independiente_buscando / tot
+
+gen prop_buscar      = buscar_trabajo / tot
+
+gen prop_desempleado      = desempleado / tot
+
+
+label variable mujer               "Promedio de mujeres (dummy) por ZAT"
+label variable edad                "Edad promedio por ZAT"
+label variable nivel_educativo     "Educación promedio por ZAT" //toca cambiar
+label variable estrato_trabajador  "Estrato socioeconómico promedio por ZAT"
+label variable limitaciones_fisicas "Promedio de limitaciones físicas (dummy) por ZAT" 
+
+label variable formal_no_indep       "Total trabajadores de nomina y patrones por ZAT"
+label variable independiente_total       "Total trabajadores independientes por ZAT"
+label variable independiente_trabajando       "Total trabajadores independientes que fueron a trabajar por ZAT"
+label variable independiente_buscando      "Total trabajadores independientes que fueron a buscar trabajo por ZAT"
+label variable buscar_trabajo      "Total personas buscando trabajo por ZAT"
+
+label variable prop_formal_no_indep         "Proporción de nomina y patrones sobre total población en dicho ZAT"
+label variable prop_independiente_total  "independientes/tot_ZAT"
+label variable prop_independiente_trabajando  "independientes a trabajar/total_ZAT"
+label variable prop_independiente_buscando  "independientes buscando/total_ZAT"
+label variable prop_buscar         "buscando/total_ZAT"
+label variable prop_desempleado         "desempleado/tot_ZAT"
+ 
+cd "$dir_BDD_buffers"
+
+save collapsed_2019.dta, replace
+
+restore 
+
+**************************************************************************
+*2011
+**************************************************************************
+
+cd "$dir_BDD_2011"
+cd "$dir_BDD_clean"
+
+use "merge_2011.dta", clear
+
+bysort zat_destino: summarize tot
+
+preserve
+
+rename estrato estrato_trabajador
+
+* colapsamos al nivel ZAT destino
+
+//falta poner minutos caminados y cuadras caminadas
+
+collapse (mean) mujer edad nivel_educativo estrato_trabajador limitaciones_fisicas total_personas total_personas_mas_5 ///
+nivel_educativo_d2 nivel_educativo_d3 nivel_educativo_d4 nivel_educativo_d5 nivel_educativo_d6 nivel_educativo_d7 nivel_educativo_d8 nivel_educativo_d9 nivel_educativo_d10 nivel_educativo_d11 nivel_educativo_d12 ///
+tipo_vivienda_d1 tipo_vivienda_d2 tipo_vivienda_d3 tipo_vivienda_d5 tipo_vivienda_d4 ///
+tipo_propiedad_vivienda_d1 tipo_propiedad_vivienda_d2 tipo_propiedad_vivienda_d3 tipo_propiedad_vivienda_d4 tipo_propiedad_vivienda_d5 ///
+ocupacion1_d1 ocupacion1_d2 ocupacion1_d3 ocupacion1_d4 ocupacion1_d5 ocupacion1_d6 ocupacion1_d7 ocupacion1_d8 ocupacion1_d9 ocupacion1_d10 ocupacion1_d13 ocupacion1_d14 ocupacion1_d15 ocupacion1_d16 ocupacion1_d17 ocupacion1_d18 ocupacion1_d19 ocupacion1_d20 ocupacion1_d21 ocupacion1_d23 ocupacion1_d24 ///
+actividad_economica1_d2 actividad_economica1_d3 actividad_economica1_d4 actividad_economica1_d5 actividad_economica1_d6 actividad_economica1_d7 actividad_economica1_d8 actividad_economica1_d9 actividad_economica1_d10 actividad_economica1_d11 actividad_economica1_d12 actividad_economica1_d13 actividad_economica1_d14 actividad_economica1_d15 actividad_economica1_d16 actividad_economica1_d17 ///
+(sum) nomina_patron independiente_total independiente_trabajando independiente_buscando buscar_trabajo con_trabajo tot desempleado, by(zat_destino)
+		 
+//dividir (sum) nomina_patron (sum) independiente por cantTrabajadores DE ESA ZAT
+//dividir buscar_trabajo por cantTotal DE ESA ZAT
+
+gen prop_nomina_patron       = nomina_patron / tot
+
+gen prop_independiente_total = independiente_total / tot
+
+gen prop_independiente_trabajando = independiente_trabajando / tot
+
+gen prop_independiente_buscando = independiente_buscando / tot
+
+gen prop_buscar      = buscar_trabajo / tot
+
+gen prop_desempleado      = desempleado / tot
+
+
+label variable mujer               "Promedio de mujeres (dummy) por ZAT"
+label variable edad                "Edad promedio por ZAT"
+label variable nivel_educativo     "Educación promedio por ZAT" //toca cambiar
+label variable estrato_trabajador  "Estrato socioeconómico promedio por ZAT"
+label variable limitaciones_fisicas "Promedio de limitaciones físicas (dummy) por ZAT" 
+
+label variable nomina_patron       "Total trabajadores de nomina y patrones por ZAT"
+label variable independiente_total       "Total trabajadores independientes por ZAT"
+label variable independiente_trabajando       "Total trabajadores independientes que fueron a trabajar por ZAT"
+label variable independiente_buscando      "Total trabajadores independientes que fueron a buscar trabajo por ZAT"
+label variable buscar_trabajo      "Total personas buscando trabajo por ZAT"
+
+label variable prop_nomina_patron         "Proporción de nomina y patrones sobre total población en dicho ZAT"
+label variable prop_independiente_total  "independientes/tot_ZAT"
+label variable prop_independiente_trabajando  "independientes a trabajar/total_ZAT"
+label variable prop_independiente_buscando  "independientes buscando/total_ZAT"
+label variable prop_buscar         "buscando/total_ZAT"
+label variable prop_desempleado         "desempleado/tot_ZAT"
+
+cd "$dir_BDD_buffers"
+
+save collapsed_2011.dta, replace
+
+restore 
+
+**************************************************************************
+*2023
+**************************************************************************
+
+cd "$dir_BDD_2023"
+cd "$dir_BDD_clean"
+
+use "merge_2023.dta", clear
+
+bysort zat_destino: summarize tot
+
+preserve
+
+rename estrato estrato_trabajador
+
+* colapsamos al nivel ZAT destino
+collapse (mean) mujer edad nivel_educativo estrato_trabajador limitaciones_fisicas   total_personas total_personas_mas_5 ///
+actividad_economica1_d3 actividad_economica1_d4 actividad_economica1_d5 actividad_economica1_d7 actividad_economica1_d6 actividad_economica1_d8 actividad_economica1_d9 actividad_economica1_d10 actividad_economica1_d11 actividad_economica1_d12 actividad_economica1_d13 actividad_economica1_d14 actividad_economica1_d15 actividad_economica1_d16 actividad_economica1_d17 actividad_economica1_d18 actividad_economica1_d19 ///
+ocupacion1_d1 ocupacion1_d4 ocupacion1_d5 ocupacion1_d7 ocupacion1_d8 ocupacion1_d10 ocupacion1_d13 ocupacion1_d14 ocupacion1_d15 ocupacion1_d16 ocupacion1_d17 ocupacion1_d18 ocupacion1_d19 ocupacion1_d20 ocupacion1_d21 ocupacion1_d23 ocupacion1_d24 ocupacion1_d25 ocupacion1_d26 ocupacion1_d27 ///
+nivel_educativo_d2 nivel_educativo_d3 nivel_educativo_d4 nivel_educativo_d5 nivel_educativo_d6 nivel_educativo_d7 nivel_educativo_d8 nivel_educativo_d9 nivel_educativo_d10 nivel_educativo_d11 nivel_educativo_d12 ///
+(sum) formal_no_indep vendedor_informal independiente_total independiente_trabajando independiente_buscando buscar_trabajo con_trabajo tot desempleado, by(zat_des)
+
+gen prop_formal_no_indep       = formal_no_indep / tot
+
+gen prop_independiente_total = independiente_total / tot
+
+gen prop_independiente_trabajando = independiente_trabajando / tot
+
+gen prop_independiente_buscando = independiente_buscando / tot
+
+gen prop_buscar      = buscar_trabajo / tot
+
+gen prop_desempleado      = desempleado / tot
+
+
+label variable mujer               "Promedio de mujeres (dummy) por ZAT"
+label variable edad                "Edad promedio por ZAT"
+label variable nivel_educativo     "Educación promedio por ZAT" //toca cambiar
+label variable estrato_trabajador  "Estrato socioeconómico promedio por ZAT"
+label variable limitaciones_fisicas "Promedio de limitaciones físicas (dummy) por ZAT" 
+
+label variable formal_no_indep       "Total trabajadores de nomina y patrones por ZAT"
+label variable independiente_total       "Total trabajadores independientes por ZAT"
+label variable independiente_trabajando       "Total trabajadores independientes que fueron a trabajar por ZAT"
+label variable independiente_buscando      "Total trabajadores independientes que fueron a buscar trabajo por ZAT"
+label variable buscar_trabajo      "Total personas buscando trabajo por ZAT"
+
+label variable prop_formal_no_indep         "Proporción de nomina y patrones sobre total población en dicho ZAT"
+label variable prop_independiente_total  "independientes/tot_ZAT"
+label variable prop_independiente_trabajando  "independientes a trabajar/total_ZAT"
+label variable prop_independiente_buscando  "independientes buscando/total_ZAT"
+label variable prop_buscar         "buscando/total_ZAT"
+label variable prop_desempleado         "desempleado/tot_ZAT"
+
+cd "$dir_BDD_buffers"
+
+save collapsed_2023.dta, replace
+
+restore 
+
+
+
+
+
+
+
+
+
