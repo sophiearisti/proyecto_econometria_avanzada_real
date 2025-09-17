@@ -83,8 +83,6 @@ for year in años:
     )
 
     joined_list.append(joined)
-    
-
 
     # Contar tiendas por ZAT y cadena
     counts = joined.groupby(['ZAT','cadena']).size().unstack(fill_value=0).reset_index()
@@ -113,33 +111,43 @@ for year in años:
     # Spillover de OXXO
     # -------------------------------
     
-    buffer=800  # en metros
-    # Buffers de OXXO
+    buffer = 800  # metros
+
     oxxo_buffers = tiendas_year[tiendas_year['cadena'] == 'oxxo'].copy()
     if not oxxo_buffers.empty:
-        # Crear buffer alrededor de cada OXXO
+        # Guardar CRS original
+        crs_tiendas_orig = oxxo_buffers.crs
+        crs_zat_orig = zat_year.crs
+
+        # Reproyectar a CRS métrico
+        oxxo_buffers = oxxo_buffers.to_crs("EPSG:3116")
+        zat_m = zat_year.to_crs("EPSG:3116")
+
+        # Crear buffers alrededor de cada OXXO
         oxxo_buffers['geometry'] = oxxo_buffers.buffer(buffer)
 
-        # Intersección ZAT - buffers (ZAT tocados por algún OXXO)
-        spillover = gpd.sjoin(zat_year, oxxo_buffers, how="left", predicate="intersects")
+        # Overlay para obtener intersecciones reales ZAT - OXXO buffers
+        intersect = gpd.overlay(zat_m[['ZAT','geometry']], oxxo_buffers[['geometry']], how='intersection')
 
+        # Contar cuántos buffers tocan cada ZAT
+        spill_counts = intersect.groupby('ZAT').size().reset_index(name='spillover_oxxo')
 
-        # ZAT sin OXXO directo
-        zat_no_oxxo = counts[counts['dummy_oxxo'] == 0].merge(zat_year, on=['ZAT','year'])
-        
-        # Contar spillover por ZAT (incluye internos + externos)
-        spill_counts = spillover.groupby('ZAT').size().reset_index(name='spillover_oxxo')
-        
-        # Restar los OXXOs internos que ya se tienen en counts
-        spill_counts = spill_counts.merge(counts[['ZAT','cantidad_oxxo']], on="ZAT", how="left")
+        # Restar cantidad interna de OXXO si existe
+        spill_counts = spill_counts.merge(counts[['ZAT','cantidad_oxxo']], on='ZAT', how='left')
         spill_counts['spillover_oxxo'] = spill_counts['spillover_oxxo'] - spill_counts['cantidad_oxxo']
+        spill_counts['spillover_oxxo'] = spill_counts['spillover_oxxo'].clip(lower=0)  # evitar negativos
 
-        # Unir resultado a counts
-        counts = counts.merge(spill_counts[['ZAT','spillover_oxxo']], on='ZAT', how='left').fillna(0)
+        # Unir resultado a counts y llenar NaN con 0
+        counts = counts.merge(spill_counts[['ZAT','spillover_oxxo']], on='ZAT', how='left').fillna({'spillover_oxxo':0})
+
+        # Volver CRS original
+        zat_year = zat_year.to_crs(crs_zat_orig)
+        oxxo_buffers = oxxo_buffers.to_crs(crs_tiendas_orig)
 
     else:
         counts['spillover_oxxo'] = 0
-                
+
+                    
     oxxo_counts_list.append(counts)
 
 # Concatenar todos los años
@@ -237,6 +245,28 @@ panel_cleaned.to_csv("../../data/buffer_data/panel_final_clean.csv", index=False
 # Ruta del GeoPackage
 gpkg_path = "../../data/maps_data/joined_all_years.gpkg"
 
-# Guardar cada año como capa separada
-for year, gdf in zip(años, joined_list):
+#unir el panel_cleaned con la geometria de zat zat_gdf
+# de zat_gdf solo necesito ZAT y geometry
+# del panel_cleaned todo
+# iterar por años y crear un GeoDataFrame por año
+    
+joined_years_panel = []
+
+for year, joined in zip(años, joined_list):
+    panel_year = panel_cleaned[panel_cleaned['year'] == year]
+
+    # unir solo los ZAT que están en panel_year
+    merged = joined.merge(panel_year, on='ZAT', how='inner')
+    
+    # eliminar columnas no deseadas si existen
+    cols_drop = ['fechadematrícula', 'estadodelamatrícula', 'fechaderenovación']
+    merged = merged.drop(columns=[c for c in cols_drop if c in merged.columns])
+
+    # aseguramos que siga siendo GeoDataFrame
+    merged_gdf = gpd.GeoDataFrame(merged, geometry='geometry', crs=joined.crs)
+
+    joined_years_panel.append(merged_gdf)
+
+# opcional: guardar cada año como capa en el GPKG
+for year, gdf in zip(años, joined_years_panel):
     gdf.to_file(gpkg_path, layer=f"joined_{year}", driver="GPKG")
