@@ -1,7 +1,6 @@
 #vamos a usar geopandas para unir absolutamente todos 
 import geopandas as gpd
 import pandas as pd
-import itertools
 
 # shapefile de ZAT
 zat_gdf = gpd.read_file("../../data/buffer_data/zat/ZAT.shp")
@@ -10,27 +9,22 @@ zat_gdf = gpd.read_file("../../data/buffer_data/zat/ZAT.shp")
 print(zat_gdf.columns)
 
 # Leer los .dta de información socioeconómica para cada año
-data_files = {2011: "../../data/buffer_data/collapsed_2011.dta", 2019: "../../data/buffer_data/collapsed_2019.dta", 2023: "../../data/buffer_data/collapsed_2023.dta"}
-
-# Nombres que queremos uniformes: 'zat', 'mujer', 'edad', 'nivel_educativo', 'formal', 'informal'
-rename_map = {
-    2011: {'zat_destino':'ZAT', 'mujer':'mujer', 'edad':'edad', 'educacion':'nivel_educativo', 'formal':'formal', 'informal':'informal'},
-    2019: {'zat_destino':'ZAT', 'Mujer':'mujer', 'edad':'edad', 'nivel_educativo':'nivel_educativo', 'formal':'formal', 'informal':'informal'},
-    2023: {'zat_des':'ZAT', 'Mujer':'mujer', 'edad':'edad', 'max_nivel_edu_num':'nivel_educativo', 'formal':'formal', 'informal':'informal'}
-}
-
+data_files = {2011: "../../data/buffer_data/collapsed_2011.dta", 2019: "../../data/buffer_data/collapsed_2019.dta", 2023: "../../data/buffer_data/collapsed_2023.dta", 2015: "../../data/buffer_data/collapsed_2015.dta"}
 
 zat_data_list = []
 
 #crear lista de datos por año o sea concatenar todo
 for year, file in data_files.items():
     df = pd.read_stata(file)
-    df = df.rename(columns=rename_map[year])  # renombrar columnas
     df['year'] = year
-    zat_data_list.append(df[['ZAT','mujer','edad','nivel_educativo','formal','informal','year']])
+    zat_data_list.append(df)
 
 # Concatenar todos los años
 zat_data_seconomic = pd.concat(zat_data_list, ignore_index=True)
+
+print(zat_data_seconomic.head())
+print(zat_data_seconomic.columns)
+
 
 # Lista de archivos por cadena
 tiendas_files = {
@@ -64,7 +58,7 @@ tienda_gdf['fechadematrícula'] = pd.to_datetime(
 )
 
 
-años = [2011, 2019, 2023]
+años = [2011, 2019, 2023, 2015]
 oxxo_counts_list = []
 joined_list = []  # Aquí guardaremos cada joined
 
@@ -89,6 +83,8 @@ for year in años:
     )
 
     joined_list.append(joined)
+    
+
 
     # Contar tiendas por ZAT y cadena
     counts = joined.groupby(['ZAT','cadena']).size().unstack(fill_value=0).reset_index()
@@ -104,6 +100,46 @@ for year in años:
     # Eliminar columnas originales de cadena
     counts = counts.drop(columns=[c for c in ['oxxo','ara','d1','jb'] if c in counts.columns])
     
+    ####################################################
+    # Spillover effects:
+    # variable de zat cercano a un oxxo (que no tiene oxxo)
+    ####################################################
+    
+    # para cada oxxo, crear un buffer de x metros
+    # si ese buffer intersecta con otro ZAT, ese ZAT tiene spillover
+    #la variable es la cantidad de veces que un ZAT tiene un oxxo cerca
+    
+        # -------------------------------
+    # Spillover de OXXO
+    # -------------------------------
+    
+    buffer=800  # en metros
+    # Buffers de OXXO
+    oxxo_buffers = tiendas_year[tiendas_year['cadena'] == 'oxxo'].copy()
+    if not oxxo_buffers.empty:
+        # Crear buffer alrededor de cada OXXO
+        oxxo_buffers['geometry'] = oxxo_buffers.buffer(buffer)
+
+        # Intersección ZAT - buffers (ZAT tocados por algún OXXO)
+        spillover = gpd.sjoin(zat_year, oxxo_buffers, how="left", predicate="intersects")
+
+
+        # ZAT sin OXXO directo
+        zat_no_oxxo = counts[counts['dummy_oxxo'] == 0].merge(zat_year, on=['ZAT','year'])
+        
+        # Contar spillover por ZAT (incluye internos + externos)
+        spill_counts = spillover.groupby('ZAT').size().reset_index(name='spillover_oxxo')
+        
+        # Restar los OXXOs internos que ya se tienen en counts
+        spill_counts = spill_counts.merge(counts[['ZAT','cantidad_oxxo']], on="ZAT", how="left")
+        spill_counts['spillover_oxxo'] = spill_counts['spillover_oxxo'] - spill_counts['cantidad_oxxo']
+
+        # Unir resultado a counts
+        counts = counts.merge(spill_counts[['ZAT','spillover_oxxo']], on='ZAT', how='left').fillna(0)
+
+    else:
+        counts['spillover_oxxo'] = 0
+                
     oxxo_counts_list.append(counts)
 
 # Concatenar todos los años
@@ -111,46 +147,92 @@ tiendas_counts = pd.concat(oxxo_counts_list, ignore_index=True)
 
 # Guardar
 tiendas_counts.to_csv("../../data/buffer_data/oxxo_counts.csv", index=False)
-print(tiendas_counts)
+print(tiendas_counts.columns)
 
 ####################################################
-# Spill over effects:
-# variable de zat cercano a un oxxo (que no tiene oxxo)
+# Unir controles baseline y otros
 ####################################################
 
+baselines= pd.read_csv("../../data/buffer_data/zat_all_controls.csv")
 
+# Unir con tiendas_counts
+tiendas_and_baselines = pd.merge(
+    tiendas_counts,
+    baselines,
+    on='ZAT',
+    how='left'  # mantener todos los ZAT con tiendas (o sin, si ya estaban en oxxo_counts)
+)
+
+# ver si en el 2019 cuantos ZAT no tienen codigo_upz
+print("ZAT sin codigo_upz en 2019:")
+print(tiendas_and_baselines[tiendas_and_baselines['year']==2019]['codigo_upz'].isna().sum())
+
+#abrir el csv 
+#lo hice en un stata porque no me funcionaba y no encontre el error
+#precisamente creo que es porque hay un duplicado en los controles que exploto todo 
+"""tiendas_and_baselines = pd.read_csv(
+    "../../data/buffer_data/tiendas_and_baselines.csv",
+    sep=",",              # separador correcto
+    quotechar='"',        # respeta comillas
+    decimal=",",          # convierte "4,07" en 4.07
+    thousands="."         # quita puntos de miles en números largos
+)"""
 
 #finalmente hacer el merge con zat_data_list
 #zat_data en este es segun zat y year 
 # oxxo_counts es en ZAT y year
 
 # Asegurarse de que las columnas de ZAT y year tengan mismo tipo
+
+#renombrar zat_destino a ZAT
+zat_data_seconomic = zat_data_seconomic.rename(columns={'zat_destino': 'ZAT'})
+tiendas_and_baselines = tiendas_and_baselines.rename(columns={'zat': 'ZAT'})
+
 zat_data_seconomic['ZAT'] = zat_data_seconomic['ZAT'].fillna(-1).astype(int)
 zat_data_seconomic['year'] = zat_data_seconomic['year'].astype(int)
 
-tiendas_counts['ZAT'] = tiendas_counts['ZAT'].astype(int)
-tiendas_counts['year'] = tiendas_counts['year'].astype(int)
+tiendas_and_baselines['ZAT'] = tiendas_and_baselines['ZAT'].astype(int)
+tiendas_and_baselines['year'] = tiendas_and_baselines['year'].astype(int)
 
 # Merge: todos los ZAT x year de oxxo_counts, si no hay info socioeconómica queda NaN
 panel = pd.merge(
-    tiendas_counts,
+    tiendas_and_baselines,
     zat_data_seconomic,
     on=['ZAT', 'year'],
     how='left'  # mantener todos los ZAT con tiendas (o sin, si ya estaban en oxxo_counts)
 )
 
+# Reemplazar todos los NaN por 0 excepto estrato_mean
+cols_to_fill = [col for col in panel.columns if col != 'estrato_mean' and col != 'codigo_upz']
+panel[cols_to_fill] = panel[cols_to_fill].fillna(0)
+
 # Guardar el panel final
 panel.to_csv("../../data/buffer_data/panel_final.csv", index=False)
 print(panel.head())
+print(panel.columns)
 
-#crear datos para mapas para ver todo por ano
-#joined_all_years = pd.concat(joined_list, ignore_index=True)
 
-# Guardar a CSV (solo columnas no geométricas) o a GeoPackage para mantener geometría
-#joined_all_years.to_csv("../../data/maps_data/joined_all_years.csv", index=False)
-# o
-#joined_all_years.to_file("../../data/maps_data/joined_all_years.gpkg", layer='joined', driver="GPKG")
+#solo quedarme con zats de bogota que tienen codigo_upz
+panel = panel.dropna(subset=['codigo_upz'])
 
+#ver la cantidad de zat que no estan en todos los anos
+# Número de años distintos en tu panel
+n_years = panel['year'].nunique()
+
+# Contar en cuántos años aparece cada ZAT
+zat_counts = panel.groupby('ZAT')['year'].nunique()
+
+# Filtrar los que no están en todos los años
+zat_incompletos = zat_counts[zat_counts < n_years].index.tolist()
+
+#quitar esos ZAT del panel
+panel_cleaned = panel[~panel['ZAT'].isin(zat_incompletos)]
+
+#ver con cuantos zats se queda
+print(f"ZATs totales después de limpiar: {panel_cleaned['ZAT'].nunique()}") 
+
+#guardar el panel final limpio
+panel_cleaned.to_csv("../../data/buffer_data/panel_final_clean.csv", index=False)
 
 # Ruta del GeoPackage
 gpkg_path = "../../data/maps_data/joined_all_years.gpkg"

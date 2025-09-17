@@ -419,15 +419,9 @@ def create_map_for_verification(gdf_final):
 print("Comenzando proceso completo de creación de controles...")
 
 gdf_zat_upz_localidad = merge_upz_localidad_zat(save_csv=True)
-print("ZAT-UPZ-Localidad unido:")
-print(gdf_zat_upz_localidad.head())
-print(gdf_zat_upz_localidad.columns)
 
 
 gdf_final_estrato = mean_estrato_per_zat(save_csv=True)
-print("Estrato promedio por ZAT calculado:")
-print(gdf_final_estrato.head())
-print(gdf_final_estrato.columns)
 
 
 poblacion_2009_2005 = merge_poblacion_baselines()
@@ -435,21 +429,12 @@ print("Población 2005 y 2009 por UPZ unido:")
 
 
 gdf_merge_baselines = merge_baselines(poblacion_2009_2005, save_csv=True)
-print("Baselines unidos:")
-print(gdf_merge_baselines.head())
-print(gdf_merge_baselines.columns)
 
 
 gdf_acceso_transmi= transmilenio_access(gdf_zat_upz_localidad, buffer=800, save_csv=True)
-print("Acceso a TransMilenio calculado:")
-print(gdf_acceso_transmi.head())
-print(gdf_acceso_transmi.columns)
 
 
 gdf_arterial_access = arterial_access(gdf_zat_upz_localidad, save_csv=True)
-print("Acceso a vías arteriales calculado:")
-print(gdf_arterial_access.head())
-print(gdf_arterial_access.columns)
 
 # unir todo en un solo csv
 # ---- 1. Merge gdf_zat_upz_localidad con gdf_final_estrato ---
@@ -462,7 +447,15 @@ gdf_merge_baselines["codigo_upz"] = gdf_merge_baselines["codigo_upz"].astype("In
 # eliminar columnas repetidas en gdf_merge_baselines
 gdf_merge_baselines.drop (columns=["codigo_localidad", "nombre_localidad", "nombre_upz"], inplace=True)
 
-gdf_final = gdf_final.merge(gdf_merge_baselines, on="codigo_upz", how="left")
+# separar con y sin upz
+with_upz = gdf_final.dropna(subset=["codigo_upz"])
+without_upz = gdf_final[gdf_final["codigo_upz"].isna()]
+
+# merge solo para los que tienen upz
+with_upz = with_upz.merge(gdf_merge_baselines, on="codigo_upz", how="left")
+
+# volver a unir
+gdf_final = pd.concat([with_upz, without_upz], ignore_index=True)
 
 # --- 3. Merge con gdf_acceso_transmi (por ZAT) ---
 gdf_final = gdf_final.merge(
@@ -470,6 +463,10 @@ gdf_final = gdf_final.merge(
     on="ZAT",
     how="left"
 )
+
+print("Después de unir con acceso a TransMilenio:")
+print(gdf_final.head())
+print(gdf_final.columns)
 
 # --- 4. Merge con gdf_arterial_access (por ZAT) ---
 gdf_final = gdf_final.merge(
@@ -480,6 +477,7 @@ gdf_final = gdf_final.merge(
 print("Después de unir con accesos:")
 print(gdf_final.head())
 print(gdf_final.columns)
+
 # --- 5. Guardar resultado final ---
 gdf_final.drop(columns=["geometry"]).to_csv(
    "../../data/buffer_data/zat_all_controls.csv",
@@ -487,9 +485,9 @@ gdf_final.drop(columns=["geometry"]).to_csv(
 )
 
 #guardar el shapefile completo
-gdf_final.to_file(
+"""gdf_final.to_file(
     "../../data/buffer_data/res_merges/final_shp/zat_all_controls.shp"
-)
+)"""
 
 #crear un mapa para ver que todo este bien
 create_map_for_verification(gdf_final)
