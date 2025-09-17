@@ -160,8 +160,8 @@ label variable desempleado "desempleado que dice que ocupacion es buscar trabajo
 //toca usar mejor motivo del viajes
 //hay personas que no tienen una ocupacion pero estan  trabajando
 gen con_trabajo=.
-replace con_trabajo = 1 if !inlist(ocupacion1,13)
-replace con_trabajo = 0 if inlist(ocupacion1,13)
+replace con_trabajo = 1 if !inlist(razon_viaje,13)
+replace con_trabajo = 0 if inlist(razon_viaje,13)
 label variable con_trabajo "empleado"
 
 gen tot=1

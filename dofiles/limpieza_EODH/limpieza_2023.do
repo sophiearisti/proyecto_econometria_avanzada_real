@@ -248,10 +248,10 @@ gen ocupacion1 = .
 
 * Estudiantes
 replace ocupacion1 = 13 if strpos(ocupacion_principal, "Colegio o escuela")
-replace ocupacion1 = 14 if strpos(ocupacion_principal, "Universidad") & strpos(ocupacion_principal, "Pregrado")
-replace ocupacion1 = 15 if strpos(ocupacion_principal, "Universidad") & strpos(ocupacion_principal, "Posgrado")
-replace ocupacion1 = 16 if strpos(ocupacion_principal, "Inst Técnico") | strpos(ocupacion_principal, "Inst Técnico / Tecnológico")
-replace ocupacion1 = 17 if strpos(ocupacion_principal, "Inst educación no formal")
+replace ocupacion1 = 13 if strpos(ocupacion_principal, "Universidad") & strpos(ocupacion_principal, "Pregrado")
+replace ocupacion1 = 13 if strpos(ocupacion_principal, "Universidad") & strpos(ocupacion_principal, "Posgrado")
+replace ocupacion1 = 13 if strpos(ocupacion_principal, "Inst Técnico") | strpos(ocupacion_principal, "Inst Técnico / Tecnológico")
+replace ocupacion1 = 13 if strpos(ocupacion_principal, "Inst educación no formal")
 
 * Trabajadores
 replace ocupacion1 = 1 if strpos(ocupacion_principal, "Obrero")
@@ -271,7 +271,7 @@ replace ocupacion1 = 18 if strpos(ocupacion_principal, "Dedicado al hogar")
 replace ocupacion1 = 19 if strpos(ocupacion_principal, "Jubilado") | strpos(ocupacion_principal, "pensionado")
 replace ocupacion1 = 20 if strpos(ocupacion_principal, "Buscar trabajo")
 replace ocupacion1 = 21 if strpos(ocupacion_principal, "Incapacitado permanente")
-replace ocupacion1 = 22 if strpos(ocupacion_principal, "Va a jardín")
+replace ocupacion1 = 23 if strpos(ocupacion_principal, "Va a jardín")
 replace ocupacion1 = 23 if strpos(ocupacion_principal, "Rentista")
 replace ocupacion1 = 25 if strpos(ocupacion_principal, "No ocupado")
 replace ocupacion1 = 24 if strpos(ocupacion_principal, "Otra actividad")
@@ -289,15 +289,10 @@ label define ocupacion_lbl ///
     9 "Trabajo desde la casa" ///
     10 "Conductor/mensajero" ///
     13 "Estudiante en colegio o escuela" ///
-    14 "Estudiante en Universidad - pregrado" ///
-    15 "Estudiante en Universidad - postgrado" ///
-    16 "Estudiante en Instituto técnico/tecnológico" ///
-    17 "Estudiante en Instituto educación no formal" ///
     18 "Dedicado al hogar" ///
     19 "Jubilado" ///
     20 "Buscar trabajo" ///
     21 "Incapacitado permanente" ///
-    22 "Va a jardín" ///
     23 "Rentista" ///
     24 "Otra actividad" ///
     25 "No ocupado" ///

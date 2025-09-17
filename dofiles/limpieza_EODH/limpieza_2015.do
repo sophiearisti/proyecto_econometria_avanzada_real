@@ -293,6 +293,8 @@ recode limitacion_fisica (1=1) (2=0)
 
 rename limitacion_fisica limitaciones_fisicas
 
+label variable limitaciones_fisicas "=1 posee limitaciones fisicas"
+
 rename id_actividadeconomica actividad_economica1 
 
 label variable actividad_economica1 "actividad económica ocupacion 1"

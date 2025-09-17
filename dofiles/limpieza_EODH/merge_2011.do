@@ -55,6 +55,8 @@ keep if inlist(razon_viaje, 1, 13)
 
 rename orden id_hogar
 
+label variable id_hogar "ID del hogar"
+
 /*
 Como una persona puede hacer varios viajes el dia anterior y puede que al mismo destino, hay valores repetidos que no nos interesa
 */
@@ -75,8 +77,6 @@ drop numero_viaje f_exp parentesco mun predio idm localidad upz barrio zat
 ******************************************************************
 *no voy a quitar las actividades economicas
 *****************************************************************
-
-label variable id_hogar "ID del hogar"
 
 *******************************************************************************
 *GENERAR DUMMIES PARA LAS CATEGORICAS
