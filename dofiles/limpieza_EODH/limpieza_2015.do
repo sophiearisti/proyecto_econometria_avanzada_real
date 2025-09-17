@@ -236,26 +236,27 @@ replace ocupacion1=6 if id_trabajoactividad==4
 replace ocupacion1=7 if id_trabajoactividad==6
 //es 08. Trabajador sin remuneración  09. Trabajador familiar sin remuneración (hijo o familiar de empleado doméstico, mayordomo, jornalero, etc.) 
 replace ocupacion1=8 if id_trabajoactividad==8 | id_trabajoactividad==9
-//es trabaja desde la casa
-replace ocupacion1=9 if trabajo_casa==3
-//es estudiante
-replace ocupacion1=13 if id_actividad==3
-//es dedicado al hogar
-replace ocupacion1=18 if id_actividad==5
-//es jubilado
-replace ocupacion1=19 if id_actividad==7
-//es jubilado
-replace ocupacion1=20 if id_actividad==2
-//es jubilado
-replace ocupacion1=21 if id_actividad==6
-//otra actividad
-replace ocupacion1=24 if id_actividad==89
 //empleado publico
 replace ocupacion1=27 if id_trabajoactividad==2
 //empresa particular
-replace ocupacion1=28 if id_trabajoactividad==1
+replace ocupacion1=28 if id_trabajoactividad==1 & ocupacion1 == .
 //empresa particular
 replace ocupacion1=29 if id_trabajoactividad==10 | id_trabajoactividad==7
+
+//es trabaja desde la casa
+replace ocupacion1=9 if trabajo_casa==3 & ocupacion1 == .
+//es estudiante
+replace ocupacion1=13 if id_actividad==3 & ocupacion1 == .
+//es dedicado al hogar
+replace ocupacion1=18 if id_actividad==5 & ocupacion1 == .
+//es jubilado
+replace ocupacion1=19 if id_actividad==7 & ocupacion1 == .
+//es jubilado
+replace ocupacion1=20 if id_actividad==2 & ocupacion1 == .
+//es jubilado
+replace ocupacion1=21 if id_actividad==6 & ocupacion1 == .
+//otra actividad
+replace ocupacion1=24 if id_actividad==89 & ocupacion1 == .
 
 label define ocupacion_lbl ///
     1 "Obrero" ///

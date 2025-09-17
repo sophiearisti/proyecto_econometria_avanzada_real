@@ -57,10 +57,10 @@ todo matched
 keep if _merge==3
 drop _merge
 
-merge 1:m numero_viaje numero_persona id_encuesta using nuevo_MOD_etapas.dta
+/*merge 1:m numero_viaje numero_persona id_encuesta using nuevo_MOD_etapas.dta
 
 keep if _merge==3
-drop _merge
+drop _merge*/
 
    
 **************************************************************
@@ -90,7 +90,9 @@ duplicates drop id_hogar numero_persona zat_destino, force   // borrar duplicado
 duplicates report id_hogar numero_persona zat_destino   // comprobar que ya no haya duplicados
 
 //variables que no usare
-drop zat_hogar trabajo_casa realizo_desplazamiento  puntaje_sisben parentesco numero_viaje numero_persona numero_etapa longitud_hogar longitud_destino latitud_hogar latitud_destino id_municipio_destino id_municipio id_municipio_descenso id_manzana id_hogar id clasificacion_sisben barrio_vivienda
+drop zat_hogar trabajo_casa realizo_desplazamiento  puntaje_sisben parentesco numero_viaje numero_persona longitud_hogar longitud_destino latitud_hogar latitud_destino id_municipio_destino id_municipio id_manzana id_hogar id clasificacion_sisben barrio_vivienda
+
+//drop numero_etapa id_municipio_descenso
 
 //NOTA LO QUE PASA ES QUE TRABAJR EN CASE ES IMPORTANTE, PERO EN OTRAS ENCUENTAS NO SE UTILIZA MUCHO, POR LO QUE NO SE SI VALE LA PENA TENERLO EN CUENTA
 //SI SE QUIERE TENER EN CUENTA, SE DEBE DEJAR LOS QUE NO SALEN DE LA CASA Y TRABAJAN EN CASA PORQUE ESO TAMBIEN CUENTA
@@ -100,7 +102,6 @@ drop zat_hogar trabajo_casa realizo_desplazamiento  puntaje_sisben parentesco nu
 *******************************************************************************
 
 makedummies nivel_educativo tipo_vivienda tipo_propiedad_vivienda razon_viaje ocupacion1 actividad_economica1
-
 
 *******************************************************************************
 *GENERAR DUMMIES PARA LA VARIABLE DEPENDIENTE
