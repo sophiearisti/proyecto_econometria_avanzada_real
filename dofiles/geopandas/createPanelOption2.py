@@ -69,11 +69,24 @@ for year in años:
     zat_year['year'] = year
     
     # Filtrar tiendas vigentes en ese año
+    # ESTE ES PARA AHCER EL MAPA REAL DE TIENDAS ABIERTAS EN ESE AÑO
     tiendas_year = tienda_gdf[
         (tienda_gdf['fechadematrícula'].dt.year <= year) &
         (tienda_gdf['últimoañorenovado'] >= year)
     ]
     
+    #EL COMENTARIADOS ES PARA TENER EL CONTROL RESAGADO
+  
+     # Filtrar tiendas vigentes en ese año si son oxxo
+     # para las demas cadenas sera menor a year la fecha de matricula
+    """tiendas_year = tienda_gdf[
+        (tienda_gdf['fechadematrícula'].dt.year <= year) &
+        (tienda_gdf['últimoañorenovado'] >= year) &
+        (tienda_gdf['cadena'] == 'oxxo') | (tienda_gdf['fechadematrícula'].dt.year < year) &
+        (tienda_gdf['cadena'] != 'oxxo') & (tienda_gdf['últimoañorenovado'] >= year)
+    ]"""
+   
+
     # Spatial join: ahora left_df sigue siendo GeoDataFrame
     joined = gpd.sjoin(
         zat_year,              # polígonos con geometría
