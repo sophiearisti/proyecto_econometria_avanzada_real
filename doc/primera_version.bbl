@@ -19,6 +19,54 @@
 
 \refsection{0}
   \datalist[entry]{apa/apasortcite//global/global/global}
+    \entry{alvarez_informalidad_nodate}{report}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=8ae11aa44c84f1f4a90f91157303b177}{%
+           family={Álvarez},
+           familyi={Á\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=239cb7e6f87c51ac0ee65799895c272f}{%
+           family={Zambrano},
+           familyi={Z\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=935aa7ec9282a39a5067e9bf0e3d4176}{%
+           family={Zuleta},
+           familyi={Z\bibinitperiod},
+           given={H.},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{institution}{1}{%
+        {Banco de la República}%
+      }
+      \strng{namehash}{6669c30baa28af52d87e4900ba12daeb}
+      \strng{fullhash}{f15fa0cfbbc1dc729a0b13e40793e455}
+      \strng{fullhashraw}{f15fa0cfbbc1dc729a0b13e40793e455}
+      \strng{bibnamehash}{f15fa0cfbbc1dc729a0b13e40793e455}
+      \strng{authorbibnamehash}{f15fa0cfbbc1dc729a0b13e40793e455}
+      \strng{authornamehash}{6669c30baa28af52d87e4900ba12daeb}
+      \strng{authorfullhash}{f15fa0cfbbc1dc729a0b13e40793e455}
+      \strng{authorfullhashraw}{f15fa0cfbbc1dc729a0b13e40793e455}
+      \field{sortinit}{Á}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labeldatesource}{nodate}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{n.d.}
+      \field{title}{Informalidad laboral y Covid-19: vulnerabilidad o flexibilidad}
+      \field{type}{techreport}
+      \verb{urlraw}
+      \verb https://repositorio.banrep.gov.co/server/api/core/bitstreams/23e2c186-01c4-43e9-955c-a5c2c0531de0/content
+      \endverb
+      \verb{url}
+      \verb https://repositorio.banrep.gov.co/server/api/core/bitstreams/23e2c186-01c4-43e9-955c-a5c2c0531de0/content
+      \endverb
+    \endentry
     \entry{basker2005}{article}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=33eb389e0910df88f1e6037735807142}{%
@@ -99,6 +147,70 @@
       \range{pages}{16}
       \verb{doi}
       \verb 10.1016/j.jce.2015.04.004
+      \endverb
+    \endentry
+    \entry{concejo_proyecto_2022}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=65bf5ea4ec5a4e9a6b41960e4a88eba0}{%
+           family={{Concejo de Bogotá, D.C.}},
+           familyi={C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Alcaldiabogota}%
+      }
+      \strng{namehash}{65bf5ea4ec5a4e9a6b41960e4a88eba0}
+      \strng{fullhash}{65bf5ea4ec5a4e9a6b41960e4a88eba0}
+      \strng{fullhashraw}{65bf5ea4ec5a4e9a6b41960e4a88eba0}
+      \strng{bibnamehash}{65bf5ea4ec5a4e9a6b41960e4a88eba0}
+      \strng{authorbibnamehash}{65bf5ea4ec5a4e9a6b41960e4a88eba0}
+      \strng{authornamehash}{65bf5ea4ec5a4e9a6b41960e4a88eba0}
+      \strng{authorfullhash}{65bf5ea4ec5a4e9a6b41960e4a88eba0}
+      \strng{authorfullhashraw}{65bf5ea4ec5a4e9a6b41960e4a88eba0}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=143212}}
+      \field{note}{Consultado el 21 de septiembre de 2025}
+      \field{title}{Proyecto de Acuerdo 106 de 2022}
+      \field{year}{2022}
+    \endentry
+    \entry{dane_emicron_2025}{report}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e949548a1c94237c2714130be28a14d3}{%
+           family={{DANE}},
+           familyi={D\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {DANE}%
+      }
+      \strng{namehash}{e949548a1c94237c2714130be28a14d3}
+      \strng{fullhash}{e949548a1c94237c2714130be28a14d3}
+      \strng{fullhashraw}{e949548a1c94237c2714130be28a14d3}
+      \strng{bibnamehash}{e949548a1c94237c2714130be28a14d3}
+      \strng{authorbibnamehash}{e949548a1c94237c2714130be28a14d3}
+      \strng{authornamehash}{e949548a1c94237c2714130be28a14d3}
+      \strng{authorfullhash}{e949548a1c94237c2714130be28a14d3}
+      \strng{authorfullhashraw}{e949548a1c94237c2714130be28a14d3}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Consultado el 21 de septiembre de 2025}
+      \field{title}{Encuesta de Micronegocios (EMICRON) 2024}
+      \field{type}{techreport}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://www.dane.gov.co/files/operaciones/EMICRON/bol-EMICRON-2024.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.dane.gov.co/files/operaciones/EMICRON/bol-EMICRON-2024.pdf
       \endverb
     \endentry
     \entry{delgado2024}{report}{}{}
@@ -252,10 +364,95 @@
       \field{year}{2022}
       \verb{doi}
       \verb 10.18235/0004453
+      \endverb
+    \endentry
+    \entry{naranjo_ocupacion_2025}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=443ad9acfcb2d7a528fd2c5446de387e}{%
+           family={Naranjo},
+           familyi={N\bibinitperiod},
+           given={D.\bibnamedelimi H.},
+           giveni={D\bibinitperiod\bibinitdelim H\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Portafolio.co}%
+      }
+      \strng{namehash}{443ad9acfcb2d7a528fd2c5446de387e}
+      \strng{fullhash}{443ad9acfcb2d7a528fd2c5446de387e}
+      \strng{fullhashraw}{443ad9acfcb2d7a528fd2c5446de387e}
+      \strng{bibnamehash}{443ad9acfcb2d7a528fd2c5446de387e}
+      \strng{authorbibnamehash}{443ad9acfcb2d7a528fd2c5446de387e}
+      \strng{authornamehash}{443ad9acfcb2d7a528fd2c5446de387e}
+      \strng{authorfullhash}{443ad9acfcb2d7a528fd2c5446de387e}
+      \strng{authorfullhashraw}{443ad9acfcb2d7a528fd2c5446de387e}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{7}
+      \field{title}{Más ocupación, menos protección, la paradoja del trabajo por cuenta propia}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://www.portafolio.co/economia/empleo/trabajo-por-cuenta-propia-crece-en-colombia-pero-informalidad-y-falta-de-aportes-preocupan-634514
+      \endverb
+      \verb{url}
+      \verb https://www.portafolio.co/economia/empleo/trabajo-por-cuenta-propia-crece-en-colombia-pero-informalidad-y-falta-de-aportes-preocupan-634514
       \endverb
     \endentry
   \enddatalist
   \datalist[entry]{apa/global//global/global/global}
+    \entry{alvarez_informalidad_nodate}{report}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=8ae11aa44c84f1f4a90f91157303b177}{%
+           family={Álvarez},
+           familyi={Á\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=239cb7e6f87c51ac0ee65799895c272f}{%
+           family={Zambrano},
+           familyi={Z\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=935aa7ec9282a39a5067e9bf0e3d4176}{%
+           family={Zuleta},
+           familyi={Z\bibinitperiod},
+           given={H.},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{institution}{1}{%
+        {Banco de la República}%
+      }
+      \strng{namehash}{6669c30baa28af52d87e4900ba12daeb}
+      \strng{fullhash}{f15fa0cfbbc1dc729a0b13e40793e455}
+      \strng{fullhashraw}{f15fa0cfbbc1dc729a0b13e40793e455}
+      \strng{bibnamehash}{f15fa0cfbbc1dc729a0b13e40793e455}
+      \strng{authorbibnamehash}{f15fa0cfbbc1dc729a0b13e40793e455}
+      \strng{authornamehash}{6669c30baa28af52d87e4900ba12daeb}
+      \strng{authorfullhash}{f15fa0cfbbc1dc729a0b13e40793e455}
+      \strng{authorfullhashraw}{f15fa0cfbbc1dc729a0b13e40793e455}
+      \field{sortinit}{Á}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labeldatesource}{nodate}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{n.d.}
+      \field{title}{Informalidad laboral y Covid-19: vulnerabilidad o flexibilidad}
+      \field{type}{techreport}
+      \verb{urlraw}
+      \verb https://repositorio.banrep.gov.co/server/api/core/bitstreams/23e2c186-01c4-43e9-955c-a5c2c0531de0/content
+      \endverb
+      \verb{url}
+      \verb https://repositorio.banrep.gov.co/server/api/core/bitstreams/23e2c186-01c4-43e9-955c-a5c2c0531de0/content
+      \endverb
+    \endentry
     \entry{basker2005}{article}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=33eb389e0910df88f1e6037735807142}{%
@@ -336,6 +533,70 @@
       \range{pages}{16}
       \verb{doi}
       \verb 10.1016/j.jce.2015.04.004
+      \endverb
+    \endentry
+    \entry{concejo_proyecto_2022}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=65bf5ea4ec5a4e9a6b41960e4a88eba0}{%
+           family={{Concejo de Bogotá, D.C.}},
+           familyi={C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Alcaldiabogota}%
+      }
+      \strng{namehash}{65bf5ea4ec5a4e9a6b41960e4a88eba0}
+      \strng{fullhash}{65bf5ea4ec5a4e9a6b41960e4a88eba0}
+      \strng{fullhashraw}{65bf5ea4ec5a4e9a6b41960e4a88eba0}
+      \strng{bibnamehash}{65bf5ea4ec5a4e9a6b41960e4a88eba0}
+      \strng{authorbibnamehash}{65bf5ea4ec5a4e9a6b41960e4a88eba0}
+      \strng{authornamehash}{65bf5ea4ec5a4e9a6b41960e4a88eba0}
+      \strng{authorfullhash}{65bf5ea4ec5a4e9a6b41960e4a88eba0}
+      \strng{authorfullhashraw}{65bf5ea4ec5a4e9a6b41960e4a88eba0}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=143212}}
+      \field{note}{Consultado el 21 de septiembre de 2025}
+      \field{title}{Proyecto de Acuerdo 106 de 2022}
+      \field{year}{2022}
+    \endentry
+    \entry{dane_emicron_2025}{report}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e949548a1c94237c2714130be28a14d3}{%
+           family={{DANE}},
+           familyi={D\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {DANE}%
+      }
+      \strng{namehash}{e949548a1c94237c2714130be28a14d3}
+      \strng{fullhash}{e949548a1c94237c2714130be28a14d3}
+      \strng{fullhashraw}{e949548a1c94237c2714130be28a14d3}
+      \strng{bibnamehash}{e949548a1c94237c2714130be28a14d3}
+      \strng{authorbibnamehash}{e949548a1c94237c2714130be28a14d3}
+      \strng{authornamehash}{e949548a1c94237c2714130be28a14d3}
+      \strng{authorfullhash}{e949548a1c94237c2714130be28a14d3}
+      \strng{authorfullhashraw}{e949548a1c94237c2714130be28a14d3}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Consultado el 21 de septiembre de 2025}
+      \field{title}{Encuesta de Micronegocios (EMICRON) 2024}
+      \field{type}{techreport}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://www.dane.gov.co/files/operaciones/EMICRON/bol-EMICRON-2024.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.dane.gov.co/files/operaciones/EMICRON/bol-EMICRON-2024.pdf
       \endverb
     \endentry
     \entry{delgado2024}{report}{}{}
@@ -489,6 +750,43 @@
       \field{year}{2022}
       \verb{doi}
       \verb 10.18235/0004453
+      \endverb
+    \endentry
+    \entry{naranjo_ocupacion_2025}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=443ad9acfcb2d7a528fd2c5446de387e}{%
+           family={Naranjo},
+           familyi={N\bibinitperiod},
+           given={D.\bibnamedelimi H.},
+           giveni={D\bibinitperiod\bibinitdelim H\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Portafolio.co}%
+      }
+      \strng{namehash}{443ad9acfcb2d7a528fd2c5446de387e}
+      \strng{fullhash}{443ad9acfcb2d7a528fd2c5446de387e}
+      \strng{fullhashraw}{443ad9acfcb2d7a528fd2c5446de387e}
+      \strng{bibnamehash}{443ad9acfcb2d7a528fd2c5446de387e}
+      \strng{authorbibnamehash}{443ad9acfcb2d7a528fd2c5446de387e}
+      \strng{authornamehash}{443ad9acfcb2d7a528fd2c5446de387e}
+      \strng{authorfullhash}{443ad9acfcb2d7a528fd2c5446de387e}
+      \strng{authorfullhashraw}{443ad9acfcb2d7a528fd2c5446de387e}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{7}
+      \field{title}{Más ocupación, menos protección, la paradoja del trabajo por cuenta propia}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://www.portafolio.co/economia/empleo/trabajo-por-cuenta-propia-crece-en-colombia-pero-informalidad-y-falta-de-aportes-preocupan-634514
+      \endverb
+      \verb{url}
+      \verb https://www.portafolio.co/economia/empleo/trabajo-por-cuenta-propia-crece-en-colombia-pero-informalidad-y-falta-de-aportes-preocupan-634514
       \endverb
     \endentry
   \enddatalist

@@ -3081,6 +3081,10 @@
     <bcf:citekey order="9" intorder="1">delgado2024</bcf:citekey>
     <bcf:citekey order="10" intorder="1">delgado2024</bcf:citekey>
     <bcf:citekey order="11" intorder="1">godoy2025</bcf:citekey>
+    <bcf:citekey order="12" intorder="1">alvarez_informalidad_nodate</bcf:citekey>
+    <bcf:citekey order="12" intorder="2">naranjo_ocupacion_2025</bcf:citekey>
+    <bcf:citekey order="12" intorder="3">concejo_proyecto_2022</bcf:citekey>
+    <bcf:citekey order="12" intorder="4">dane_emicron_2025</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="apa">

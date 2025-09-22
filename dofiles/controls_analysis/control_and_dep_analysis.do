@@ -227,12 +227,15 @@ preserve
 		   (line prop_independiente_total rel_time if first_treat==2019, sort lcolor(red)) ///
 		   (line prop_independiente_total rel_time if first_treat==2023, sort lcolor(green)), ///
 		   xline(0, lpattern(dash)) ///
+		    xtitle("Años desde la llegada de OXXO") ///
 		   ytitle("Promedio proporcion independientes") ///
 		   title("Evolución relativa de proporcion independientes por ZAT por cohorte") ///
 		   legend(label(1 "Cohorte 2011") label(2 "Cohorte 2015") ///
 				  label(3 "Cohorte 2019") label(4 "Cohorte 2023"))
 				  
+	    * Guardar el gráfico en PDF
 
+    graph export "grafico_cohortes.png", replace
 restore
 
 

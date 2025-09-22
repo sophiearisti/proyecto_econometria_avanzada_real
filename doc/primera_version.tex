@@ -70,7 +70,7 @@ Por tanto, el debate ha cobrado relevancia en economías en desarrollo, donde pr
 
 \textcite{marcos2022} exploró directamente cómo las cadenas de conveniencia (como OXXO) afectaban a las tiendas de barrio en México. Su estudio plantea que estas cadenas actúan como sustitutos de los pequeños negocios, al presentar una traslape significativo en sus ofertas de productos. Para abordar la no aleatoriedad en la entrada temporal y espacial de estas cadenas, empleó una variable instrumental y encontró que su llegada reducía en un 15\% el número de tiendas de barrio en la zona. Este efecto se explica principalmente por la menor creación de nuevos establecimientos, más que por el cierre masivo de los ya existentes. \\
 
-En Colombia, la literatura se ha concentrado en el efecto de tiendas de descuento duro (D1, ARA y Justo y Bueno) a nivel municipal sobre diferentes indicadores del mercado laboral. \textcite{delgado2024} muestran que su llegada aumenta el empleo formal en 1.7 pp. Y aunque estas también reducen los ingresos de los minoristas informales, no encontraron efectos significativos sobre el empleo informal. Sin embargo, este análisis excluyó tanto a las cadenas de conveniencia (incluyendo OXXO) como a las ciudades capitales, al presumir que en ellas el impacto de estas tiendas en el mercado laboral sería marginal. \\
+En Colombia, la literatura se ha concentrado en el efecto de tiendas de descuento duro (D1, ARA y Justo y Bueno) a nivel municipal sobre diferentes indicadores del mercado laboral. \textcite{delgado2024} muestran que su llegada aumenta el empleo formal en 1.7 pp. Y aunque estas también reducen los ingresos de los minoristas informales, no encontraron efectos significativos sobre el empleo informal. Sin embargo, este análisis excluyó tanto a las cadenas de conveniencia (incluyendo OXXO) como a las ciudades capitales, al presumir que en ellas el impacto de las tiendas de descuento duro en el mercado laboral sería marginal. \\
 
 Como se evidencia en la literatura, pocos estudios analizan los efectos de grandes cadenas minoristas a nivel intraurbano, diferenciando entre barrios o zonas. \hl{Esta investigación busca llenar ese vacío al examinar el impacto de OXXO sobre la actividad económica informal en Bogotá}. Esta ciudad concentra cerca del 40–50\% de sus sucursales \parencite{godoy2025}, lo que la convierte en un escenario privilegiado para observar sus efectos en la dinámica laboral y comercial local. Dicho enfoque permite explorar la heterogeneidad espacial del fenómeno (según zonas y características socioeconómicas) y abrir un nuevo debate sobre la relación entre cadenas modernas, tiendas tradicionales e informalidad laboral, en un contexto donde la formalización del empleo es una prioridad.\\
 
@@ -146,51 +146,7 @@ Cantidad de Oxxos cercanos fuera del ZAT & Cantidad de OXXOs fuera del ZAT, que 
 
 \subsection{Análisis inicial}
 
-
-Antes de realizar análisis de regresión, aborden explícitamente su pregunta de investigación utilizando gráficos, estadísticas descriptivas o una combinación de ambos.
-Gráficos: Incluyan una o más gráficas que sinteticen de manera clara y efectiva la cuestión de investigación. Cada gráfico debe tener un título, etiquetas en los ejes y leyendas cuando sea necesario. Asegúrense de que los gráficos sean claros y fáciles de interpretar.
-Análisis Estadístico y Tabla de Diferencia de Medias: Realicen un análisis estadístico centrado en su pregunta de investigación. Presenten sus resultados en una tabla que compare las medias de distintos grupos o categorías respecto a la variable de interés.
-
-Interpreten los resultados presentados en los gráficos y tablas. Expliquen cómo estos resultados responden a su pregunta de investigación. Destaquen tendencias significativas, diferencias entre grupos y cualquier hallazgo relevante. (Máximo 200 palabras)
-
-\begin{figure}
-    \centering
-    % Top-left
-    \begin{subfigure}[b]{0.4\textwidth} % Valor ajustado aquí
-        \includegraphics[width=\linewidth]{figs_oxxo_maps/mapa_oxxos_binary_2011.png}
-        \caption{Panel A: OXXOs por ZAT en el 2011}
-        \label{fig:panelA}
-    \end{subfigure}
-    \hfill
-    % Top-right
-    \begin{subfigure}[b]{0.4\textwidth} % Valor ajustado aquí
-        \includegraphics[width=\linewidth]{figs_oxxo_maps/mapa_oxxos_binary_2015.png}
-        \caption{Panel B: OXXOs por ZAT en el 2015}
-        \label{fig:panelB}
-    \end{subfigure}
-    
-    \vspace{0.5cm}
-    
-    % Bottom-left
-    \begin{subfigure}[b]{0.4\textwidth} % Valor ajustado aquí
-        \includegraphics[width=\linewidth]{figs_oxxo_maps/mapa_oxxos_binary_2019.png}
-        \caption{Panel C: OXXOs por ZAT en el 2019}
-        \label{fig:panelC}
-    \end{subfigure}
-    \hfill
-    % Bottom-right
-    \begin{subfigure}[b]{0.4\textwidth} % Valor ajustado aquí
-        \includegraphics[width=\linewidth]{figs_oxxo_maps/mapa_oxxos_binary_2023.png}
-        \caption{Panel D: OXXOs por ZAT en el 2023}
-        \label{fig:panelD}
-    \end{subfigure}
-    
-    \caption{
-        \textbf{Evolución de la presencia de OXXOs por ZAT}
-    }
-    \label{fig:fourpanel}
-\end{figure}
-
+La tabla Tabla~\ref{tab:independientes_zats} muestra la media de la proporción de independientes por año y estado de tratamiento y la Tabla~\ref{tab:proporcion_independientes} es una diferencia de medias de dichos resultados.  
 
 \begin{table} [H]
   \centering
@@ -233,8 +189,51 @@ Interpreten los resultados presentados en los gráficos y tablas. Expliquen cóm
   }
 \end{table}
 
+Se puede observar que en promedio los ZATs tratados presentan una proporción de independientes más alta, aunque con una diferencia mínima. Esto se refuerza al notar que para ningún año la diferencia de medias es significativa. En consecuencia, los resultados preliminares sugieren que la instalación de un OXXO en un ZAT no se asocia con un incremento estadísticamente significativo en la proporción de trabajadores independientes. \\
+
+
+Adicionalmente, existe una dinámica similar entre los grupos. La proporción baja de 2011 a 2019 y luego sube en 2023. Esta tendencia sugiere que hay factores que afectan ambos grupos. Por ejemplo, después de pandemia se ha señalado que la tasa de ocupación aumentó y una fracción importante de esa recuperación se dio a través de trabajadores por cuenta propia \parencite{alvarez_informalidad_nodate,naranjo_ocupacion_2025,concejo_proyecto_2022,dane_emicron_2025}. \\
+
 
 \section{Variables de control}
+
+\begin{figure} [H]
+    \centering
+    % Top-left
+    \begin{subfigure}[b]{0.4\textwidth} % Valor ajustado aquí
+        \includegraphics[width=\linewidth]{figs_oxxo_maps/mapa_oxxos_binary_2011.png}
+        \caption{Panel A: OXXOs por ZAT en el 2011}
+        \label{fig:panelA}
+    \end{subfigure}
+    \hfill
+    % Top-right
+    \begin{subfigure}[b]{0.4\textwidth} % Valor ajustado aquí
+        \includegraphics[width=\linewidth]{figs_oxxo_maps/mapa_oxxos_binary_2015.png}
+        \caption{Panel B: OXXOs por ZAT en el 2015}
+        \label{fig:panelB}
+    \end{subfigure}
+    
+    \vspace{0.5cm}
+    
+    % Bottom-left
+    \begin{subfigure}[b]{0.4\textwidth} % Valor ajustado aquí
+        \includegraphics[width=\linewidth]{figs_oxxo_maps/mapa_oxxos_binary_2019.png}
+        \caption{Panel C: OXXOs por ZAT en el 2019}
+        \label{fig:panelC}
+    \end{subfigure}
+    \hfill
+    % Bottom-right
+    \begin{subfigure}[b]{0.4\textwidth} % Valor ajustado aquí
+        \includegraphics[width=\linewidth]{figs_oxxo_maps/mapa_oxxos_binary_2023.png}
+        \caption{Panel D: OXXOs por ZAT en el 2023}
+        \label{fig:panelD}
+    \end{subfigure}
+    
+    \caption{
+        \textbf{Evolución de la presencia de OXXOs por ZAT}
+    }
+    \label{fig:fourpanel}
+\end{figure}
 
 \begin{table} [H]
   \centering
@@ -294,12 +293,9 @@ brevemente cualquier problema que se presente, como posibles sesgos o limitacion
 datos. (Máximo 200 palabras)
 
 
-\section{Referencias}
-
 \printbibliography
 
-PARA OBTENER SHAPEFILES ZATs: \url{https://datosabiertos-transmilenio.hub.arcgis.com/datasets/e6cf3d5c3ec2499e8a959fa3aee8fbd4_0/explore?location=4.678900%2C-74.085690%2C13.18}
-
+\section{Apéndice}
 
 \appendix
 \counterwithin{table}{section}

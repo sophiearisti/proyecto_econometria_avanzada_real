@@ -1,13 +1,13 @@
 # Fdb version 4
-["biber primera_version"] 1758426606.07058 "primera_version.bcf" "primera_version.bbl" "primera_version" 1758427156.42358 0
-  "primera_version.bcf" 1758427156.19638 134426 3e9e180cbf02baf2bf944d397b551b6d "pdflatex"
-  "references.bib" 1758426579.27364 3041 16d2cd63e191ac045962704b3a55133f ""
+["biber primera_version"] 1758434268.131 "primera_version.bcf" "primera_version.bbl" "primera_version" 1758517584.9551 0
+  "primera_version.bcf" 1758517584.81715 134737 a843abbe628d5f4d58a7c81c00091c25 "pdflatex"
+  "references.bib" 1758434155.70637 4518 6b36d9a07aa5e6335ef7d2602bfdac73 ""
   (generated)
   "primera_version.bbl"
   "primera_version.blg"
   (rewritten before read)
-["pdflatex"] 1758427150.17662 "/Users/sophiaaristizabal/Desktop/1 economia/7/econometría avanzada/proyecto_econometria_avanzada/doc/primera_version.tex" "primera_version.pdf" "primera_version" 1758427156.42416 0
-  "/Users/sophiaaristizabal/Desktop/1 economia/7/econometría avanzada/proyecto_econometria_avanzada/doc/primera_version.tex" 1758427149.9111 29626 066b6210cce09e3a94d08e9188142347 ""
+["pdflatex"] 1758517581.13475 "/Users/sophiaaristizabal/Desktop/1 economia/7/econometría avanzada/proyecto_econometria_avanzada/doc/primera_version.tex" "primera_version.pdf" "primera_version" 1758517584.95542 0
+  "/Users/sophiaaristizabal/Desktop/1 economia/7/econometría avanzada/proyecto_econometria_avanzada/doc/primera_version.tex" 1758517580.85533 29637 ddfef4c92d8308fd96c51b9916e76866 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/ecbx1000.tfm" 1136768653 3584 2d666ecf6d466d8b007246bc2f94d9da ""
@@ -154,10 +154,10 @@
   "figs_oxxo_maps/mapa_oxxos_binary_2015.png" 1758245944.48927 417978 1f6f0c69e9f2a8ab4304d2eab17b21e8 ""
   "figs_oxxo_maps/mapa_oxxos_binary_2019.png" 1758245920.84427 429911 3eda41a43f51026dd99ed2c91a584ae7 ""
   "figs_oxxo_maps/mapa_oxxos_binary_2023.png" 1758232646.77918 466192 e8ab34f4e33790f05af3dccca826a62a ""
-  "primera_version.aux" 1758427156.1874 9728 5d87330bd1900524d177af7ecf44e1c3 "pdflatex"
-  "primera_version.bbl" 1758426608.34765 20680 9a50673da04450ce8feb234d07eee7ba "biber primera_version"
-  "primera_version.out" 1758427156.19171 1848 e6dea1f9dec226aa9079a2c67480834c "pdflatex"
-  "primera_version.run.xml" 1758427156.19736 2436 514c71cc1cc891eb7058faa8217f2922 "pdflatex"
+  "primera_version.aux" 1758517584.81151 10642 7665fbeee2bfbf804e59461bb4e7c02f "pdflatex"
+  "primera_version.bbl" 1758434269.69102 33654 54bbf4f761c4e81d69e92dfe70343984 "biber primera_version"
+  "primera_version.out" 1758517584.81426 1836 9bfcc14c169efc2003c1a31a964a8689 "pdflatex"
+  "primera_version.run.xml" 1758517584.81783 2436 514c71cc1cc891eb7058faa8217f2922 "pdflatex"
   (generated)
   "primera_version.aux"
   "primera_version.bcf"

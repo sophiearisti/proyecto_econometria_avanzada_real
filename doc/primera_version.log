@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  20 SEP 2025 22:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  22 SEP 2025 00:06
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -899,40 +899,44 @@ Overfull \hbox (13.81969pt too wide) in alignment at lines 96--143
  []
 
 [3]
-<figs_oxxo_maps/mapa_oxxos_binary_2011.png, id=99, 1277.77374pt x 1696.3375pt>
-File: figs_oxxo_maps/mapa_oxxos_binary_2011.png Graphic file (type png)
-<use figs_oxxo_maps/mapa_oxxos_binary_2011.png>
-Package pdftex.def Info: figs_oxxo_maps/mapa_oxxos_binary_2011.png  used on input line 160.
-(pdftex.def)             Requested size: 177.42868pt x 235.54433pt.
-<figs_oxxo_maps/mapa_oxxos_binary_2015.png, id=101, 1238.6275pt x 1714.405pt>
-File: figs_oxxo_maps/mapa_oxxos_binary_2015.png Graphic file (type png)
-<use figs_oxxo_maps/mapa_oxxos_binary_2015.png>
-Package pdftex.def Info: figs_oxxo_maps/mapa_oxxos_binary_2015.png  used on input line 167.
-(pdftex.def)             Requested size: 177.42868pt x 245.56091pt.
-<figs_oxxo_maps/mapa_oxxos_binary_2019.png, id=102, 1317.92375pt x 1666.225pt>
-File: figs_oxxo_maps/mapa_oxxos_binary_2019.png Graphic file (type png)
-<use figs_oxxo_maps/mapa_oxxos_binary_2019.png>
-Package pdftex.def Info: figs_oxxo_maps/mapa_oxxos_binary_2019.png  used on input line 176.
-(pdftex.def)             Requested size: 177.42868pt x 224.32048pt.
-<figs_oxxo_maps/mapa_oxxos_binary_2023.png, id=103, 1378.14874pt x 1711.39375pt>
-File: figs_oxxo_maps/mapa_oxxos_binary_2023.png Graphic file (type png)
-<use figs_oxxo_maps/mapa_oxxos_binary_2023.png>
-Package pdftex.def Info: figs_oxxo_maps/mapa_oxxos_binary_2023.png  used on input line 183.
-(pdftex.def)             Requested size: 177.42868pt x 220.32155pt.
-
 
 [4]
+Underfull \hbox (badness 10000) in paragraph at lines 192--193
 
-[5 <./figs_oxxo_maps/mapa_oxxos_binary_2011.png> <./figs_oxxo_maps/mapa_oxxos_binary_2015.png> <./figs_oxxo_maps/mapa_oxxos_binary_2019.png> <./figs_oxxo_maps/mapa_oxxos_binary_2023.png>]
-
-[6]
-
-[7]
-Overfull \hbox (12.1996pt too wide) in paragraph at lines 301--302
-[]\T1/cmr/m/n/10 PARA OB-TE-NER SHA-PE-FI-LES ZATs: []$https : / / datosabiertos-[]transmilenio . hub . arcgis . com / datasets /
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 195--196
+
+ []
+
+<figs_oxxo_maps/mapa_oxxos_binary_2011.png, id=114, 1277.77374pt x 1696.3375pt>
+File: figs_oxxo_maps/mapa_oxxos_binary_2011.png Graphic file (type png)
+<use figs_oxxo_maps/mapa_oxxos_binary_2011.png>
+Package pdftex.def Info: figs_oxxo_maps/mapa_oxxos_binary_2011.png  used on input line 204.
+(pdftex.def)             Requested size: 177.42868pt x 235.54433pt.
+<figs_oxxo_maps/mapa_oxxos_binary_2015.png, id=116, 1238.6275pt x 1714.405pt>
+File: figs_oxxo_maps/mapa_oxxos_binary_2015.png Graphic file (type png)
+<use figs_oxxo_maps/mapa_oxxos_binary_2015.png>
+Package pdftex.def Info: figs_oxxo_maps/mapa_oxxos_binary_2015.png  used on input line 211.
+(pdftex.def)             Requested size: 177.42868pt x 245.56091pt.
+<figs_oxxo_maps/mapa_oxxos_binary_2019.png, id=117, 1317.92375pt x 1666.225pt>
+File: figs_oxxo_maps/mapa_oxxos_binary_2019.png Graphic file (type png)
+<use figs_oxxo_maps/mapa_oxxos_binary_2019.png>
+Package pdftex.def Info: figs_oxxo_maps/mapa_oxxos_binary_2019.png  used on input line 220.
+(pdftex.def)             Requested size: 177.42868pt x 224.32048pt.
+<figs_oxxo_maps/mapa_oxxos_binary_2023.png, id=118, 1378.14874pt x 1711.39375pt>
+File: figs_oxxo_maps/mapa_oxxos_binary_2023.png Graphic file (type png)
+<use figs_oxxo_maps/mapa_oxxos_binary_2023.png>
+Package pdftex.def Info: figs_oxxo_maps/mapa_oxxos_binary_2023.png  used on input line 227.
+(pdftex.def)             Requested size: 177.42868pt x 220.32155pt.
+
+
+[5]
+
+[6 <./figs_oxxo_maps/mapa_oxxos_binary_2011.png> <./figs_oxxo_maps/mapa_oxxos_binary_2015.png> <./figs_oxxo_maps/mapa_oxxos_binary_2019.png> <./figs_oxxo_maps/mapa_oxxos_binary_2023.png>]
+
+[7]
 
 [8]
 
@@ -943,34 +947,34 @@ Overfull \hbox (12.1996pt too wide) in paragraph at lines 301--302
 [11]
 
 [12]
-<figs_dep_maps/mapa_dep_2011.png, id=172, 1105.12875pt x 1507.6325pt>
+<figs_dep_maps/mapa_dep_2011.png, id=186, 1105.12875pt x 1507.6325pt>
 File: figs_dep_maps/mapa_dep_2011.png Graphic file (type png)
 <use figs_dep_maps/mapa_dep_2011.png>
-Package pdftex.def Info: figs_dep_maps/mapa_dep_2011.png  used on input line 559.
+Package pdftex.def Info: figs_dep_maps/mapa_dep_2011.png  used on input line 555.
 (pdftex.def)             Requested size: 177.42868pt x 242.0313pt.
-<figs_dep_maps/mapa_dep_2015.png, id=173, 1159.33125pt x 1504.62125pt>
+<figs_dep_maps/mapa_dep_2015.png, id=187, 1159.33125pt x 1504.62125pt>
 File: figs_dep_maps/mapa_dep_2015.png Graphic file (type png)
 <use figs_dep_maps/mapa_dep_2015.png>
-Package pdftex.def Info: figs_dep_maps/mapa_dep_2015.png  used on input line 566.
+Package pdftex.def Info: figs_dep_maps/mapa_dep_2015.png  used on input line 562.
 (pdftex.def)             Requested size: 177.42868pt x 230.25221pt.
-<figs_dep_maps/mapa_dep_2019.png, id=174, 1110.1475pt x 1529.715pt>
+<figs_dep_maps/mapa_dep_2019.png, id=188, 1110.1475pt x 1529.715pt>
 File: figs_dep_maps/mapa_dep_2019.png Graphic file (type png)
 <use figs_dep_maps/mapa_dep_2019.png>
-Package pdftex.def Info: figs_dep_maps/mapa_dep_2019.png  used on input line 575.
+Package pdftex.def Info: figs_dep_maps/mapa_dep_2019.png  used on input line 571.
 (pdftex.def)             Requested size: 177.42868pt x 244.4793pt.
-<figs_dep_maps/mapa_dep_2023.png, id=175, 1141.26375pt x 1553.805pt>
+<figs_dep_maps/mapa_dep_2023.png, id=189, 1141.26375pt x 1553.805pt>
 File: figs_dep_maps/mapa_dep_2023.png Graphic file (type png)
 <use figs_dep_maps/mapa_dep_2023.png>
-Package pdftex.def Info: figs_dep_maps/mapa_dep_2023.png  used on input line 582.
+Package pdftex.def Info: figs_dep_maps/mapa_dep_2023.png  used on input line 578.
 (pdftex.def)             Requested size: 177.42868pt x 241.54855pt.
-<figs_dep_maps/clasificacion.png, id=176, 1785.67125pt x 137.51375pt>
+<figs_dep_maps/clasificacion.png, id=190, 1785.67125pt x 137.51375pt>
 File: figs_dep_maps/clasificacion.png Graphic file (type png)
 <use figs_dep_maps/clasificacion.png>
-Package pdftex.def Info: figs_dep_maps/clasificacion.png  used on input line 591.
+Package pdftex.def Info: figs_dep_maps/clasificacion.png  used on input line 587.
 (pdftex.def)             Requested size: 310.50357pt x 23.90999pt.
 
 
-LaTeX Warning: Float too large for page by 14.92938pt on input line 600.
+LaTeX Warning: Float too large for page by 14.92938pt on input line 596.
 
 
 
@@ -990,24 +994,24 @@ L3 programming layer <2025-01-18>
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `primera_version.out' has not changed.
-(rerunfilecheck)             Checksum: E6DEA1F9DEC226AA9079A2C67480834C;1848.
+(rerunfilecheck)             Checksum: 9BFCC14C169EFC2003C1A31A964A8689;1836.
 Package logreq Info: Writing requests to 'primera_version.run.xml'.
 \openout1 = `primera_version.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 22212 strings out of 473190
- 394708 string characters out of 5715801
- 1342399 words of memory out of 5000000
- 45167 multiletter control sequences out of 15000+600000
+ 22244 strings out of 473190
+ 395932 string characters out of 5715801
+ 1342749 words of memory out of 5000000
+ 45195 multiletter control sequences out of 15000+600000
  571711 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  66i,11n,81p,1195b,2903s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfti0900.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on primera_version.pdf (14 pages, 2667857 bytes).
+Output written on primera_version.pdf (14 pages, 2673535 bytes).
 PDF statistics:
- 286 PDF objects out of 1000 (max. 8388607)
- 213 compressed objects within 3 object streams
- 50 named destinations out of 1000 (max. 500000)
+ 300 PDF objects out of 1000 (max. 8388607)
+ 227 compressed objects within 3 object streams
+ 54 named destinations out of 1000 (max. 500000)
  126 words of extra memory for PDF output out of 10000 (max. 10000000)
 
