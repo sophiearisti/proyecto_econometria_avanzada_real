@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  22 SEP 2025 00:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  27 SEP 2025 21:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -612,54 +612,27 @@ LaTeX Info: Redefining \% on input line 22.
 
 LaTeX Warning: Label `tab:variables_descripcion' multiply defined.
 
-
-LaTeX Warning: Label `fig:panelA' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:panelA' multiply defined.
-
-
-LaTeX Warning: Label `fig:panelB' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:panelB' multiply defined.
-
-
-LaTeX Warning: Label `fig:panelC' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:panelC' multiply defined.
-
-
-LaTeX Warning: Label `fig:panelD' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:panelD' multiply defined.
-
-
-LaTeX Warning: Label `fig:fourpanel' multiply defined.
-
 )
 \openout1 = `primera_version.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
  (/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count448
@@ -686,8 +659,8 @@ Package caption Info: longtable package is loaded.
 Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: End \AtBeginDocument code.
-LaTeX Info: Redefining \. on input line 29.
-LaTeX Info: Redefining \% on input line 29.
+LaTeX Info: Redefining \. on input line 30.
+LaTeX Info: Redefining \% on input line 30.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -745,24 +718,19 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'primera_version.bbl' found.
  (./primera_version.bbl)
-Package biblatex Info: Reference section=0 on input line 29.
-Package biblatex Info: Reference segment=0 on input line 29.
-Package hyperref Info: Link coloring OFF on input line 29.
+Package biblatex Info: Reference section=0 on input line 30.
+Package biblatex Info: Reference segment=0 on input line 30.
+Package hyperref Info: Link coloring OFF on input line 30.
  (./primera_version.out) (./primera_version.out)
 \@outlinefile=\write5
 \openout5 = `primera_version.out'.
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 32.
+(Font)              <12> on input line 33.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 32.
+(Font)              <8> on input line 33.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 32.
-
-Underfull \hbox (badness 10000) in paragraph at lines 34--35
-
- []
-
+(Font)              <6> on input line 33.
 
 Underfull \hbox (badness 10000) in paragraph at lines 36--37
 
@@ -773,16 +741,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 38--39
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 40--41
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--43
+
+ []
+
 Excluding 'comment' comment.
 
 [1
 
 {/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
-Underfull \hbox (badness 10000) in paragraph at lines 65--66
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 67--68
 
  []
@@ -792,15 +765,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 69--70
 
  []
 
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 71.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 71.
 
 Underfull \hbox (badness 10000) in paragraph at lines 71--72
 
  []
 
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 73.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 73.
 
 Underfull \hbox (badness 10000) in paragraph at lines 73--74
 
@@ -812,129 +785,154 @@ Underfull \hbox (badness 10000) in paragraph at lines 75--76
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 80--80
-[][][][]$\T1/cmr/m/n/8 https : / / www . dane . gov . co / index . php / estadisticas-[]por-[]tema / salud / calidad-[]de-[]vida-[]ecv /
+Underfull \hbox (badness 10000) in paragraph at lines 77--78
+
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 80--81
+Underfull \hbox (badness 10000) in paragraph at lines 79--80
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 84--84
+[][][]\T1/cmr/m/n/8 Acceder a []$https : / / www . dane . gov . co / index . php / estadisticas-[]por-[]tema / salud / calidad-[]de-[]vida-[]ecv /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 84--85
 
  []
 
 
 
 [2]
-Overfull \hbox (13.81969pt too wide) in alignment at lines 89--96
+Overfull \hbox (13.81969pt too wide) in alignment at lines 93--100
  [] [] [] 
  []
 
 
-Underfull \hbox (badness 2318) in paragraph at lines 100--100
-[]|\T1/cmr/m/n/10 proporción in-de-pen-dien-
- []
-
-
-Underfull \hbox (badness 1325) in paragraph at lines 100--101
+Underfull \hbox (badness 1325) in paragraph at lines 104--105
 []|\T1/cmr/m/n/10 Encuestas de mo-vi-li-dad
  []
 
 
-Underfull \hbox (badness 2529) in paragraph at lines 104--105
+Underfull \hbox (badness 2529) in paragraph at lines 108--109
 []|\T1/cmr/m/n/10 RUES y Goo-gle Maps
  []
 
 
-Underfull \hbox (badness 2980) in paragraph at lines 108--109
-[]|\T1/cmr/m/n/10 Secretraría Dis-tri-tal de
+Underfull \hbox (badness 2529) in paragraph at lines 112--113
+[]|\T1/cmr/m/n/10 RUES y Goo-gle Maps
  []
 
 
-Underfull \hbox (badness 2980) in paragraph at lines 110--111
-[]|\T1/cmr/m/n/10 Secretraría Dis-tri-tal de
+Underfull \hbox (badness 2529) in paragraph at lines 114--115
+[]|\T1/cmr/m/n/10 RUES y Goo-gle Maps
  []
 
 
-Underfull \hbox (badness 2980) in paragraph at lines 112--113
-[]|\T1/cmr/m/n/10 Secretraría Dis-tri-tal de
+Underfull \hbox (badness 1325) in paragraph at lines 118--119
+[]|\T1/cmr/m/n/10 Encuestas de mo-vi-li-dad
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 124--124
+Underfull \hbox (badness 1968) in paragraph at lines 120--120
+[]|\T1/cmr/m/n/10 Ingresos del ho-gar por
+ []
+
+
+Underfull \hbox (badness 1325) in paragraph at lines 120--121
+[]|\T1/cmr/m/n/10 Encuestas de mo-vi-li-dad
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 134--134
 []|\T1/cmr/m/n/10 Estrato pro-me-dio del
  []
 
 
-Underfull \hbox (badness 1147) in paragraph at lines 124--125
+Underfull \hbox (badness 1147) in paragraph at lines 134--135
 \T1/cmr/m/n/10 cia-les de Bo-go-tá (IDE-
  []
 
 
-Underfull \hbox (badness 1147) in paragraph at lines 126--127
+Underfull \hbox (badness 1147) in paragraph at lines 136--137
 \T1/cmr/m/n/10 cia-les de Bo-go-tá (IDE-
  []
 
 
-Underfull \hbox (badness 1147) in paragraph at lines 128--129
+Underfull \hbox (badness 1147) in paragraph at lines 138--139
 \T1/cmr/m/n/10 cia-les de Bo-go-tá (IDE-
  []
 
 
-Underfull \hbox (badness 2529) in paragraph at lines 132--133
+Underfull \hbox (badness 2529) in paragraph at lines 142--143
 []|\T1/cmr/m/n/10 RUES y Goo-gle Maps
  []
 
 
-Underfull \hbox (badness 2529) in paragraph at lines 134--135
-[]|\T1/cmr/m/n/10 RUES y Goo-gle Maps
- []
-
-
-Underfull \hbox (badness 2529) in paragraph at lines 138--139
-[]|\T1/cmr/m/n/10 RUES y Goo-gle Maps
- []
-
-
-Overfull \hbox (13.81969pt too wide) in alignment at lines 96--143
+Overfull \hbox (13.81969pt too wide) in alignment at lines 100--147
  [] [] [] 
  []
 
 [3]
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 192--193
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 195--196
 
  []
 
-<figs_oxxo_maps/mapa_oxxos_binary_2011.png, id=114, 1277.77374pt x 1696.3375pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 198--199
+
+ []
+
+<other_figs/oxxos_intensidad_tratamiento.png, id=122, 2409.0pt x 1806.75pt>
+File: other_figs/oxxos_intensidad_tratamiento.png Graphic file (type png)
+<use other_figs/oxxos_intensidad_tratamiento.png>
+Package pdftex.def Info: other_figs/oxxos_intensidad_tratamiento.png  used on input line 204.
+(pdftex.def)             Requested size: 266.14978pt x 199.59775pt.
+<figs_oxxo_maps/mapa_oxxos_binary_2011.png, id=124, 1277.77374pt x 1696.3375pt>
 File: figs_oxxo_maps/mapa_oxxos_binary_2011.png Graphic file (type png)
 <use figs_oxxo_maps/mapa_oxxos_binary_2011.png>
-Package pdftex.def Info: figs_oxxo_maps/mapa_oxxos_binary_2011.png  used on input line 204.
+Package pdftex.def Info: figs_oxxo_maps/mapa_oxxos_binary_2011.png  used on input line 217.
 (pdftex.def)             Requested size: 177.42868pt x 235.54433pt.
-<figs_oxxo_maps/mapa_oxxos_binary_2015.png, id=116, 1238.6275pt x 1714.405pt>
+<figs_oxxo_maps/mapa_oxxos_binary_2015.png, id=125, 1238.6275pt x 1714.405pt>
 File: figs_oxxo_maps/mapa_oxxos_binary_2015.png Graphic file (type png)
 <use figs_oxxo_maps/mapa_oxxos_binary_2015.png>
-Package pdftex.def Info: figs_oxxo_maps/mapa_oxxos_binary_2015.png  used on input line 211.
+Package pdftex.def Info: figs_oxxo_maps/mapa_oxxos_binary_2015.png  used on input line 224.
 (pdftex.def)             Requested size: 177.42868pt x 245.56091pt.
-<figs_oxxo_maps/mapa_oxxos_binary_2019.png, id=117, 1317.92375pt x 1666.225pt>
+<figs_oxxo_maps/mapa_oxxos_binary_2019.png, id=126, 1317.92375pt x 1666.225pt>
 File: figs_oxxo_maps/mapa_oxxos_binary_2019.png Graphic file (type png)
 <use figs_oxxo_maps/mapa_oxxos_binary_2019.png>
-Package pdftex.def Info: figs_oxxo_maps/mapa_oxxos_binary_2019.png  used on input line 220.
+Package pdftex.def Info: figs_oxxo_maps/mapa_oxxos_binary_2019.png  used on input line 233.
 (pdftex.def)             Requested size: 177.42868pt x 224.32048pt.
-<figs_oxxo_maps/mapa_oxxos_binary_2023.png, id=118, 1378.14874pt x 1711.39375pt>
+<figs_oxxo_maps/mapa_oxxos_binary_2023.png, id=127, 1378.14874pt x 1711.39375pt>
 File: figs_oxxo_maps/mapa_oxxos_binary_2023.png Graphic file (type png)
 <use figs_oxxo_maps/mapa_oxxos_binary_2023.png>
-Package pdftex.def Info: figs_oxxo_maps/mapa_oxxos_binary_2023.png  used on input line 227.
+Package pdftex.def Info: figs_oxxo_maps/mapa_oxxos_binary_2023.png  used on input line 240.
 (pdftex.def)             Requested size: 177.42868pt x 220.32155pt.
 
 
-[5]
+[5 <./other_figs/oxxos_intensidad_tratamiento.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 254--255
+
+ []
+
+
 
 [6 <./figs_oxxo_maps/mapa_oxxos_binary_2011.png> <./figs_oxxo_maps/mapa_oxxos_binary_2015.png> <./figs_oxxo_maps/mapa_oxxos_binary_2019.png> <./figs_oxxo_maps/mapa_oxxos_binary_2023.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 297--298
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 299--300
+
+ []
+
+
 
 [7]
 
@@ -943,44 +941,27 @@ Package pdftex.def Info: figs_oxxo_maps/mapa_oxxos_binary_2023.png  used on inpu
 [9]
 
 [10]
+Underfull \hbox (badness 10000) in paragraph at lines 463--464
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 465--466
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 467--468
+
+ []
+
+
 
 [11]
 
 [12]
-<figs_dep_maps/mapa_dep_2011.png, id=186, 1105.12875pt x 1507.6325pt>
-File: figs_dep_maps/mapa_dep_2011.png Graphic file (type png)
-<use figs_dep_maps/mapa_dep_2011.png>
-Package pdftex.def Info: figs_dep_maps/mapa_dep_2011.png  used on input line 555.
-(pdftex.def)             Requested size: 177.42868pt x 242.0313pt.
-<figs_dep_maps/mapa_dep_2015.png, id=187, 1159.33125pt x 1504.62125pt>
-File: figs_dep_maps/mapa_dep_2015.png Graphic file (type png)
-<use figs_dep_maps/mapa_dep_2015.png>
-Package pdftex.def Info: figs_dep_maps/mapa_dep_2015.png  used on input line 562.
-(pdftex.def)             Requested size: 177.42868pt x 230.25221pt.
-<figs_dep_maps/mapa_dep_2019.png, id=188, 1110.1475pt x 1529.715pt>
-File: figs_dep_maps/mapa_dep_2019.png Graphic file (type png)
-<use figs_dep_maps/mapa_dep_2019.png>
-Package pdftex.def Info: figs_dep_maps/mapa_dep_2019.png  used on input line 571.
-(pdftex.def)             Requested size: 177.42868pt x 244.4793pt.
-<figs_dep_maps/mapa_dep_2023.png, id=189, 1141.26375pt x 1553.805pt>
-File: figs_dep_maps/mapa_dep_2023.png Graphic file (type png)
-<use figs_dep_maps/mapa_dep_2023.png>
-Package pdftex.def Info: figs_dep_maps/mapa_dep_2023.png  used on input line 578.
-(pdftex.def)             Requested size: 177.42868pt x 241.54855pt.
-<figs_dep_maps/clasificacion.png, id=190, 1785.67125pt x 137.51375pt>
-File: figs_dep_maps/clasificacion.png Graphic file (type png)
-<use figs_dep_maps/clasificacion.png>
-Package pdftex.def Info: figs_dep_maps/clasificacion.png  used on input line 587.
-(pdftex.def)             Requested size: 310.50357pt x 23.90999pt.
 
-
-LaTeX Warning: Float too large for page by 14.92938pt on input line 596.
-
-
-
-[13]
-
-[14 <./figs_dep_maps/mapa_dep_2011.png> <./figs_dep_maps/mapa_dep_2015.png> <./figs_dep_maps/mapa_dep_2019.png> <./figs_dep_maps/mapa_dep_2023.png> <./figs_dep_maps/clasificacion.png>] (./primera_version.aux
+[13] (./primera_version.aux
 LaTeX Info: Redefining \sptext on input line 22.
 LaTeX Info: Redefining \. on input line 22.
 LaTeX Info: Redefining \% on input line 22.
@@ -994,24 +975,24 @@ L3 programming layer <2025-01-18>
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `primera_version.out' has not changed.
-(rerunfilecheck)             Checksum: 9BFCC14C169EFC2003C1A31A964A8689;1836.
+(rerunfilecheck)             Checksum: 984C7877E8A6AC93C77380FE34345875;2115.
 Package logreq Info: Writing requests to 'primera_version.run.xml'.
 \openout1 = `primera_version.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 22244 strings out of 473190
- 395932 string characters out of 5715801
- 1342749 words of memory out of 5000000
- 45195 multiletter control sequences out of 15000+600000
+ 22261 strings out of 473190
+ 396217 string characters out of 5715801
+ 1332028 words of memory out of 5000000
+ 45204 multiletter control sequences out of 15000+600000
  571711 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 66i,11n,81p,1195b,2903s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfti0900.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on primera_version.pdf (14 pages, 2673535 bytes).
+ 66i,11n,81p,1264b,2903s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfti0800.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb>
+Output written on primera_version.pdf (13 pages, 1557496 bytes).
 PDF statistics:
- 300 PDF objects out of 1000 (max. 8388607)
- 227 compressed objects within 3 object streams
- 54 named destinations out of 1000 (max. 500000)
- 126 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 314 PDF objects out of 1000 (max. 8388607)
+ 252 compressed objects within 3 object streams
+ 62 named destinations out of 1000 (max. 500000)
+ 114 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -29,6 +29,7 @@ replace personas_por_hogar_2007_localida = subinstr(personas_por_hogar_2007_loca
 destring personas_por_hogar_2007_localida, replace
 
 replace gasto_promedio_mensual_2007_loca = subinstr(gasto_promedio_mensual_2007_loca, ".", "", .)
+**# Bookmark #1
 destring gasto_promedio_mensual_2007_loca, replace
 
 replace icv_2007_localidad = subinstr(icv_2007_localidad, ",", ".", .)
@@ -93,7 +94,7 @@ cd "$dir_controls_results"
 
 gen accesibilidad_arterial_dummy = (accesibilidad_arterial>0)
 
-global controles poblacion_urbana_2009 poblacion_por_localidad_2005 poblacion_2005 personas_por_localidad_2007 personas_por_hogar_2007_localida num_est_transmi icv_2007_localidad gasto_promedio_mensual_2007_loca estrato_mean densidad_urbana_2009 area_urbana_2009 acceso_transmi accesibilidad_arterial accesibilidad_arterial_dummy
+global controles poblacion_urbana_2009 poblacion_por_localidad_2005 poblacion_2005 personas_por_localidad_2007 personas_por_hogar_2007_localida num_est_transmi icv_2007_localidad gasto_promedio_mensual_2007_loca estrato_mean densidad_urbana_2009 area_urbana_2009 acceso_transmi accesibilidad_arterial accesibilidad_arterial_dummy total_personas ingreso 
 
 local años 2011 2015 2019 2023
 
@@ -120,9 +121,9 @@ foreach a of local años {
 *es ver si la presencia de otras tiendas parecidas afecta literalmente la presencia de las tiendas oxxo
 
 
-global staggered_controls dummy_jb dummy_d1 dummy_ara cantidad_jb cantidad_d1 cantidad_ara
+global staggered_controls dummy_jb dummy_d1 dummy_ara cantidad_jb cantidad_d1 cantidad_ara ingreso
 
-local años 2015 2019 2023
+local años 2015 2019 2023 2011
 
 *2011 no nos sirve porque no habia ningun ara ni jb antes de ese ano y en ese ano
 
@@ -238,6 +239,23 @@ preserve
     graph export "grafico_cohortes.png", replace
 restore
 
+preserve
+
+* Calcular promedio por año
+collapse (mean) $depVar, by(year)
+
+* Graficar promedio de independientes por año
+twoway (line prop_independiente_total year, sort lcolor(orange)) ///
+       , xtitle("Año") ///
+         ytitle("Promedio de proporción de independientes") ///
+         title("Evolución del promedio de independientes por ZAT")
+
+* Guardar el gráfico en PDF
+//graph export "promedio_independientes_por_ano.png", replace
+
+restore
+
+
 
 
 *********************************************************
@@ -246,15 +264,88 @@ restore
 
 global panel_controls actividad_economica1_d9 actividad_economica1_d8 actividad_economica1_d7 actividad_economica1_d5 actividad_economica1_d4 actividad_economica1_d3 actividad_economica1_d17 actividad_economica1_d16 actividad_economica1_d15 actividad_economica1_d14 actividad_economica1_d13 actividad_economica1_d12 actividad_economica1_d11 actividad_economica1_d10 actividad_economica1_d1 nivel_educativo_d9 nivel_educativo_d8 nivel_educativo_d7 nivel_educativo_d5 nivel_educativo_d4 nivel_educativo_d3 nivel_educativo_d2 nivel_educativo_d11 tipo_vivienda_d5 tipo_vivienda_d4 tipo_vivienda_d3 tipo_vivienda_d2
  
-global controls cantidad_jb cantidad_d1 cantidad_ara poblacion_urbana_2009 personas_por_localidad_2007 personas_por_hogar_2007_localida num_est_transmi icv_2007_localidad gasto_promedio_mensual_2007_loca estrato_mean densidad_urbana_2009 acceso_transmi accesibilidad_arterial
+global controls cantidad_d1 cantidad_ara ingreso total_personas
 
-reg prop_independiente_total dummy_oxxo spillover_oxxo i.year i.zat
+reg prop_independiente_total dummy_oxxo spillover_oxxo i.year i.zat $controls, vce(cluster zat)
 
 xtset zat year
-xtreg prop_independiente_total dummy_oxxo i.year, fe
 
-reghdfe prop_independiente_total dummy_oxxo, absorb(zat i.year)
+xtreg prop_independiente_total dummy_oxxo i.year, fe vce(cluster zat)
 
-xtdidreg (prop_independiente_total) (dummy_oxxo), group(zat) time(year)
+xtreg prop_independiente_total dummy_oxxo i.year $controls, fe vce(cluster zat)
+
+
+reghdfe prop_independiente_total dummy_oxxo , absorb(zat i.year) vce(cluster zat)
+
+reghdfe prop_independiente_total dummy_oxxo $controls, absorb(zat i.year) vce(cluster zat)
+
+
+*ssc install bacondecomp, replace
+replace dummy_oxxo=1 if year==2019 & (zat==246 | zat==433 | zat==575)
+
+bacondecomp prop_independiente_total dummy_oxxo, ddetail vce(cluster zat)
+
+/*
+
+. bacondecomp prop_independiente_total dummy_oxxo, ddetail
+Computing decomposition across 5 timing groups
+including an always-treated group and a never-treated group
+------------------------------------------------------------------------------
+prop_indep~l | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+  dummy_oxxo |   -.020584   .0202945    -1.01   0.310    -.0603605    .0191925
+------------------------------------------------------------------------------
+
+Bacon Decomposition
+
++---------------------------------------------------+
+|                      |         Beta   TotalWeight |
+|----------------------+----------------------------|
+|         Early_v_Late |  .0384949706   .0014562817 |
+|         Late_v_Early |  .0065942365   .0029125634 |
+|         Early_v_Late | -.0219312757   .0111301527 |
+|         Late_v_Early |  .0445397757   .0111301527 |
+|         Early_v_Late | -.0600029454   .0155822136 |
+|         Late_v_Early | -.0134243742   .0077911068 |
+|      Always_v_timing |  .0354264569    .020512768 |
+|       Never_v_timing |  -.022160717   .9294847612 |
++---------------------------------------------------+
+
+*/
+
+preserve
+	* 1. Año de primera entrada de OXXO
+	bysort zat: egen first_treat = min(cond(dummy_oxxo==1, year, .))
+
+	* 2. Quedarse solo con cohortes tratadas
+	drop if missing(first_treat)
+
+	* 3. Crear tiempo relativo (en períodos de 4 años)
+	gen rel_time = (year - first_treat)/4
+	
+	* Leads: periodos antes del tratamiento
+	gen lead3 = (rel_time==-3)
+	gen lead2 = (rel_time==-2)
+	gen lead1 = (rel_time==-1)
+
+	* Lags: periodos después del tratamiento
+	gen lag1 = (rel_time==1)
+	gen lag2 = (rel_time==2)
+	gen lag3 = (rel_time==3)
+
+	xtreg prop_independiente_total $controls $panel_controls i.year lag3 lag2 lag1 lead1 lead2 lead3, fe vce(cluster zat)
+
+
+	ssc install coefplot
+
+* Plot the coefficients using coefplot
+* ssc install coefplot
+
+coefplot, keep(lag3 lag1 lag2 lead1 lead2 lead3) xlabel(, angle(vertical)) yline(0) xline(3.5) vertical msymbol(E) mfcolor(white) ciopts(lwidth(*3) lcolor(purple*0.3)) mlabel format(%9.3f) mcolor(purple) mlabposition(12) mlabgap(*2) title(Prop. Trabajadores Independientes)
+
+ graph export "event_study_feo.png", replace
+
+restore
+
 
 

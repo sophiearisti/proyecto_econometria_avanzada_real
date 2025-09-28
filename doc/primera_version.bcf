@@ -3080,11 +3080,18 @@
     <bcf:citekey order="8" intorder="1">marcos2022</bcf:citekey>
     <bcf:citekey order="9" intorder="1">delgado2024</bcf:citekey>
     <bcf:citekey order="10" intorder="1">delgado2024</bcf:citekey>
-    <bcf:citekey order="11" intorder="1">godoy2025</bcf:citekey>
-    <bcf:citekey order="12" intorder="1">alvarez_informalidad_nodate</bcf:citekey>
-    <bcf:citekey order="12" intorder="2">naranjo_ocupacion_2025</bcf:citekey>
-    <bcf:citekey order="12" intorder="3">concejo_proyecto_2022</bcf:citekey>
-    <bcf:citekey order="12" intorder="4">dane_emicron_2025</bcf:citekey>
+    <bcf:citekey order="11" intorder="1">DANE2025a</bcf:citekey>
+    <bcf:citekey order="12" intorder="1">llanes2025</bcf:citekey>
+    <bcf:citekey order="13" intorder="1">godoy2025</bcf:citekey>
+    <bcf:citekey order="14" intorder="1">alvarez_informalidad_nodate</bcf:citekey>
+    <bcf:citekey order="14" intorder="2">naranjo_ocupacion_2025</bcf:citekey>
+    <bcf:citekey order="14" intorder="3">concejo_proyecto_2022</bcf:citekey>
+    <bcf:citekey order="14" intorder="4">dane_emicron_2025</bcf:citekey>
+    <bcf:citekey order="15" intorder="1">marcos2022</bcf:citekey>
+    <bcf:citekey order="16" intorder="1">marcos2022</bcf:citekey>
+    <bcf:citekey order="17" intorder="1">Konishi2005</bcf:citekey>
+    <bcf:citekey order="17" intorder="2">Seong2022</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">delgado2024</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="apa">

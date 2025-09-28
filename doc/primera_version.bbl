@@ -195,8 +195,10 @@
       \strng{authornamehash}{e949548a1c94237c2714130be28a14d3}
       \strng{authorfullhash}{e949548a1c94237c2714130be28a14d3}
       \strng{authorfullhashraw}{e949548a1c94237c2714130be28a14d3}
+      \field{extraname}{1}
       \field{sortinit}{D}
       \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradate}{1}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \true{uniqueprimaryauthor}
@@ -212,6 +214,33 @@
       \verb{url}
       \verb https://www.dane.gov.co/files/operaciones/EMICRON/bol-EMICRON-2024.pdf
       \endverb
+    \endentry
+    \entry{DANE2025a}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e949548a1c94237c2714130be28a14d3}{%
+           family={{DANE}},
+           familyi={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{e949548a1c94237c2714130be28a14d3}
+      \strng{fullhash}{e949548a1c94237c2714130be28a14d3}
+      \strng{fullhashraw}{e949548a1c94237c2714130be28a14d3}
+      \strng{bibnamehash}{e949548a1c94237c2714130be28a14d3}
+      \strng{authorbibnamehash}{e949548a1c94237c2714130be28a14d3}
+      \strng{authornamehash}{e949548a1c94237c2714130be28a14d3}
+      \strng{authorfullhash}{e949548a1c94237c2714130be28a14d3}
+      \strng{authorfullhashraw}{e949548a1c94237c2714130be28a14d3}
+      \field{extraname}{2}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{In DANE. Retrieved September 27, 2025, from \url{https://www.dane.gov.co/files/operaciones/EMICRON/bol-EMICRON-PanaderiasTiendasBarrio-2023.pdf}}
+      \field{title}{Encuesta de Micronegocios (EMICRON) Panaderías y tiendas de barrio 2019-2023}
+      \field{year}{2025}
     \endentry
     \entry{delgado2024}{report}{}{}
       \name{author}{3}{}{%
@@ -300,39 +329,84 @@
       \verb https://www.valoraanalitik.com/tiendas-oxxo-abre-su-local-numero-600-en-colombia/
       \endverb
     \endentry
-    \entry{m_2025}{article}{}{}
+    \entry{Konishi2005}{article}{}{}
       \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=566c3096ce6295c3cc9129567319c51e}{%
-           family={M},
-           familyi={M\bibinitperiod},
-           given={J.\bibnamedelimi R.},
-           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod},
+        {{un=0,uniquepart=base,hash=933756f939b72ad113b50ff2c60ffb08}{%
+           family={Konishi},
+           familyi={K\bibinitperiod},
+           given={Hideo},
+           giveni={H\bibinitperiod},
            givenun=0}}%
       }
-      \strng{namehash}{566c3096ce6295c3cc9129567319c51e}
-      \strng{fullhash}{566c3096ce6295c3cc9129567319c51e}
-      \strng{fullhashraw}{566c3096ce6295c3cc9129567319c51e}
-      \strng{bibnamehash}{566c3096ce6295c3cc9129567319c51e}
-      \strng{authorbibnamehash}{566c3096ce6295c3cc9129567319c51e}
-      \strng{authornamehash}{566c3096ce6295c3cc9129567319c51e}
-      \strng{authorfullhash}{566c3096ce6295c3cc9129567319c51e}
-      \strng{authorfullhashraw}{566c3096ce6295c3cc9129567319c51e}
-      \field{sortinit}{M}
-      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \strng{namehash}{933756f939b72ad113b50ff2c60ffb08}
+      \strng{fullhash}{933756f939b72ad113b50ff2c60ffb08}
+      \strng{fullhashraw}{933756f939b72ad113b50ff2c60ffb08}
+      \strng{bibnamehash}{933756f939b72ad113b50ff2c60ffb08}
+      \strng{authorbibnamehash}{933756f939b72ad113b50ff2c60ffb08}
+      \strng{authornamehash}{933756f939b72ad113b50ff2c60ffb08}
+      \strng{authorfullhash}{933756f939b72ad113b50ff2c60ffb08}
+      \strng{authorfullhashraw}{933756f939b72ad113b50ff2c60ffb08}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Portafolio.co}
-      \field{month}{3}
-      \field{title}{Oxxo llegó a su apertura 600 en Colombia: ¿cuántas tiendas abre en el año?}
-      \field{year}{2025}
+      \field{abstract}{The geographical concentration of stores that sell similar commodities is analyzed using a two-dimensional spatial competition model. A higher concentration of stores attracts more consumers with taste uncertainty and low price expectations (a market-size effect), while it leads to fiercer price competition (a price-cutting effect). Our model is general enough to allow for the coexistence of multiple (possibly) asymmetric clusters of stores. We provide sufficient conditions for the nonemptiness of equilibrium store location choices in pure strategies. Through numerical examples, we illustrate the trade-off between the market-size and price-cutting effects, and provide agglomeration patterns of stores in special cases.}
+      \field{journaltitle}{Journal of Urban Economics}
+      \field{number}{3}
+      \field{title}{Concentration of competing retail stores}
+      \field{volume}{58}
+      \field{year}{2005}
+      \field{pages}{488\bibrangedash 512}
+      \range{pages}{25}
+      \verb{doi}
+      \verb 10.1016/j.jue.2005.08.005
+      \endverb
       \verb{urlraw}
-      \verb https://www.portafolio.co/negocios/empresas/oxxo-llega-a-las-600-tiendas-en-colombia-626124
+      \verb https://www.sciencedirect.com/science/article/pii/S0094119005000562
       \endverb
       \verb{url}
-      \verb https://www.portafolio.co/negocios/empresas/oxxo-llega-a-las-600-tiendas-en-colombia-626124
+      \verb https://www.sciencedirect.com/science/article/pii/S0094119005000562
+      \endverb
+      \keyw{Consumer search,Market size effect,Price cutting effect,Taste uncertainty}
+    \endentry
+    \entry{llanes2025}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=965355982f5ada4ae7bb410e8b5e0190}{%
+           family={Llanes},
+           familyi={L\bibinitperiod},
+           given={M.\bibnamedelimi C.},
+           giveni={M\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {BBVA Research}%
+      }
+      \strng{namehash}{965355982f5ada4ae7bb410e8b5e0190}
+      \strng{fullhash}{965355982f5ada4ae7bb410e8b5e0190}
+      \strng{fullhashraw}{965355982f5ada4ae7bb410e8b5e0190}
+      \strng{bibnamehash}{965355982f5ada4ae7bb410e8b5e0190}
+      \strng{authorbibnamehash}{965355982f5ada4ae7bb410e8b5e0190}
+      \strng{authornamehash}{965355982f5ada4ae7bb410e8b5e0190}
+      \strng{authorfullhash}{965355982f5ada4ae7bb410e8b5e0190}
+      \strng{authorfullhashraw}{965355982f5ada4ae7bb410e8b5e0190}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{title}{Colombia | Empleo no asalariado, gran jalonador del empleo nacional}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://www.bbvaresearch.com/publicaciones/colombia-empleo-no-asalariado-gran-jalonador-del-empleo-nacional/
+      \endverb
+      \verb{url}
+      \verb https://www.bbvaresearch.com/publicaciones/colombia-empleo-no-asalariado-gran-jalonador-del-empleo-nacional/
       \endverb
     \endentry
     \entry{marcos2022}{article}{}{}
@@ -401,6 +475,95 @@
       \endverb
       \verb{url}
       \verb https://www.portafolio.co/economia/empleo/trabajo-por-cuenta-propia-crece-en-colombia-pero-informalidad-y-falta-de-aportes-preocupan-634514
+      \endverb
+    \endentry
+    \entry{m_2025}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=ad4b6003de0b7ce760ea128daf47ae47}{%
+           family={Rodríguez},
+           familyi={R\bibinitperiod},
+           given={J.\bibnamedelimi R.},
+           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{ad4b6003de0b7ce760ea128daf47ae47}
+      \strng{fullhash}{ad4b6003de0b7ce760ea128daf47ae47}
+      \strng{fullhashraw}{ad4b6003de0b7ce760ea128daf47ae47}
+      \strng{bibnamehash}{ad4b6003de0b7ce760ea128daf47ae47}
+      \strng{authorbibnamehash}{ad4b6003de0b7ce760ea128daf47ae47}
+      \strng{authornamehash}{ad4b6003de0b7ce760ea128daf47ae47}
+      \strng{authorfullhash}{ad4b6003de0b7ce760ea128daf47ae47}
+      \strng{authorfullhashraw}{ad4b6003de0b7ce760ea128daf47ae47}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Portafolio.co}
+      \field{month}{3}
+      \field{title}{Oxxo llegó a su apertura 600 en Colombia: ¿cuántas tiendas abre en el año?}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://www.portafolio.co/negocios/empresas/oxxo-llega-a-las-600-tiendas-en-colombia-626124
+      \endverb
+      \verb{url}
+      \verb https://www.portafolio.co/negocios/empresas/oxxo-llega-a-las-600-tiendas-en-colombia-626124
+      \endverb
+    \endentry
+    \entry{Seong2022}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=f6a3f423029340e4ded9192e8828f1ce}{%
+           family={Seong},
+           familyi={S\bibinitperiod},
+           given={E.\bibnamedelimi Y.},
+           giveni={E\bibinitperiod\bibinitdelim Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=89dda28cac79a47adf9134d5598c4f12}{%
+           family={Lim},
+           familyi={L\bibinitperiod},
+           given={Y.},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d8a536f8fbfb1908979eae934c6e9891}{%
+           family={Choi},
+           familyi={C\bibinitperiod},
+           given={C.\bibnamedelimi G.},
+           giveni={C\bibinitperiod\bibinitdelim G\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{238d92dfa5108e0df9209985588777c8}
+      \strng{fullhash}{c21efe56725cbaf95dae9affec0ea3a8}
+      \strng{fullhashraw}{c21efe56725cbaf95dae9affec0ea3a8}
+      \strng{bibnamehash}{c21efe56725cbaf95dae9affec0ea3a8}
+      \strng{authorbibnamehash}{c21efe56725cbaf95dae9affec0ea3a8}
+      \strng{authornamehash}{238d92dfa5108e0df9209985588777c8}
+      \strng{authorfullhash}{c21efe56725cbaf95dae9affec0ea3a8}
+      \strng{authorfullhashraw}{c21efe56725cbaf95dae9affec0ea3a8}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Environment and Planning B: Urban Analytics and City Science}
+      \field{note}{Original work published 2021}
+      \field{number}{3}
+      \field{title}{Why are convenience stores clustered? The reasons behind the clustering of similar shops and the effect of increased competition}
+      \field{volume}{49}
+      \field{year}{2022}
+      \field{pages}{834\bibrangedash 846}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1177/23998083211021870
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1177/23998083211021870
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1177/23998083211021870
       \endverb
     \endentry
   \enddatalist
@@ -581,8 +744,10 @@
       \strng{authornamehash}{e949548a1c94237c2714130be28a14d3}
       \strng{authorfullhash}{e949548a1c94237c2714130be28a14d3}
       \strng{authorfullhashraw}{e949548a1c94237c2714130be28a14d3}
+      \field{extraname}{1}
       \field{sortinit}{D}
       \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradate}{1}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \true{uniqueprimaryauthor}
@@ -598,6 +763,33 @@
       \verb{url}
       \verb https://www.dane.gov.co/files/operaciones/EMICRON/bol-EMICRON-2024.pdf
       \endverb
+    \endentry
+    \entry{DANE2025a}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e949548a1c94237c2714130be28a14d3}{%
+           family={{DANE}},
+           familyi={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{e949548a1c94237c2714130be28a14d3}
+      \strng{fullhash}{e949548a1c94237c2714130be28a14d3}
+      \strng{fullhashraw}{e949548a1c94237c2714130be28a14d3}
+      \strng{bibnamehash}{e949548a1c94237c2714130be28a14d3}
+      \strng{authorbibnamehash}{e949548a1c94237c2714130be28a14d3}
+      \strng{authornamehash}{e949548a1c94237c2714130be28a14d3}
+      \strng{authorfullhash}{e949548a1c94237c2714130be28a14d3}
+      \strng{authorfullhashraw}{e949548a1c94237c2714130be28a14d3}
+      \field{extraname}{2}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{In DANE. Retrieved September 27, 2025, from \url{https://www.dane.gov.co/files/operaciones/EMICRON/bol-EMICRON-PanaderiasTiendasBarrio-2023.pdf}}
+      \field{title}{Encuesta de Micronegocios (EMICRON) Panaderías y tiendas de barrio 2019-2023}
+      \field{year}{2025}
     \endentry
     \entry{delgado2024}{report}{}{}
       \name{author}{3}{}{%
@@ -686,39 +878,84 @@
       \verb https://www.valoraanalitik.com/tiendas-oxxo-abre-su-local-numero-600-en-colombia/
       \endverb
     \endentry
-    \entry{m_2025}{article}{}{}
+    \entry{Konishi2005}{article}{}{}
       \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=566c3096ce6295c3cc9129567319c51e}{%
-           family={M},
-           familyi={M\bibinitperiod},
-           given={J.\bibnamedelimi R.},
-           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod},
+        {{un=0,uniquepart=base,hash=933756f939b72ad113b50ff2c60ffb08}{%
+           family={Konishi},
+           familyi={K\bibinitperiod},
+           given={Hideo},
+           giveni={H\bibinitperiod},
            givenun=0}}%
       }
-      \strng{namehash}{566c3096ce6295c3cc9129567319c51e}
-      \strng{fullhash}{566c3096ce6295c3cc9129567319c51e}
-      \strng{fullhashraw}{566c3096ce6295c3cc9129567319c51e}
-      \strng{bibnamehash}{566c3096ce6295c3cc9129567319c51e}
-      \strng{authorbibnamehash}{566c3096ce6295c3cc9129567319c51e}
-      \strng{authornamehash}{566c3096ce6295c3cc9129567319c51e}
-      \strng{authorfullhash}{566c3096ce6295c3cc9129567319c51e}
-      \strng{authorfullhashraw}{566c3096ce6295c3cc9129567319c51e}
-      \field{sortinit}{M}
-      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \strng{namehash}{933756f939b72ad113b50ff2c60ffb08}
+      \strng{fullhash}{933756f939b72ad113b50ff2c60ffb08}
+      \strng{fullhashraw}{933756f939b72ad113b50ff2c60ffb08}
+      \strng{bibnamehash}{933756f939b72ad113b50ff2c60ffb08}
+      \strng{authorbibnamehash}{933756f939b72ad113b50ff2c60ffb08}
+      \strng{authornamehash}{933756f939b72ad113b50ff2c60ffb08}
+      \strng{authorfullhash}{933756f939b72ad113b50ff2c60ffb08}
+      \strng{authorfullhashraw}{933756f939b72ad113b50ff2c60ffb08}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Portafolio.co}
-      \field{month}{3}
-      \field{title}{Oxxo llegó a su apertura 600 en Colombia: ¿cuántas tiendas abre en el año?}
-      \field{year}{2025}
+      \field{abstract}{The geographical concentration of stores that sell similar commodities is analyzed using a two-dimensional spatial competition model. A higher concentration of stores attracts more consumers with taste uncertainty and low price expectations (a market-size effect), while it leads to fiercer price competition (a price-cutting effect). Our model is general enough to allow for the coexistence of multiple (possibly) asymmetric clusters of stores. We provide sufficient conditions for the nonemptiness of equilibrium store location choices in pure strategies. Through numerical examples, we illustrate the trade-off between the market-size and price-cutting effects, and provide agglomeration patterns of stores in special cases.}
+      \field{journaltitle}{Journal of Urban Economics}
+      \field{number}{3}
+      \field{title}{Concentration of competing retail stores}
+      \field{volume}{58}
+      \field{year}{2005}
+      \field{pages}{488\bibrangedash 512}
+      \range{pages}{25}
+      \verb{doi}
+      \verb 10.1016/j.jue.2005.08.005
+      \endverb
       \verb{urlraw}
-      \verb https://www.portafolio.co/negocios/empresas/oxxo-llega-a-las-600-tiendas-en-colombia-626124
+      \verb https://www.sciencedirect.com/science/article/pii/S0094119005000562
       \endverb
       \verb{url}
-      \verb https://www.portafolio.co/negocios/empresas/oxxo-llega-a-las-600-tiendas-en-colombia-626124
+      \verb https://www.sciencedirect.com/science/article/pii/S0094119005000562
+      \endverb
+      \keyw{Consumer search,Market size effect,Price cutting effect,Taste uncertainty}
+    \endentry
+    \entry{llanes2025}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=965355982f5ada4ae7bb410e8b5e0190}{%
+           family={Llanes},
+           familyi={L\bibinitperiod},
+           given={M.\bibnamedelimi C.},
+           giveni={M\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {BBVA Research}%
+      }
+      \strng{namehash}{965355982f5ada4ae7bb410e8b5e0190}
+      \strng{fullhash}{965355982f5ada4ae7bb410e8b5e0190}
+      \strng{fullhashraw}{965355982f5ada4ae7bb410e8b5e0190}
+      \strng{bibnamehash}{965355982f5ada4ae7bb410e8b5e0190}
+      \strng{authorbibnamehash}{965355982f5ada4ae7bb410e8b5e0190}
+      \strng{authornamehash}{965355982f5ada4ae7bb410e8b5e0190}
+      \strng{authorfullhash}{965355982f5ada4ae7bb410e8b5e0190}
+      \strng{authorfullhashraw}{965355982f5ada4ae7bb410e8b5e0190}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{title}{Colombia | Empleo no asalariado, gran jalonador del empleo nacional}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://www.bbvaresearch.com/publicaciones/colombia-empleo-no-asalariado-gran-jalonador-del-empleo-nacional/
+      \endverb
+      \verb{url}
+      \verb https://www.bbvaresearch.com/publicaciones/colombia-empleo-no-asalariado-gran-jalonador-del-empleo-nacional/
       \endverb
     \endentry
     \entry{marcos2022}{article}{}{}
@@ -787,6 +1024,95 @@
       \endverb
       \verb{url}
       \verb https://www.portafolio.co/economia/empleo/trabajo-por-cuenta-propia-crece-en-colombia-pero-informalidad-y-falta-de-aportes-preocupan-634514
+      \endverb
+    \endentry
+    \entry{m_2025}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=ad4b6003de0b7ce760ea128daf47ae47}{%
+           family={Rodríguez},
+           familyi={R\bibinitperiod},
+           given={J.\bibnamedelimi R.},
+           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{ad4b6003de0b7ce760ea128daf47ae47}
+      \strng{fullhash}{ad4b6003de0b7ce760ea128daf47ae47}
+      \strng{fullhashraw}{ad4b6003de0b7ce760ea128daf47ae47}
+      \strng{bibnamehash}{ad4b6003de0b7ce760ea128daf47ae47}
+      \strng{authorbibnamehash}{ad4b6003de0b7ce760ea128daf47ae47}
+      \strng{authornamehash}{ad4b6003de0b7ce760ea128daf47ae47}
+      \strng{authorfullhash}{ad4b6003de0b7ce760ea128daf47ae47}
+      \strng{authorfullhashraw}{ad4b6003de0b7ce760ea128daf47ae47}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Portafolio.co}
+      \field{month}{3}
+      \field{title}{Oxxo llegó a su apertura 600 en Colombia: ¿cuántas tiendas abre en el año?}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://www.portafolio.co/negocios/empresas/oxxo-llega-a-las-600-tiendas-en-colombia-626124
+      \endverb
+      \verb{url}
+      \verb https://www.portafolio.co/negocios/empresas/oxxo-llega-a-las-600-tiendas-en-colombia-626124
+      \endverb
+    \endentry
+    \entry{Seong2022}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=f6a3f423029340e4ded9192e8828f1ce}{%
+           family={Seong},
+           familyi={S\bibinitperiod},
+           given={E.\bibnamedelimi Y.},
+           giveni={E\bibinitperiod\bibinitdelim Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=89dda28cac79a47adf9134d5598c4f12}{%
+           family={Lim},
+           familyi={L\bibinitperiod},
+           given={Y.},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d8a536f8fbfb1908979eae934c6e9891}{%
+           family={Choi},
+           familyi={C\bibinitperiod},
+           given={C.\bibnamedelimi G.},
+           giveni={C\bibinitperiod\bibinitdelim G\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{238d92dfa5108e0df9209985588777c8}
+      \strng{fullhash}{c21efe56725cbaf95dae9affec0ea3a8}
+      \strng{fullhashraw}{c21efe56725cbaf95dae9affec0ea3a8}
+      \strng{bibnamehash}{c21efe56725cbaf95dae9affec0ea3a8}
+      \strng{authorbibnamehash}{c21efe56725cbaf95dae9affec0ea3a8}
+      \strng{authornamehash}{238d92dfa5108e0df9209985588777c8}
+      \strng{authorfullhash}{c21efe56725cbaf95dae9affec0ea3a8}
+      \strng{authorfullhashraw}{c21efe56725cbaf95dae9affec0ea3a8}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Environment and Planning B: Urban Analytics and City Science}
+      \field{note}{Original work published 2021}
+      \field{number}{3}
+      \field{title}{Why are convenience stores clustered? The reasons behind the clustering of similar shops and the effect of increased competition}
+      \field{volume}{49}
+      \field{year}{2022}
+      \field{pages}{834\bibrangedash 846}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1177/23998083211021870
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1177/23998083211021870
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1177/23998083211021870
       \endverb
     \endentry
   \enddatalist

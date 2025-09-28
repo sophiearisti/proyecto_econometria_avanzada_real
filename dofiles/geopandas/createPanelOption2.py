@@ -17,13 +17,12 @@ zat_data_list = []
 for year, file in data_files.items():
     df = pd.read_stata(file)
     df['year'] = year
+    print(f"Datos para el año {year}:")
+    print(df.columns)
     zat_data_list.append(df)
 
 # Concatenar todos los años
 zat_data_seconomic = pd.concat(zat_data_list, ignore_index=True)
-
-print(zat_data_seconomic.head())
-print(zat_data_seconomic.columns)
 
 
 # Lista de archivos por cadena
@@ -70,21 +69,21 @@ for year in años:
     
     # Filtrar tiendas vigentes en ese año
     # ESTE ES PARA AHCER EL MAPA REAL DE TIENDAS ABIERTAS EN ESE AÑO
-    tiendas_year = tienda_gdf[
+    """ tiendas_year = tienda_gdf[
         (tienda_gdf['fechadematrícula'].dt.year <= year) &
         (tienda_gdf['últimoañorenovado'] >= year)
-    ]
+    ]"""
     
     #EL COMENTARIADOS ES PARA TENER EL CONTROL RESAGADO
   
      # Filtrar tiendas vigentes en ese año si son oxxo
      # para las demas cadenas sera menor a year la fecha de matricula
-    """tiendas_year = tienda_gdf[
+    tiendas_year = tienda_gdf[
         (tienda_gdf['fechadematrícula'].dt.year <= year) &
         (tienda_gdf['últimoañorenovado'] >= year) &
         (tienda_gdf['cadena'] == 'oxxo') | (tienda_gdf['fechadematrícula'].dt.year < year) &
         (tienda_gdf['cadena'] != 'oxxo') & (tienda_gdf['últimoañorenovado'] >= year)
-    ]"""
+    ]
    
 
     # Spatial join: ahora left_df sigue siendo GeoDataFrame
@@ -124,7 +123,7 @@ for year in años:
     # Spillover de OXXO
     # -------------------------------
     
-    buffer = 800  # metros
+    buffer = 400  # metros
 
     oxxo_buffers = tiendas_year[tiendas_year['cadena'] == 'oxxo'].copy()
     if not oxxo_buffers.empty:
@@ -226,11 +225,10 @@ panel = pd.merge(
 # Reemplazar todos los NaN por 0 excepto estrato_mean
 cols_to_fill = [col for col in panel.columns if col != 'estrato_mean' and col != 'codigo_upz']
 panel[cols_to_fill] = panel[cols_to_fill].fillna(0)
+  
 
 # Guardar el panel final
 panel.to_csv("../../data/buffer_data/panel_final.csv", index=False)
-print(panel.head())
-print(panel.columns)
 
 
 #solo quedarme con zats de bogota que tienen codigo_upz

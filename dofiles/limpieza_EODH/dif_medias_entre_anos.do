@@ -126,7 +126,7 @@ rename estrato estrato_trabajador
 //edad nivel_educativo limitaciones_fisicas i.ocupacion1 mujer i.actividad_economica1 camino_cuadras camino_minutos i.tipo_vivienda i.tipo_propiedad_vivienda estrato total_personas total_personas_mas_5
 
 
-collapse (mean) mujer nivel_educativo estrato_trabajador limitaciones_fisicas total_personas ///
+collapse (mean) mujer ingreso nivel_educativo estrato_trabajador limitaciones_fisicas total_personas ///
 tipo_vivienda_d2 tipo_vivienda_d3 tipo_vivienda_d4 tipo_vivienda_d5 ///
 nivel_educativo_d2 nivel_educativo_d3 nivel_educativo_d4 nivel_educativo_d5 nivel_educativo_d7 nivel_educativo_d8 nivel_educativo_d9 nivel_educativo_d11 ///
 ocupacion1_d1 ocupacion1_d4 ocupacion1_d5 ocupacion1_d6 ocupacion1_d7 ocupacion1_d8 ocupacion1_d13 ocupacion1_d18 ocupacion1_d19 ocupacion1_d20 ocupacion1_d24 ///
@@ -192,7 +192,7 @@ rename estrato estrato_trabajador
 
 //falta poner minutos caminados y cuadras caminadas
 
-collapse (mean) mujer nivel_educativo estrato_trabajador limitaciones_fisicas total_personas ///
+collapse (mean) mujer ingreso nivel_educativo estrato_trabajador limitaciones_fisicas total_personas ///
 tipo_vivienda_d2 tipo_vivienda_d3 tipo_vivienda_d4 tipo_vivienda_d5 ///
 nivel_educativo_d2 nivel_educativo_d3 nivel_educativo_d4 nivel_educativo_d5 nivel_educativo_d7 nivel_educativo_d8 nivel_educativo_d9 nivel_educativo_d11 ///
 ocupacion1_d1 ocupacion1_d4 ocupacion1_d5 ocupacion1_d6 ocupacion1_d7 ocupacion1_d8 ocupacion1_d13 ocupacion1_d18 ocupacion1_d19 ocupacion1_d20 ocupacion1_d24 ///
@@ -255,7 +255,7 @@ preserve
 rename estrato estrato_trabajador
 
 * colapsamos al nivel ZAT destino
-collapse (mean) mujer nivel_educativo estrato_trabajador limitaciones_fisicas   total_personas ///
+collapse (mean) mujer ingreso nivel_educativo estrato_trabajador limitaciones_fisicas   total_personas ///
 tipo_vivienda_d2 tipo_vivienda_d3 tipo_vivienda_d4 tipo_vivienda_d5 ///
 nivel_educativo_d2 nivel_educativo_d3 nivel_educativo_d4 nivel_educativo_d5 nivel_educativo_d7 nivel_educativo_d8 nivel_educativo_d9 nivel_educativo_d11 ///
 ocupacion1_d1 ocupacion1_d4 ocupacion1_d5 ocupacion1_d6 ocupacion1_d7 ocupacion1_d8 ocupacion1_d13 ocupacion1_d18 ocupacion1_d19 ocupacion1_d20 ocupacion1_d24 ///
@@ -313,7 +313,7 @@ preserve
 rename estrato estrato_trabajador
 
 * colapsamos al nivel ZAT destino
-collapse (mean) mujer nivel_educativo estrato_trabajador limitaciones_fisicas   total_personas ///
+collapse (mean) mujer ingreso nivel_educativo estrato_trabajador limitaciones_fisicas   total_personas ///
 tipo_vivienda_d2 tipo_vivienda_d3 tipo_vivienda_d4 tipo_vivienda_d5 ///
 nivel_educativo_d2 nivel_educativo_d3 nivel_educativo_d4 nivel_educativo_d5 nivel_educativo_d7 nivel_educativo_d8 nivel_educativo_d9 nivel_educativo_d11 ///
 ocupacion1_d1 ocupacion1_d4 ocupacion1_d5 ocupacion1_d6 ocupacion1_d7 ocupacion1_d8 ocupacion1_d13 ocupacion1_d18 ocupacion1_d19 ocupacion1_d20 ocupacion1_d24 ///
