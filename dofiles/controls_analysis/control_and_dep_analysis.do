@@ -336,10 +336,10 @@ preserve
 	xtreg prop_independiente_total $controls $panel_controls i.year lag3 lag2 lag1 lead1 lead2 lead3, fe vce(cluster zat)
 
 
-	ssc install coefplot
+	*ssc install coefplot
 
 * Plot the coefficients using coefplot
-* ssc install coefplot
+
 
 coefplot, keep(lag3 lag1 lag2 lead1 lead2 lead3) xlabel(, angle(vertical)) yline(0) xline(3.5) vertical msymbol(E) mfcolor(white) ciopts(lwidth(*3) lcolor(purple*0.3)) mlabel format(%9.3f) mcolor(purple) mlabposition(12) mlabgap(*2) title(Prop. Trabajadores Independientes)
 
