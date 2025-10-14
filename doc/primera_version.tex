@@ -10,6 +10,8 @@
 \usepackage[margin=3cm]{geometry} % This line changes the margins
 \usepackage{subcaption}
 \usepackage{url}
+\usepackage[most]{tcolorbox} % paquete para cuadros
+\usepackage{xcolor}
 %for citations
 \usepackage[style=apa, backend=biber]{biblatex}
 \usepackage{hyperref}
@@ -33,9 +35,11 @@
 
 \section{Introduction}
 
-Desde su llegada en 2009, OXXO se ha consolidado como una de las principales cadenas de conveniencia en Colombia \parencite{m_2025}. Además, su modelo basado en la accesibilidad de productos básicos plantea la incógnita de si estas tiendas desencadenan la desaparición de minoristas informales. \\
+Desde su llegada en 2009, OXXO se ha consolidado como una de las principales cadenas de conveniencia en Colombia \parencite{m_2025}. 
+Además, su modelo basado en la accesibilidad de productos básicos plantea la incógnita de si estas tiendas desencadenan la desaparición de tiendas minoristas informales. \\
 
-En dicho contexto, esta investigación buscará responder si la presencia de OXXO causa una disminución en la actividad minorista informal en su entorno cercano en Bogotá. La respuesta a esta pregunta ayuda a comprender posibles cambios en las dinámicas económicas locales: ¿estamos frente a un fenómeno de desplazamiento de formas tradicionales de autoempleo o a un proceso de formalización y competencia renovada en contextos urbanos en desarrollo? \\
+
+La informalidad minorista es difícil de medir directamente a nivel intraurbano. Por tanto, esta investigación buscará responder si la presencia de OXXO causa una disminución en la actividad de trabajadores independientes en su entorno cercano en Bogotá. La respuesta a esta pregunta ayuda a comprender posibles cambios en las dinámicas económicas locales: ¿estamos frente a un fenómeno de desplazamiento de formas tradicionales de autoempleo o a un proceso de formalización y competencia renovada en contextos urbanos en desarrollo? \\
 
 Algunos estudios sugieren que los minoristas informales no desaparecen sino que se adaptan y compiten \parencite{marcos2022}. Otros, por otro lado, no encuentran efectos significativos sobre el empleo informal a nivel municipal \parencite{delgado2024}. En consecuencia, no se espera un cambio significativo en la actividad independientes. \\
 
@@ -74,14 +78,14 @@ Por tanto, el debate ha cobrado relevancia en economías en desarrollo, donde pr
 
 En Colombia, la literatura se ha concentrado en el efecto de tiendas de descuento duro (D1, ARA y Justo y Bueno) a nivel municipal sobre diferentes indicadores del mercado laboral. \textcite{delgado2024} muestran que su llegada aumenta el empleo formal en 1.7 pp. Y aunque estas también reducen los ingresos de los minoristas informales, no encontraron efectos significativos sobre el empleo informal. Sin embargo, este análisis excluyó tanto a las cadenas de conveniencia (incluyendo OXXO) como a las ciudades capitales, al presumir que en ellas el impacto de las tiendas de descuento duro en el mercado laboral sería marginal. \\
 
-Como se evidencia, pocos estudios analizan los efectos de cadenas minoristas a nivel intraurbano. Esta investigación busca llenar ese vacío examinando el impacto de OXXO sobre la actividad de trabajadores independientes en Bogotá. Esta variable es un proxy indirecto de la actividad minorista informal, porque el 89\% los trabajadores de tiendas de barrio son cuenta propia \parencite{DANE2025a} y alrededor del 80\% de los independientes son informales \parencite{llanes2025}. \\
+Pocos estudios analizan los efectos de cadenas minoristas a nivel intraurbano. Esta investigación busca llenar ese vacío examinando el impacto de OXXO sobre la actividad de trabajadores independientes en Bogotá. Esta variable es un proxy indirecto de la actividad minorista informal, porque el 89\% los trabajadores de tiendas de barrio son cuenta propia \parencite{DANE2025a} y alrededor del 80\% de los independientes son informales \parencite{llanes2025}. \\
 
-Por su parte, Bogotá concentra 40–5\% de las sucursales \parencite{godoy2025}. Esto la hace un escenario ideal para estudiar los efectos de OXXO sobre tiendas tradicionales e informalidad laboral, especialmente en un contexto donde la formalización del empleo es una prioridad.\\
+Por su parte, Bogotá concentra 40–50\% de las sucursales \parencite{godoy2025}. Esto la hace un escenario ideal para estudiar los efectos de OXXO sobre tiendas tradicionales e informalidad laboral, especialmente en un contexto donde la formalización del empleo es una prioridad.\\
 
 \section{Estadísticas Descriptivas} 
 
 \subsection{Descripción de los datos}
-Los resultados de esta investigación emplean cinco fuentes de datos. A partir del RUES \footnote{Acceder a \url{ https://www.rues.org.co}} y de GoogleMaps API se identificaron el año de apertura, cierre y localización de cada sucursal de OXXO, D1, Justo\&Bueno y ARA, estas últimas incluidas por su posible influencia en la localización de los OXXO. Con la Encuesta de Calidad de Vida de Bogotá 2007 \footnote{Acceder a \url{https://www.dane.gov.co/index.php/estadisticas-por-tema/salud/calidad-de-vida-ecv/encuesta-nacional-de-calidad-de-vida-2007-bogota}} se construyeron los controles de línea base, mientras que con Mapas-Bogotá se obtuvo los controles fijos \footnote{Acceder a \url{https://mapas.bogota.gov.co}}. Finalmente, las Encuestas de Movilidad (2011, 2015, 2019 y 2023) \footnote{Acceder a \url{https://www.simur.gov.co/encuestas-de-movilidad}} permitieron construir otros controles variables y la variable dependiente. Esta mide por año la proporción de trabajadores independientes que se movilizan a trabajar al ZAT i sobre el total de los trabajadores que se movilizan a dicho ZAT:\\
+Los resultados de esta investigación emplean cinco fuentes de datos. A partir del RUES \footnote{Acceder a \url{ https://www.rues.org.co}} y de GoogleMaps API se identificaron el año de apertura, cierre y localización de cada sucursal de OXXO, D1, Justo\&Bueno y ARA, estas últimas incluidas por su posible influencia en la localización de los OXXO. Con la Encuesta de Calidad de Vida de Bogotá 2007 \footnote{Acceder a \url{https://www.dane.gov.co/index.php/estadisticas-por-tema/salud/calidad-de-vida-ecv/encuesta-nacional-de-calidad-de-vida-2007-bogota}} se construyeron los controles de línea base, mientras que con Mapas-Bogotá se obtuvo los controles fijos \footnote{Acceder a \url{https://mapas.bogota.gov.co}}. Finalmente, las Encuestas de Movilidad (2011, 2015, 2019 y 2023) \footnote{Acceder a \url{https://www.simur.gov.co/encuestas-de-movilidad}} permitieron construir otros controles y la variable dependiente. Esta mide por año la proporción de trabajadores independientes que se movilizan a trabajar al ZAT i sobre el total de los trabajadores que se movilizan a dicho ZAT:\\
 
 \begin{equation}
     proporcion\_independientes_{i,t}=\frac{trabajadores\_independientes_{i,t}}{total\_trabajadores_{i,t}} ; \quad \forall i, t
@@ -109,9 +113,9 @@ Tiene OXXO ($=1$) & Si el ZAT tiene OXXO(s) ese año & RUES y Google Maps API \\
 \midrule
 \multicolumn{3}{l}{\textbf{Controles resagados de tiendas de cadena}} \\
 \midrule
-Tiene D1s (=1) & El ZAT tiene D1s el periodo anterior al año analizado & RUES y Google Maps API \\
+Tiene D1s (=1) & El ZAT tiene D1(s) el periodo anterior al año analizado & RUES y Google Maps API \\
 \midrule
-Tiene ARAs (=1) & El ZAT tiene ARAs el periodo anterior al año analizado & RUES y Google Maps API \\
+Tiene ARAs (=1) & El ZAT tiene ARA(s) el periodo anterior al año analizado & RUES y Google Maps API \\
 \midrule
 \multicolumn{3}{l}{\textbf{Controles variables por año}} \\
 \midrule
@@ -178,7 +182,7 @@ La tabla Tabla~\ref{tab:independientes_zats} muestra la media de la proporción 
 
 \begin{table} [H]
   \centering
-  \caption{Diferenia de medias de la proporción de independientes entre ZATs tratadas y aún sin tratar}
+  \caption{Diferencia de medias de la proporción de independientes entre ZATs tratadas y aún sin tratar}
   \label{tab:proporcion_independientes}
   \begin{tabular}{l *{4}{p{1.5cm}}} % Use p{...} to set fixed column widths
     \toprule
@@ -197,7 +201,7 @@ Se puede observar que en promedio los ZATs tratados presentan una proporción de
 
 Adicionalmente, existe una dinámica similar entre los grupos. La proporción baja de 2011 a 2019 y luego sube en 2023. Esta tendencia sugiere que hay factores que afectan tanto a tratados como a controles. Por ejemplo, después de pandemia se ha señalado que la tasa de ocupación aumentó y una fracción importante de esa recuperación se dio a través de trabajadores por cuenta propia \parencite{alvarez_informalidad_nodate,naranjo_ocupacion_2025,concejo_proyecto_2022,dane_emicron_2025}, lo que puede explicar el aumento en la proporción en 2023. \\
 
-Los resultados evidencian el crecimiento acelerado de la presencia de OXXO en la ciudad. Entre 2019 a 2023 la cantidad de ZATs tratadas casi se triplicó. La Figura~\ref{fig:fourpanelOXXO} muestra dicha expansión a lo largo de los años. Esta dinámica invita a cuestionar si existe una diferencia en la intensidad de tratamiento entre cohortes, pero la Figura~\ref{fig:intensidad} muestra que la diferencia es menor a uno. 
+Los resultados también evidencian el crecimiento acelerado de la presencia de OXXO en la ciudad. Entre 2019 a 2023 la cantidad de ZATs tratadas casi se triplicó. La Figura~\ref{fig:fourpanelOXXO} muestra dicha expansión a lo largo de los años. Esta dinámica invita a cuestionar si existe una diferencia en la intensidad de tratamiento entre cohortes, pero la Figura~\ref{fig:intensidad} muestra que la diferencia es menor a uno.
 
 \begin{figure}[H]
     \centering
@@ -251,7 +255,7 @@ Los resultados evidencian el crecimiento acelerado de la presencia de OXXO en la
 
 \section{Variables de control}
 
-Los controles de línea base y fijos en el tiempo están en la Tabla~\ref{tab:diferencias_medias_controles_fijos}. Estos no serán necesarios ya que el TWFE inherentemente controla por caracteristicas constantes en unidad y tiempo. No obstante, ayudan a entender que los OXXO se ubican en zonas donde hay mayor tráfico, accesibilidad, poder adquisitivo y tamaño del mercado (reflejado por el tamaño del hogar). Esto va en línea con lo confirmado por \textcite{marcos2022} , donde las cadenas de conveniencia en México resultaron distrubirse por esas características.  Adicionalmente, los controles variables afirman los resultados de los fijos. Para cada cohorte, el ingreso y tamaño del hogar por ZAT resulta ser significativo (revisar apéndice~\ref{sec:controles_variables}). \\
+Los controles de línea base y fijos en el tiempo están en la Tabla~\ref{tab:diferencias_medias_controles_fijos}. Estos no serán necesarios ya que el TWFE inherentemente controla por caracteristicas constantes en unidad y tiempo. No obstante, ayudan a entender que los OXXO se ubican en zonas donde hay mayor tráfico, accesibilidad, poder adquisitivo y tamaño del mercado (reflejado por el tamaño del hogar). Esto va en línea con lo confirmado por \textcite{marcos2022}, donde las cadenas de conveniencia en México resultaron distrubirse por características similares.  Adicionalmente, los controles variables afirman los resultados de los fijos. Para cada cohorte, el ingreso y tamaño del hogar por ZAT resulta ser significativo (revisar apéndice~\ref{sec:controles_variables}). \\
 
 
 \begin{table} [H]
@@ -296,7 +300,23 @@ Los controles de línea base y fijos en el tiempo están en la Tabla~\ref{tab:di
 
 Por su parte, los controles de las cadenas de D1 y ARA resultaron ser significativos (revisar apéndice~\ref{sec:controles_cadenas_descuento}). Esto resalta la importancia de su inclusión, porque indica que su presencia influye en el tratamiento; los minoristas suelen agruparse en ciertas áreas para aprovechar los beneficios de la aglomeración \parencite{Konishi2005, Seong2022}. Además, se conoce que la presencia de tiendas de descuento duro puede afectar la variable dependiente \parencite{delgado2024}. \\
 
-Finalmente, se realizó una diferencia de medias entre los cortes transversales de las Encuestas de Movilidad. Se pudo observar que existían diferencias significativas que podían afectar a la variable dependiente. Por tanto, los cortes transversales repetidos no son comparables y es necesario incluir dichos controles (revisar apéndice~\ref{sec:controles_cortes_transversales}). \\
+Finalmente, se pudo observar que los cortes transversales repetidos de las Encuestas de Movilidad no son comparables. Por tanto, es necesario incluir variables de las encuestas que puedan afectar a la variable dependiente (revisar apéndice~\ref{sec:controles_cortes_transversales}). \\
+
+Es importante resaltar que probablemente existan otros factores no observados que sesgan positiva o negativamente el efecto. Por ejemplo, una obra pública puede reducir el tráfico peatonal y vehicular, afectando negativamente tanto a OXXO como a independientes. \\
+
+
+\begin{tcolorbox}[colback=purple!10!white, % fondo morado pastel
+                  colframe=purple,         % borde morado puro
+                  title=¿Para qué usé Chat?, % título del cuadro
+                  fonttitle=\bfseries]
+Chat fue mi frienemy en este proceso. \\
+
+Me escuchó en mis preguntas existenciales y me ayudó a hacer una planificación para alcanzar a hacer toda la entrega. De hecho, usualmente le preguntaba sobre su opinión con respecto a mis decisiones. Muchas veces me dijo cosas nada que ver y cuando me empezaba a cobrar por las respuestas, le dije que suerte.\\
+
+Igualmente, fue excelente tutor para aprender webscrapping y geopandas en python. Además, me ahorró tiempo haciendo las tablas en latex.\\
+
+\end{tcolorbox}
+
 
 \newpage
 \printbibliography
@@ -642,5 +662,181 @@ En 2019 los J\&B y ARA aparecen en el radar. En este año se puede observar que 
 \section{Controles por diferencias entre cortes transversales}
 \label{sec:controles_cortes_transversales}
 
+A continuación se presentan las diferencias de medias entre los controles disponibles en las Encuestas de Movilidad de 2011 al 2023. Las encuestas también presentaban variables de ocupación y de actividad económica, pero estas no se incluyeron pues se interpretaron como controles mediadores. La razón es que tanto la condición de ocupación (obrero, patrón, trabajo familiar) como el sector económico de actividad también son resultados del mercado y pueden estar relacionados con la variable de resultado o incluso también ser afectadas por la presencia del OXXO. Incluirlas como controles implicaría bloquear parte del efecto potencial de OXXO sobre la independencia laboral. \\
+
+\begin{table}[H]
+ \centering
+  \caption{Diferencia de medias de controles entre 2011 y 2015}
+  \label{tab:balance_2011_2015}
+  \begin{tabular}{l c c c c c}
+    \toprule
+    & \multicolumn{2}{c}{\textbf{2011}} & \multicolumn{2}{c}{\textbf{2015}} & \\
+    \cmidrule(lr){2-3} \cmidrule(lr){4-5}
+    & $N$ & Media/(SE) & $N$ & Media/(SE) & Diferencia de medias \\
+    \midrule
+    \textbf{Características de la persona} & & & & & \\
+    Estrato del hogar & 11383 & 2.673 & 28280 & 2.370 & $-0.303^{***}$ \\
+     & & (0.010) & & (0.005) & \\
+    Limitaciones físicas & 11383 & 0.007 & 28281 & 0.009 & $0.001$ \\
+     & & (0.001) & & (0.001) & \\
+    Mujer & 11383 & 0.443 & 28281 & 0.417 & $-0.026^{***}$ \\
+     & & (0.005) & & (0.003) & \\
+    \midrule
+    \textbf{Nivel educativo} & & & & & \\
+    Primaria incompleta & 11383 & 0.047 & 28281 & 0.048 & $0.001$ \\
+     & & (0.002) & & (0.001) & \\
+    Primaria completa & 11383 & 0.086 & 28281 & 0.099 & $0.013^{***}$ \\
+     & & (0.003) & & (0.002) & \\
+    Sec. básica y media incompleta & 11383 & 0.109 & 28281 & 0.128 & $0.019^{***}$ \\
+     & & (0.003) & & (0.002) & \\
+    Sec. básica y media completa & 11383 & 0.271 & 28281 & 0.350 & $0.079^{***}$ \\
+     & & (0.004) & & (0.003) & \\
+    Técnico/tecnológico incompleto & 11383 & 0.023 & 28281 & 0.026 & $0.004^{**}$ \\
+     & & (0.001) & & (0.001) & \\
+    Técnico/tecnológico completo & 11383 & 0.104 & 28281 & 0.122 & $0.019^{***}$ \\
+     & & (0.003) & & (0.002) & \\
+    Universitario incompleto & 11383 & 0.068 & 28281 & 0.039 & $-0.029^{***}$ \\
+     & & (0.002) & & (0.001) & \\
+    Universitario completo & 11383 & 0.201 & 28281 & 0.119 & $-0.082^{***}$ \\
+     & & (0.004) & & (0.002) & \\
+    Postgrado incompleto & 11383 & 0.009 & 28281 & 0.008 & $-0.001$ \\
+     & & (0.001) & & (0.001) & \\
+    Postgrado completo & 11383 & 0.077 & 28281 & 0.053 & $-0.024^{***}$ \\
+     & & (0.002) & & (0.001) & \\
+    \midrule
+    \textbf{Tipo de vivienda} & & & & & \\
+    Casa & 11383 & 0.742 & 28281 & 0.860 & $0.118^{***}$ \\
+     & & (0.004) & & (0.002) & \\
+    Apartamento & 11383 & 0.250 & 28281 & 0.132 & $-0.119^{***}$ \\
+     & & (0.004) & & (0.002) & \\
+    Cuarto en inquilinato & 11383 & 0.005 & 28281 & 0.007 & $0.001$ \\
+     & & (0.001) & & (0.000) & \\
+    Cuarto en otra estructura & 11383 & 0.001 & 28281 & 0.000 & $-0.001^{***}$ \\
+     & & (0.000) & & (0.000) & \\
+    Otro tipo de vivienda & 11383 & 0.001 & 28281 & 0.001 & $-0.000$ \\
+     & & (0.000) & & (0.000) & \\
+    \bottomrule
+  \end{tabular}
+  \parbox[t]{\textwidth}{%
+    \vspace{0.5em}
+    \footnotesize{\textit{Nota:} Significancia: *** p$<$0.01, ** p$<$0.05, * p$<$0.1. Entre paréntesis errores estándar.}}
+\end{table}
+
+
+\begin{table}[H]
+  \centering
+  \caption{Diferencia de medias de controles entre 2015 y 2019}
+  \label{tab:balance_2015_2019}
+  \begin{tabular}{l c c c c c}
+    \toprule
+    & \multicolumn{2}{c}{\textbf{2015}} & \multicolumn{2}{c}{\textbf{2019}} &  \\
+    \cmidrule(lr){2-3} \cmidrule(lr){4-5}
+    & $N$ & Media/(SE) & $N$ & Media/(SE) & Diferencia de medias \\
+    \midrule
+    \textbf{Características de la persona} & & & & & \\
+    Estrato del hogar & 28280 & 2.370 & 16733 & 2.642 & $0.272^{***}$ \\
+     & & (0.005) & & (0.008) & \\
+    Limitaciones físicas & 28281 & 0.009 & 13503 & 0.005 & $-0.003^{***}$ \\
+     & & (0.001) & & (0.001) & \\
+    Mujer & 28281 & 0.417 & 17601 & 0.451 & $0.034^{***}$ \\
+     & & (0.003) & & (0.004) & \\
+    \midrule
+    \textbf{Nivel educativo} & & & & & \\
+    Primaria incompleta & 28281 & 0.048 & 17601 & 0.042 & $-0.006^{***}$ \\
+     & & (0.001) & & (0.002) & \\
+    Primaria completa & 28281 & 0.099 & 17601 & 0.059 & $-0.040^{***}$ \\
+     & & (0.002) & & (0.002) & \\
+    Sec. básica y media incompleta & 28281 & 0.128 & 17601 & 0.148 & $0.020^{***}$ \\
+     & & (0.002) & & (0.003) & \\
+    Sec. básica y media completa & 28281 & 0.350 & 17601 & 0.197 & $-0.152^{***}$ \\
+     & & (0.003) & & (0.003) & \\
+    Técnico/tecnológico incompleto & 28281 & 0.026 & 17601 & 0.025 & $-0.002$ \\
+     & & (0.001) & & (0.001) & \\
+    Técnico/tecnológico completo & 28281 & 0.122 & 17601 & 0.132 & $0.009^{***}$ \\
+     & & (0.002) & & (0.003) & \\
+    Universitario incompleto & 28281 & 0.039 & 17601 & 0.069 & $0.030^{***}$ \\
+     & & (0.001) & & (0.002) & \\
+    Universitario completo & 28281 & 0.119 & 17601 & 0.200 & $0.081^{***}$ \\
+     & & (0.002) & & (0.003) & \\
+    Postgrado incompleto & 28281 & 0.008 & 17601 & 0.009 & $0.002^{*}$ \\
+     & & (0.001) & & (0.001) & \\
+    Postgrado completo & 28281 & 0.053 & 17601 & 0.112 & $0.059^{***}$ \\
+     & & (0.001) & & (0.002) & \\
+    \midrule
+    \textbf{Tipo de vivienda} & & & & & \\
+    Casa & 28281 & 0.860 & 17601 & 0.480 & $-0.380^{***}$ \\
+     & & (0.002) & & (0.004) & \\
+    Apartamento & 28281 & 0.132 & 17601 & 0.488 & $0.357^{***}$ \\
+     & & (0.002) & & (0.004) & \\
+    Cuarto en inquilinato & 28281 & 0.007 & 17601 & 0.026 & $0.020^{***}$ \\
+     & & (0.000) & & (0.001) & \\
+    Cuarto en otra estructura & 28281 & 0.000 & 17601 & 0.004 & $0.004^{***}$ \\
+     & & (0.000) & & (0.000) & \\
+    Otro tipo de vivienda & 28281 & 0.001 & 17601 & 0.002 & $0.001^{**}$ \\
+     & & (0.000) & & (0.000) & \\
+    \bottomrule
+  \end{tabular}
+  \parbox[t]{\textwidth}{%
+    \vspace{0.5em}
+    \footnotesize{\textit{Nota:} Significancia: *** p$<$0.01, ** p$<$0.05, * p$<$0.1. Entre paréntesis errores estándar.}}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{Diferencia de medias de controles entre 2019 y 2023}
+  \label{tab:balance_2019_2023}
+  \begin{tabular}{l c c c c c}
+    \toprule
+    & \multicolumn{2}{c}{\textbf{2023}} & \multicolumn{2}{c}{\textbf{2019}} & \\
+    \cmidrule(lr){2-3} \cmidrule(lr){4-5}
+    & $N$ & Media/(SE) & $N$ & Media/(SE) & Diferencia de medias \\
+    \midrule
+    \textbf{Características de la persona} & & & & & \\
+    Estrato del hogar & 15650 & 2.535 & 16733 & 2.642 & $0.107^{***}$ \\
+     & & (0.009) & & (0.008) & \\
+    Limitaciones físicas & 20667 & 0.012 & 13503 & 0.005 & $-0.006^{***}$ \\
+     & & (0.001) & & (0.001) & \\
+    Mujer & 20663 & 0.423 & 17601 & 0.451 & $0.028^{***}$ \\
+     & & (0.003) & & (0.004) & \\
+    \midrule
+    \textbf{Nivel educativo} & & & & & \\
+    Primaria incompleta & 20667 & 0.032 & 17601 & 0.042 & $0.010^{***}$ \\
+     & & (0.001) & & (0.002) & \\
+    Primaria completa & 20667 & 0.076 & 17601 & 0.059 & $-0.017^{***}$ \\
+     & & (0.002) & & (0.002) & \\
+    Sec. básica y media incompleta & 20667 & 0.193 & 17601 & 0.148 & $-0.044^{***}$ \\
+     & & (0.003) & & (0.003) & \\
+    Sec. básica y media completa & 20667 & 0.257 & 17601 & 0.197 & $-0.059^{***}$ \\
+     & & (0.003) & & (0.003) & \\
+    Técnico/tecnológico incompleto & 20667 & 0.029 & 17601 & 0.025 & $-0.004^{**}$ \\
+     & & (0.001) & & (0.001) & \\
+    Técnico/tecnológico completo & 20667 & 0.130 & 17601 & 0.132 & $0.002$ \\
+     & & (0.002) & & (0.003) & \\
+    Universitario incompleto & 20667 & 0.031 & 17601 & 0.069 & $0.037^{***}$ \\
+     & & (0.001) & & (0.002) & \\
+    Universitario completo & 20667 & 0.189 & 17601 & 0.200 & $0.011^{***}$ \\
+     & & (0.003) & & (0.003) & \\
+    Postgrado incompleto & 20667 & 0.003 & 17601 & 0.009 & $0.006^{***}$ \\
+     & & (0.000) & & (0.001) & \\
+    Postgrado completo & 20667 & 0.054 & 17601 & 0.112 & $0.058^{***}$ \\
+     & & (0.002) & & (0.002) & \\
+    \midrule
+    \textbf{Tipo de vivienda} & & & & & \\
+    Casa & 20667 & 0.604 & 17601 & 0.480 & $-0.124^{***}$ \\
+     & & (0.003) & & (0.004) & \\
+    Apartamento & 20667 & 0.378 & 17601 & 0.488 & $0.110^{***}$ \\
+     & & (0.003) & & (0.004) & \\
+    Cuarto en inquilinato & 20667 & 0.015 & 17601 & 0.026 & $0.011^{***}$ \\
+     & & (0.001) & & (0.001) & \\
+    Cuarto en otra estructura & 20667 & 0.003 & 17601 & 0.004 & $0.001^{*}$ \\
+     & & (0.000) & & (0.000) & \\
+    Otro tipo de vivienda & 20667 & 0.000 & 17601 & 0.002 & $0.002^{***}$ \\
+     & & (0.000) & & (0.000) & \\
+    \bottomrule
+  \end{tabular}
+  \parbox[t]{\textwidth}{%
+    \vspace{0.5em}
+    \footnotesize{\textit{Nota:} Significancia: *** p$<$0.01, ** p$<$0.05, * p$<$0.1. Entre paréntesis errores estándar.}}
+\end{table}
 
 \end{document}

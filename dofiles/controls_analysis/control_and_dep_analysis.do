@@ -29,7 +29,6 @@ replace personas_por_hogar_2007_localida = subinstr(personas_por_hogar_2007_loca
 destring personas_por_hogar_2007_localida, replace
 
 replace gasto_promedio_mensual_2007_loca = subinstr(gasto_promedio_mensual_2007_loca, ".", "", .)
-**# Bookmark #1
 destring gasto_promedio_mensual_2007_loca, replace
 
 replace icv_2007_localidad = subinstr(icv_2007_localidad, ",", ".", .)
@@ -262,7 +261,7 @@ restore
 *TWO WAY FIXED EFFECTS
 *********************************************************
 
-global panel_controls actividad_economica1_d9 actividad_economica1_d8 actividad_economica1_d7 actividad_economica1_d5 actividad_economica1_d4 actividad_economica1_d3 actividad_economica1_d17 actividad_economica1_d16 actividad_economica1_d15 actividad_economica1_d14 actividad_economica1_d13 actividad_economica1_d12 actividad_economica1_d11 actividad_economica1_d10 actividad_economica1_d1 nivel_educativo_d9 nivel_educativo_d8 nivel_educativo_d7 nivel_educativo_d5 nivel_educativo_d4 nivel_educativo_d3 nivel_educativo_d2 nivel_educativo_d11 tipo_vivienda_d5 tipo_vivienda_d4 tipo_vivienda_d3 tipo_vivienda_d2
+global panel_controls nivel_educativo_d9 nivel_educativo_d8 nivel_educativo_d7 nivel_educativo_d5 nivel_educativo_d4 nivel_educativo_d3 nivel_educativo_d2 nivel_educativo_d11 tipo_vivienda_d5 tipo_vivienda_d4 tipo_vivienda_d3 tipo_vivienda_d2
  
 global controls cantidad_d1 cantidad_ara ingreso total_personas
 
@@ -272,13 +271,20 @@ xtset zat year
 
 xtreg prop_independiente_total dummy_oxxo i.year, fe vce(cluster zat)
 
-xtreg prop_independiente_total dummy_oxxo i.year $controls, fe vce(cluster zat)
-
+xtreg prop_independiente_total dummy_oxxo i.year $controls $panel_controls, fe vce(cluster zat)
 
 reghdfe prop_independiente_total dummy_oxxo , absorb(zat i.year) vce(cluster zat)
 
 reghdfe prop_independiente_total dummy_oxxo $controls, absorb(zat i.year) vce(cluster zat)
 
+
+//ya hace el efecto de errores robustos
+xtdidreg (prop_independiente_total) (dummy_oxxo), group(zat) time(year)
+
+//deben ser tratados al mismo tiempo 
+estat trendplots
+
+estat ptrends
 
 *ssc install bacondecomp, replace
 replace dummy_oxxo=1 if year==2019 & (zat==246 | zat==433 | zat==575)
@@ -333,7 +339,7 @@ preserve
 	gen lag2 = (rel_time==2)
 	gen lag3 = (rel_time==3)
 
-	xtreg prop_independiente_total $controls $panel_controls i.year lag3 lag2 lag1 lead1 lead2 lead3, fe vce(cluster zat)
+	xtreg prop_independiente_total $controls $panel_controls lag3 lag2 lag1 lead1 lead2 lead3 i.year, fe vce(cluster zat)
 
 
 	*ssc install coefplot
