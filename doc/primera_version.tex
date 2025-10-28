@@ -252,11 +252,9 @@ Los resultados también evidencian el crecimiento acelerado de la presencia de O
     \label{fig:fourpanelOXXO}
 \end{figure}
 
-
 \section{Variables de control}
 
 Los controles de línea base y fijos en el tiempo están en la Tabla~\ref{tab:diferencias_medias_controles_fijos}. Estos no serán necesarios ya que el TWFE inherentemente controla por caracteristicas constantes en unidad y tiempo. No obstante, ayudan a entender que los OXXO se ubican en zonas donde hay mayor tráfico, accesibilidad, poder adquisitivo y tamaño del mercado (reflejado por el tamaño del hogar). Esto va en línea con lo confirmado por \textcite{marcos2022}, donde las cadenas de conveniencia en México resultaron distrubirse por características similares.  Adicionalmente, los controles variables afirman los resultados de los fijos. Para cada cohorte, el ingreso y tamaño del hogar por ZAT resulta ser significativo (revisar apéndice~\ref{sec:controles_variables}). \\
-
 
 \begin{table} [H]
   \centering
@@ -304,18 +302,98 @@ Finalmente, se pudo observar que los cortes transversales repetidos de las Encue
 
 Es importante resaltar que probablemente existan otros factores no observados que sesgan positiva o negativamente el efecto. Por ejemplo, una obra pública puede reducir el tráfico peatonal y vehicular, afectando negativamente tanto a OXXO como a independientes. \\
 
+\section{Modelo econométrico}
 
-\begin{tcolorbox}[colback=purple!10!white, % fondo morado pastel
-                  colframe=purple,         % borde morado puro
-                  title=¿Para qué usé Chat?, % título del cuadro
-                  fonttitle=\bfseries]
-Chat fue mi frienemy en este proceso. \\
+\section{Resultados}
 
-Me escuchó en mis preguntas existenciales y me ayudó a hacer una planificación para alcanzar a hacer toda la entrega. De hecho, usualmente le preguntaba sobre su opinión con respecto a mis decisiones. Muchas veces me dijo cosas nada que ver y cuando me empezaba a cobrar por las respuestas, le dije que suerte.\\
+\begin{table}[H]
+\centering
+\caption{Resultados de regresión}
+\begin{tabular}{lcccc}
+\hline
+\hline
+Variables independientes & MCO & MCO & TWFE & TWFE \\
+                         & (1) & (2) & (3) & (4) \\
+\hline
+Tiene Oxxo & 0.0179 & -0.0111 & -0.0206 & -0.00223 \\
+            & (0.0142) & (0.0133) & (0.0142) & (0.0137) \\
+Constante    & 0.261*** & 0.00577 & 0.264*** & 0.0200 \\
+            & (0.00401) & (0.00958) & (0.00114) & (0.0155) \\
+\hline
+Observaciones & 3,584 & 3,584 & 3,584 & 3,584 \\
+R cuadrado    & 0.000 & 0.226 & 0.375 & 0.460 \\
+Tiendas de cadena & no & si & no & si \\
+Controles variables & no & si & no & si \\
+Controles fijos & no & si & no & no \\
+Control spillover & no & si & no & si \\
+Media grupo control & & & & \\  % <- completar
+\hline
+\multicolumn{5}{l}{\footnotesize Errores estándar en paréntesis. *** p$<$0.01, ** p$<$0.05, * p$<$0.1} \\
+\end{tabular}
+\end{table}
 
-Igualmente, fue excelente tutor para aprender webscrapping y geopandas en python. Además, me ahorró tiempo haciendo las tablas en latex.\\
+\begin{table}[H]
+\centering
+\caption{Resultados de la estamación del estudio de eventos}
+\begin{tabular}{lcc}
+\hline
+\hline
+    & (1) & (2) \\
+\hline
+Rezago 3 & -0.0216 & 0.0330 \\
+         & (0.0232) & (0.0334) \\
+Rezago 2 & 0.0195 & 0.0459 \\
+         & (0.0229) & (0.0267) \\
+Rezago 1 & 0.0103 & 0.0215 \\
+         & (0.0166) & (0.0180) \\
+Avance 1 & -0.0130 & -0.0252 \\
+         & (0.0135) & (0.0192) \\
+Avance 2 & -0.0356* & -0.0605* \\
+         & (0.0261) & (0.0299) \\
+Avance 3 & -0.0690** & -0.118*** \\
+         & (0.0273) & (0.0409) \\
+Constante & 0.315 & 0.154 \\
+          & (0.0103) & (0.104) \\
+\hline
+Estimador TWFE & 0.000199 & 0.00784 \\
+Error estándar & 0.0193 & 0.0195 \\
+Media grupo control & & \\ % <- completar
+Observaciones & 684 & 684 \\
+R-cuadrado & 0.084 & 0.159 \\
+Número de zat & 171 & 171 \\
+Tiendas de cadena & no & si \\
+Controles variables & no & si \\
+Controles fijos & no & no \\
+Control spillover & no & si \\
+\hline
+\multicolumn{3}{l}{\footnotesize Errores estándar entre paréntesis. *** p$<$0.01, ** p$<$0.05, * p$<$0.1} \\
+\end{tabular}
+\end{table}
 
-\end{tcolorbox}
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}[b]{0.7\textwidth}  % Figura superior
+    \centering
+    \includegraphics[width=\textwidth]{events_study/events_study_lindo_simple.png}
+    \caption{Figura superior}
+    \label{fig:superior}
+\end{subfigure}
+
+\vspace{0.5cm} % espacio vertical entre las figuras
+
+\begin{subfigure}[b]{0.7\textwidth}  % Figura inferior
+    \centering
+    \includegraphics[width=\textwidth]{events_study/events_study_lindo_controles.png}
+    \caption{Figura inferior}
+    \label{fig:inferior}
+\end{subfigure}
+
+\caption{Panel con dos figuras, una encima de la otra.}
+\label{fig:panel_vertical}
+\end{figure}
+
+\section{Conclusiones}
 
 
 \newpage

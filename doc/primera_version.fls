@@ -436,6 +436,16 @@ INPUT ./figs_oxxo_maps/mapa_oxxos_binary_2023.png
 INPUT ./figs_oxxo_maps/mapa_oxxos_binary_2023.png
 INPUT ./figs_oxxo_maps/mapa_oxxos_binary_2023.png
 INPUT ./figs_oxxo_maps/mapa_oxxos_binary_2023.png
+INPUT ./events_study/events_study_lindo_simple.png
+INPUT ./events_study/events_study_lindo_simple.png
+INPUT ./events_study/events_study_lindo_simple.png
+INPUT ./events_study/events_study_lindo_simple.png
+INPUT ./events_study/events_study_lindo_simple.png
+INPUT ./events_study/events_study_lindo_controles.png
+INPUT ./events_study/events_study_lindo_controles.png
+INPUT ./events_study/events_study_lindo_controles.png
+INPUT ./events_study/events_study_lindo_controles.png
+INPUT ./events_study/events_study_lindo_controles.png
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/ecti1000.tfm
 INPUT primera_version.aux
 INPUT ./primera_version.out

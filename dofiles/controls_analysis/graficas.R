@@ -252,3 +252,133 @@ ggsave(filename = "data/controles_results/oxxos_intensidad_tratamiento.png",
        plot = p,
        width = 8, height = 6, dpi = 300)
 #title = "Evolución relativa de cantidad de OXXOs por cohorte",
+
+
+
+#esta grafica será para hacer el event study bonito con colores lindos en diferentes tinalidades de morado
+#es un csv
+
+event_study_data <- read.csv("data/controles_results/paraEventsStudyControls.csv")
+
+head(event_study_data)
+
+# valor del estimador
+dd_val <- 0.00784
+
+# calcular rango y marcas para el eje y, e incluir dd_val
+ymin_data <- min(event_study_data$prop_independiente_total1 - 1.96*event_study_data$prop_independiente_total0, na.rm = TRUE)
+ymax_data <- max(event_study_data$prop_independiente_total1 + 1.96*event_study_data$prop_independiente_total0, na.rm = TRUE)
+
+# usar pretty() para crear marcas automáticas y asegurar que dd_val esté incluido
+y_breaks <- pretty(c(ymin_data, ymax_data), n = 5)
+y_breaks <- sort(unique(c(y_breaks, dd_val)))
+
+# formato de etiquetas: 4 decimales (para que 0.0769 se vea exactamente)
+y_labels <- function(x) sprintf("%.4f", x)
+
+# gráfico
+events <- event_study_data %>%
+  ggplot(aes(x = exp, y = prop_independiente_total1,
+             ymin = prop_independiente_total1 - 1.96*prop_independiente_total0, 
+             ymax = prop_independiente_total1 + 1.96*prop_independiente_total0)) +
+  
+  # banda de confianza rosada
+  geom_ribbon(fill = "#FADBD8", alpha = 0.4) +
+  
+  # línea y puntos principales (morado)
+  geom_line(color = "#8E44AD", size = 1) +
+  geom_point(color = "#6C3483", size = 2) +
+  
+  # línea horizontal del estimador DD (con leyenda)
+  # línea horizontal del estimador DD (sin leyenda)
+  geom_hline(yintercept = dd_val, color = "#E75480", linetype = "dashed", size = 1) +
+  
+  # forzar marcas del eje y e imprimir con 4 decimales
+  scale_y_continuous(breaks = y_breaks, labels = y_labels) +
+  
+  # ejes, tema y líneas de referencia
+  theme_minimal(base_size = 14) +
+  xlab("Años relativos (año/4) antes y después de la llegada de OXXO a un ZAT") +
+  ylab("Proporción de independientes en el ZAT") +
+  geom_hline(yintercept = 0, color = "black") +
+  geom_vline(xintercept = 0, color = "black") +
+  scale_x_continuous(breaks = seq(min(event_study_data$exp, na.rm = TRUE),
+                                  max(event_study_data$exp, na.rm = TRUE),
+                                  by = 1)) +
+  theme(
+    panel.grid.minor = element_blank(),
+    panel.grid.major = element_line(color = "gray90"),
+    plot.background = element_rect(fill = "white", color = NA),
+    legend.title = element_blank(),
+    legend.position = "top"
+  )
+
+
+# Guardar el gráfico
+ggsave(filename = "data/controles_results/events_study_lindo_controles.png",
+       plot = events,
+       width = 8, height = 6, dpi = 300)
+
+
+event_study_data <- read.csv("data/controles_results/paraEventsStudySimple.csv")
+
+head(event_study_data)
+
+# valor del estimador
+dd_val <- 0.0001989
+
+# calcular rango y marcas para el eje y, e incluir dd_val
+ymin_data <- min(event_study_data$prop_independiente_total1 - 1.96*event_study_data$prop_independiente_total0, na.rm = TRUE)
+ymax_data <- max(event_study_data$prop_independiente_total1 + 1.96*event_study_data$prop_independiente_total0, na.rm = TRUE)
+
+# usar pretty() para crear marcas automáticas y asegurar que dd_val esté incluido
+y_breaks <- pretty(c(ymin_data, ymax_data), n = 5)
+y_breaks <- sort(unique(c(y_breaks, dd_val)))
+
+# formato de etiquetas: 4 decimales (para que 0.0769 se vea exactamente)
+y_labels <- function(x) sprintf("%.4f", x)
+
+# gráfico
+events <- event_study_data %>%
+  ggplot(aes(x = exp, y = prop_independiente_total1,
+             ymin = prop_independiente_total1 - 1.96*prop_independiente_total0, 
+             ymax = prop_independiente_total1 + 1.96*prop_independiente_total0)) +
+  
+  # banda de confianza rosada
+  geom_ribbon(fill = "#FADBD8", alpha = 0.4) +
+  
+  # línea y puntos principales (morado)
+  geom_line(color = "#8E44AD", size = 1) +
+  geom_point(color = "#6C3483", size = 2) +
+  
+  # línea horizontal del estimador DD (con leyenda)
+  # línea horizontal del estimador DD (sin leyenda)
+  geom_hline(yintercept = dd_val, color = "#E75480", linetype = "dashed", size = 1) +
+  
+  # forzar marcas del eje y e imprimir con 4 decimales
+  scale_y_continuous(breaks = y_breaks, labels = y_labels) +
+  
+  # ejes, tema y líneas de referencia
+  theme_minimal(base_size = 14) +
+  xlab("Años relativos (año/4) antes y después de la llegada de OXXO a un ZAT") +
+  ylab("Proporción de independientes en el ZAT") +
+  geom_hline(yintercept = 0, color = "black") +
+  geom_vline(xintercept = 0, color = "black") +
+  scale_x_continuous(breaks = seq(min(event_study_data$exp, na.rm = TRUE),
+                                  max(event_study_data$exp, na.rm = TRUE),
+                                  by = 1)) +
+  theme(
+    panel.grid.minor = element_blank(),
+    panel.grid.major = element_line(color = "gray90"),
+    plot.background = element_rect(fill = "white", color = NA),
+    legend.title = element_blank(),
+    legend.position = "top"
+  )
+
+
+# Guardar el gráfico
+ggsave(filename = "data/controles_results/events_study_lindo_simple.png",
+       plot = events,
+       width = 8, height = 6, dpi = 300)
+
+

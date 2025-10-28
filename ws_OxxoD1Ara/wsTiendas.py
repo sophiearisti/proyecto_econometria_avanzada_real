@@ -140,7 +140,6 @@ def webScrappingCadenas(url_establecimiento, csv_file_establecimiento,  nombre_v
 
     driver.quit()
 
-
     print("✅ Datos guardados en csv")
     
 #hacer triple for para recorrer las listas

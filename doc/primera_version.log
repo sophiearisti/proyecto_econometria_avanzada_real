@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  3 OCT 2025 00:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  27 OCT 2025 18:20
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1231,27 +1231,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 202--203
 
  []
 
-<other_figs/oxxos_intensidad_tratamiento.png, id=161, 2409.0pt x 1806.75pt>
+<other_figs/oxxos_intensidad_tratamiento.png, id=173, 2409.0pt x 1806.75pt>
 File: other_figs/oxxos_intensidad_tratamiento.png Graphic file (type png)
 <use other_figs/oxxos_intensidad_tratamiento.png>
 Package pdftex.def Info: other_figs/oxxos_intensidad_tratamiento.png  used on input line 208.
 (pdftex.def)             Requested size: 266.14978pt x 199.59775pt.
-<figs_oxxo_maps/mapa_oxxos_binary_2011.png, id=163, 1277.77374pt x 1696.3375pt>
+<figs_oxxo_maps/mapa_oxxos_binary_2011.png, id=175, 1277.77374pt x 1696.3375pt>
 File: figs_oxxo_maps/mapa_oxxos_binary_2011.png Graphic file (type png)
 <use figs_oxxo_maps/mapa_oxxos_binary_2011.png>
 Package pdftex.def Info: figs_oxxo_maps/mapa_oxxos_binary_2011.png  used on input line 221.
 (pdftex.def)             Requested size: 177.42868pt x 235.54433pt.
-<figs_oxxo_maps/mapa_oxxos_binary_2015.png, id=164, 1238.6275pt x 1714.405pt>
+<figs_oxxo_maps/mapa_oxxos_binary_2015.png, id=176, 1238.6275pt x 1714.405pt>
 File: figs_oxxo_maps/mapa_oxxos_binary_2015.png Graphic file (type png)
 <use figs_oxxo_maps/mapa_oxxos_binary_2015.png>
 Package pdftex.def Info: figs_oxxo_maps/mapa_oxxos_binary_2015.png  used on input line 228.
 (pdftex.def)             Requested size: 177.42868pt x 245.56091pt.
-<figs_oxxo_maps/mapa_oxxos_binary_2019.png, id=165, 1317.92375pt x 1666.225pt>
+<figs_oxxo_maps/mapa_oxxos_binary_2019.png, id=177, 1317.92375pt x 1666.225pt>
 File: figs_oxxo_maps/mapa_oxxos_binary_2019.png Graphic file (type png)
 <use figs_oxxo_maps/mapa_oxxos_binary_2019.png>
 Package pdftex.def Info: figs_oxxo_maps/mapa_oxxos_binary_2019.png  used on input line 237.
 (pdftex.def)             Requested size: 177.42868pt x 224.32048pt.
-<figs_oxxo_maps/mapa_oxxos_binary_2023.png, id=166, 1378.14874pt x 1711.39375pt>
+<figs_oxxo_maps/mapa_oxxos_binary_2023.png, id=178, 1378.14874pt x 1711.39375pt>
 File: figs_oxxo_maps/mapa_oxxos_binary_2023.png Graphic file (type png)
 <use figs_oxxo_maps/mapa_oxxos_binary_2023.png>
 Package pdftex.def Info: figs_oxxo_maps/mapa_oxxos_binary_2023.png  used on input line 244.
@@ -1259,13 +1259,18 @@ Package pdftex.def Info: figs_oxxo_maps/mapa_oxxos_binary_2023.png  used on inpu
 
 
 [5 <./other_figs/oxxos_intensidad_tratamiento.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 258--259
+Underfull \hbox (badness 10000) in paragraph at lines 257--258
 
  []
 
 
 
 [6 <./figs_oxxo_maps/mapa_oxxos_binary_2011.png> <./figs_oxxo_maps/mapa_oxxos_binary_2015.png> <./figs_oxxo_maps/mapa_oxxos_binary_2019.png> <./figs_oxxo_maps/mapa_oxxos_binary_2023.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 299--300
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 301--302
 
  []
@@ -1276,83 +1281,76 @@ Underfull \hbox (badness 10000) in paragraph at lines 303--304
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 305--306
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 312--313
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 314--315
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 316--317
-
- []
-
-
 
 [7]
+<events_study/events_study_lindo_simple.png, id=217, 2409.0pt x 1806.75pt>
+File: events_study/events_study_lindo_simple.png Graphic file (type png)
+<use events_study/events_study_lindo_simple.png>
+Package pdftex.def Info: events_study/events_study_lindo_simple.png  used on input line 378.
+(pdftex.def)             Requested size: 310.50357pt x 232.87323pt.
+<events_study/events_study_lindo_controles.png, id=218, 2409.0pt x 1806.75pt>
+File: events_study/events_study_lindo_controles.png Graphic file (type png)
+<use events_study/events_study_lindo_controles.png>
+Package pdftex.def Info: events_study/events_study_lindo_controles.png  used on input line 387.
+(pdftex.def)             Requested size: 310.50357pt x 232.87323pt.
+
 
 [8]
 
-[9]
+[9 <./events_study/events_study_lindo_simple.png> <./events_study/events_study_lindo_controles.png>]
 
 [10]
 
 [11]
-Underfull \hbox (badness 10000) in paragraph at lines 483--484
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 485--486
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 487--488
-
- []
-
-
 
 [12]
+Underfull \hbox (badness 10000) in paragraph at lines 561--562
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 563--564
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 565--566
+
+ []
+
+
 
 [13]
-Underfull \hbox (badness 10000) in paragraph at lines 665--666
-
- []
-
-
-Overfull \hbox (18.64299pt too wide) in paragraph at lines 671--723
- [][] 
- []
-
-
 
 [14]
-Overfull \hbox (18.64299pt too wide) in paragraph at lines 730--782
+Underfull \hbox (badness 10000) in paragraph at lines 743--744
+
+ []
+
+
+Overfull \hbox (18.64299pt too wide) in paragraph at lines 749--801
  [][] 
  []
 
 
 
 [15]
-Overfull \hbox (18.64299pt too wide) in paragraph at lines 788--840
+Overfull \hbox (18.64299pt too wide) in paragraph at lines 808--860
  [][] 
  []
 
 
 
 [16]
+Overfull \hbox (18.64299pt too wide) in paragraph at lines 866--918
+ [][] 
+ []
 
-[17] (./primera_version.aux
+
+
+[17]
+
+[18] (./primera_version.aux
 LaTeX Info: Redefining \sptext on input line 22.
 LaTeX Info: Redefining \. on input line 22.
 LaTeX Info: Redefining \% on input line 22.
@@ -1366,24 +1364,24 @@ L3 programming layer <2025-01-18>
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `primera_version.out' has not changed.
-(rerunfilecheck)             Checksum: 984C7877E8A6AC93C77380FE34345875;2115.
+(rerunfilecheck)             Checksum: CCFA2A95BB06B05DE9CFF6C02AB52A3E;2458.
 Package logreq Info: Writing requests to 'primera_version.run.xml'.
 \openout1 = `primera_version.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39370 strings out of 473190
- 790715 string characters out of 5715801
- 1742975 words of memory out of 5000000
- 61989 multiletter control sequences out of 15000+600000
+ 39359 strings out of 473190
+ 790571 string characters out of 5715801
+ 1743249 words of memory out of 5000000
+ 61971 multiletter control sequences out of 15000+600000
  573605 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  98i,11n,105p,1254b,2905s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfti0800.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb>
-Output written on primera_version.pdf (17 pages, 1576022 bytes).
+Output written on primera_version.pdf (18 pages, 1853011 bytes).
 PDF statistics:
- 378 PDF objects out of 1000 (max. 8388607)
- 286 compressed objects within 3 object streams
- 69 named destinations out of 1000 (max. 500000)
- 270 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 404 PDF objects out of 1000 (max. 8388607)
+ 306 compressed objects within 4 object streams
+ 76 named destinations out of 1000 (max. 500000)
+ 304 words of extra memory for PDF output out of 10000 (max. 10000000)
 
