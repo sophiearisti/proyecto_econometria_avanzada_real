@@ -1,5 +1,5 @@
 *********************************************************
-*version 1:analisis de controles y var dep
+*version 2:analisis de controles y var dep
 *********************************************************
 
 *--------------Directorios --------------------------------------------*
@@ -72,136 +72,6 @@ gen accesibilidad_arterial_dummy = (accesibilidad_arterial>0)
 
 *PRIMERO VER SI EL TRATAMIENTO SE MANTIENE A LO LARGO DEL TIEMPO
 
-local años 2011 2015 2019
-
-foreach a of local años {
-    local b = `a' + 4
-
-    // Crear variables auxiliares para cada par de años
-    bysort zat (year): egen tiene`a' = max(cond(year==`a' & dummy_oxxo==1, 1, 0))
-    bysort zat (year): egen tiene`b' = max(cond(year==`b' & dummy_oxxo==1, 1, 0))
-
-    // Mostrar los ZAT que lo tenían en `a' pero no en `b'
-    display "----- ZAT que tenían en `a' pero NO en `b' -----"
-    list zat tiene`a' tiene`b' if tiene`a'==1 & tiene`b'==0
-
-    // Borrar las variables auxiliares
-    drop tiene`a' tiene`b'
-}
-
-
-*ssc install ietoolkit
-
-//se hace una tabla de diferencia de medias con los baselines entre tratados y nunca tratados
-
-global controles poblacion_urbana_2009 poblacion_por_localidad_2005 poblacion_2005 personas_por_localidad_2007 personas_por_hogar_2007_localida num_est_transmi icv_2007_localidad gasto_promedio_mensual_2007_loca estrato_mean densidad_urbana_2009 area_urbana_2009 acceso_transmi accesibilidad_arterial accesibilidad_arterial_dummy total_personas ingreso 
-
-local años 2011 2015 2019 2023
-
-foreach a of local años {
-    
-	preserve 
-
-		drop if year != `a'
-		
-		iebaltab $controles , groupvar(dummy_oxxo) control(0) savexlsx(difmedias_controles_baselines_fixed_`a') replace 
-
-	restore
-
-}
-
-*********************************************************
-*CONTROLES RESAGADOS TIENDAS
-*********************************************************
-
-*es basicamente la misma logica que lo anterior 
-
-*pero en este caso si es para cada cohorte, porque cambian en el tiempo
-
-*es ver si la presencia de otras tiendas parecidas afecta literalmente la presencia de las tiendas oxxo
-
-
-global staggered_controls dummy_jb dummy_d1 dummy_ara cantidad_jb cantidad_d1 cantidad_ara ingreso
-
-local años 2015 2019 2023 2011
-
-*2011 no nos sirve porque no habia ningun ara ni jb antes de ese ano y en ese ano
-
-foreach a of local años {
-    
-	preserve 
-
-		drop if year != `a'
-		
-		iebaltab $staggered_controls , groupvar(dummy_oxxo) control(0) savexlsx(difmedias_controles_staggered_variables_`a') replace 
-
-	restore
-
-}
-
-
-*******************************************************
-* 1. Cohorte y tiempo relativo
-*******************************************************
-**VAMOS A CREAR VARIABLE DE COHORTE CUANDO INICIO A SER TRATADO
-
-* Para cada ZAT, identificar el primer año con OXXO (solo para tratados)
-
-preserve
-	* 1. Año de primera entrada de OXXO
-	bysort zat: egen first_treat = min(cond(dummy_oxxo==1, year, .))
-
-	* 2. Quedarse solo con cohortes tratadas
-	drop if missing(first_treat)
-
-	* 3. Crear tiempo relativo (en períodos de 4 años)
-	gen rel_time = (year - first_treat)/4
-
-	* 4. Calcular promedios por cohorte y tiempo relativo
-	collapse (mean) $staggered_controls cantidad_oxxo, by(first_treat rel_time)
-
-
-	*************haremos una tabla solo por curiosidad**********************
-
-	* 5. Graficar cada cohorte
-	* Añadir elementos comunes al gráfico
-	twoway (line cantidad_oxxo rel_time if first_treat==2011, sort lcolor(orange)) ///
-		   (line cantidad_oxxo rel_time if first_treat==2015, sort lcolor(blue)) ///
-		   (line cantidad_oxxo rel_time if first_treat==2019, sort lcolor(red)) ///
-		   (line cantidad_oxxo rel_time if first_treat==2023, sort lcolor(green)), ///
-		   xline(0, lpattern(dash)) ///
-		   ytitle("Promedio OXXO") ///
-		   title("Evolución relativa de OXXO por cohorte") ///
-		   legend(label(1 "Cohorte 2011") label(2 "Cohorte 2015") ///
-				  label(3 "Cohorte 2019") label(4 "Cohorte 2023"))
-restore
-
-*********************************************************
-*TABLA DE VAR DEP POR ANO POR TRATAMIENTO STAGGERED
-*por tratamiento (presencia oxxo)
-*********************************************************
-
-global depVar prop_independiente_trabajando prop_independiente_total prop_independiente_buscando prop_formal_no_indep prop_desempleado prop_buscar
-
-local años 2015 2019 2023 2011
-
-*para ir comparando cada ano
-
-foreach a of local años {
-    
-	preserve 
-
-		drop if year != `a'
-		
-		iebaltab $depVar , groupvar(dummy_oxxo) control(0) savexlsx(difmedias_dep_vars_`a') replace 
-
-	restore
-
-}
-
-*total entre tratados y controles
-iebaltab $depVar , groupvar(dummy_oxxo) control(0) savexlsx(difmedias_dep_vars_tot) replace 
-
 ***************************************************************
 *REGRESIONES PARA LA ENTREGA
 ***************************************************************
@@ -218,7 +88,7 @@ outreg2 using tabla_regresiones.xls, replace label ctitle("MCO") keep(dummy_oxxo
 
 reg prop_independiente_total dummy_oxxo $controls $panel_controls
 
-outreg2 using tabla_regresiones.xls, append label ctitle("MCO con controles") keep(dummy_oxxo) addtext(Tiendas de cadena, SI, Controles variables, SI, Controles fijos, SI, Control spillover, SI)  
+outreg2 using tabla_regresiones.xls, append label ctitle("MCO con controles") keep(dummy_oxxo) addtext(Tiendas de cadena, SI, Controles variables, SI, Controles fijos, SI, Control spillover, SI, Controles por diferencias, SI)  
  
 *********************************************************
 *TWO WAY FIXED EFFECTS
@@ -227,17 +97,43 @@ xtset zat year
 
 reghdfe prop_independiente_total dummy_oxxo , absorb(zat i.year) vce(cluster zat)
 
-outreg2 using tabla_regresiones.xls, append label ctitle("TWFE") keep(dummy_oxxo) addtext(Tiendas de cadena, NO, Controles variables, NO, Controles fijos, NO, Control spillover, NO) 
+outreg2 using tabla_regresiones.xls, append label ctitle("TWFE") keep(dummy_oxxo) addtext(Tiendas de cadena, NO, Controles variables, NO, Controles fijos, NO, Control spillover, NO, Controles por diferencias, SI)
  
 
 bacondecomp prop_independiente_total dummy_oxxo, ddetail vce(cluster zat)
 
 reghdfe prop_independiente_total dummy_oxxo $controls $panel_controls , absorb(zat i.year) vce(cluster zat)
 
-outreg2 using tabla_regresiones.xls, append label ctitle("TWFE con controles") keep(dummy_oxxo)addtext(Tiendas de cadena, SI, Controles variables, SI, Controles fijos, NO, Control spillover, SI)  
+outreg2 using tabla_regresiones.xls, append label ctitle("TWFE con controles") keep(dummy_oxxo)addtext(Tiendas de cadena, SI, Controles variables, SI, Controles fijos, NO, Control spillover, SI, Controles por diferencias, SI)  
 
 bacondecomp prop_independiente_total dummy_oxxo $controls $panel_controls, ddetail vce(cluster zat)
 
+
+*********************************************************
+*C&S
+*********************************************************
+* Let's first install drdid
+ssc install drdid, all replace
+* Now let's install csdid
+ssc install csdid, all replace
+
+* Asegúrate de tener la variable del año de tratamiento
+bysort zat: egen first_treat = min(cond(dummy_oxxo==1, year, .))
+replace first_treat = 0 if missing(first_treat)  // 0 para ZATs nunca tratadas
+
+* Ejecutar el método de Callaway & Sant'Anna
+csdid prop_independiente_total $controls $panel_controls, ivar(zat) time(year) gvar(first_treat) vce(cluster zat)
+
+* Revisar los efectos promedio
+estat pretrend
+
+* Estimar los efectos dinámicos (event study)
+estat event, window(-3 3) estore(cs1)
+
+* Graficar el event study	
+
+
+	
 *********************************************************
 *ESTUDIO DE EVENTOS
 *********************************************************
@@ -276,6 +172,83 @@ coefplot, keep(lag3 lag2 lag1 lead1 lead2 lead3) xlabel(, angle(vertical)) yline
  graph export "event_study_feoC.png", replace
 
 restore
+
+* ============================================
+* 1️⃣ Preparar datos
+* ============================================
+
+
+* Año de primera entrada de OXXO
+bysort zat: egen first_treat = min(cond(dummy_oxxo==1, year, .))
+
+* Para unidades nunca tratadas, ponemos 0
+replace first_treat = 0 if missing(first_treat)
+
+* Crear tiempo relativo al tratamiento
+gen time_to_treat = year - first_treat
+
+* Mantener todos los periodos
+replace time_to_treat = 0 if missing(first_treat)
+
+* Crear variable indicadora de tratamiento
+gen treat = !missing(first_treat)
+
+* Ajuste para que no haya factores negativos
+summ time_to_treat
+gen shifted_ttt = time_to_treat - r(min)
+summ shifted_ttt if time_to_treat == -1
+local true_neg1 = r(mean)
+
+* ============================================
+* 2️⃣ Estimar efectos dinámicos con reghdfe
+* ============================================
+
+* Interacción entre tratamiento y tiempo relativo
+* FE por ZAT y año, clustering a nivel de ZAT
+reghdfe prop_independiente_total ib`true_neg1'.shifted_ttt ///
+    $controls $panel_controls, a(zat year) vce(cluster zat)
+
+* ============================================
+* 3️⃣ Extraer coeficientes y errores estándar
+* ============================================
+
+gen coef = .
+gen se = .
+levelsof shifted_ttt, local(times)
+foreach t of local times {
+    replace coef = _b[`t'.shifted_ttt] if shifted_ttt == `t'
+    replace se = _se[`t'.shifted_ttt] if shifted_ttt == `t'
+}
+
+* Crear IC 95%
+gen ci_top = coef + 1.96*se
+gen ci_bottom = coef - 1.96*se
+
+* Volver al tiempo relativo original
+gen time_rel = time_to_treat
+duplicates drop
+sort time_rel
+
+* ============================================
+* 4️⃣ Graficar event study tipo coefplot
+* ============================================
+
+summ ci_top
+local top_range = r(max)
+summ ci_bottom
+local bottom_range = r(min)
+
+twoway (sc coef time_rel, connect(line)) ///
+       (rcap ci_top ci_bottom time_rel) ///
+       (function y = 0, range(time_rel)) ///
+       (function y = 0, range(`bottom_range' `top_range') horiz), ///
+       xtitle("Años relativos al tratamiento") ///
+       ytitle("Efecto sobre prop. trabajadores independientes") ///
+       title("Event Study - OXXO") ///
+       caption("95% Confidence Intervals")
+
+graph export "event_study_OXXO.png", replace
+
 
 
 preserve
@@ -342,7 +315,7 @@ preserve
 	bacondecomp prop_independiente_total dummy_oxxo, ddetail vce(cluster zat)
 
 	
-	outreg2 using tabla_regresiones.xls, append label ctitle("ES") keep(dummy_oxxo) addtext(Tiendas de cadena, NO, Controles variables, NO, Controles fijos, NO, Control spillover, NO) 
+	outreg2 using tabla_regresiones.xls, append label ctitle("ES") keep(dummy_oxxo) addtext(Tiendas de cadena, NO, Controles variables, NO, Controles fijos, NO, Control spillover, NO, Controles por diferencias, SI) 
 
 	local DDL = _b[dummy_oxxo]
 	local DD : display _b[dummy_oxxo]
@@ -353,7 +326,7 @@ preserve
 
 	outreg2 using "./eventstudy_levels.xls", replace keep(lag3 lag2 lag1 lead1 lead2 lead3) noparen noaster addstat(DD, `DD', DDSE, `DDSE')
 	
-		outreg2 using "./eventstudy_levels_table.xls", replace label ctitle("ES") keep(lag3 lag2 lag1 lead1 lead2 lead3) noparen noaster addstat(DD, `DD', DDSE, `DDSE') addtext(Tiendas de cadena, NO, Controles variables, NO, Controles fijos, NO, Control spillover, NO) 
+		outreg2 using "./eventstudy_levels_table.xls", replace label ctitle("ES") keep(lag3 lag2 lag1 lead1 lead2 lead3) noparen noaster addstat(DD, `DD', DDSE, `DDSE') addtext(Tiendas de cadena, NO, Controles variables, NO, Controles fijos, NO, Control spillover, NO, Controles por diferencias, SI) 
 
 
 *Pull in the ES Coefs
@@ -460,7 +433,7 @@ preserve
 	
 	bacondecomp prop_independiente_total dummy_oxxo $controls $panel_controls, ddetail vce(cluster zat)
 	
-	outreg2 using tabla_regresiones.xls, append label ctitle("ES con controles") keep(dummy_oxxo) addtext(Tiendas de cadena, SI, Controles variables, SI, Controles fijos, NO, Control spillover, SI) 
+	outreg2 using tabla_regresiones.xls, append label ctitle("ES con controles") keep(dummy_oxxo) addtext(Tiendas de cadena, SI, Controles variables, SI, Controles fijos, NO, Control spillover, SI, Controles por diferencias, SI)
 
 	local DDL = _b[dummy_oxxo]
 	local DD : display _b[dummy_oxxo]
@@ -471,7 +444,7 @@ preserve
 
 	outreg2 using "./eventstudy_levels.xls", replace keep(lag3 lag2 lag1 lead1 lead2 lead3) noparen noaster addstat(DD, `DD', DDSE, `DDSE')
 	
-	outreg2 using "./eventstudy_levels_table.xls", append label ctitle("ES controles") keep(lag3 lag2 lag1 lead1 lead2 lead3) noparen noaster addstat(DD, `DD', DDSE, `DDSE') addtext(Tiendas de cadena, SI, Controles variables, SI, Controles fijos, NO, Control spillover, SI) 
+	outreg2 using "./eventstudy_levels_table.xls", append label ctitle("ES controles") keep(lag3 lag2 lag1 lead1 lead2 lead3) noparen noaster addstat(DD, `DD', DDSE, `DDSE') addtext(Tiendas de cadena, SI, Controles variables, SI, Controles fijos, NO, Control spillover, SI, Controles por diferencias, SI)
 
 
 *Pull in the ES Coefs

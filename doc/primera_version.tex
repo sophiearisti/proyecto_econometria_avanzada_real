@@ -41,26 +41,11 @@ Además, su modelo basado en la accesibilidad de productos básicos plantea la i
 
 La informalidad minorista es difícil de medir directamente a nivel intraurbano. Por tanto, esta investigación buscará responder si la presencia de OXXO causa una disminución en la actividad de trabajadores independientes en su entorno cercano en Bogotá. La respuesta a esta pregunta ayuda a comprender posibles cambios en las dinámicas económicas locales: ¿estamos frente a un fenómeno de desplazamiento de formas tradicionales de autoempleo o a un proceso de formalización y competencia renovada en contextos urbanos en desarrollo? \\
 
-Algunos estudios sugieren que los minoristas informales no desaparecen sino que se adaptan y compiten \parencite{marcos2022}. Otros, por otro lado, no encuentran efectos significativos sobre el empleo informal a nivel municipal \parencite{delgado2024}. En consecuencia, no se espera un cambio significativo en la actividad independientes. \\
+Algunos estudios sugieren que los minoristas informales no desaparecen sino que se adaptan y compiten \parencite{marcos2022}. Otros, por otro lado, no encuentran efectos significativos sobre el empleo informal a nivel municipal \parencite{delgado2024}. En consecuencia, no se espera un cambio significativo en la actividad de trabajadores independientes. \\
 
-La investigación usará datos de la secretaría de movilidad de Bogotá y dividirá la ciudad en Zonas de Análisis de Transporte (ZAT).  Utilizando el método de two-way fixed effects (TWFE), se evaluará la llegada escalonada de los OXXO en las zonas y su efecto en la proporción de trabajadores independentes que llegan a trabajar a dicho ZAT, utilizada como proxy indirecto de la actividad minorista informal local. \\
+La investigación usará datos de la secretaría de movilidad de Bogotá y dividirá la ciudad en Zonas de Análisis de Transporte (ZAT).  Utilizando los métodos de two-way fixed effects (TWFE) y estudio de eventos, se evaluará la llegada escalonada de los OXXO en las zonas y su efecto en la proporción de trabajadores independentes que llegan a trabajar a dicho ZAT, utilizada como proxy indirecto de la actividad minorista informal local. \\
 
 \begin{comment}
-⚠️ Limitaciones
-Heterogeneidad del grupo
-No todos los independientes son informales: hay abogados, consultores, profesionales freelance que nada tienen que ver con comercio de barrio.
-Eso introduce “ruido” en la medición.
-Movilidad laboral
-Si un tendero deja de ser independiente, no necesariamente aparece como desempleado: puede formalizarse, migrar a otro sector o trabajar en otro barrio. Eso diluye el efecto.
-Datos de movilidad ≠ actividad comercial directa
-La EOD captura desplazamientos, no unidades de negocio. Entonces el proxy es indirecto.
-
-El 80\% de los trabajadores independientes son informales, siendo la mayoría trabajadores por cuenta propia.
-https://www.bbvaresearch.com/publicaciones/colombia-empleo-no-asalariado-gran-jalonador-del-empleo-nacional/
-
-https://www.larepublica.co/globoeconomia/colombia-es-el-pais-de-la-ocde-que-con-mayor-numero-de-trabajadores-independientes-3215200
-
-https://www.dane.gov.co/files/operaciones/EMICRON/bol-EMICRON-PanaderiasTiendasBarrio-2023.pdf
 
 \end{comment}
 
@@ -70,7 +55,9 @@ https://www.dane.gov.co/files/operaciones/EMICRON/bol-EMICRON-PanaderiasTiendasB
 
 La expansión de grandes cadenas minoristas ha suscitado de forma recurrente la pregunta sobre sus efectos en el mercado laboral. Algunos estudios, por ejemplo, han exáminado  cómo las grandes tiendas de descuento inciden en las dinámicas laborales locales de economías desarrolladas. \\
 
-Una de estas investigaciones explora cómo la entrada de Walmart en nuevos condados de Estados Unidos reduce, a mediano y largo plazo, el empleo y las ganancias de tiendas minoristas medianas y pequeñas \parencite{basker2005}. En contraste, \textcite{cho2015} encuentran para Corea que la llegada de estas grandes cadenas impulsa el empleo minorista local. Estas marcadas diferencias sugieren que el efecto depende del nivel de desarrollo y madurez del sector minorista en cada economía. \\
+Una de estas investigaciones explora cómo la entrada de Walmart en nuevos condados de Estados Unidos redujo, a mediano y largo plazo, el empleo y las ganancias de tiendas minoristas medianas y pequeñas \parencite{basker2005}. En promedio, por ejemplo, desaparecieron cuatro tiendas en un condado tratado, aunque el efecto es pequeño frente al tamaño del mercado laboral local.\\
+
+En contraste, \textcite{cho2015} encuentran que en Corea la llegada de grandes cadenas impulsa el empleo minorista local, aumentando aproximadamente 200 empleos en total en el condado. Estas diferencias sugieren que el efecto depende del nivel de desarrollo y madurez del sector minorista en cada economía.\\
 
 Por tanto, el debate ha cobrado relevancia en economías en desarrollo, donde predominan la informalidad, los negocios infomales minoristas (como las tiendas de barrio) y la coexistencia con supermercados tradicionales. \\
 
@@ -85,72 +72,18 @@ Por su parte, Bogotá concentra 40–50\% de las sucursales \parencite{godoy2025
 \section{Estadísticas Descriptivas} 
 
 \subsection{Descripción de los datos}
-Los resultados de esta investigación emplean cinco fuentes de datos. A partir del RUES \footnote{Acceder a \url{ https://www.rues.org.co}} y de GoogleMaps API se identificaron el año de apertura, cierre y localización de cada sucursal de OXXO, D1, Justo\&Bueno y ARA, estas últimas incluidas por su posible influencia en la localización de los OXXO. Con la Encuesta de Calidad de Vida de Bogotá 2007 \footnote{Acceder a \url{https://www.dane.gov.co/index.php/estadisticas-por-tema/salud/calidad-de-vida-ecv/encuesta-nacional-de-calidad-de-vida-2007-bogota}} se construyeron los controles de línea base, mientras que con Mapas-Bogotá se obtuvo los controles fijos \footnote{Acceder a \url{https://mapas.bogota.gov.co}}. Finalmente, las Encuestas de Movilidad (2011, 2015, 2019 y 2023) \footnote{Acceder a \url{https://www.simur.gov.co/encuestas-de-movilidad}} permitieron construir otros controles y la variable dependiente. Esta mide por año la proporción de trabajadores independientes que se movilizan a trabajar al ZAT i sobre el total de los trabajadores que se movilizan a dicho ZAT:\\
+Los resultados de esta investigación emplean cinco fuentes de datos. A partir del Registro Único Empresarial y Social (RUES) \footnote{Acceder a \url{ https://www.rues.org.co}} , la central de información empresarial en Colombia que contiene todos los registros de las empresas y comerciantes inscritos por las cámaras de comercio del país, se identificó el año de apertura y cierre de cada sucursal de OXXO, D1, Justo\&Bueno y ARA.
+Estas últimas fueron incluidas por su posible influencia en la localización de los OXXO. Además, con de GoogleMaps API se obtuvo la localización de cada tienda. \\
+
+Con la Encuesta de Calidad de Vida de Bogotá 2007 \footnote{Acceder a \url{https://www.dane.gov.co/index.php/estadisticas-por-tema/salud/calidad-de-vida-ecv/encuesta-nacional-de-calidad-de-vida-2007-bogota}} se construyeron los controles de línea base a nivel de localidad. Estos reflejan las características iniciales antes de que cualquier ZAT fuera tratada. 
+Por otro lado, con Mapas-Bogotá se obtuvo los controles fijos a nivel de ZAT \footnote{Acceder a \url{https://mapas.bogota.gov.co}}; es decir, las características básicas de cada zona que no cambian en el tiempo. \\
+
+Finalmente, las Encuestas de Movilidad (2011, 2015, 2019 y 2023) \footnote{Acceder a \url{https://www.simur.gov.co/encuestas-de-movilidad}} permitieron construir otros controles y la variable dependiente. Esta mide por año la proporción de trabajadores independientes que se movilizan a trabajar al $ZAT_i$ sobre el total de los trabajadores que se movilizan a dicho ZAT:\\
+
 
 \begin{equation}
     proporcion\_independientes_{i,t}=\frac{trabajadores\_independientes_{i,t}}{total\_trabajadores_{i,t}} ; \quad \forall i, t
 \end{equation}
-
-
-A continuación, se describe las variables utilizadas:
-
-\begin{longtable}{p{0.25\linewidth} p{0.45\linewidth} p{0.25\linewidth}}
-\caption{Descripción de variables y fuentes de datos}
-\label{tab:variables_descripcion}
-\\
-\toprule
-\textbf{Variable} & \textbf{Descripción} & \textbf{Fuente de los datos} \\
-\midrule
-\endhead
-\midrule
-\multicolumn{3}{l}{\textbf{Variable dependiente}} \\
-\midrule
-Proporción independientes & Proporción de independientes en el ZAT ese año & Encuestas de movilidad (2011, 2015, 2019, 2023) \\
-\midrule
-\multicolumn{3}{l}{\textbf{Variable de tratamiento escalonado}} \\
-\midrule
-Tiene OXXO ($=1$) & Si el ZAT tiene OXXO(s) ese año & RUES y Google Maps API \\
-\midrule
-\multicolumn{3}{l}{\textbf{Controles resagados de tiendas de cadena}} \\
-\midrule
-Tiene D1s (=1) & El ZAT tiene D1(s) el periodo anterior al año analizado & RUES y Google Maps API \\
-\midrule
-Tiene ARAs (=1) & El ZAT tiene ARA(s) el periodo anterior al año analizado & RUES y Google Maps API \\
-\midrule
-\multicolumn{3}{l}{\textbf{Controles variables por año}} \\
-\midrule
-Número de personas en el hogar por ZAT & Número promedio de personas en el hogar por ZAT en el año analizado & Encuestas de movilidad (2011, 2015, 2019, 2023) \\
-\midrule
-Ingresos del hogar por ZAT & Ingreso promedio del hogar por ZAT en el año analizado & Encuestas de movilidad (2011, 2015, 2019, 2023) \\
-\midrule
-\multicolumn{3}{l}{\textbf{Controles de línea base}} \\
-\midrule
-Habitantes por localidad en 2007 & Número de habitantes por localidad en el 2007 & Encuesta de Calidad de Vida de Bogotá 2007 \\
-\midrule
-Cantidad de personas por hogar 2007 & Número promedio de personas en el hogar por localidad en el 2007 & Encuesta de Calidad de Vida de Bogotá 2007 \\
-\midrule
-Indice de condiciones de vida 2007 & Indice de condiciones de vida promedio por localidad en el 2007 & Encuesta de Calidad de Vida de Bogotá 2007 \\
-\midrule
-Gasto promedio mensual 2007 & Gasto promedio mensual en el hogar por localidad en el 2007 & Encuesta de Calidad de Vida de Bogotá 2007 \\
-\midrule
-\multicolumn{3}{l}{\textbf{Controles fijos en el tiempo}} \\
-\midrule
-Estrato promedio del ZAT & Estrato promedio del ZAT, que oscila de 1 a 6 & Mapas Bogotá - Infraestructura de Datos Espaciales de Bogotá (IDECA) \\
-\midrule
-Estaciones de transmilenio cercanas & Cantidad de estaciones de transmilenio dentro o cercanos al ZAT & Mapas Bogotá - Infraestructura de Datos Espaciales de Bogotá (IDECA) \\
-\midrule
-Cantidad acceso a vías arteriales & Cantidad de vías arteriales dentro o cercanos al ZAT & Mapas Bogotá - Infraestructura de Datos Espaciales de Bogotá (IDECA) \\
-\midrule
-\multicolumn{3}{l}{\textbf{Control spillover}} \\
-\midrule
-Cantidad de Oxxos cercanos fuera del ZAT & Cantidad de OXXOs fuera del ZAT, que se encuentran cerca de este. & RUES y Google Maps API \\
-\bottomrule
-\multicolumn{3}{p{\linewidth}}{%
-\vspace{0.5em}
-\footnotesize{ \textit{Nota:} No existe controles de línea base por ZAT, por lo que solo se pudo obtener índices previos al 2011 por localidad (ECDV 2007). El control "spillover" tiene en cuenta que hay ZATs que no tienen OXXOs, pero presentan OXXOs cercanos que pueden afectar la dinámica económica y laboral de la zona analizada. Finalmente, cuando de habla de OXXOs, vías arteriales y estaciones de transmilenio cercanos, significa que se encuentran a menos de 400m del ZAT.}}
-\end{longtable}
-
-
 
 \subsection{Análisis inicial}
 
@@ -176,7 +109,7 @@ La tabla Tabla~\ref{tab:independientes_zats} muestra la media de la proporción 
   \end{adjustbox} % End the adjustbox environment
   \parbox[t]{\textwidth}{%
     \vspace{0.5em}
-    \footnotesize{ \textit{Nota:} El valor entre paréntesis indica la desviación estándar. Esta tabla muestra la proporción promedio de trabajadores independientes que se trasladan a una ZAT a trabajar a lo largo de los años. Estas medias se encuentran discriminadas por ZATs tratadas (con OXXO) y aún sin tratar (sin OXXO). La última fila muestra la cantidad de ZATs tratadas y sin tratar para cierto año. Una ZAT se considera tratada si tiene al menos un OXXO en ese año.}
+    \footnotesize{ \textit{Nota:} El valor entre paréntesis indica la desviación estándar. Esta tabla muestra la proporción promedio de trabajadores independientes que se trasladan a una ZAT a trabajar a lo largo de los años. Estas medias se encuentran discriminadas por ZATs tratadas (con OXXO) y aún sin tratar (sin OXXO). La última fila muestra la cantidad de ZATs tratadas y sin tratar para cierto año. Una ZAT se considera tratada si tiene al menos un OXXO en ese año. Significancia: *** p<0.01, ** p<0.05, * p<0.1.}
   }
 \end{table}
 
@@ -189,11 +122,12 @@ La tabla Tabla~\ref{tab:independientes_zats} muestra la media de la proporción 
     & \textbf{2011} & \textbf{2015} & \textbf{2019} & \textbf{2023} \\
     \midrule
     \textbf{proporción independientes} & 0.058 & 0.024 & -0.008 & 0.001 \\
+    & (0.064) & (0.037) & (0.028) & (0.019) \\
     \bottomrule
   \end{tabular}
   \parbox[t]{\textwidth}{%
     \vspace{0.5em}
-    \footnotesize{ \textit{Nota:} Significancia: *** p<0.01, ** p<0.05, * p<0.1. El resultado se obtuvo realizando la diferencia entre la proporción promedio de independientes en ZATs tratadas y no tratadas para un mismo año.}}
+    \footnotesize{ \textit{Nota:} El valor entre paréntesis indica la desviación estándar. Significancia: *** p<0.01, ** p<0.05, * p<0.1. El resultado se obtuvo realizando la diferencia entre la proporción promedio de independientes en ZATs tratadas y no tratadas para un mismo año.}}
 \end{table}
 
 Se puede observar que en promedio los ZATs tratados presentan una proporción de independientes más alta, aunque con una diferencia mínima. Esto se refuerza al notar que para ningún año la diferencia de medias es significativa. En consecuencia, los resultados preliminares sugieren que la instalación de un OXXO en un ZAT no se asocia con un incremento estadísticamente significativo en la proporción de trabajadores independientes. \\
@@ -326,6 +260,7 @@ Tiendas de cadena & no & si & no & si \\
 Controles variables & no & si & no & si \\
 Controles fijos & no & si & no & no \\
 Control spillover & no & si & no & si \\
+Controles por diferencias & no & si & no & si \\
 Media grupo control & & & & \\  % <- completar
 \hline
 \multicolumn{5}{l}{\footnotesize Errores estándar en paréntesis. *** p$<$0.01, ** p$<$0.05, * p$<$0.1} \\
@@ -360,11 +295,12 @@ Error estándar & 0.0193 & 0.0195 \\
 Media grupo control & & \\ % <- completar
 Observaciones & 684 & 684 \\
 R-cuadrado & 0.084 & 0.159 \\
-Número de zat & 171 & 171 \\
+Número de ZATs & 171 & 171 \\
 Tiendas de cadena & no & si \\
 Controles variables & no & si \\
 Controles fijos & no & no \\
 Control spillover & no & si \\
+Controles por diferencias & no & si \\
 \hline
 \multicolumn{3}{l}{\footnotesize Errores estándar entre paréntesis. *** p$<$0.01, ** p$<$0.05, * p$<$0.1} \\
 \end{tabular}
@@ -406,6 +342,67 @@ Control spillover & no & si \\
 \appendix
 \counterwithin{table}{section}
 \counterwithin{figure}{section}
+
+\section{Descripción detallada de variables}
+\label{sec:variables_descripcion_detallada}
+
+\begin{longtable}{p{0.25\linewidth} p{0.45\linewidth} p{0.25\linewidth}}
+\caption{Descripción de variables y fuentes de datos}
+\label{tab:variables_descripcion}
+\\
+\toprule
+\textbf{Variable} & \textbf{Descripción} & \textbf{Fuente de los datos} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{l}{\textbf{Variable dependiente}} \\
+\midrule
+Proporción independientes & Proporción de independientes en el ZAT ese año & Encuestas de movilidad (2011, 2015, 2019, 2023) \\
+\midrule
+\multicolumn{3}{l}{\textbf{Variable de tratamiento escalonado}} \\
+\midrule
+Tiene OXXO ($=1$) & Si el ZAT tiene OXXO(s) ese año & RUES y Google Maps API \\
+\midrule
+\multicolumn{3}{l}{\textbf{Controles resagados de tiendas de cadena}} \\
+\midrule
+Tiene D1s (=1) & El ZAT tiene D1(s) el periodo anterior al año analizado & RUES y Google Maps API \\
+\midrule
+Tiene ARAs (=1) & El ZAT tiene ARA(s) el periodo anterior al año analizado & RUES y Google Maps API \\
+\midrule
+\multicolumn{3}{l}{\textbf{Controles variables por año}} \\
+\midrule
+Número de personas en el hogar por ZAT & Número promedio de personas en el hogar por ZAT en el año analizado & Encuestas de movilidad (2011, 2015, 2019, 2023) \\
+\midrule
+Ingresos del hogar por ZAT & Ingreso promedio del hogar por ZAT en el año analizado & Encuestas de movilidad (2011, 2015, 2019, 2023) \\
+\midrule
+\multicolumn{3}{l}{\textbf{Controles de línea base}} \\
+\midrule
+Habitantes por localidad en 2007 & Número de habitantes por localidad en el 2007 & Encuesta de Calidad de Vida de Bogotá 2007 \\
+\midrule
+Cantidad de personas por hogar 2007 & Número promedio de personas en el hogar por localidad en el 2007 & Encuesta de Calidad de Vida de Bogotá 2007 \\
+\midrule
+Indice de condiciones de vida 2007 & Indice de condiciones de vida promedio por localidad en el 2007 & Encuesta de Calidad de Vida de Bogotá 2007 \\
+\midrule
+Gasto promedio mensual 2007 & Gasto promedio mensual en el hogar por localidad en el 2007 & Encuesta de Calidad de Vida de Bogotá 2007 \\
+\midrule
+\multicolumn{3}{l}{\textbf{Controles fijos en el tiempo}} \\
+\midrule
+Estrato promedio del ZAT & Estrato promedio del ZAT, que oscila de 1 a 6 & Mapas Bogotá - Infraestructura de Datos Espaciales de Bogotá (IDECA) \\
+\midrule
+Estaciones de transmilenio cercanas & Cantidad de estaciones de transmilenio dentro o cercanos al ZAT & Mapas Bogotá - Infraestructura de Datos Espaciales de Bogotá (IDECA) \\
+\midrule
+Cantidad acceso a vías arteriales & Cantidad de vías arteriales dentro o cercanos al ZAT & Mapas Bogotá - Infraestructura de Datos Espaciales de Bogotá (IDECA) \\
+\midrule
+\multicolumn{3}{l}{\textbf{Control spillover}} \\
+\midrule
+Cantidad de Oxxos cercanos fuera del ZAT & Cantidad de OXXOs fuera del ZAT, que se encuentran cerca de este. & RUES y Google Maps API \\
+\bottomrule
+\multicolumn{3}{p{\linewidth}}{%
+\vspace{0.5em}
+\footnotesize{ \textit{Nota:} No existe controles de línea base por ZAT, por lo que solo se pudo obtener índices previos al 2011 por localidad (ECDV 2007). El control "spillover" tiene en cuenta que hay ZATs que no tienen OXXOs, pero presentan OXXOs cercanos que pueden afectar la dinámica económica y laboral de la zona analizada. Finalmente, cuando de habla de OXXOs, vías arteriales y estaciones de transmilenio cercanos, significa que se encuentran a menos de 400m del ZAT.}}
+\end{longtable}
+
+
 
 \section{Controles línea base por cohortes}
 \label{sec:controles_linea_base}

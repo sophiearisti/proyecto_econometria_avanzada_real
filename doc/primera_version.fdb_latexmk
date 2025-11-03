@@ -1,13 +1,13 @@
 # Fdb version 4
-["biber primera_version"] 1759024862.49332 "primera_version.bcf" "primera_version.bbl" "primera_version" 1761607223.66762 0
-  "primera_version.bcf" 1761607223.51834 135199 12cb8709e8a97eefd804f7261322538a "pdflatex"
+["biber primera_version"] 1759024862.49332 "primera_version.bcf" "primera_version.bbl" "primera_version" 1761691832.61405 0
+  "primera_version.bcf" 1761691832.46184 135199 12cb8709e8a97eefd804f7261322538a "pdflatex"
   "references.bib" 1759024857.3846 6927 44af330279afaffe9f68d63b0c9920cf ""
   (generated)
   "primera_version.bbl"
   "primera_version.blg"
   (rewritten before read)
-["pdflatex"] 1761607219.53328 "/Users/sophiaaristizabal/Desktop/1 economia/7/econometría avanzada/proyecto_econometria_avanzada/doc/primera_version.tex" "primera_version.pdf" "primera_version" 1761607223.66794 0
-  "/Users/sophiaaristizabal/Desktop/1 economia/7/econometría avanzada/proyecto_econometria_avanzada/doc/primera_version.tex" 1761607213.18966 44412 e710ae73955f7e14285e979697afdc9e ""
+["pdflatex"] 1761691828.59889 "/Users/sophiaaristizabal/Desktop/1 economia/7/econometría avanzada/proyecto_econometria_avanzada/doc/primera_version.tex" "primera_version.pdf" "primera_version" 1761691832.61436 0
+  "/Users/sophiaaristizabal/Desktop/1 economia/7/econometría avanzada/proyecto_econometria_avanzada/doc/primera_version.tex" 1761691820.119 44387 27bc60fe62097d9edb5f16e16fdc900c ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/ecbx1000.tfm" 1136768653 3584 2d666ecf6d466d8b007246bc2f94d9da ""
@@ -254,10 +254,10 @@
   "figs_oxxo_maps/mapa_oxxos_binary_2019.png" 1758245920.84427 429911 3eda41a43f51026dd99ed2c91a584ae7 ""
   "figs_oxxo_maps/mapa_oxxos_binary_2023.png" 1758232646.77918 466192 e8ab34f4e33790f05af3dccca826a62a ""
   "other_figs/oxxos_intensidad_tratamiento.png" 1759006147.87277 228955 1f71b0372fbdb4f80b3a522adc01941d ""
-  "primera_version.aux" 1761607223.51179 15638 6fc1292c26d423a6d19842565e0f97b1 "pdflatex"
+  "primera_version.aux" 1761691832.45498 15907 612483796ee0ecea24355ed8bbe937a7 "pdflatex"
   "primera_version.bbl" 1759024863.88891 49150 389e85b018dcaeb67fcda6b4445a91c6 "biber primera_version"
-  "primera_version.out" 1761607223.51523 2458 ccfa2a95bb06b05de9cff6c02ab52a3e "pdflatex"
-  "primera_version.run.xml" 1761607223.51914 2436 514c71cc1cc891eb7058faa8217f2922 "pdflatex"
+  "primera_version.out" 1761691832.459 2689 e352c17348a596e2bc01eda505816621 "pdflatex"
+  "primera_version.run.xml" 1761691832.46249 2436 514c71cc1cc891eb7058faa8217f2922 "pdflatex"
   (generated)
   "primera_version.aux"
   "primera_version.bcf"

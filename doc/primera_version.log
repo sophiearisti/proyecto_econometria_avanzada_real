@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  27 OCT 2025 18:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  28 OCT 2025 17:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1103,27 +1103,59 @@ Excluding 'comment' comment.
 [1
 
 {/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
-Underfull \hbox (badness 10000) in paragraph at lines 71--72
+Underfull \hbox (badness 10000) in paragraph at lines 56--57
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 73--74
+Underfull \hbox (badness 10000) in paragraph at lines 58--59
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 75--76
+Underfull \hbox (badness 10000) in paragraph at lines 60--61
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 77--78
+Underfull \hbox (badness 10000) in paragraph at lines 62--63
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 79--80
+Underfull \hbox (badness 10000) in paragraph at lines 64--65
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 66--67
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--69
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 70--71
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--77
+
+ []
+
+
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 78--78
+[][][]\T1/cmr/m/n/8 Acceder a []$https : / / www . dane . gov . co / index . php / estadisticas-[]por-[]tema / salud / calidad-[]de-[]vida-[]ecv /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--80
 
  []
 
@@ -1133,165 +1165,80 @@ Underfull \hbox (badness 10000) in paragraph at lines 81--82
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 83--84
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 88--88
-[][][]\T1/cmr/m/n/8 Acceder a []$https : / / www . dane . gov . co / index . php / estadisticas-[]por-[]tema / salud / calidad-[]de-[]vida-[]ecv /
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 88--89
-
- []
-
-
-
-[2]
-Overfull \hbox (13.81969pt too wide) in alignment at lines 97--104
- [] [] [] 
- []
-
-
-Underfull \hbox (badness 1325) in paragraph at lines 108--109
-[]|\T1/cmr/m/n/10 Encuestas de mo-vi-li-dad
- []
-
-
-Underfull \hbox (badness 2529) in paragraph at lines 112--113
-[]|\T1/cmr/m/n/10 RUES y Goo-gle Maps
- []
-
-
-Underfull \hbox (badness 2529) in paragraph at lines 116--117
-[]|\T1/cmr/m/n/10 RUES y Goo-gle Maps
- []
-
-
-Underfull \hbox (badness 2529) in paragraph at lines 118--119
-[]|\T1/cmr/m/n/10 RUES y Goo-gle Maps
- []
-
-
-Underfull \hbox (badness 1325) in paragraph at lines 122--123
-[]|\T1/cmr/m/n/10 Encuestas de mo-vi-li-dad
- []
-
-
-Underfull \hbox (badness 1968) in paragraph at lines 124--124
-[]|\T1/cmr/m/n/10 Ingresos del ho-gar por
- []
-
-
-Underfull \hbox (badness 1325) in paragraph at lines 124--125
-[]|\T1/cmr/m/n/10 Encuestas de mo-vi-li-dad
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 138--138
-[]|\T1/cmr/m/n/10 Estrato pro-me-dio del
- []
-
-
-Underfull \hbox (badness 1147) in paragraph at lines 138--139
-\T1/cmr/m/n/10 cia-les de Bo-go-tá (IDE-
- []
-
-
-Underfull \hbox (badness 1147) in paragraph at lines 140--141
-\T1/cmr/m/n/10 cia-les de Bo-go-tá (IDE-
- []
-
-
-Underfull \hbox (badness 1147) in paragraph at lines 142--143
-\T1/cmr/m/n/10 cia-les de Bo-go-tá (IDE-
- []
-
-
-Underfull \hbox (badness 2529) in paragraph at lines 146--147
-[]|\T1/cmr/m/n/10 RUES y Goo-gle Maps
- []
-
-
-Overfull \hbox (13.81969pt too wide) in alignment at lines 104--151
- [] [] [] 
- []
 
 [3]
-
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 199--200
+Underfull \hbox (badness 10000) in paragraph at lines 133--134
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 202--203
+Underfull \hbox (badness 10000) in paragraph at lines 136--137
 
  []
 
-<other_figs/oxxos_intensidad_tratamiento.png, id=173, 2409.0pt x 1806.75pt>
+<other_figs/oxxos_intensidad_tratamiento.png, id=172, 2409.0pt x 1806.75pt>
 File: other_figs/oxxos_intensidad_tratamiento.png Graphic file (type png)
 <use other_figs/oxxos_intensidad_tratamiento.png>
-Package pdftex.def Info: other_figs/oxxos_intensidad_tratamiento.png  used on input line 208.
+Package pdftex.def Info: other_figs/oxxos_intensidad_tratamiento.png  used on input line 142.
 (pdftex.def)             Requested size: 266.14978pt x 199.59775pt.
-<figs_oxxo_maps/mapa_oxxos_binary_2011.png, id=175, 1277.77374pt x 1696.3375pt>
+<figs_oxxo_maps/mapa_oxxos_binary_2011.png, id=174, 1277.77374pt x 1696.3375pt>
 File: figs_oxxo_maps/mapa_oxxos_binary_2011.png Graphic file (type png)
 <use figs_oxxo_maps/mapa_oxxos_binary_2011.png>
-Package pdftex.def Info: figs_oxxo_maps/mapa_oxxos_binary_2011.png  used on input line 221.
+Package pdftex.def Info: figs_oxxo_maps/mapa_oxxos_binary_2011.png  used on input line 155.
 (pdftex.def)             Requested size: 177.42868pt x 235.54433pt.
-<figs_oxxo_maps/mapa_oxxos_binary_2015.png, id=176, 1238.6275pt x 1714.405pt>
+<figs_oxxo_maps/mapa_oxxos_binary_2015.png, id=175, 1238.6275pt x 1714.405pt>
 File: figs_oxxo_maps/mapa_oxxos_binary_2015.png Graphic file (type png)
 <use figs_oxxo_maps/mapa_oxxos_binary_2015.png>
-Package pdftex.def Info: figs_oxxo_maps/mapa_oxxos_binary_2015.png  used on input line 228.
+Package pdftex.def Info: figs_oxxo_maps/mapa_oxxos_binary_2015.png  used on input line 162.
 (pdftex.def)             Requested size: 177.42868pt x 245.56091pt.
-<figs_oxxo_maps/mapa_oxxos_binary_2019.png, id=177, 1317.92375pt x 1666.225pt>
+<figs_oxxo_maps/mapa_oxxos_binary_2019.png, id=176, 1317.92375pt x 1666.225pt>
 File: figs_oxxo_maps/mapa_oxxos_binary_2019.png Graphic file (type png)
 <use figs_oxxo_maps/mapa_oxxos_binary_2019.png>
-Package pdftex.def Info: figs_oxxo_maps/mapa_oxxos_binary_2019.png  used on input line 237.
+Package pdftex.def Info: figs_oxxo_maps/mapa_oxxos_binary_2019.png  used on input line 171.
 (pdftex.def)             Requested size: 177.42868pt x 224.32048pt.
-<figs_oxxo_maps/mapa_oxxos_binary_2023.png, id=178, 1378.14874pt x 1711.39375pt>
+<figs_oxxo_maps/mapa_oxxos_binary_2023.png, id=177, 1378.14874pt x 1711.39375pt>
 File: figs_oxxo_maps/mapa_oxxos_binary_2023.png Graphic file (type png)
 <use figs_oxxo_maps/mapa_oxxos_binary_2023.png>
-Package pdftex.def Info: figs_oxxo_maps/mapa_oxxos_binary_2023.png  used on input line 244.
+Package pdftex.def Info: figs_oxxo_maps/mapa_oxxos_binary_2023.png  used on input line 178.
 (pdftex.def)             Requested size: 177.42868pt x 220.32155pt.
 
 
-[5 <./other_figs/oxxos_intensidad_tratamiento.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 257--258
+[4 <./other_figs/oxxos_intensidad_tratamiento.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 191--192
 
  []
 
 
 
-[6 <./figs_oxxo_maps/mapa_oxxos_binary_2011.png> <./figs_oxxo_maps/mapa_oxxos_binary_2015.png> <./figs_oxxo_maps/mapa_oxxos_binary_2019.png> <./figs_oxxo_maps/mapa_oxxos_binary_2023.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 299--300
+[5 <./figs_oxxo_maps/mapa_oxxos_binary_2011.png> <./figs_oxxo_maps/mapa_oxxos_binary_2015.png> <./figs_oxxo_maps/mapa_oxxos_binary_2019.png> <./figs_oxxo_maps/mapa_oxxos_binary_2023.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 233--234
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 301--302
+Underfull \hbox (badness 10000) in paragraph at lines 235--236
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 303--304
+Underfull \hbox (badness 10000) in paragraph at lines 237--238
 
  []
 
 
+
+[6]
 
 [7]
-<events_study/events_study_lindo_simple.png, id=217, 2409.0pt x 1806.75pt>
+<events_study/events_study_lindo_simple.png, id=222, 2409.0pt x 1806.75pt>
 File: events_study/events_study_lindo_simple.png Graphic file (type png)
 <use events_study/events_study_lindo_simple.png>
-Package pdftex.def Info: events_study/events_study_lindo_simple.png  used on input line 378.
+Package pdftex.def Info: events_study/events_study_lindo_simple.png  used on input line 314.
 (pdftex.def)             Requested size: 310.50357pt x 232.87323pt.
-<events_study/events_study_lindo_controles.png, id=218, 2409.0pt x 1806.75pt>
+<events_study/events_study_lindo_controles.png, id=223, 2409.0pt x 1806.75pt>
 File: events_study/events_study_lindo_controles.png Graphic file (type png)
 <use events_study/events_study_lindo_controles.png>
-Package pdftex.def Info: events_study/events_study_lindo_controles.png  used on input line 387.
+Package pdftex.def Info: events_study/events_study_lindo_controles.png  used on input line 323.
 (pdftex.def)             Requested size: 310.50357pt x 232.87323pt.
 
 
@@ -1300,57 +1247,127 @@ Package pdftex.def Info: events_study/events_study_lindo_controles.png  used on 
 [9 <./events_study/events_study_lindo_simple.png> <./events_study/events_study_lindo_controles.png>]
 
 [10]
+Overfull \hbox (13.81969pt too wide) in alignment at lines 349--356
+ [] [] [] 
+ []
+
+
+Underfull \hbox (badness 1325) in paragraph at lines 360--361
+[]|\T1/cmr/m/n/10 Encuestas de mo-vi-li-dad
+ []
+
+
+Underfull \hbox (badness 2529) in paragraph at lines 364--365
+[]|\T1/cmr/m/n/10 RUES y Goo-gle Maps
+ []
+
+
+Underfull \hbox (badness 2529) in paragraph at lines 368--369
+[]|\T1/cmr/m/n/10 RUES y Goo-gle Maps
+ []
+
+
+Underfull \hbox (badness 2529) in paragraph at lines 370--371
+[]|\T1/cmr/m/n/10 RUES y Goo-gle Maps
+ []
+
+
+Underfull \hbox (badness 1325) in paragraph at lines 374--375
+[]|\T1/cmr/m/n/10 Encuestas de mo-vi-li-dad
+ []
+
+
+Underfull \hbox (badness 1968) in paragraph at lines 376--376
+[]|\T1/cmr/m/n/10 Ingresos del ho-gar por
+ []
+
+
+Underfull \hbox (badness 1325) in paragraph at lines 376--377
+[]|\T1/cmr/m/n/10 Encuestas de mo-vi-li-dad
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 390--390
+[]|\T1/cmr/m/n/10 Estrato pro-me-dio del
+ []
+
+
+Underfull \hbox (badness 1147) in paragraph at lines 390--391
+\T1/cmr/m/n/10 cia-les de Bo-go-tá (IDE-
+ []
+
+
+Underfull \hbox (badness 1147) in paragraph at lines 392--393
+\T1/cmr/m/n/10 cia-les de Bo-go-tá (IDE-
+ []
+
+
+Underfull \hbox (badness 1147) in paragraph at lines 394--395
+\T1/cmr/m/n/10 cia-les de Bo-go-tá (IDE-
+ []
+
+
+Underfull \hbox (badness 2529) in paragraph at lines 398--399
+[]|\T1/cmr/m/n/10 RUES y Goo-gle Maps
+ []
+
+
+Overfull \hbox (13.81969pt too wide) in alignment at lines 356--403
+ [] [] [] 
+ []
 
 [11]
 
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 561--562
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 563--564
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 565--566
-
- []
-
-
 
 [13]
+Underfull \hbox (badness 10000) in paragraph at lines 558--559
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 560--561
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 562--563
+
+ []
+
+
 
 [14]
-Underfull \hbox (badness 10000) in paragraph at lines 743--744
-
- []
-
-
-Overfull \hbox (18.64299pt too wide) in paragraph at lines 749--801
- [][] 
- []
-
-
 
 [15]
-Overfull \hbox (18.64299pt too wide) in paragraph at lines 808--860
+Underfull \hbox (badness 10000) in paragraph at lines 740--741
+
+ []
+
+
+Overfull \hbox (18.64299pt too wide) in paragraph at lines 746--798
  [][] 
  []
 
 
 
 [16]
-Overfull \hbox (18.64299pt too wide) in paragraph at lines 866--918
+Overfull \hbox (18.64299pt too wide) in paragraph at lines 805--857
  [][] 
  []
 
 
 
 [17]
+Overfull \hbox (18.64299pt too wide) in paragraph at lines 863--915
+ [][] 
+ []
 
-[18] (./primera_version.aux
+
+
+[18]
+
+[19] (./primera_version.aux
 LaTeX Info: Redefining \sptext on input line 22.
 LaTeX Info: Redefining \. on input line 22.
 LaTeX Info: Redefining \% on input line 22.
@@ -1364,24 +1381,24 @@ L3 programming layer <2025-01-18>
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `primera_version.out' has not changed.
-(rerunfilecheck)             Checksum: CCFA2A95BB06B05DE9CFF6C02AB52A3E;2458.
+(rerunfilecheck)             Checksum: E352C17348A596E2BC01EDA505816621;2689.
 Package logreq Info: Writing requests to 'primera_version.run.xml'.
 \openout1 = `primera_version.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39359 strings out of 473190
- 790571 string characters out of 5715801
- 1743249 words of memory out of 5000000
- 61971 multiletter control sequences out of 15000+600000
+ 39363 strings out of 473190
+ 790647 string characters out of 5715801
+ 1744318 words of memory out of 5000000
+ 61973 multiletter control sequences out of 15000+600000
  573605 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,11n,105p,1254b,2905s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,11n,105p,975b,2905s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfti0800.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb>
-Output written on primera_version.pdf (18 pages, 1853011 bytes).
+Output written on primera_version.pdf (19 pages, 1855179 bytes).
 PDF statistics:
- 404 PDF objects out of 1000 (max. 8388607)
- 306 compressed objects within 4 object streams
- 76 named destinations out of 1000 (max. 500000)
- 304 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 413 PDF objects out of 1000 (max. 8388607)
+ 314 compressed objects within 4 object streams
+ 78 named destinations out of 1000 (max. 500000)
+ 312 words of extra memory for PDF output out of 10000 (max. 10000000)
 

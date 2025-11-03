@@ -23,5 +23,6 @@ Tiendas de cadena		NO	SI
 Controles variables		NO	SI
 Controles fijos		NO	NO
 Control spillover		NO	SI
+Controles por diferencias		SI	SI
 DD		0.000199	0.00784
 DDSE		0.0193	0.0195
