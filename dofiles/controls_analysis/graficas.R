@@ -301,7 +301,7 @@ events <- event_study_data %>%
   xlab("Años relativos (año/4) antes y después de la llegada de OXXO a un ZAT") +
   ylab("Proporción de independientes en el ZAT") +
   geom_hline(yintercept = 0, color = "black") +
-  geom_vline(xintercept = 0, color = "black") +
+  geom_vline(xintercept = -1, color = "black") +
   scale_x_continuous(breaks = seq(min(event_study_data$exp, na.rm = TRUE),
                                   max(event_study_data$exp, na.rm = TRUE),
                                   by = 1)) +
@@ -339,6 +339,7 @@ y_breaks <- sort(unique(c(y_breaks, dd_val)))
 y_labels <- function(x) sprintf("%.4f", x)
 
 # gráfico
+# gráfico
 events <- event_study_data %>%
   ggplot(aes(x = exp, y = prop_independiente_total1,
              ymin = prop_independiente_total1 - 1.96*prop_independiente_total0, 
@@ -351,7 +352,6 @@ events <- event_study_data %>%
   geom_line(color = "#8E44AD", size = 1) +
   geom_point(color = "#6C3483", size = 2) +
   
-  # línea horizontal del estimador DD (con leyenda)
   # línea horizontal del estimador DD (sin leyenda)
   geom_hline(yintercept = dd_val, color = "#E75480", linetype = "dashed", size = 1) +
   
@@ -362,8 +362,11 @@ events <- event_study_data %>%
   theme_minimal(base_size = 14) +
   xlab("Años relativos (año/4) antes y después de la llegada de OXXO a un ZAT") +
   ylab("Proporción de independientes en el ZAT") +
+  
+  # líneas de referencia: horizontal en 0 y vertical en -1 (el nuevo año base)
   geom_hline(yintercept = 0, color = "black") +
-  geom_vline(xintercept = 0, color = "black") +
+  geom_vline(xintercept = -1, color = "black", linetype = "solid", size = 1) +
+  
   scale_x_continuous(breaks = seq(min(event_study_data$exp, na.rm = TRUE),
                                   max(event_study_data$exp, na.rm = TRUE),
                                   by = 1)) +
@@ -375,10 +378,22 @@ events <- event_study_data %>%
     legend.position = "top"
   )
 
-
 # Guardar el gráfico
 ggsave(filename = "data/controles_results/events_study_lindo_simple.png",
        plot = events,
        width = 8, height = 6, dpi = 300)
+
+
+# hacer el estudio de eventos bonito para CS
+
+
+
+# hacer el estudio de eventos bonito para CS con controles
+
+
+
+#unir los estudios de eventos en un solo grafico twfe y cs sin controles
+
+#unir los estudios de eventos en un solo grafico twfe y cs con controles
 
 

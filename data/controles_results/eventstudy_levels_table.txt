@@ -1,20 +1,20 @@
 		(1)	(2)
-VARIABLES	LABELS	ES	ES controles
+VARIABLES	LABELS	ES TWFE	ES controles
 			
-lag3	lag3	-0.0216	0.0330
-		0.0232	0.0334
-lag2	lag2	0.0195	0.0459
-		0.0229	0.0267
-lag1	lag1	0.0103	0.0215
+lag3	lag3	-0.0318	0.0114
+		0.0266	0.0317
+lag2	lag2	0.00919	0.0244
+		0.0249	0.0253
+lead0	lead0	-0.0103	-0.0215
 		0.0166	0.0180
-lead1	lead1	-0.0130	-0.0252
-		0.0135	0.0192
-lead2	lead2	-0.0356	-0.0605
-		0.0261	0.0299
-lead3	lead3	-0.0690	-0.118
-		0.0273	0.0409
-Constant	Constant	0.315	0.154
-		0.0103	0.104
+lead1	lead1	-0.0232	-0.0467
+		0.0181	0.0264
+lead2	lead2	-0.0458	-0.0821
+		0.0264	0.0345
+lead3	lead3	-0.0793	-0.140
+		0.0315	0.0488
+Constant	Constant	0.325	0.175
+		0.0160	0.104
 			
 Observations		684	684
 R-squared		0.084	0.159

@@ -1,19 +1,19 @@
 	(1)
 VARIABLES	prop_independiente_total
 	
-lag3	0.0330
-	0.0334
-lag2	0.0459
-	0.0267
-lag1	0.0215
+lag3	0.0114
+	0.0317
+lag2	0.0244
+	0.0253
+lead0	-0.0215
 	0.0180
-lead1	-0.0252
-	0.0192
-lead2	-0.0605
-	0.0299
-lead3	-0.118
-	0.0409
-Constant	0.154
+lead1	-0.0467
+	0.0264
+lead2	-0.0821
+	0.0345
+lead3	-0.140
+	0.0488
+Constant	0.175
 	0.104
 	
 Observations	684

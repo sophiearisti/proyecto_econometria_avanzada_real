@@ -1,5 +1,5 @@
 		(1)	(2)	(3)	(4)	(5)	(6)
-VARIABLES	LABELS	MCO	MCO con controles	TWFE	TWFE con controles	ES	ES con controles
+VARIABLES	LABELS	MCO	MCO con controles	TWFE	TWFE con controles	ES TWFE	ES con controles TWFE
 							
 dummy_oxxo	dummy_oxxo	0.0179	-0.0111	-0.0206	-0.00223	0.000199	0.00784
 		(0.0142)	(0.0133)	(0.0142)	(0.0137)	(0.0193)	(0.0195)
