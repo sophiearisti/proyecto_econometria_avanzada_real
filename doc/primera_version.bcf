@@ -3092,6 +3092,14 @@
     <bcf:citekey order="17" intorder="1">Konishi2005</bcf:citekey>
     <bcf:citekey order="17" intorder="2">Seong2022</bcf:citekey>
     <bcf:citekey order="18" intorder="1">delgado2024</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">RiosAvila_Callaway_SantAnna_2021_csdid_slides</bcf:citekey>
+    <bcf:citekey order="19" intorder="2">Callaway_SantAnna_2021</bcf:citekey>
+    <bcf:citekey order="20" intorder="1">RiosAvila_Callaway_SantAnna_2021_csdid_slides</bcf:citekey>
+    <bcf:citekey order="20" intorder="2">Callaway_SantAnna_2021</bcf:citekey>
+    <bcf:citekey order="21" intorder="1">delgado2024</bcf:citekey>
+    <bcf:citekey order="21" intorder="2">Seong2022</bcf:citekey>
+    <bcf:citekey order="22" intorder="1">DANE2025a</bcf:citekey>
+    <bcf:citekey order="23" intorder="1">DelgadoGomez2025_tiendas_de_barrio</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="apa">

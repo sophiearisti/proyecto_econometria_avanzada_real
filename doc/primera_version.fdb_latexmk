@@ -1,13 +1,13 @@
 # Fdb version 4
-["biber primera_version"] 1762487022.0212 "primera_version.bcf" "primera_version.bbl" "primera_version" 1762539806.06589 0
-  "primera_version.bcf" 1762539805.89706 135199 12cb8709e8a97eefd804f7261322538a "pdflatex"
-  "references.bib" 1759024857.3846 6927 44af330279afaffe9f68d63b0c9920cf ""
+["biber primera_version"] 1762542083.75627 "primera_version.bcf" "primera_version.bbl" "primera_version" 1762547013.01747 0
+  "primera_version.bcf" 1762547012.85274 135844 93ae4ff0d3a5ac4969c2a4b9b6473d64 "pdflatex"
+  "references.bib" 1762542075.52865 8252 420ceae10855547bf9f6df3963df038d ""
   (generated)
   "primera_version.bbl"
   "primera_version.blg"
   (rewritten before read)
-["pdflatex"] 1762539801.44298 "/Users/sophiaaristizabal/Desktop/1 economia/7/econometría avanzada/proyecto_econometria_avanzada/doc/primera_version.tex" "primera_version.pdf" "primera_version" 1762539806.06623 0
-  "/Users/sophiaaristizabal/Desktop/1 economia/7/econometría avanzada/proyecto_econometria_avanzada/doc/primera_version.tex" 1762539801.16492 59649 00cc69f51393fbd7b95a52a9bdc7c33a ""
+["pdflatex"] 1762547008.46759 "/Users/sophiaaristizabal/Desktop/1 economia/7/econometría avanzada/proyecto_econometria_avanzada/doc/primera_version.tex" "primera_version.pdf" "primera_version" 1762547013.01779 0
+  "/Users/sophiaaristizabal/Desktop/1 economia/7/econometría avanzada/proyecto_econometria_avanzada/doc/primera_version.tex" 1762547003.5702 59993 9a469079d8876181b38b3a1e856d37f4 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/ecbx1000.tfm" 1136768653 3584 2d666ecf6d466d8b007246bc2f94d9da ""
@@ -27,16 +27,20 @@
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm" 1136768653 1536 06717a2b50de47d4087ac0e6cd759455 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
+  "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex9.tfm" 1246382020 996 a18840b13b499c08ac2de96a99eda4bc ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmex10.tfm" 1136768653 992 662f679a0b3d2d53c1b94050fdaa3f50 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm" 1136768653 1512 f21f83efb36853c0b70002322c1ab3ad ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmmi8.tfm" 1136768653 1520 eccf95517727cb11801f4f1aee3a21b4 ""
+  "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmmi9.tfm" 1136768653 1524 d89e2d087a9828407a196f428428ef4a ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1136768653 1288 655e228510b4c2a1abe905c368440826 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr6.tfm" 1136768653 1300 b62933e007d01cfd073f79b963c01526 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr8.tfm" 1136768653 1292 21c1c5bfeaebccffdb478fd231a0997d ""
+  "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr9.tfm" 1136768653 1292 6b21b9c2c7bebb38aa2273f7ca0fb3af ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm" 1136768653 1124 6c73e740cf17375f03eec0ee63599741 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm" 1136768653 1116 933a60c408fc0a863a92debe84b2d294 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1136768653 1120 8b7d695260f3cff42e636090a8002094 ""
+  "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmsy9.tfm" 1136768653 1116 25a7bf822c58caf309a702ef79f4afbb ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb" 1248133631 30251 6afa5cb1d0204815a708a080681d4674 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb" 1248133631 36281 c355509802a035cadc5f15869451dcee ""
@@ -261,10 +265,10 @@
   "figs_oxxo_maps/mapa_oxxos_binary_2019.png" 1758245920.84427 429911 3eda41a43f51026dd99ed2c91a584ae7 ""
   "figs_oxxo_maps/mapa_oxxos_binary_2023.png" 1758232646.77918 466192 e8ab34f4e33790f05af3dccca826a62a ""
   "other_figs/oxxos_intensidad_tratamiento.png" 1759006147.87277 228955 1f71b0372fbdb4f80b3a522adc01941d ""
-  "primera_version.aux" 1762539805.89083 18839 48ce7fc21baa4c3303fb40f82d44dcac "pdflatex"
-  "primera_version.bbl" 1762487026.28908 49150 389e85b018dcaeb67fcda6b4445a91c6 "biber primera_version"
-  "primera_version.out" 1762539805.89424 3273 7de6d2cf41ee62ff0bdc64f7c71e22dc "pdflatex"
-  "primera_version.run.xml" 1762539805.89831 2436 514c71cc1cc891eb7058faa8217f2922 "pdflatex"
+  "primera_version.aux" 1762547012.84613 20391 f147aea056e7eaefd1c41360b8f6382e "pdflatex"
+  "primera_version.bbl" 1762542085.63626 60256 d2786c26a8846c35acd7c6410912251d "biber primera_version"
+  "primera_version.out" 1762547012.84992 3273 7de6d2cf41ee62ff0bdc64f7c71e22dc "pdflatex"
+  "primera_version.run.xml" 1762547012.85342 2436 514c71cc1cc891eb7058faa8217f2922 "pdflatex"
   (generated)
   "primera_version.aux"
   "primera_version.bcf"

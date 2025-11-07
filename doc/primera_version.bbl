@@ -67,6 +67,40 @@
       \verb https://repositorio.banrep.gov.co/server/api/core/bitstreams/23e2c186-01c4-43e9-955c-a5c2c0531de0/content
       \endverb
     \endentry
+    \entry{DelgadoGomez2025_tiendas_de_barrio}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=85b74b056e9b76affc03c14cd5158029}{%
+           family={ANIF},
+           familyi={A\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Valora Analitik}%
+      }
+      \strng{namehash}{85b74b056e9b76affc03c14cd5158029}
+      \strng{fullhash}{85b74b056e9b76affc03c14cd5158029}
+      \strng{fullhashraw}{85b74b056e9b76affc03c14cd5158029}
+      \strng{bibnamehash}{85b74b056e9b76affc03c14cd5158029}
+      \strng{authorbibnamehash}{85b74b056e9b76affc03c14cd5158029}
+      \strng{authornamehash}{85b74b056e9b76affc03c14cd5158029}
+      \strng{authorfullhash}{85b74b056e9b76affc03c14cd5158029}
+      \strng{authorfullhashraw}{85b74b056e9b76affc03c14cd5158029}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{4}
+      \field{title}{Se reducen las tiendas de barrio en Colombia: ¿Qué hay detrás de esta caída?}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://www.valoraanalitik.com/se-reducen-las-tiendas-de-barrio-en-colombia-que-hay-detras-de-esta-caida/
+      \endverb
+      \verb{url}
+      \verb https://www.valoraanalitik.com/se-reducen-las-tiendas-de-barrio-en-colombia-que-hay-detras-de-esta-caida/
+      \endverb
+    \endentry
     \entry{basker2005}{article}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=33eb389e0910df88f1e6037735807142}{%
@@ -100,6 +134,53 @@
       \range{pages}{10}
       \verb{doi}
       \verb 10.1162/0034653053327568
+      \endverb
+    \endentry
+    \entry{Callaway_SantAnna_2021}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=4a5a67b3788b4a3653a14d9ab03fba0e}{%
+           family={Callaway},
+           familyi={C\bibinitperiod},
+           given={Brantly},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f90144f1e670fa40bee88166593b00ea}{%
+           family={Sant'Anna},
+           familyi={S\bibinitperiod},
+           given={Pedro\bibnamedelimb H.\bibnamedelimi C.},
+           giveni={P\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{ad085d57563a91bbe53422c59ebffdd2}
+      \strng{fullhash}{ad085d57563a91bbe53422c59ebffdd2}
+      \strng{fullhashraw}{ad085d57563a91bbe53422c59ebffdd2}
+      \strng{bibnamehash}{ad085d57563a91bbe53422c59ebffdd2}
+      \strng{authorbibnamehash}{ad085d57563a91bbe53422c59ebffdd2}
+      \strng{authornamehash}{ad085d57563a91bbe53422c59ebffdd2}
+      \strng{authorfullhash}{ad085d57563a91bbe53422c59ebffdd2}
+      \strng{authorfullhashraw}{ad085d57563a91bbe53422c59ebffdd2}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Econometrics}
+      \field{number}{2}
+      \field{title}{Difference-in-Differences with Multiple Time Periods}
+      \field{volume}{225}
+      \field{year}{2021}
+      \field{pages}{200\bibrangedash 230}
+      \range{pages}{31}
+      \verb{doi}
+      \verb 10.1016/j.jeconom.2020.12.001
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1016/j.jeconom.2020.12.001
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1016/j.jeconom.2020.12.001
       \endverb
     \endentry
     \entry{cho2015}{article}{}{}
@@ -476,6 +557,52 @@
       \verb{url}
       \verb https://www.portafolio.co/economia/empleo/trabajo-por-cuenta-propia-crece-en-colombia-pero-informalidad-y-falta-de-aportes-preocupan-634514
       \endverb
+    \endentry
+    \entry{RiosAvila_Callaway_SantAnna_2021_csdid_slides}{misc}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=8780ffb8b2119e19b7327ec3426ba2a3}{%
+           family={Rios-Avila},
+           familyi={R\bibinithyphendelim A\bibinitperiod},
+           given={Fernando},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4a5a67b3788b4a3653a14d9ab03fba0e}{%
+           family={Callaway},
+           familyi={C\bibinitperiod},
+           given={Brantly},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f90144f1e670fa40bee88166593b00ea}{%
+           family={Sant'Anna},
+           familyi={S\bibinitperiod},
+           given={Pedro\bibnamedelimb H.\bibnamedelimi C.},
+           giveni={P\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{institution}{2}{%
+        {Levy Economics Institute, University of Georgia,}%
+        {Vanderbilt University}%
+      }
+      \strng{namehash}{4d2d3e2bca3f23d146b02d8d2d361cf3}
+      \strng{fullhash}{3cb58943e0d53b9ad6b3aebba9690672}
+      \strng{fullhashraw}{3cb58943e0d53b9ad6b3aebba9690672}
+      \strng{bibnamehash}{3cb58943e0d53b9ad6b3aebba9690672}
+      \strng{authorbibnamehash}{3cb58943e0d53b9ad6b3aebba9690672}
+      \strng{authornamehash}{4d2d3e2bca3f23d146b02d8d2d361cf3}
+      \strng{authorfullhash}{3cb58943e0d53b9ad6b3aebba9690672}
+      \strng{authorfullhashraw}{3cb58943e0d53b9ad6b3aebba9690672}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Presentation slides, Stata Conference}
+      \field{month}{8}
+      \field{note}{Available upon request or at the Stata Conference 2021 materials}
+      \field{title}{csdid: Difference-in-Differences with Multiple Time Periods in Stata}
+      \field{year}{2021}
     \endentry
     \entry{m_2025}{article}{}{}
       \name{author}{1}{}{%
@@ -616,6 +743,40 @@
       \verb https://repositorio.banrep.gov.co/server/api/core/bitstreams/23e2c186-01c4-43e9-955c-a5c2c0531de0/content
       \endverb
     \endentry
+    \entry{DelgadoGomez2025_tiendas_de_barrio}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=85b74b056e9b76affc03c14cd5158029}{%
+           family={ANIF},
+           familyi={A\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Valora Analitik}%
+      }
+      \strng{namehash}{85b74b056e9b76affc03c14cd5158029}
+      \strng{fullhash}{85b74b056e9b76affc03c14cd5158029}
+      \strng{fullhashraw}{85b74b056e9b76affc03c14cd5158029}
+      \strng{bibnamehash}{85b74b056e9b76affc03c14cd5158029}
+      \strng{authorbibnamehash}{85b74b056e9b76affc03c14cd5158029}
+      \strng{authornamehash}{85b74b056e9b76affc03c14cd5158029}
+      \strng{authorfullhash}{85b74b056e9b76affc03c14cd5158029}
+      \strng{authorfullhashraw}{85b74b056e9b76affc03c14cd5158029}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{4}
+      \field{title}{Se reducen las tiendas de barrio en Colombia: ¿Qué hay detrás de esta caída?}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://www.valoraanalitik.com/se-reducen-las-tiendas-de-barrio-en-colombia-que-hay-detras-de-esta-caida/
+      \endverb
+      \verb{url}
+      \verb https://www.valoraanalitik.com/se-reducen-las-tiendas-de-barrio-en-colombia-que-hay-detras-de-esta-caida/
+      \endverb
+    \endentry
     \entry{basker2005}{article}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=33eb389e0910df88f1e6037735807142}{%
@@ -649,6 +810,53 @@
       \range{pages}{10}
       \verb{doi}
       \verb 10.1162/0034653053327568
+      \endverb
+    \endentry
+    \entry{Callaway_SantAnna_2021}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=4a5a67b3788b4a3653a14d9ab03fba0e}{%
+           family={Callaway},
+           familyi={C\bibinitperiod},
+           given={Brantly},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f90144f1e670fa40bee88166593b00ea}{%
+           family={Sant'Anna},
+           familyi={S\bibinitperiod},
+           given={Pedro\bibnamedelimb H.\bibnamedelimi C.},
+           giveni={P\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{ad085d57563a91bbe53422c59ebffdd2}
+      \strng{fullhash}{ad085d57563a91bbe53422c59ebffdd2}
+      \strng{fullhashraw}{ad085d57563a91bbe53422c59ebffdd2}
+      \strng{bibnamehash}{ad085d57563a91bbe53422c59ebffdd2}
+      \strng{authorbibnamehash}{ad085d57563a91bbe53422c59ebffdd2}
+      \strng{authornamehash}{ad085d57563a91bbe53422c59ebffdd2}
+      \strng{authorfullhash}{ad085d57563a91bbe53422c59ebffdd2}
+      \strng{authorfullhashraw}{ad085d57563a91bbe53422c59ebffdd2}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Econometrics}
+      \field{number}{2}
+      \field{title}{Difference-in-Differences with Multiple Time Periods}
+      \field{volume}{225}
+      \field{year}{2021}
+      \field{pages}{200\bibrangedash 230}
+      \range{pages}{31}
+      \verb{doi}
+      \verb 10.1016/j.jeconom.2020.12.001
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1016/j.jeconom.2020.12.001
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1016/j.jeconom.2020.12.001
       \endverb
     \endentry
     \entry{cho2015}{article}{}{}
@@ -1025,6 +1233,52 @@
       \verb{url}
       \verb https://www.portafolio.co/economia/empleo/trabajo-por-cuenta-propia-crece-en-colombia-pero-informalidad-y-falta-de-aportes-preocupan-634514
       \endverb
+    \endentry
+    \entry{RiosAvila_Callaway_SantAnna_2021_csdid_slides}{misc}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=8780ffb8b2119e19b7327ec3426ba2a3}{%
+           family={Rios-Avila},
+           familyi={R\bibinithyphendelim A\bibinitperiod},
+           given={Fernando},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4a5a67b3788b4a3653a14d9ab03fba0e}{%
+           family={Callaway},
+           familyi={C\bibinitperiod},
+           given={Brantly},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f90144f1e670fa40bee88166593b00ea}{%
+           family={Sant'Anna},
+           familyi={S\bibinitperiod},
+           given={Pedro\bibnamedelimb H.\bibnamedelimi C.},
+           giveni={P\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{institution}{2}{%
+        {Levy Economics Institute, University of Georgia,}%
+        {Vanderbilt University}%
+      }
+      \strng{namehash}{4d2d3e2bca3f23d146b02d8d2d361cf3}
+      \strng{fullhash}{3cb58943e0d53b9ad6b3aebba9690672}
+      \strng{fullhashraw}{3cb58943e0d53b9ad6b3aebba9690672}
+      \strng{bibnamehash}{3cb58943e0d53b9ad6b3aebba9690672}
+      \strng{authorbibnamehash}{3cb58943e0d53b9ad6b3aebba9690672}
+      \strng{authornamehash}{4d2d3e2bca3f23d146b02d8d2d361cf3}
+      \strng{authorfullhash}{3cb58943e0d53b9ad6b3aebba9690672}
+      \strng{authorfullhashraw}{3cb58943e0d53b9ad6b3aebba9690672}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Presentation slides, Stata Conference}
+      \field{month}{8}
+      \field{note}{Available upon request or at the Stata Conference 2021 materials}
+      \field{title}{csdid: Difference-in-Differences with Multiple Time Periods in Stata}
+      \field{year}{2021}
     \endentry
     \entry{m_2025}{article}{}{}
       \name{author}{1}{}{%
