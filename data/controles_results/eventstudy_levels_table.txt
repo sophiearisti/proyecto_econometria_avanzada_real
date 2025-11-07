@@ -1,28 +1,28 @@
-		(1)	(2)
-VARIABLES	LABELS	ES TWFE	ES controles
-			
-lag3	lag3	-0.0318	0.0114
-		0.0266	0.0317
-lag2	lag2	0.00919	0.0244
-		0.0249	0.0253
-lead0	lead0	-0.0103	-0.0215
-		0.0166	0.0180
-lead1	lead1	-0.0232	-0.0467
-		0.0181	0.0264
-lead2	lead2	-0.0458	-0.0821
-		0.0264	0.0345
-lead3	lead3	-0.0793	-0.140
-		0.0315	0.0488
-Constant	Constant	0.325	0.175
-		0.0160	0.104
-			
-Observations		684	684
-R-squared		0.084	0.159
-Number of zat		171	171
-Tiendas de cadena		NO	SI
-Controles variables		NO	SI
-Controles fijos		NO	NO
-Control spillover		NO	SI
-Controles por diferencias		SI	SI
-DD		0.000199	0.00784
-DDSE		0.0193	0.0195
+		(1)
+VARIABLES	LABELS	ES TWFE
+		
+lag3	lag3	-0.0318
+		0.0266
+lag2	lag2	0.00919
+		0.0249
+lead0	lead0	-0.0103
+		0.0166
+lead1	lead1	-0.0232
+		0.0181
+lead2	lead2	-0.0458
+		0.0264
+lead3	lead3	-0.0793
+		0.0315
+Constant	Constant	0.325
+		0.0160
+		
+Observations		684
+Number of zat		171
+R-squared		0.084
+Tiendas de cadena		NO
+Controles variables		NO
+Controles fijos		NO
+Control spillover		NO
+Controles por diferencias		SI
+DD		0.000199
+DDSE		0.0193

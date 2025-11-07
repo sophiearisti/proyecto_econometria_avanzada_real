@@ -12,6 +12,8 @@
 \usepackage{url}
 \usepackage[most]{tcolorbox} % paquete para cuadros
 \usepackage{xcolor}
+\usepackage{setspace}
+
 %for citations
 \usepackage[style=apa, backend=biber]{biblatex}
 \usepackage{hyperref}
@@ -32,18 +34,19 @@
 \begin{document}
 
 \maketitle
+\onehalfspacing
 
 \section{Introduction}
 
 Desde su llegada en 2009, OXXO se ha consolidado como una de las principales cadenas de conveniencia en Colombia \parencite{m_2025}. 
-Además, su modelo basado en la accesibilidad de productos básicos plantea la incógnita de si estas tiendas desencadenan la desaparición de tiendas minoristas informales. \\
+Además, su modelo basado en la accesibilidad de productos básicos plantea la incógnita de si estas tiendas desencadenan la desaparición de negocios minoristas informales. \\
 
 
 La informalidad minorista es difícil de medir directamente a nivel intraurbano. Por tanto, esta investigación buscará responder si la presencia de OXXO causa una disminución en la actividad de trabajadores independientes en su entorno cercano en Bogotá. La respuesta a esta pregunta ayuda a comprender posibles cambios en las dinámicas económicas locales: ¿estamos frente a un fenómeno de desplazamiento de formas tradicionales de autoempleo o a un proceso de formalización y competencia renovada en contextos urbanos en desarrollo? \\
 
 Algunos estudios sugieren que los minoristas informales no desaparecen sino que se adaptan y compiten \parencite{marcos2022}. Otros, por otro lado, no encuentran efectos significativos sobre el empleo informal a nivel municipal \parencite{delgado2024}. En consecuencia, no se espera un cambio significativo en la actividad de trabajadores independientes. \\
 
-La investigación usará datos de la secretaría de movilidad de Bogotá y dividirá la ciudad en Zonas de Análisis de Transporte (ZAT).  Utilizando los métodos de two-way fixed effects (TWFE) y estudio de eventos, se evaluará la llegada escalonada de los OXXO en las zonas y su efecto en la proporción de trabajadores independentes que llegan a trabajar a dicho ZAT, utilizada como proxy indirecto de la actividad minorista informal local. \\
+La investigación usará datos de la secretaría de movilidad de Bogotá y dividirá la ciudad en Zonas de Análisis de Transporte (ZAT).  Utilizando los métodos de two-way fixed effects (TWFE) y estudio de eventos, se evaluará la llegada escalonada de los OXXO en las zonas y su efecto en la proporción de trabajadores independentes que llegan a trabajar a dicho ZAT. Esta última utilizada como proxy indirecto de la actividad minorista informal local. \\
 
 \begin{comment}
 
@@ -72,14 +75,13 @@ Por su parte, Bogotá concentra 40–50\% de las sucursales \parencite{godoy2025
 \section{Estadísticas Descriptivas} 
 
 \subsection{Descripción de los datos}
-Los resultados de esta investigación emplean cinco fuentes de datos. A partir del Registro Único Empresarial y Social (RUES) \footnote{Acceder a \url{ https://www.rues.org.co}} , la central de información empresarial en Colombia que contiene todos los registros de las empresas y comerciantes inscritos por las cámaras de comercio del país, se identificó el año de apertura y cierre de cada sucursal de OXXO, D1, Justo\&Bueno y ARA.
+Los resultados de esta investigación emplean cinco fuentes de datos  (revisar apéndice~\ref{sec:variables_descripcion_detallada}). A partir del Registro Único Empresarial y Social (RUES) \footnote{Acceder a \url{ https://www.rues.org.co}} , la central de información empresarial en Colombia que contiene todos los registros de las empresas y comerciantes inscritos por las cámaras de comercio del país, se identificó el año de apertura y cierre de cada sucursal de OXXO, D1, Justo\&Bueno y ARA.
 Estas últimas fueron incluidas por su posible influencia en la localización de los OXXO. Además, con de GoogleMaps API se obtuvo la localización de cada tienda. \\
 
 Con la Encuesta de Calidad de Vida de Bogotá 2007 \footnote{Acceder a \url{https://www.dane.gov.co/index.php/estadisticas-por-tema/salud/calidad-de-vida-ecv/encuesta-nacional-de-calidad-de-vida-2007-bogota}} se construyeron los controles de línea base a nivel de localidad. Estos reflejan las características iniciales antes de que cualquier ZAT fuera tratada. 
 Por otro lado, con Mapas-Bogotá se obtuvo los controles fijos a nivel de ZAT \footnote{Acceder a \url{https://mapas.bogota.gov.co}}; es decir, las características básicas de cada zona que no cambian en el tiempo. \\
 
 Finalmente, las Encuestas de Movilidad (2011, 2015, 2019 y 2023) \footnote{Acceder a \url{https://www.simur.gov.co/encuestas-de-movilidad}} permitieron construir otros controles y la variable dependiente. Esta mide por año la proporción de trabajadores independientes que se movilizan a trabajar al $ZAT_i$ sobre el total de los trabajadores que se movilizan a dicho ZAT:\\
-
 
 \begin{equation}
     proporcion\_independientes_{i,t}=\frac{trabajadores\_independientes_{i,t}}{total\_trabajadores_{i,t}} ; \quad \forall i, t
@@ -121,7 +123,7 @@ La tabla Tabla~\ref{tab:independientes_zats} muestra la media de la proporción 
     \toprule
     & \textbf{2011} & \textbf{2015} & \textbf{2019} & \textbf{2023} \\
     \midrule
-    \textbf{proporción independientes} & 0.058 & 0.024 & -0.008 & 0.001 \\
+    proporción independientes & 0.058 & 0.024 & -0.008 & 0.001 \\
     & (0.064) & (0.037) & (0.028) & (0.019) \\
     \bottomrule
   \end{tabular}
@@ -143,12 +145,12 @@ Los resultados también evidencian el crecimiento acelerado de la presencia de O
     \caption{
         \textbf{Evolución relativa promedio de cantidad de OXXOs por ZAT por cohorte} 
         \newline
-        \footnotesize{\textit{Nota:} Esta figura muestra la evoluación promedio de la cantidad de OXXOs por ZAT para cada cohorte. El tiempo cero indica el año en que el cohorte inicia a ser tratado. Un rezago o adelanto representa una diferencia de 4 años. }
+        \footnotesize{\textit{Nota:} Esta figura muestra la evolución promedio de la cantidad de OXXOs por ZAT para cada cohorte. El tiempo cero indica el año en que el cohorte inicia a ser tratado. Un rezago o adelanto representa una diferencia de 4 años. }
      }   
     \label{fig:intensidad}
 \end{figure}
 
-\begin{figure} [H]
+\begin{figure} 
     \centering
     % Top-left
     \begin{subfigure}[b]{0.4\textwidth} % Valor ajustado aquí
@@ -186,7 +188,7 @@ Los resultados también evidencian el crecimiento acelerado de la presencia de O
     \label{fig:fourpanelOXXO}
 \end{figure}
 
-\section{Variables de control}
+\subsection{Variables de control}
 
 Los controles de línea base y fijos en el tiempo están en la Tabla~\ref{tab:diferencias_medias_controles_fijos}. Estos no serán necesarios ya que el TWFE inherentemente controla por caracteristicas constantes en unidad y tiempo. No obstante, ayudan a entender que los OXXO se ubican en zonas donde hay mayor tráfico, accesibilidad, poder adquisitivo y tamaño del mercado (reflejado por el tamaño del hogar). Esto va en línea con lo confirmado por \textcite{marcos2022}, donde las cadenas de conveniencia en México resultaron distrubirse por características similares.  Adicionalmente, los controles variables afirman los resultados de los fijos. Para cada cohorte, el ingreso y tamaño del hogar por ZAT resulta ser significativo (revisar apéndice~\ref{sec:controles_variables}). \\
 
@@ -238,98 +240,216 @@ Es importante resaltar que probablemente existan otros factores no observados qu
 
 \section{Modelo econométrico}
 
+La investigación examina con cuatro modelos econométricos el efecto causal de la presencia de OXXO en la proporción de trabajadores independientes.\\
+
+El primero es MCO. Este compara las ZATs tratadas con las de control. Su estimación sería:\\
+
+\begin{equation}
+Y_{i} = \alpha + \beta D_{i} + \varepsilon_{i}
+\label{eq:mco}
+\end{equation}\\
+
+Donde $Y_{i}$ es la proporción de trabajadores y $D_{i}$ indica si el $ZAT_i$ tiene o no OXXO. Este modelo no considera el hecho de que la llegada de estas tiendas ocurre de manera escalonada. Adicionalmente, asume exogeneidad del tratamiento, pero la ubicación de los OXXO no es aleatoria. Por tanto, no solo ignora el sesgo de selección, sino que también $\beta$ puede estar subestimado por no tener en cuenta tendencias temporales.\\
+
+
+Por otro lado, TWFE corregirá el sesgo estimando:\\
+
+\begin{equation}
+Y_{i,t} = \alpha_i + \alpha_t  +\beta^{twfe} D_{i,t} + \delta X_{i,t-1} + \mu M_{i,t}+\varepsilon_{i}
+\label{eq:twfe}
+\end{equation}\\
+
+La regresión considera el tratamiento escalonado y controla por las diferencias por unidad y tiempo. Además, las covariables de línea base $X_{i,t-1}$ y variables $ M_{i,t}$ corrigen el sesgo de selección que persiste por las características que cambian en el transcurso del análisis.\\
+
+Asumiendo que el supuesto de identificación de no heterogeneidad en el tratamiento se cumple, $\beta^{twfe}$ es el ATT. El estimador indica la diferencia promedio en puntos porcentuales en la proporción de trabajadores independientes entre ZATs que tienen OXXO y las que no.\\
+
+TWFE se complementa con un estudio de eventos para evaluar la validez causal del $\beta^{twfe}$. Asumiendo que no hay anticipación al tratamiento, su estimación:\\
+
+\begin{equation}
+Y_{i,t} = \alpha_i + \alpha_t 
++ \sum_{k=-K}^{-2} \gamma^{lead}_k D^k_{i,t} 
++ \sum_{k=0}^{L} \gamma^{lag}_k D^k_{i,t} 
++ \varepsilon_{i,t}
+\label{eq:eventstudy}
+\end{equation}\\
+
+permite analizar la insignificancia de los coeficientes $\gamma^{lead}_k$ y sugerir la existencia de tendencias paralelas previas la llegada de OXXO. Adicionalmente, los coeficientes $\gamma^{lag}_k$ reflejan la dinámica del impacto posterior al tratamiento.\\
+
+Finalmente, con propósito de robustez se estimará el modelo de Callaway \& Sant’Anna (CS). Este permite heterogeneidad en el tratamiento al estimar ATTs por cohorte y combinar los efectos de manera ponderada. Además, su estudio de eventos no evalúa tendencias paralelas promediando todas las unidades tratadas. Por tanto, si CS y TWFE tienen un comportamiento parecido, esto reforzaría la validez de los resultados de TWFE y sugeriría ausencia de sesgo. 
+
 \section{Resultados}
+El resultado de las estimaciones se muestra en la tabla ~\ref{tab:resultados_regresion}. 
+En la regresión (1) de MCO simple, el coeficiente de 0.017 sugiere que la presencia de OXXO aumenta la proporción de trabajadores independientes en la zona. 
+Sin embargo, al incluir controles en (2), se  puede notar que el coeficiente pasa a -0.011, indicando que verdaderamente existe un sesgo que subestima el efecto. 
+Ignorar que existen diferencias iniciales y omitir covariables que indican el tamaño del mercado y capacidad adquisitiva, inflan erróneamente el impacto del tratamiento.\\
+
+No obstante, incluir controles en TWFE resulta tener el impacto contrario. 
+En (3) la presencia de OXXO reduce en 2.1 puntos porcentuales la proporción de trabajadores independientes, mientras que en (4) el efecto se vuelve menos negativo. 
+Una razón es que omitir los efectos de otras cadenas de descuento sobreestima el impacto negativo atribuido al OXXO. \\
 
 \begin{table}[H]
 \centering
-\caption{Resultados de regresión}
+\caption{Efecto de la apertura de tiendas OXXO sobre la proporción de trabajadores independientes}
+\label{tab:resultados_regresion}
 \begin{tabular}{lcccc}
 \hline
 \hline
-Variables independientes & MCO & MCO & TWFE & TWFE \\
-                         & (1) & (2) & (3) & (4) \\
+ & MCO & MCO & TWFE & TWFE \\
+Proporción de trabajadores independientes & (1) & (2) & (3) & (4) \\
 \hline
-Tiene Oxxo & 0.0179 & -0.0111 & -0.0206 & -0.00223 \\
-            & (0.0142) & (0.0133) & (0.0142) & (0.0137) \\
-Constante    & 0.261*** & 0.00577 & 0.264*** & 0.0200 \\
-            & (0.00401) & (0.00958) & (0.00114) & (0.0155) \\
+Tiene Oxxo & 0.017 & -0.011 & -0.0206 & -0.0022 \\
+ & (0.019) & (0.014) & (0.013) & (0.014) \\
+Constante & 0.301*** & 0.006 & 0.012 & 0.02 \\
+ & (0.008) & (0.010) & (0.022) & (0.016) \\
 \hline
+Tiendas de cadena & no & sí & no & sí \\
+Controles variables & no & sí & no & sí \\
+Controles fijos & no & sí & no & no \\
+Efectos fijos & no & no & sí & sí \\
+Controles por diferencias & no & sí & no & sí \\
 Observaciones & 3,584 & 3,584 & 3,584 & 3,584 \\
-R cuadrado    & 0.000 & 0.226 & 0.375 & 0.460 \\
-Tiendas de cadena & no & si & no & si \\
-Controles variables & no & si & no & si \\
-Controles fijos & no & si & no & no \\
-Control spillover & no & si & no & si \\
-Controles por diferencias & no & si & no & si \\
-Media grupo control & & & & \\  % <- completar
+R-cuadrado & 0.000 & 0.222 & 0.375 & 0.460 \\
+Media nunca tratados & 0.259 & 0.259 & 0.259 & 0.259 \\
 \hline
-\multicolumn{5}{l}{\footnotesize Errores estándar en paréntesis. *** p$<$0.01, ** p$<$0.05, * p$<$0.1} \\
 \end{tabular}
+\parbox[t]{\textwidth}{%
+\vspace{0.5em}
+\footnotesize{\textit{Nota:} Errores estándar entre paréntesis. *** p$<$0.01, ** p$<$0.05, * p$<$0.1.  
+TWFE considera efectos fijos por unidad y tiempo, con errores estándar agrupados por ZAT. 
+Los controles por diferencias se refieren a las variables necesarias para abordar la no comparabilidad entre cortes transversales.
+La variable dependiente es la proporción de trabajadores independientes que se movilizan a trabajar al ZAT. 
+Por su parte, la variable de tratamiento indica si el ZAT tiene al menos un OXXO en su zona.
+}}
 \end{table}
+
+De todos modos, el resultado es razonable. Más que por el desplazamiento o desaparición de la competencia informal de los OXXO, la reducción en la proporción de trabajadores independientes podría explicarse por el aumento de otras formas de empleo. 
+Como sostiene la literatura, esto podría reflejar una transición desde el trabajo independiente informal hacia empleos formales, coherente con la expansión de cadenas de descuento que generan este tipo de puestos. \\
+
+Además, el efecto estimado resulta pequeño y no significativo, lo que coincide con evidencia previa. 
+La presencia de OXXO no representa un choque lo suficientemente fuerte como para alterar de manera sustancial las dinámicas laborales de las zonas, ni de una ciudad grande como Bogotá. \\
+
+Por otro lado, los ATTs de TWFE y CS simples ((1) y (3)) de la tabla ~\ref{tab:resultados_ES}  resultan ser bastante parecidos, lo que sugeriría que no existen efectos heterogéneos. 
+Pero, nuevamente al incorporar controles, los coeficientes son disímiles. Esto indicaría que las covariables no son necesarias para identificar el efecto de interés. \\
 
 \begin{table}[H]
 \centering
-\caption{Resultados de la estamación del estudio de eventos}
-\begin{tabular}{lcc}
+\caption{Estudios de eventos TWFE y CS sobre la proporción de trabajadores independientes}
+\label{tab:resultados_ES}
+\begin{tabular}{lcccc}
 \hline
 \hline
-    & (1) & (2) \\
+ & TWFE & TWFE & CS & CS \\
+Proporción independientes & (1) & (2) & (3) & (4) \\
 \hline
-Rezago 3 & -0.0216 & 0.0330 \\
-         & (0.0232) & (0.0334) \\
-Rezago 2 & 0.0195 & 0.0459 \\
-         & (0.0229) & (0.0267) \\
-Rezago 1 & 0.0103 & 0.0215 \\
-         & (0.0166) & (0.0180) \\
-Avance 1 & -0.0130 & -0.0252 \\
-         & (0.0135) & (0.0192) \\
-Avance 2 & -0.0356* & -0.0605* \\
-         & (0.0261) & (0.0299) \\
-Avance 3 & -0.0690** & -0.118*** \\
-         & (0.0273) & (0.0409) \\
-Constante & 0.315 & 0.154 \\
-          & (0.0103) & (0.104) \\
+Año después del tratamiento = -3 & -0.0216 & 0.0330 & 0.006 & 0.040 \\
+ & (0.0232) & (0.0334) & (0.024) & (0.016) \\
+Año después del tratamiento = -2 & 0.0195 & 0.0459 & -0.012 & 0.007 \\
+ & (0.0229) & (0.0267) & (0.021) & (0.020) \\
+Año después del tratamiento = 0 & 0.0103 & 0.0215 & -0.013 & 0.006 \\
+ & (0.0166) & (0.0180) & (0.017) & (0.027) \\
+Año después del tratamiento = 1 & -0.0130 & -0.0252 & -0.029 & 0.003 \\
+ & (0.0135) & (0.0192) & (0.023) & (0.023) \\
+Año después del tratamiento = 2 & -0.0356* & -0.0605* & -0.071** & -0.034 \\
+ & (0.0261) & (0.0299) & (0.033) & (0.020) \\
+Año después del tratamiento = 3 & -0.0690** & -0.118*** & -- & -- \\
+ & (0.0273) & (0.0409) & -- & -- \\
+Constante & 0.315 & 0.154 & -- & -- \\
+ & (0.0103) & (0.104) & -- & -- \\
 \hline
-Estimador TWFE & 0.000199 & 0.00784 \\
-Error estándar & 0.0193 & 0.0195 \\
-Media grupo control & & \\ % <- completar
-Observaciones & 684 & 684 \\
-R-cuadrado & 0.084 & 0.159 \\
-Número de ZATs & 171 & 171 \\
-Tiendas de cadena & no & si \\
-Controles variables & no & si \\
-Controles fijos & no & no \\
-Control spillover & no & si \\
-Controles por diferencias & no & si \\
+Tiendas de cadena & no & sí & no & sí \\
+Controles variables & no & sí & no & sí \\
+Controles fijos & no & no & no & no \\
+Efectos fijos & sí & sí & sí & sí \\
+Controles por diferencias & no & sí & no & sí \\
+ATT & -0.0206 & -0.0022 & -0.0214 & 0.0014 \\
+Error estándar ATT & (0.0193) & (0.0195) & (0.019) & (0.018) \\
+Observaciones & 684 & 684 & 3,520 & 3,520 \\
+R-cuadrado & 0.084 & 0.159 & - & - \\
+Número de ZATs & 171 & 171 & 155 & 155 \\
 \hline
-\multicolumn{3}{l}{\footnotesize Errores estándar entre paréntesis. *** p$<$0.01, ** p$<$0.05, * p$<$0.1} \\
 \end{tabular}
+\parbox[t]{\textwidth}{%
+\vspace{0.5em}
+\footnotesize{\textit{Nota:} Errores estándar entre paréntesis. *** p$<$0.01, ** p$<$0.05, * p$<$0.1. 
+Los efectos fijos se refieren a que la regresión tiene en cuenta efectos por unidad y por tiempo. 
+Un rezago o adelanto en años después del tratamiento representa una diferencia de cuatro años.
+$\frac{\text{año actual} - \text{año tratado}}{4}$.
+Los controles por diferencias se refieren a las variables necesarias para abordar la no comparabilidad entre cortes transversales.
+ATT es el efecto promedio del tratamiento en los tratados. 
+Para TWFE, este es el coeficiente presentado en la Tabla~\ref{tab:resultados_regresion} y para CS es el promedio ponderado de los ATTs por cohorte (revisar apéndice ~\ref{sec:resultados_callaway_santanna}).
+La cantidad de ZATs en CS es menor porque el modelo no considera el cohorte de siempre tratados (2011).
+El estudio de eventos de TWFE no tiene en cuenta ZATs nunca tratadas.
+La variable dependiente es la proporción de trabajadores independientes que se movilizan a trabajar al ZAT.
+Ambos estudios de eventos se estimaron con errores estándar agrupados por ZAT. 
+}}
 \end{table}
+
+Más allá del impacto principal, ambos estudios de eventos muestran tendencias paralelas antes del tratamiento. 
+En la figura~\ref{fig:ES_TWFE}, el efecto posterior a la llegada de OXXO en TWFE se vuelve progresivamente más negativo y significativo, alcanzando el 5\% desde el segundo periodo. 
+La misma tendencia se observa en CS, aunque con menor magnitud y significancia (figura~\ref{fig:comparacion_ES_TWFE_CS}). 
+Esto sugiere que el efecto requiere tiempo para manifestarse plenamente, lo que explicaría la falta de significancia estadística actual, dado que OXXO llegó al 64\% de las ZATs tratadas después del 2019. \\
+
 
 
 \begin{figure}[H]
 \centering
-\begin{subfigure}[b]{0.7\textwidth}  % Figura superior
+\begin{subfigure}[b]{0.48\textwidth}
     \centering
     \includegraphics[width=\textwidth]{events_study/events_study_lindo_simple.png}
-    \caption{Figura superior}
+    \caption{Estudio de eventos TWFE sin controles}
     \label{fig:superior}
 \end{subfigure}
-
-\vspace{0.5cm} % espacio vertical entre las figuras
-
-\begin{subfigure}[b]{0.7\textwidth}  % Figura inferior
+\hfill % separa horizontalmente las dos figuras
+\begin{subfigure}[b]{0.48\textwidth}
     \centering
     \includegraphics[width=\textwidth]{events_study/events_study_lindo_controles.png}
-    \caption{Figura inferior}
+    \caption{Estudio de eventos TWFE con controles}
     \label{fig:inferior}
 \end{subfigure}
 
-\caption{Panel con dos figuras, una encima de la otra.}
-\label{fig:panel_vertical}
+\caption{Estudio de eventos TWFE: comparación con y sin controles.}
+\parbox[t]{0.9\textwidth}{%
+\vspace{0.5em}
+\footnotesize{\textit{Nota:} La línea punteada rosada indica el efecto estimado por las regresiones TWFE simple y con controles.}}
+\label{fig:ES_TWFE}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}[b]{0.48\textwidth}  % Figura superior
+    \centering
+    \includegraphics[width=\textwidth]{events_study/events_study_comparadoS.png}
+    \caption{Comparación estudio de eventos TWFE y CS sin controles}
+    \label{fig:superior}
+\end{subfigure}
+\hfill % separa horizontalmente las dos figuras
+\begin{subfigure}[b]{0.48\textwidth}  % Figura inferior
+    \centering
+    \includegraphics[width=\textwidth]{events_study/events_study_comparadoM.png}
+    \caption{Comparación estudio de eventos TWFE y CS con controles}
+    \label{fig:inferior}
+\end{subfigure}
+
+\caption{Comparación estudio de eventos TWFE y CS.}
+\parbox[t]{0.9\textwidth}{%
+\vspace{0.5em}
+\footnotesize{\textit{Nota:} El estudio de eventos de CS no presenta resultado para el adelanto 3.
+Esto es porque el modelo no tiene en cuenta el cohorte de siempre tratados; es decir, los que inician en el 2011 con OXXO.}}
+\label{fig:comparacion_ES_TWFE_CS}
 \end{figure}
 
 \section{Conclusiones}
+Esta investigación analizó si OXXO afectaba, en la zona a la que llegaba, la proporción de trabajadores independientes que se movilizaban a laborar en ella, empleando dicha proporción como un indicador indirecto de la actividad minorista informal local.
+No se hallaron efectos estadísticamente significativos, aunque las estimaciones de TWFE y Callaway–Sant’Anna resultaron más confiables que las de MCO, al considerar diferencias temporales y entre ZATs. 
+El efecto más consistente sugiere una disminución promedio de 2.1 puntos porcentuales en la proporción de trabajadores independientes en zonas con OXXO.\\
+
+Al cumplirse los supuestos de identificación de TWFE, los resultados indican que la llegada de OXXO no altera de forma inmediata las dinámicas laborales locales, sino que su impacto podría manifestarse gradualmente en el tiempo. 
+Sin embargo, la medición de la variable dependiente presenta limitaciones, pues excluye a quienes no se movilizan fuera de su propio ZAT, grupo que probablemente concentra buena parte del comercio minorista informal (cita).\\
+
+Los resultados ofrecen un diagnóstico preliminar que invita a monitorear cómo la expansión de cadenas como OXXO reconfigura el empleo urbano. 
+En ciudades como Bogotá, donde los micronegocios son vitales para el ingreso local, es crucial que la transición no derive en desplazamientos o concentración del mercado, sino en una integración productiva más equilibrada entre lo formal y lo informal.\\
+
 
 
 \newpage
@@ -401,8 +521,6 @@ Cantidad de Oxxos cercanos fuera del ZAT & Cantidad de OXXOs fuera del ZAT, que 
 \vspace{0.5em}
 \footnotesize{ \textit{Nota:} No existe controles de línea base por ZAT, por lo que solo se pudo obtener índices previos al 2011 por localidad (ECDV 2007). El control "spillover" tiene en cuenta que hay ZATs que no tienen OXXOs, pero presentan OXXOs cercanos que pueden afectar la dinámica económica y laboral de la zona analizada. Finalmente, cuando de habla de OXXOs, vías arteriales y estaciones de transmilenio cercanos, significa que se encuentran a menos de 400m del ZAT.}}
 \end{longtable}
-
-
 
 \section{Controles línea base por cohortes}
 \label{sec:controles_linea_base}
@@ -912,6 +1030,110 @@ A continuación se presentan las diferencias de medias entre los controles dispo
   \parbox[t]{\textwidth}{%
     \vspace{0.5em}
     \footnotesize{\textit{Nota:} Significancia: *** p$<$0.01, ** p$<$0.05, * p$<$0.1. Entre paréntesis errores estándar.}}
+\end{table}
+
+\section{Resultados descomposición de Bacon}
+\label{sec:resultados_bacon}
+
+\begin{table}[H]
+\centering
+\caption{Descomposición de Bacon detallada para TWFE simple}
+\label{tab:bacon_detallada}
+\begin{tabular}{lcc}
+\hline
+\hline
+\textbf{Comparación entre grupos} & \textbf{Coeficiente ($\beta$)} & \textbf{Peso total} \\
+\hline
+Tratadas tempranas vs. tratadas tardías  & 0.0385 & 0.0015 \\
+Tratadas tardías vs. tratadas tempranas  & 0.0066 & 0.0029 \\
+Tratadas tempranas vs. tratadas tardías  & -0.0219 & 0.0111 \\
+Tratadas tardías vs. tratadas tempranas  & 0.0445 & 0.0111 \\
+Tratadas tempranas vs. tratadas tardías  & -0.0600 & 0.0156 \\
+Tratadas tardías vs. tratadas tempranas & -0.0134 & 0.0078 \\
+Siempre tratadas vs. tratadas en distintos momentos & 0.0354 & 0.0205 \\
+Nunca tratadas vs. tratadas en distintos momentos & -0.0222 & 0.9295 \\
+\hline
+\end{tabular}
+\parbox[t]{\textwidth}{%
+\vspace{0.5em}
+\footnotesize{\textit{Nota:} La tabla muestra los componentes específicos de la descomposición de Goodman-Bacon. Los coeficientes ($\beta$) indican el efecto estimado en cada comparación entre grupos con distinto momento de tratamiento (tempranas, tardías, siempre o nunca tratadas). Los pesos representan la importancia relativa de cada comparación en el efecto promedio total de diferencias en diferencias (DID).}}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Descomposición de Bacon para TWFE con controles}
+\label{tab:bacon_descomposicion}
+\begin{tabular}{lcc}
+\hline
+\hline
+\textbf{Comparación entre grupos} & \textbf{Coeficiente ($\beta$)} & \textbf{Peso total} \\
+\hline
+Grupos según momento del tratamiento & -0.0149 & 0.0514 \\
+Siempre tratadas vs. tratadas en distintos momentos & 0.0350 & 0.0221 \\
+Nunca tratadas vs. tratadas en distintos momentos & -0.0229 & 0.8958 \\
+Siempre tratadas vs. nunca tratadas & 0.8637 & 0.0005 \\
+Dentro de los grupos (variación interna) & 0.5882 & 0.0303 \\
+\hline
+\end{tabular}
+\parbox[t]{\textwidth}{%
+\vspace{0.5em}
+\footnotesize{\textit{Nota:} La tabla presenta los componentes de la descomposición de Goodman-Bacon. Los coeficientes ($\beta$) representan el efecto promedio de cada comparación entre grupos con diferente momento de tratamiento. Los pesos indican la contribución relativa de cada comparación al efecto total de diferencias en diferencias (DID).}}
+\end{table}
+
+Debido a que los pesos son positivos y casi todo el peso recae en comparaciones con nunca tratados y tratados en diferentes momentos, se concluye que no hay evidencia de sesgo por heterogeneidad del tratamiento en al estimación de TWFE.
+
+
+\section{Resultados estimación de Callaway \& Sant'Anna (2021)}
+\label{sec:resultados_callaway_santanna}
+
+\begin{table}[H]
+\centering
+\caption{Resultados de diferencias en diferencias con múltiples periodos (modelo simple e IPW y modelo múltiple con RA)}
+\label{tab:did_multiple_simple}
+\begin{tabular}{lcccc}
+\hline
+\hline
+ & \multicolumn{2}{c}{\textbf{Modelo simple (IPW)}} & \multicolumn{2}{c}{\textbf{Modelo múltiple (RA)}} \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5}
+\textbf{Comparación} & \textbf{Coeficiente ($\beta$)} & & \textbf{Coeficiente ($\beta$)} & \\
+\hline
+\multicolumn{5}{l}{\textbf{Grupo tratado: 2015}} \\
+\hline
+$t_{2011-2015}$ & 0.0453 &  & -0.0085 &  \\
+                 & (0.0477) &  & (0.0409) &  \\
+$t_{2011-2019}$ & 0.0259 &  & -0.0268 &  \\
+                 & (0.0462) &  & (0.0391) &  \\
+$t_{2011-2023}$ & -0.0338 &  & -0.0710** &  \\
+                 & (0.0330) &  & (0.0332) &  \\
+\hline
+\multicolumn{5}{l}{\textbf{Grupo tratado: 2019}} \\
+\hline
+$t_{2011-2015}$ & -0.0130 &  & -0.0470 &  \\
+                 & (0.0587) &  & (0.0499) &  \\
+$t_{2015-2019}$ & -0.0379 &  & -0.0369 &  \\
+                 & (0.0355) &  & (0.0315) &  \\
+$t_{2015-2023}$ & -0.0139 &  & -0.0306 &  \\
+                 & (0.0286) &  & (0.0269) &  \\
+\hline
+\multicolumn{5}{l}{\textbf{Grupo tratado: 2023}} \\
+\hline
+$t_{2011-2015}$ & 0.0399 &  & 0.0060 &  \\
+                 & (0.0265) &  & (0.0237) &  \\
+$t_{2015-2019}$ & 0.0120 &  & -0.0034 &  \\
+                 & (0.0244) &  & (0.0237) &  \\
+$t_{2019-2023}$ & 0.0096 &  & -0.0071 &  \\
+                 & (0.0265) &  & (0.0229) &  \\
+\hline
+\multicolumn{5}{l}{\textbf{Control:} Nunca tratados} \\
+\hline
+Observaciones & \multicolumn{2}{c}{3,520} & \multicolumn{2}{c}{3,520} \\
+Modelo de resultado & \multicolumn{2}{c}{Mínimos cuadrados (OLS)} & \multicolumn{2}{c}{Ajuste por regresión (RA)} \\
+Modelo de tratamiento & \multicolumn{2}{c}{Probabilidad inversa (IPW)} & \multicolumn{2}{c}{Ninguno} \\
+\hline
+\end{tabular}
+\parbox[t]{\textwidth}{%
+\vspace{0.5em}
+\footnotesize{\textit{Nota:} Los coeficientes ($\beta$) representan los efectos promedio del tratamiento estimados para cada combinación de grupo y periodo. El modelo simple emplea ponderación por probabilidad inversa (IPW), mientras que el modelo múltiple usa ajuste por regresión (RA). Errores estándar robustos entre paréntesis. Significancia: *** p$<$0.01, ** p$<$0.05, * p$<$0.1.}}
 \end{table}
 
 \end{document}

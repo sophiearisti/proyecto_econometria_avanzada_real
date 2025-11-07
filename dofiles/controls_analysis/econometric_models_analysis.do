@@ -76,17 +76,21 @@ gen accesibilidad_arterial_dummy = (accesibilidad_arterial>0)
 *REGRESIONES PARA LA ENTREGA
 ***************************************************************
 
-ssc install outreg2, replace
+*ssc install outreg2, replace
+
+global panel_controls nivel_educativo_d9 nivel_educativo_d8 nivel_educativo_d7 nivel_educativo_d5 nivel_educativo_d4 nivel_educativo_d3 nivel_educativo_d2 nivel_educativo_d11 tipo_vivienda_d5 tipo_vivienda_d4 tipo_vivienda_d3 tipo_vivienda_d2
+ 
+global controls cantidad_d1 cantidad_ara ingreso total_personas
 
 *********************************************************
 *MCO
 *********************************************************
 
-reg prop_independiente_total dummy_oxxo
+reg prop_independiente_total dummy_oxxo //if year==2023
 
 outreg2 using tabla_regresiones.xls, replace label ctitle("MCO") keep(dummy_oxxo) addtext(Tiendas de cadena, NO, Controles variables, NO, Controles fijos, NO, Control spillover, NO) 
 
-reg prop_independiente_total dummy_oxxo $controls $panel_controls
+reg prop_independiente_total dummy_oxxo $controls $panel_controls //if year==2023
 
 outreg2 using tabla_regresiones.xls, append label ctitle("MCO con controles") keep(dummy_oxxo) addtext(Tiendas de cadena, SI, Controles variables, SI, Controles fijos, SI, Control spillover, SI, Controles por diferencias, SI)  
  
@@ -95,14 +99,14 @@ outreg2 using tabla_regresiones.xls, append label ctitle("MCO con controles") ke
 *********************************************************
 xtset zat year
 
-reghdfe prop_independiente_total dummy_oxxo , absorb(zat i.year) vce(cluster zat)
+reghdfe prop_independiente_total dummy_oxxo,  absorb(zat i.year) vce(cluster zat)
 
 outreg2 using tabla_regresiones.xls, append label ctitle("TWFE") keep(dummy_oxxo) addtext(Tiendas de cadena, NO, Controles variables, NO, Controles fijos, NO, Control spillover, NO, Controles por diferencias, SI)
  
 
 bacondecomp prop_independiente_total dummy_oxxo, ddetail vce(cluster zat)
 
-reghdfe prop_independiente_total dummy_oxxo $controls $panel_controls , absorb(zat i.year) vce(cluster zat)
+reghdfe prop_independiente_total dummy_oxxo $controls , absorb(zat i.year) vce(cluster zat)
 
 outreg2 using tabla_regresiones.xls, append label ctitle("TWFE con controles") keep(dummy_oxxo)addtext(Tiendas de cadena, SI, Controles variables, SI, Controles fijos, NO, Control spillover, SI, Controles por diferencias, SI)  
 
@@ -371,9 +375,12 @@ restore
 preserve
 	* 1. Año de primera entrada de OXXO
 	bysort zat: egen first_treat = min(cond(dummy_oxxo==1, year, .))
+	
+	summarize prop_independiente_total if first_treat==2023 
 
 	* 2. Quedarse solo con cohortes tratadas
 	drop if missing(first_treat)
+
 
 	* 3. Crear tiempo relativo (en períodos de 4 años)
 	gen rel_time = (year - first_treat)/4
@@ -408,127 +415,127 @@ coefplot, keep(lead3 lead2 lag0 lag1 lag2 lag3) ///
 
 restore
 
-preserve
-*hacer el events study bonito
+	preserve
+	*hacer el events study bonito
 
-	* 1. Año de primera entrada de OXXO
-	bysort zat: egen first_treat = min(cond(dummy_oxxo==1, year, .))
+		* 1. Año de primera entrada de OXXO
+		bysort zat: egen first_treat = min(cond(dummy_oxxo==1, year, .))
 
-	* 2. Quedarse solo con cohortes tratadas
-	drop if missing(first_treat)
+		* 2. Quedarse solo con cohortes tratadas
+		drop if missing(first_treat)
 
-	* 3. Crear tiempo relativo (en períodos de 4 años)
-	gen rel_time = (year - first_treat)/4
-	
-	* Leads: periodos despues del tratamiento
-	gen lead3 = (rel_time==3)
-	gen lead2 = (rel_time==2)
-	gen lead1 = (rel_time==1)
-	gen lead0 = (rel_time==0)
-
-	* Lags: periodos antes del tratamiento
-	*gen lag1 = (rel_time==-1)
-	gen lag2 = (rel_time==-2)
-	gen lag3 = (rel_time==-3)
-
-	xtset zat year
-	
-	xtreg prop_independiente_total i.year dummy_oxxo, fe vce(cluster zat)
-	
-	bacondecomp prop_independiente_total dummy_oxxo, ddetail vce(cluster zat)
-
-	
-	outreg2 using tabla_regresiones.xls, append label ctitle("ES TWFE") keep(dummy_oxxo) addtext(Tiendas de cadena, NO, Controles variables, NO, Controles fijos, NO, Control spillover, NO, Controles por diferencias, SI) 
-
-	local DDL = _b[dummy_oxxo]
-	local DD : display _b[dummy_oxxo]
-	local DDSE : display  _se[dummy_oxxo]
-	local DD1 = -0.10
-
-	xi: xtreg prop_independiente_total lag3 lag2 lead0 lead1 lead2 lead3 i.year, fe vce(cluster zat)
-
-		outreg2 using "./eventstudy_levels.xls", replace keep(lag3 lag2 lead0 lead1 lead2 lead3) noparen noaster addstat(DD, `DD', DDSE, `DDSE')
+		* 3. Crear tiempo relativo (en períodos de 4 años)
+		gen rel_time = (year - first_treat)/4
 		
-			outreg2 using "./eventstudy_levels_table.xls", replace label ctitle("ES TWFE") keep(lag3 lag2 lead0 lead1 lead2 lead3) noparen noaster addstat(DD, `DD', DDSE, `DDSE') addtext(Tiendas de cadena, NO, Controles variables, NO, Controles fijos, NO, Control spillover, NO, Controles por diferencias, SI) 
+		* Leads: periodos despues del tratamiento
+		gen lead3 = (rel_time==3)
+		gen lead2 = (rel_time==2)
+		gen lead1 = (rel_time==1)
+		gen lead0 = (rel_time==0)
 
+		* Lags: periodos antes del tratamiento
+		*gen lag1 = (rel_time==-1)
+		gen lag2 = (rel_time==-2)
+		gen lag3 = (rel_time==-3)
 
-	*Pull in the ES Coefs
-	xmluse "./eventstudy_levels.xls", clear cells(A3:B16) first
-
-	replace VARIABLES = subinstr(VARIABLES,"lead","",.) 
-	replace VARIABLES = subinstr(VARIABLES,"lag","",.)  
-	quietly destring _all, replace ignore(",")
-
-	replace VARIABLES = -3 in 2
-	replace VARIABLES = -2 in 4
-	replace VARIABLES = 0 in 6
-	replace VARIABLES = 1 in 8
-	replace VARIABLES = 2 in 10
-	replace VARIABLES = 3 in 12
-
-	drop in 1
-	compress
-	quietly destring _all, replace ignore(",")
-	compress
-
-	ren VARIABLES exp
-	gen b = exp<.
-	replace exp = -3 in 2 
-	replace exp = -2 in 4
-	replace exp = 0 in 6
-	replace exp = 1 in 8
-	replace exp = 2 in 10 
-	replace exp = 3 in 12
-
-	* Expand the dataset by one more observation so as to include the comparison year
-	local obs =_N+1
-	set obs `obs'
-	for var _all: replace X = 0 in `obs'
-	replace b = 1 in `obs'
-	replace exp = -1 in `obs'
-	keep exp prop_independiente_total b 
-	set obs 14
-	foreach x of varlist prop_independiente_total b {
-		replace `x'= 0 in 14
-		}
+		xtset zat year
 		
-	replace exp= -1 in 14
-	reshape wide prop_independiente_total, i(exp) j(b)
+		xtreg prop_independiente_total i.year dummy_oxxo, fe vce(cluster zat)
+		
+		bacondecomp prop_independiente_total dummy_oxxo, ddetail vce(cluster zat)
 
-	cap drop *lb* *ub*
-	gen lb = prop_independiente_total1 - 1.96*prop_independiente_total0 
-	gen ub = prop_independiente_total1 + 1.96*prop_independiente_total0 
+		
+		outreg2 using tabla_regresiones.xls, append label ctitle("ES TWFE") keep(dummy_oxxo) addtext(Tiendas de cadena, NO, Controles variables, NO, Controles fijos, NO, Control spillover, NO, Controles por diferencias, SI) 
 
-	* Create the picture
-	set scheme s2color
-	#delimit ;
-	twoway (scatter prop_independiente_total1 ub lb exp , 
-			lpattern(solid dash dash dot dot solid solid) 
-			lcolor(gray gray gray red blue) 
-			lwidth(thick medium medium medium medium thick thick)
-			msymbol(i i i i i i i i i i i i i i i) msize(medlarge medlarge)
-			mcolor(gray black gray gray red blue) 
-			c(l l l l l l l l l l l l l l l) 
-			cmissing(n n n n n n n n n n n n n n n n) 
-			xline(-1, lcolor(black) lpattern(solid))
-			yline(0, lcolor(black)) 
-			xlabel(-3 -2 -1 0 1 2 3, labsize(medium))
-			ylabel(, nogrid labsize(medium))
-			xsize(7.5) ysize(5.5)           
-			legend(off)
-			xtitle("Años antes y después de la llegada de OXXO a un ZAT", size(medium))
-			ytitle("proporción de independientes en el ZAT ", size(medium))
-			graphregion(fcolor(white) color(white) icolor(white) margin(zero))
-			yline(`DDL', lcolor(red) lwidth(thick)) text(`DD1' -0.10 "DD Coefficient = `DD' (s.e. = `DDSE')")
-			)
-	;
+		local DDL = _b[dummy_oxxo]
+		local DD : display _b[dummy_oxxo]
+		local DDSE : display  _se[dummy_oxxo]
+		local DD1 = -0.10
 
-	#delimit cr;
+		xi: xtreg prop_independiente_total lag3 lag2 lead0 lead1 lead2 lead3 i.year, fe vce(cluster zat)
 
-	graph export "figura_eventsStudyS.png", replace width(2000)
+			outreg2 using "./eventstudy_levels.xls", replace keep(lag3 lag2 lead0 lead1 lead2 lead3) noparen noaster addstat(DD, `DD', DDSE, `DDSE')
+			
+				outreg2 using "./eventstudy_levels_table.xls", replace label ctitle("ES TWFE") keep(lag3 lag2 lead0 lead1 lead2 lead3) noparen noaster addstat(DD, `DD', DDSE, `DDSE') addtext(Tiendas de cadena, NO, Controles variables, NO, Controles fijos, NO, Control spillover, NO, Controles por diferencias, SI) 
 
-	export delimited using "paraEventsStudySimple.csv", replace
-restore
+
+		*Pull in the ES Coefs
+		xmluse "./eventstudy_levels.xls", clear cells(A3:B16) first
+
+		replace VARIABLES = subinstr(VARIABLES,"lead","",.) 
+		replace VARIABLES = subinstr(VARIABLES,"lag","",.)  
+		quietly destring _all, replace ignore(",")
+
+		replace VARIABLES = -3 in 2
+		replace VARIABLES = -2 in 4
+		replace VARIABLES = 0 in 6
+		replace VARIABLES = 1 in 8
+		replace VARIABLES = 2 in 10
+		replace VARIABLES = 3 in 12
+
+		drop in 1
+		compress
+		quietly destring _all, replace ignore(",")
+		compress
+
+		ren VARIABLES exp
+		gen b = exp<.
+		replace exp = -3 in 2 
+		replace exp = -2 in 4
+		replace exp = 0 in 6
+		replace exp = 1 in 8
+		replace exp = 2 in 10 
+		replace exp = 3 in 12
+
+		* Expand the dataset by one more observation so as to include the comparison year
+		local obs =_N+1
+		set obs `obs'
+		for var _all: replace X = 0 in `obs'
+		replace b = 1 in `obs'
+		replace exp = -1 in `obs'
+		keep exp prop_independiente_total b 
+		set obs 14
+		foreach x of varlist prop_independiente_total b {
+			replace `x'= 0 in 14
+			}
+			
+		replace exp= -1 in 14
+		reshape wide prop_independiente_total, i(exp) j(b)
+
+		cap drop *lb* *ub*
+		gen lb = prop_independiente_total1 - 1.96*prop_independiente_total0 
+		gen ub = prop_independiente_total1 + 1.96*prop_independiente_total0 
+
+		* Create the picture
+		set scheme s2color
+		#delimit ;
+		twoway (scatter prop_independiente_total1 ub lb exp , 
+				lpattern(solid dash dash dot dot solid solid) 
+				lcolor(gray gray gray red blue) 
+				lwidth(thick medium medium medium medium thick thick)
+				msymbol(i i i i i i i i i i i i i i i) msize(medlarge medlarge)
+				mcolor(gray black gray gray red blue) 
+				c(l l l l l l l l l l l l l l l) 
+				cmissing(n n n n n n n n n n n n n n n n) 
+				xline(-1, lcolor(black) lpattern(solid))
+				yline(0, lcolor(black)) 
+				xlabel(-3 -2 -1 0 1 2 3, labsize(medium))
+				ylabel(, nogrid labsize(medium))
+				xsize(7.5) ysize(5.5)           
+				legend(off)
+				xtitle("Años antes y después de la llegada de OXXO a un ZAT", size(medium))
+				ytitle("proporción de independientes en el ZAT ", size(medium))
+				graphregion(fcolor(white) color(white) icolor(white) margin(zero))
+				yline(`DDL', lcolor(red) lwidth(thick)) text(`DD1' -0.10 "DD Coefficient = `DD' (s.e. = `DDSE')")
+				)
+		;
+
+		#delimit cr;
+
+		graph export "figura_eventsStudyS.png", replace width(2000)
+
+		export delimited using "paraEventsStudySimple.csv", replace
+	restore
 
 preserve
 	*hacer el events study bonito
