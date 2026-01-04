@@ -17,17 +17,17 @@ nombres_validos_oxxo = ["OXXO"]
 nombre_valido_lista = [nombres_valido_ara, nombres_validos_d1, nombres_validos_justo_y_bueno, nombres_validos_oxxo]
 
 url_establecimiento_lista = [
-    "https://ruesfront.rues.org.co/detalle/04/2161982",  # TIENDA ARA
-    "https://ruesfront.rues.org.co/detalle/04/2305280",  # D1
-    "https://ruesfront.rues.org.co/detalle/04/2608019",  # JUSTO Y BUENO
-    "https://ruesfront.rues.org.co/detalle/04/1830322"   # OXXO
+    "https://rues.org.co/detalle/04/2161982",  # TIENDA ARA
+    "https://rues.org.co/detalle/04/2305280",  # D1
+    "https://rues.org.co/detalle/04/2608019",  # JUSTO Y BUENO
+    "https://rues.org.co/detalle/04/1830322"   # OXXO
 ]
 
 csv_file_establecimiento_lista = [
-    "../data/tienda_ara.csv",
-    "../data/d1.csv",
-    "../data/justo_y_bueno.csv",
-    "../data/oxxos.csv"
+    "../data/raw_data/tienda_ara.csv",
+    "../data/raw_data/d1.csv",
+    "../data/raw_data/justo_y_bueno.csv",
+    "../data/raw_data/oxxos.csv"
 ]
 
 
@@ -140,7 +140,7 @@ def webScrappingCadenas(url_establecimiento, csv_file_establecimiento,  nombre_v
 
     driver.quit()
 
-    print("✅ Datos guardados en csv")
+    print("Datos guardados en csv")
     
 #hacer triple for para recorrer las listas
 for url_establecimiento, csv_file_establecimiento, nombres_validos in zip(url_establecimiento_lista, csv_file_establecimiento_lista, nombre_valido_lista):

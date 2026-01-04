@@ -14,7 +14,7 @@ To use this proyect remember to activate a python envirtonment. This is the comm
 
 The proyect has subforlders, one for a specific responsibility.
 
-ws_OxxoD1Ara contains all the python code used to webscrap the RUES web page, and the code for finding each store location with GM API.
+ws_OxxoD1Ara contains all the python code used to webscrap the RUES web page, and the code for finding each store location with GM API. REMEMBER to update selenium.
 
 dofiles contains all the dofiles used to process the raw data, and do the general and specific econometric analysis. Additionally, it contains python code to process maps and geodata. And there are some Rcodes just to crete prettier graphs
 
