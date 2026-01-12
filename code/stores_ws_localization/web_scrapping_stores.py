@@ -33,31 +33,33 @@ csv_file_establecimiento_lista = [
 
 def webScrappingCadenas(url_establecimiento, csv_file_establecimiento,  nombre_valido_lista):
     print("Iniciando web scraping de cadenas...")
-    # Configurar Selenium
+    
+    # Configure Selenium
     options = Options()
-    #options.add_argument("--headless")  # si quieres ver el navegador, quita esta línea
+    #options.add_argument("--headless")  
+    # If you want to run in headless mode, uncomment the above line
     driver = webdriver.Chrome(options=options)
 
     url = url_establecimiento
     driver.get(url)
 
-    # Esperar a que aparezca la pestaña
+    # wait for the page to load
     wait = WebDriverWait(driver, 10)
-    #hace click en la pestaña "Establecimientos" esto muestra todos los establecimientos abiertos   
-    #que tiene la empresa
+    # click on the option "Establecimientos", this is a tab that shows the establishments
+    # that the chain has
     tab = wait.until(EC.element_to_be_clickable((By.ID, "detail-tabs-tab-pestana_establecimientos")))
     driver.execute_script("arguments[0].click();", tab)
 
-    time.sleep(3)  # esperar a que cargue el contenido dinámico
+    time.sleep(3)  # wait for the dynamic content to load
 
-    # Extraer el HTML ya con la pestaña abierta
+    # Extract the page source after JavaScript has rendered the content
     soup = BeautifulSoup(driver.page_source, "html.parser")
-    print(soup.prettify()[:1000])  # muestra un pedacito del HTML cargado
+    print(soup.prettify()[:1000])  # show the first 1000 characters for debugging
 
-    # Archivo CSV
+    # CSV file to save data
     csv_file = csv_file_establecimiento
 
-    # Si no existe el archivo, escribir la cabecera una sola vez
+    # if the csv file does not exist, create it and write the header
     if not os.path.exists(csv_file):
         with open(csv_file, "w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
@@ -66,23 +68,23 @@ def webScrappingCadenas(url_establecimiento, csv_file_establecimiento,  nombre_v
                 "Estado de la matrícula", "Fecha de renovación", "Último año renovado"
             ])
 
-    #Despues de mostrar esa ventana, se debe obtener toda la información de los establecimientos
+    # After showing that window, we must get all the information of the establishments
     while True:
-        #obtener el acordeon de los establecimientos
+        # obtain the accordion of the establishments
         accordion = wait.until(EC.presence_of_element_located((By.ID, "acordionEstablecimientos")))
 
-        # Encontrar todos los botones de acordeón
-        #la idea es iterar sobre cada uno de los botones del acordeon
+        # Find all accordion buttons
+        #the idea is to iterate over each of the accordion buttons
         buttons = accordion.find_elements(By.CLASS_NAME, "accordion-button")
 
-        # Abrir CSV para guardar los datos
+        # Open CSV for saving data
         with open(csv_file, "a", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
                     
-            # Recorrer cada botón
+            # Go through each button to expand and extract data
             for i, button in enumerate(buttons):
                 
-                # Scroll hasta el botón y click
+                # Scroll hasta until the button and click
                 driver.execute_script("arguments[0].scrollIntoView(true);", button)
                 driver.execute_script("arguments[0].click();", button)
                 time.sleep(1.5)  # esperar que abra el acordeón
@@ -90,20 +92,20 @@ def webScrappingCadenas(url_establecimiento, csv_file_establecimiento,  nombre_v
                 panel_id = button.get_attribute("data-bs-target").lstrip("#")
                 wait.until(EC.visibility_of_element_located((By.ID, panel_id)))
 
-                # Parsear con BeautifulSoup el HTML ya expandido
+                # Parse with BeautifulSoup the already expanded HTML
                 soup = BeautifulSoup(driver.page_source, "html.parser")
 
-                # Encontrar el acordeón correspondiente
+                # Find the corresponding accordion
                 acc = soup.find("div", id=panel_id)
                 if not acc:
                     continue
-                
-                # Verificar si el nombre es válido con base en la lista proporcionada
-                #solo es ver si el nombre contiene alguno de los nombres validos
-                if not any(valid_name in button.text.strip().upper() for valid_name in nombre_valido_lista):
-                    continue  # saltar este establecimiento si no es válido
 
-                #de lo contrario, si es válido, extraer la información
+                # Verify if the name is valid with base in the provided list
+                # only check if the name contains any of the valid names
+                if not any(valid_name in button.text.strip().upper() for valid_name in nombre_valido_lista):
+                    continue  # skip this establishment if it's not valid
+
+                # otherwise, if it's valid, extract the information
                 nombre = button.text.strip()
 
                 datos = {}
@@ -120,20 +122,20 @@ def webScrappingCadenas(url_establecimiento, csv_file_establecimiento,  nombre_v
                 renovacion      = datos.get("Fecha de renovación", "-")
                 ultimo          = datos.get("Último año renovado", "-")
 
-                # Guardar fila en el CSV
+                # Save the line in the CSV
                 writer.writerow([nombre, camara, matricula, fecha_matricula, estado, renovacion, ultimo])
-        # 3. Intentar pasar a la siguiente página
+        # Try to go to the next page
         try:
             next_button = driver.find_element(By.CSS_SELECTOR, "a.page-link i.bi-chevron-right.green-color")
             parent_link = next_button.find_element(By.XPATH, "..")  # subir al <a>
-            
-            # revisar si está deshabilitado (su <li> tiene class "disabled")
+
+            # Review if it's disabled (its <li> has class "disabled")
             li_parent = parent_link.find_element(By.XPATH, "..")
             if "disabled" in li_parent.get_attribute("class"):
-                break  # ya llegamos al final
+                break  # we have reached the last page
             
             driver.execute_script("arguments[0].click();", parent_link)
-            time.sleep(1)  # esperar carga
+            time.sleep(1)  # wait for the next page to load
         except:
             break
 
@@ -142,7 +144,7 @@ def webScrappingCadenas(url_establecimiento, csv_file_establecimiento,  nombre_v
 
     print("Datos guardados en csv")
     
-#hacer triple for para recorrer las listas
+# Iterate over the lists to process each establishment
 for url_establecimiento, csv_file_establecimiento, nombres_validos in zip(url_establecimiento_lista, csv_file_establecimiento_lista, nombre_valido_lista):
     
     webScrappingCadenas(url_establecimiento, csv_file_establecimiento,  nombres_validos)

@@ -5,7 +5,7 @@ import pandas as pd
 # shapefile de ZAT
 zat_gdf = gpd.read_file("../../data/buffer_data/zat/ZAT.shp")
 
-#ver los datos del shapefile y ase obtener el geometry y el nombre del id del zat
+#ver los datos del shapefile y asi obtener el geometry y el nombre del id del zat
 print(zat_gdf.columns)
 
 # Leer los .dta de información socioeconómica para cada año
@@ -26,6 +26,7 @@ zat_data_seconomic = pd.concat(zat_data_list, ignore_index=True)
 
 
 # Lista de archivos por cadena
+# CHANGE THIS, I CAN SIMPLY TAKE ALL THE ONES THAT JUST HAVE BOGOTA IN THE CAMARA DE COMERCIO COLUMN
 tiendas_files = {
     'oxxo': '../../data/negocios/bogota_y_alrededores/oxxos.dta',
     'ara': '../../data/negocios/bogota_y_alrededores/tienda_ara.dta',
