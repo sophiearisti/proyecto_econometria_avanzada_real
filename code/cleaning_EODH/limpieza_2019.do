@@ -1,30 +1,37 @@
 ********************************************************
-//VERSION 2
-//LIMPIEZA BDD 2019
+* version 3:
+* data cleaning for the 2019 movility survey
 ********************************************************
 
 cd "$dir_BDD_2019"
 
+
 ********************************************************
-//limpieza etapas muestra donde se baja la persona
+// ETAPAS module describes person's trips
 ********************************************************
+
 
 import delimited "EtapasEODH2019.csv", clear
 
+
 *********************************************************
-//drop de variables que no se necesitan
+// will drop all variables that are not of our interest
 *********************************************************
 
-local dropVars p18_id_medio_transporte p18_medio_transporte_cual p20_estacion_abordo_vehic p21_tiempo_arrancar_vehic p22_cuanto_pago p23_modalidad_pago p24_medio_pago p26a_propiedad_vehiculo p26c_pago_estacionamiento p26d_modalidad_pago p26e_medio_pago_util p27_experiencia_medio_transporte p26b_estacion_vehiculo
+drop p18_id_medio_transporte p18_medio_transporte_cual p20_estacion_abordo_vehic p21_tiempo_arrancar_vehic p22_cuanto_pago p23_modalidad_pago p24_medio_pago p26a_propiedad_vehiculo p26c_pago_estacionamiento p26d_modalidad_pago p26e_medio_pago_util p27_experiencia_medio_transporte p26b_estacion_vehiculo
 
-foreach var of local dropVars {
-    drop `var'
-}
+
+*******************************************************************************************
+
+// rename variables, add their proper label, and cast them into the data type they belong
+
+*******************************************************************************************
 
 
 *******************************************************
-//renombrar variables para no volverme loca y hacer el casting apropiedo de ellas
+// blocks walked
 *******************************************************
+
 
 rename p19_camino_cuadras camino_cuadras
 
@@ -34,57 +41,98 @@ recast byte camino_cuadras
 
 label variable camino_cuadras "Cantidad de cuadras caminadas después del medio de transporte"
 
+*******************************************************
+// minutes walked
+*******************************************************
+
+
 rename p19_camino_minutos camino_minutos
 
 label variable camino_minutos "Cantidad de minutos caminadas después del medio de transporte"
+
+
+*******************************************************
+// place where the person got off the vehicle
+*******************************************************
+
 
 rename p25_lugar_descenso lugar_descenso
 
 label variable lugar_descenso "Lugar de descenso del vehículo"
 
-//tiene la misma situacion que el anterior. Hay varios viajes para una misma persona entonces toca controlarse, solo que no sabemos la razon del viaje
+
 
 cd "$dir_BDD_clean"
 
 save "etapas_clean.dta", replace
 
+
 ********************************************************
-*Esta es la parte que indica literalmente los datos basicos del hogar tipico
+* HOGARES module describes the basic info of a household
 *******************************************************
+
 
 cd "$dir_BDD_2019"
 
 import delimited "HogaresEODH2019.csv", clear
 
+
 *********************************************************
-//drop de variables que no se necesitan
+// will drop all variables that are not of our interest
 *********************************************************
 
-local dropVars p2_supervisor p5_fecha p8_hora_inicio_encuesta p6_hogares_vivienda colaboracion p4_nro_manzana
 
-foreach var of local dropVars {
-    drop `var'
-}
+drop p2_supervisor p5_fecha p8_hora_inicio_encuesta p6_hogares_vivienda colaboracion p4_nro_manzana
 
 drop p1*
 
-*******************************************************
-//renombrar variables para no volverme loca y hacer el casting apropiado de ellas
-*******************************************************
+
+*******************************************************************************************
+
+// rename variables, add their proper label, and cast them into the data type they belong
+
+*******************************************************************************************
+
+
+*******************************************************************************************
+// LOCALIDZATION
+******************************************************************************************* 
+
 
 rename p3_nro_mapa nro_mapa
 
 label variable nro_mapa "Número de estado, número de sector, número de seccion, número de manzana"
 
-rename p7_barrio_vivienda barrio_vivienda
 
-label variable barrio_vivienda "Barrio/vereda"
+rename p7_barrio_vivienda barrio
+
+label variable barrio "Barrio/vereda"
+
 
 label variable zat_hogar "Zat de la vivienda"
+
+
+
+*******************************************************************************************
+// TYPE OF home
+******************************************************************************************* 
+
 
 rename p3_id_tipo_vivienda tipo_vivienda
 
 label variable tipo_vivienda "Tipo de la vivienda (casa, apartamento, cuarto en inquilinato, etc.)."
+
+
+* to make all surveys as comparable as possible
+
+
+/*
+I combined the categories of 
+6. Otro tipo de vivienda
+5. Vivienda Indígena
+
+into a single one named 5 "Otro tipo de vivienda"
+*/
 
 replace tipo_vivienda=5 if tipo_vivienda==6
 
@@ -92,15 +140,36 @@ label define tipo_vivienda_lbl 1 "Casa" 2 "Apartamento" 3 "Cuarto(s) en inquilin
 
 label values tipo_vivienda tipo_vivienda_lbl
 
+
+*******************************************************************************************
+// TYPE OF PROPERTY
+******************************************************************************************* 
+
+
 rename p4_id_vivienda_propia tipo_propiedad_vivienda
 
 destring tipo_propiedad_vivienda, replace
 
 recast byte tipo_propiedad_vivienda
 
-**********************************************************************************
-*para dejar nivel tipo_propiedad_vivienda de la misma forma que en el 2011
-**********************************************************************************
+
+* to make all surveys as comparable as possible
+
+
+/*
+I had to change the numbers used to codify most categories. I left the numbers used in the 2011 survey. 
+
+I combined the categories of 
+3. Arriendo
+4. Subarriendo
+into a single one named 3 "Arriendo o subarriendo"
+
+category  "En usufructo"is now # 4, before it was # 5
+
+category  "Ocupante de hecho" is now # 5, before it was # 6
+
+category 6 does not exist
+*/
 
 replace tipo_propiedad_vivienda = 3 if tipo_propiedad_vivienda == 4
 
@@ -114,19 +183,44 @@ label define tipo_propiedad_vivienda_lbl 1 "Propia pagada" 2 "Propia pagando" 3 
 
 label values tipo_propiedad_vivienda tipo_propiedad_vivienda_lbl
 
+
+*******************************************************************************************
+// ESTRATO
+******************************************************************************************* 
+
+
 rename p5_estrato estrato
 
 replace estrato=. if estrato==0
 
 label variable estrato "Estrato (1, 2, 3, 4, 5, o 6)"
 
+
+
+*******************************************************************************************
+// number of people who have 5 years or more
+******************************************************************************************* 
+
+
 rename p8_mayores_cinco_anios total_personas_mas_5
 
 label variable total_personas_mas_5 "Número de personas de 5 años y más que viven en el hogar."
 
+
+*******************************************************************************************
+// total number of people in the household
+******************************************************************************************* 
+
+
 rename p7_total_personas total_personas
 
 label variable total_personas "Número total de personas que viven en el hogar."
+
+
+*******************************************************************************************
+// EARNINGS
+******************************************************************************************* 
+
 
 rename id_rango_ingresos ingreso
 
@@ -148,35 +242,52 @@ label define ingreso_lbl 0 "$ 0 - $ 828.116" ///
 
 label values ingreso ingreso_lbl
 
+
+*******************************************************************************************
+// LOCALIZATION
+******************************************************************************************* 
+
+
 label variable vivienda "Número de vivienda"
 
 label variable municipio "municipio"
 
 label variable localidad "localidad"
 
+
 cd "$dir_BDD_clean"
 
 save "origen_hogar_clean.dta", replace
 
-********************************************************
-*Esta es la parte que indica literalmente los datos SOCIOECONOMICOS de las personas por id y hogar
-*******************************************************
+***************************************************************************
+* PERSONAS MODULE indicates de socioeconomic caracteristics of each person
+***************************************************************************
 
 cd "$dir_BDD_2019"
 
 import delimited "PersonasEODH2019.csv", clear
 
+
 *********************************************************
-//drop de variables que no se necesitan
+// will drop all variables that are not of our interest
 *********************************************************
+
+* I first rename this variable, because then I will delete all variables that start with p8
+
 rename p8me_poblacion_pertenece_6 limitaciones_fisicas
 
 label variable limitaciones_fisicas "=1 posee limitaciones fisicas"
 
+
 drop p15* p16* p17* p14* p13* p12* p8* p10* p8* p9* p11* p7m* v*
-*******************************************************
-//renombrar variables para no volverme loca y hacer el casting apropiado de ellas
-*******************************************************
+
+
+*******************************************************************************************
+
+// rename variables, add their proper label, and cast them into the data type they belong
+
+*******************************************************************************************
+
 
 rename p3_id_parentesco_jh parentesco
 
@@ -204,6 +315,12 @@ replace parentesco = . if parentesco == 99
 
 label values parentesco parentesco_lbl
 
+
+*******************************************************************************************
+// AGE
+*******************************************************************************************
+
+
 rename p4_edad edad
 
 label variable edad "Edad en años cumplidos."
@@ -211,6 +328,7 @@ label variable edad "Edad en años cumplidos."
 rename p5_id_nivel_educativo nivel_educativo
 
 label variable nivel_educativo "Máximo nivel educativo alcanzado."
+
 
 **********************************************************************************
 *para dejar nivel educativo de la misma forma que en el 2011
