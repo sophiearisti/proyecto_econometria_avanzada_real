@@ -1,6 +1,7 @@
+
 ********************************************************
 * version 3:
-* data cleaning for the 2011 movility survey
+* data cleaning for the 2011 mobility survey
 *******************************************************
 
 cd "$dir_BDD_2011"
@@ -27,8 +28,6 @@ P6_A total number of people of 5 year or older who live in the home
 drop dia dia_mes mes nveh nvisita c_result tiposup enctador superv digita corte codif tel_3 p4_a verbaveh
 
 drop veh*
-
-
 
 
 *******************************************************************************************
@@ -105,7 +104,7 @@ label variable predio  "predio del hogar"
 
 rename mun municipio
 
-label variable mun "municipio del hogar"
+label variable municipio "municipio del hogar"
 
 *******************************************************************************************
 // MONTHLY EARNINGS IN COP
@@ -143,6 +142,15 @@ rename p6_a  total_personas_mas_5
 label variable total_personas_mas_5 "Número de personas de 5 años y más que viven en el hogar."
 
 
+*******************************************************************************************
+// RENAME ID
+******************************************************************************************* 
+
+
+rename orden id_hogar
+
+label variable id_hogar "ID del hogar"
+
 
 *******************************************************************************************
 // SAVE THE CLEANED DATA SET 
@@ -155,7 +163,7 @@ save "nuevo_MOD_Hogar.dta", replace
 
 
 ****************************************************************************************
-* This is parte B. This one has all data concerned with each person's movility and occupation 
+* This is part B. This one has all data concerned with each person's movility and occupation 
 ******************************************************************************************
 
 cd "$dir_BDD_2011"
@@ -229,6 +237,12 @@ drop *mujer
 
 
 label variable id_perso "Número de orden de una persona dentro de la composición del hogar"
+
+rename id_perso id_persona
+
+rename orden id_hogar
+
+label variable id_hogar "ID del hogar"
 
 
 *******************************************************
@@ -338,7 +352,7 @@ recast byte ocupacion1
 
 label variable ocupacion1 "principal ocupación semana anterior"
 
-* to make all survays as comparable as possible
+* to make all surveys as comparable as possible
 
 
 /*
@@ -504,13 +518,21 @@ label variable limitaciones_fisicas "=1 si tiene limitaciones fisicas"
 
 drop p12_b
 
+
+*******************************************************************************************
+// SAVE THE CLEANED DATA SET 
+******************************************************************************************* 
+
+
 cd "$dir_BDD_clean"
 
 save "nuevo_MOD_persona.dta", replace
 
+
 ********************************************************
 * PART C is unimportant as it only talks about vehicles
 *******************************************************
+
 
 **************************************************************************************************************************************
 *PART D describes the typical trips that each person does (if they told they have done any displacement during the past three days)
@@ -629,6 +651,24 @@ label values razon_viaje motivo_lbl
 rename zat zat_destino
 
 label variable zat_destino "Zona de transporte destino de viaje"
+
+
+*******************************************************
+//RENAME ID
+*******************************************************
+
+
+rename orden id_hogar
+
+label variable id_hogar "ID del hogar"
+
+rename id_perso id_persona
+
+
+*******************************************************************************************
+// SAVE THE CLEANED DATA SET 
+******************************************************************************************* 
+
 
 cd "$dir_BDD_clean"
 

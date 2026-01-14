@@ -24,10 +24,10 @@ url_establecimiento_lista = [
 ]
 
 csv_file_establecimiento_lista = [
-    "../data/raw_data/tienda_ara.csv",
-    "../data/raw_data/d1.csv",
-    "../data/raw_data/justo_y_bueno.csv",
-    "../data/raw_data/oxxos.csv"
+    "../../data/chains/raw_data/tienda_ara.csv",
+    "../../data/chains/raw_data/d1.csv",
+    "../../data/chains/raw_data/justo_y_bueno.csv",
+    "../../data/chains/raw_data/oxxos.csv"
 ]
 
 

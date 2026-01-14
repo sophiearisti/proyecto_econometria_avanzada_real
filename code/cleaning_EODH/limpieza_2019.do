@@ -7,67 +7,6 @@ cd "$dir_BDD_2019"
 
 
 ********************************************************
-// ETAPAS module describes person's trips
-********************************************************
-
-
-import delimited "EtapasEODH2019.csv", clear
-
-
-*********************************************************
-// will drop all variables that are not of our interest
-*********************************************************
-
-drop p18_id_medio_transporte p18_medio_transporte_cual p20_estacion_abordo_vehic p21_tiempo_arrancar_vehic p22_cuanto_pago p23_modalidad_pago p24_medio_pago p26a_propiedad_vehiculo p26c_pago_estacionamiento p26d_modalidad_pago p26e_medio_pago_util p27_experiencia_medio_transporte p26b_estacion_vehiculo
-
-
-*******************************************************************************************
-
-// rename variables, add their proper label, and cast them into the data type they belong
-
-*******************************************************************************************
-
-
-*******************************************************
-// blocks walked
-*******************************************************
-
-
-rename p19_camino_cuadras camino_cuadras
-
-destring camino_cuadras, replace
-
-recast byte camino_cuadras
-
-label variable camino_cuadras "Cantidad de cuadras caminadas después del medio de transporte"
-
-*******************************************************
-// minutes walked
-*******************************************************
-
-
-rename p19_camino_minutos camino_minutos
-
-label variable camino_minutos "Cantidad de minutos caminadas después del medio de transporte"
-
-
-*******************************************************
-// place where the person got off the vehicle
-*******************************************************
-
-
-rename p25_lugar_descenso lugar_descenso
-
-label variable lugar_descenso "Lugar de descenso del vehículo"
-
-
-
-cd "$dir_BDD_clean"
-
-save "etapas_clean.dta", replace
-
-
-********************************************************
 * HOGARES module describes the basic info of a household
 *******************************************************
 
@@ -95,7 +34,7 @@ drop p1*
 
 
 *******************************************************************************************
-// LOCALIDZATION
+// LOCALIZATION
 ******************************************************************************************* 
 
 
@@ -259,9 +198,73 @@ cd "$dir_BDD_clean"
 
 save "origen_hogar_clean.dta", replace
 
+
+********************************************************
+// ETAPAS module describes person's trips
+********************************************************
+
+
+import delimited "EtapasEODH2019.csv", clear
+
+
+*********************************************************
+// will drop all variables that are not of our interest
+*********************************************************
+
+
+drop p18_id_medio_transporte p18_medio_transporte_cual p20_estacion_abordo_vehic p21_tiempo_arrancar_vehic p22_cuanto_pago p23_modalidad_pago p24_medio_pago p26a_propiedad_vehiculo p26c_pago_estacionamiento p26d_modalidad_pago p26e_medio_pago_util p27_experiencia_medio_transporte p26b_estacion_vehiculo
+
+
+*******************************************************************************************
+
+// rename variables, add their proper label, and cast them into the data type they belong
+
+*******************************************************************************************
+
+
+*******************************************************
+// blocks walked
+*******************************************************
+
+
+rename p19_camino_cuadras camino_cuadras
+
+destring camino_cuadras, replace
+
+recast byte camino_cuadras
+
+label variable camino_cuadras "Cantidad de cuadras caminadas después del medio de transporte"
+
+*******************************************************
+// minutes walked
+*******************************************************
+
+
+rename p19_camino_minutos camino_minutos
+
+label variable camino_minutos "Cantidad de minutos caminadas después del medio de transporte"
+
+
+*******************************************************
+// place where the person got off the vehicle
+*******************************************************
+
+
+rename p25_lugar_descenso lugar_descenso
+
+label variable lugar_descenso "Lugar de descenso del vehículo"
+
+
+
+cd "$dir_BDD_clean"
+
+save "etapas_clean.dta", replace
+
+
 ***************************************************************************
 * PERSONAS MODULE indicates de socioeconomic caracteristics of each person
 ***************************************************************************
+
 
 cd "$dir_BDD_2019"
 
@@ -331,19 +334,47 @@ label variable nivel_educativo "Máximo nivel educativo alcanzado."
 
 
 **********************************************************************************
-*para dejar nivel educativo de la misma forma que en el 2011
+*EDUCATION LEVEL  (needs to have the same codification as 2011)
 **********************************************************************************
 
-replace nivel_educativo = . if nivel_educativo == 99
+replace
+ nivel_educativo = . if nivel_educativo == 99
+
+/*
+I combined the categories of 
+04. Secundaria incompleta
+05. Secundaria completa
+06. Media incompleta (100 y 110)
+into a single one named 4 "Secundaria básica y media incompleta"
+(I made the best effort I could with this part because "Secundaria básica y media incompleta" implies many possible situations)
+
+*/
 replace nivel_educativo = 4 if nivel_educativo == 4 | nivel_educativo == 6 | nivel_educativo == 5
+
+//changed "Secundaria básica y media completa"  from 7 to 5
 replace nivel_educativo = 5 if nivel_educativo == 7 
+
+//changed "Técnico tecnológico incompleto"  from 8 to 6
 replace nivel_educativo = 6 if nivel_educativo == 8
+
+//changed "Técnico tecnológico completo"  from 9 to 7
 replace nivel_educativo = 7 if nivel_educativo == 9
+
+//changed "Universitario incompleto" from 10 to 8
 replace nivel_educativo = 8 if nivel_educativo == 10
+
+//changed "Universitario completo" from 11 to 9
 replace nivel_educativo = 9 if nivel_educativo == 11
+
+//changed "Postgrado incompleto" from 12 to 10
 replace nivel_educativo = 10 if nivel_educativo == 12
+
+//changed "Postgrado completo" from 13 to 11
 replace nivel_educativo = 11 if nivel_educativo == 13
+
+//changed "Ninguno" from 14 to 12
 replace nivel_educativo = 12 if nivel_educativo == 14
+
 
 label define educ_lbl 1 "Preescolar" ///
                      2 "Primaria incompleta" ///
@@ -360,15 +391,46 @@ label define educ_lbl 1 "Preescolar" ///
 
 label values nivel_educativo educ_lbl
 
-rename p6_id_ocupacion ocupacion1
 
-recode ocupacion1 ///
+**********************************************************************************
+* MAIN OCCUPATION
+**********************************************************************************
+
+
+/*
+I changed:
+1.  "Obrero" from 11 to 1
+2.  "Empleado de nómina" from  ?  to 2   (not recoded here; already consistent)
+3.  "Contratista (prestación servicios)" from ? to 3 (not recoded here; already consistent)
+4.  "Empleado doméstico" from 13 to 4
+5.  "Trabajador independiente" from 19 to 5
+6.  "Profesional independiente" from 18 to 6
+7.  "Patrón o empleador" from 20 to 7
+8.  "Trabajo familiar (sin remuneración)" from 15 to 8
+9.  "Trabajo desde la casa" unchanged (no original category mapped)
+10. "Conductor/mensajero" from 14 to 10
+11. "Estudia" from 1, 2, 3, 4, 5, and 35 to 13
+12. "Dedicado al hogar" from 31 to 18
+13. "Jubilado" from 32 to 19
+14. "Buscar trabajo" from 33 to 20
+15. "Incapacitado permanente" from 34 to 21
+16. "Rentista" from 36 to 23
+17. "Otra actividad" from 38 to 24
+18. "No ocupado" from 37 to 25
+19. "Vendedor informal" from 21 to 26
+20. "Empleado público" from 17 to 27
+21. "Empleado de empresa particular" from 16 to 28
+22. "Jornalero/agricultor" from 12 to 29
+*/
+
+
+recode p6_id_ocupacion ///
     (11 = 1) (13 = 4) (19 = 5) (18 = 6) (20 = 7) (15 = 8) (14 = 10) ///
     (1 = 13) (2 = 13) (3 = 13) (4 = 13) (5 = 13) (31 = 18) (32 = 19) ///
     (33 = 20) (34 = 21) (35 = 13) (36 = 23) (38 = 24) (37 = 25) ///
     (21 = 26) (17 = 27) (16 = 28) (12 = 29), gen(ocupacion_new1)
 
-drop ocupacion1
+drop p6_id_ocupacion
 
 rename ocupacion_new1 ocupacion1
 
@@ -400,54 +462,70 @@ label define ocupacion_lbl ///
 label variable ocupacion1 "Ocupación principal en la semana anterior"
 
 label values ocupacion1 ocupacion_lbl
+
+
+**********************************************************************************
+* OTHER OCCUPATION
+**********************************************************************************
  
-rename p6_id_ocupacion_o1 ocupacion2
-
-label variable ocupacion2 "Otra ocupación"
-
-recode ocupacion2 ///
+recode p6_id_ocupacion_o1 ///
     (11 = 1) (13 = 4) (19 = 5) (18 = 6) (20 = 7) (15 = 8) (14 = 10) ///
     (1 = 13) (2 = 13) (3 = 13) (4 = 13) (5 = 13) (31 = 18) (32 = 19) ///
     (33 = 20) (34 = 21) (35 = 13) (36 = 23) (38 = 24) (37 = 25) ///
     (21 = 26) (17 = 27) (16 = 28) (12 = 29), gen(ocupacion_new2)
 
-drop ocupacion2
+drop p6_id_ocupacion_o1
 
 rename ocupacion_new2 ocupacion2
 
+label variable ocupacion2 "Otra ocupación"
+
 label values ocupacion2 ocupacion_lbl
 
-rename p6_id_ocupacion_o2 ocupacion3
 
-label variable ocupacion3 "Otra ocupación"
+**********************************************************************************
+* OTHER OCCUPATION
+**********************************************************************************
 
-recode ocupacion3 ///
+
+recode p6_id_ocupacion_o2 ///
     (11 = 1) (13 = 4) (19 = 5) (18 = 6) (20 = 7) (15 = 8) (14 = 10) ///
     (1 = 13) (2 = 13) (3 = 13) (4 = 13) (5 = 13) (31 = 18) (32 = 19) ///
     (33 = 20) (34 = 21) (35 = 13) (36 = 23) (38 = 24) (37 = 25) ///
     (21 = 26) (17 = 27) (16 = 28) (12 = 29), gen(ocupacion_new3)
 
-drop ocupacion3
+drop p6_id_ocupacion_o2
 
 rename ocupacion_new3 ocupacion3
 
+label variable ocupacion3 "Otra ocupación"
+
 label values ocupacion3 ocupacion_lbl
 
-rename p6_id_ocupacion_o3 ocupacion4
 
-label variable ocupacion4 "Otra ocupación"
+**********************************************************************************
+* OTHER OCCUPATION
+**********************************************************************************
 
-recode ocupacion4 ///
+
+recode p6_id_ocupacion_o3 ///
     (11 = 1) (13 = 4) (19 = 5) (18 = 6) (20 = 7) (15 = 8) (14 = 10) ///
     (1 = 13) (2 = 13) (3 = 13) (4 = 13) (5 = 13) (31 = 18) (32 = 19) ///
     (33 = 20) (34 = 21) (35 = 13) (36 = 23) (38 = 24) (37 = 25) ///
     (21 = 26) (17 = 27) (16 = 28) (12 = 29), gen(ocupacion_new4)
 
-drop ocupacion4
+drop p6_id_ocupacion_o3
 
 rename ocupacion_new4 ocupacion4
 
+label variable ocupacion4 "Otra ocupación"
+
 label values ocupacion4 ocupacion_lbl
+
+
+**********************************************************************************
+* GENDER
+**********************************************************************************
 
 
 gen mujer=.
@@ -462,7 +540,36 @@ label values mujer mujer_lbl
 
 label variable mujer "1 si es mujer"
 
+
+**********************************************************************************
+* ECONOMIC ACTIVITY
+**********************************************************************************
+
+
 rename p7_id_actividad_economica actividad_economica1
+
+/*
+I changed:
+1.  "Agricultura, ganadería, caza y silvicultura" from 1 to 1
+2.  "Pesca" from 2 to 3
+3.  "Explotación de minas y canteras" from 3 to 4
+4.  "Industrias manufactureras" from 4 to 5
+5.  "Suministro de electricidad, gas y agua" from 5 to 18
+6.  "Construcción" from 6 to 6
+7.  "Comercio al por mayor y al por menor de vehículos automotores, motocicletas, efectos personales y enseres domésticos" from 7 to 7
+8.  "Hoteles y restaurantes" from 9 to 8
+9.  "Transporte, almacenamiento y comunicaciones" from 8 and 10 to 9
+10. "Intermediación financiera" from 11 to 10
+11. "Actividades inmobiliarias, empresariales y de alquiler" from 12 to 11
+12. "Administración pública y defensa, seguridad social de afiliación obligatoria" from 15 to 12
+13. "Educación" from 16 to 13
+14. "Servicios sociales y de salud" from 17 to 14
+15. "Otras actividades de servicios comunitarios, sociales y personales" from 14, 18, and 19 to 15
+16. "Hogares privados con servicio doméstico" from 20 to 16
+17. "Organizaciones y órganos extraterritoriales" from 21 to 17
+18. "Distribución de agua; evacuación y tratamiento de aguas residuales, gestión de desechos y actividades de saneamiento ambiental" from 5 to 18
+19. "Actividades profesionales, científicas y técnicas" from 13 to 19
+*/
 
 recode actividad ///
     (1 = 1) (2 = 3) (3 = 4) (4 = 5) (5 = 18) (6 = 6) (7 = 7) ///
@@ -499,14 +606,16 @@ label define actividad1_lbl ///
 
 label values actividad_economica1 actividad_lbl
 
-***************************************************************
+**********************************************************************************************
+* most labels here had to be searched over the booklets of questions attached. 
+* The data dictionary was no well documented and did not show any info about these categories
+**********************************************************************************************
 
-*los labels aqui se tuvieron que buscar en su mayoria por medio 
-*de las cartillas de prguntas y formualarios. En el diccionario de datos
-*no habia info alguna :')
-***************************************************************
 
-*FALTA ORIGEN LUGAR PERO NI IDEA
+**********************************************************************************
+* PLACE OF ORIGIN
+**********************************************************************************
+
 
 rename p7v_lugar_inicio_dia lugar_origen
 
@@ -514,32 +623,41 @@ label define lugar_lbl 1 "Hogar" 2 "Otro"
 
 label values lugar_origen lugar_lbl
 
-	cd "$dir_BDD_clean"
 
-	save "persona_clean.dta", replace
 
-********************************************************
-*Esta es la parte que indica literalmente el movimiento de las personas
-*ACA HABLA DEL ZAT DE DESTINO, lo mas importante
-*******************************************************				
+
+cd "$dir_BDD_clean"
+
+save "persona_clean.dta", replace
+
+	
+*******************************************************************************
+* VIAJES MODULE describes the trips that each peson did around the city
+******************************************************************************				
+
 
 cd "$dir_BDD_2019"
 
 import delimited "ViajesEODH2019.csv", clear
 
+
 *********************************************************
-//drop de variables que no se necesitan
+// will drop all variables that are not of our interest
 *********************************************************
 
-local dropVars hora_inicio_viaje p31_hora_llegada p33_aplicacion_antes_viaje p33_cual_aplicacion_antes_viaje p34_aplicacion_durante_viaje p34_cual_aplicacion_durante_viaj p35_otro_desplazamiento p36_hora_salida modo_principal modo_principal_desagregado fecha p29_id_municipio
 
-foreach var of local dropVars {
-    drop `var'
-}
+drop hora_inicio_viaje p31_hora_llegada p33_aplicacion_antes_viaje p33_cual_aplicacion_antes_viaje p34_aplicacion_durante_viaje p34_cual_aplicacion_durante_viaj p35_otro_desplazamiento p36_hora_salida modo_principal modo_principal_desagregado fecha p29_id_municipio
 
-*******************************************************
-//renombrar variables para no volverme loca y hacer el casting apropiado de ellas
-*******************************************************
+
+*******************************************************************************************
+
+// rename variables, add their proper label, and cast them into the data type they belong
+
+*******************************************************************************************
+
+*********************************************************
+// IDs
+*********************************************************
 
 label variable id_hogar "id del hogar"
 
@@ -547,13 +665,25 @@ label variable id_persona "id de la persona"
 
 label variable id_viaje "id del viaje"
 
+*********************************************************
+// PLACE OF ORIGIN
+*********************************************************
+
 label define lugar_lbl 1 "Hogar" 2 "Otro"
 
 label values lugar_origen lugar_lbl
 
 label variable lugar_origen "lugar de origen del viaje"
 
+*********************************************************
+// ZAT OF ORIGIN
+*********************************************************
+
 label variable zat_origen "zat origen"
+
+*********************************************************
+// REASON OF THE TRIP
+*********************************************************
 
 rename p17_id_motivo_viaje razon_viaje
 
@@ -582,9 +712,17 @@ label define razon_viaje_lbl 1 "Trabajar" ///
 							 
 label values razon_viaje razon_viaje_lbl
 
+*********************************************************
+// OTHER REASON
+*********************************************************
+
 rename p17_otro_motivo otro_motivo_viaje
 
 label variable otro_motivo_viaje "otro movivo en str"
+
+*********************************************************
+// PLACE OF DESTINY
+*********************************************************
 
 rename p28_lugar_destino lugar_destino
 
@@ -592,7 +730,15 @@ label values lugar_destino lugar_lbl
 
 label variable lugar_destino "lugar de destino del viaje"
 
+*********************************************************
+// ZAT OF DESTINY
+*********************************************************
+
 label variable zat_destino "zat destino"
+
+*********************************************************
+// BLOCKS WALKED
+*********************************************************
 
 rename p30_camino_cuadras camino_cuadras
 
@@ -602,9 +748,17 @@ recast byte camino_cuadras
 
 label variable camino_cuadras "Cantidad de cuadras caminadas después del medio de transporte"
 
+*********************************************************
+// MINUTES WALKED
+*********************************************************
+
 rename p30_camino_minutos camino_minutos
 
 label variable camino_minutos "Cantidad de minutos caminadas después del medio de transporte"
+
+*********************************************************
+// THIS TRIP IS NORMALLY MADE THE DAYS:
+*********************************************************
 
 qui ds p32_*   // Lista todas las variables que empiezan con p32_
 

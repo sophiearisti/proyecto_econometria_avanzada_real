@@ -166,3 +166,4 @@ save "merge_2011.dta", replace
 // mean mujer, mean edad, mean educacion, count formal, count informal
 
 // I should end up with one observation per ZAT
+

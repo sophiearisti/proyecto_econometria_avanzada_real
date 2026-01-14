@@ -9,9 +9,19 @@ import unicodedata
 load_dotenv()  # load from .env file
 apiKey = os.getenv("GOOGLE_MAPS_API_KEY")
 
-input_file_list = ["../data/negocios/raw_data/tienda_ara.csv", "../data/negocios/raw_data/d1.csv", "../data/negocios/raw_data/justo_y_bueno.csv", "../data/negocios/raw_data/oxxo.csv"]
+input_file_list = [
+    "../../data/chains/raw_data/tienda_ara.csv", 
+    "../../data/chains/raw_data/d1.csv", 
+    "../../data/chains/raw_data/justo_y_bueno.csv", 
+    "../../data/chains/raw_data/oxxos.csv"
+    ]
 
-temp_file_list = ["../data/negocios/tienda_ara_shops_progress.csv", "../data/negocios/d1_shops_progress.csv", "../data/negocios/justo_y_bueno_shops_progress.csv", "../data/negocios/oxxo_shops_progress.csv"]
+temp_file_list = [
+    "../../data/chains/tienda_ara_shops_progress.csv", 
+    "../../data/chains/d1_shops_progress.csv", 
+    "../../data/chains/justo_y_bueno_shops_progress.csv", 
+    "../../data/chains/oxxo_shops_progress.csv"
+    ]
 
 #camaras de comercio to be sure that the location is correct
 camaras_de_comercio = {
@@ -316,7 +326,7 @@ def obtain_coordinates(input_file, temp_file):
                     
                     # from formatted address we can get the department and municipality
                     
-                    # primero coger la camara de comercio de row y buscarla en el diccionario de camaras_de_comercio
+                    # first take the camara de comercio from row and look in the dictionary of camaras_de_comercio
                     if row['Cámara de Comercio'] in camaras_de_comercio:
                         camara_info = camaras_de_comercio[row['Cámara de Comercio']]
                         
