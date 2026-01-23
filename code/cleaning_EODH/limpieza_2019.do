@@ -43,9 +43,9 @@ rename p3_nro_mapa nro_mapa
 label variable nro_mapa "Número de estado, número de sector, número de seccion, número de manzana"
 
 
-rename p7_barrio_vivienda barrio
+rename p7_barrio_vivienda nom_barrio_hogar
 
-label variable barrio "Barrio/vereda"
+label variable nom_barrio_hogar "Barrio/vereda"
 
 
 label variable zat_hogar "Zat de la vivienda"
@@ -190,9 +190,14 @@ label values ingreso ingreso_lbl
 label variable vivienda "Número de vivienda"
 
 label variable municipio "municipio"
+rename municipio nom_mun_hogar
 
 label variable localidad "localidad"
+rename localidad nom_localidad_hogar
 
+rename manzana id_manzana_hogar
+
+rename utam nom_utam_hogar
 
 cd "$dir_BDD_clean"
 
@@ -203,6 +208,8 @@ save "origen_hogar_clean.dta", replace
 // ETAPAS module describes person's trips
 ********************************************************
 
+
+cd "$dir_BDD_2019"
 
 import delimited "EtapasEODH2019.csv", clear
 
@@ -337,8 +344,7 @@ label variable nivel_educativo "Máximo nivel educativo alcanzado."
 *EDUCATION LEVEL  (needs to have the same codification as 2011)
 **********************************************************************************
 
-replace
- nivel_educativo = . if nivel_educativo == 99
+replace nivel_educativo = . if nivel_educativo == 99
 
 /*
 I combined the categories of 

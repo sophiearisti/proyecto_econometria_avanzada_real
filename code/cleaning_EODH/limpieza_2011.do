@@ -92,19 +92,22 @@ label values tipo_vivienda tipo_vivienda_lbl
 // LOCALIDAD
 ******************************************************************************************* 
 
-rename localida localidad
+rename localida id_localidad_hogar
+label variable id_localidad_hogar "Localidad donde reside este hogar"
 
-label variable localidad "Localidad donde reside este hogar"
+rename upz id_upz_hogar
+label variable id_upz_hogar  "upz del hogar"
 
-label variable localida "localidad del hogar"
+rename barrio nom_barrio_hogar
+label variable nom_barrio_hogar  "barrio del hogar"
 
-label variable upz  "upz del hogar"
-label variable barrio  "barrio del hogar"
-label variable predio  "predio del hogar"
+rename predio id_predio_hogar
+label variable id_predio_hogar  "predio del hogar"
 
-rename mun municipio
+rename mun id_mun_hogar
+label variable id_mun_hogar "municipio del hogar"
 
-label variable municipio "municipio del hogar"
+rename zat zat_hogar
 
 *******************************************************************************************
 // MONTHLY EARNINGS IN COP

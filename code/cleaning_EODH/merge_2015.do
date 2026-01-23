@@ -18,25 +18,21 @@ merge m:1 id_hogar id_persona using nuevo_MOD_persona.dta
     Result                      Number of obs
     -----------------------------------------
     Not matched                        22,515
-        from master                         0  (_m
-> erge==1)
-        from using                     22,515  (_m
-> erge==2)
+        from master                         0  (_merge==1)
+        from using                     22,515  (_merge==2)
 
-    Matched                           147,251  (_m
-> erge==3)
+    Matched                           147,251  (_merge==3)
     -----------------------------------------
 
-esta bien, hay 22000 de los datos de las personas que no hacen match con la encuesta que verdaderamente nos importa; es decir, la que nos importa y nos indica el zat de destino es la que si se pudo llenar en su totalidad. 
-
+This is fine. There are about 22,000 observations from individuals that do not match with the survey that truly matters for our analysis; that is, the survey we care about—the one that indicates the destination ZAT—was fully completed and successfully matched.
 
 */
 
 keep if _merge==3
 drop _merge
 
-//hacer merge con el data set de caracteristicas del hogar, este nos cuenta las caracteristicas del hogar
-//este es un merge de 1 a 1 y se hace con orden
+// merge with the household characteristics dataset; this contains household-level information
+// this is a one-to-one merge and is performed using sorting
 
 merge m:1 id_hogar using nuevo_MOD_Hogar.dta
 
@@ -48,63 +44,71 @@ merge m:1 id_hogar using nuevo_MOD_Hogar.dta
     Not matched                             0
     Matched                           147,251  (_merge==3)
     -----------------------------------------
-todo matched
+all matched
 
 */
 
-//en este caso lo que sucede es que ahi esta la info de cuadras y minutos caminados, por eso hacemos el merge con etapas
+// in this case, what happens is that this dataset contains information on blocks and minutes walked,
+// which is why we merge using trip stages
 
 keep if _merge==3
 drop _merge
 
-/*merge 1:m numero_viaje id_persona id_hogar using nuevo_MOD_etapas.dta
+/* merge 1:m numero_viaje id_persona id_hogar using nuevo_MOD_etapas.dta
 
 keep if _merge==3
-drop _merge*/
+drop _merge */
 
    
 **************************************************************
-*vamos a borrar algunas variables redundantes y otras les cambiaremos el label
+* we are going to drop some redundant variables and change the labels of others
 **************************************************************
 
 
-//con esto solo nos quedamos con las razones de viaje de:
-//Trabajar (1) y Buscar trabajo (13)
-//lo otro se dropea
+// with this, we keep only the trip reasons:
+// Work (1) and Job search (13)
+// everything else is dropped
 
 keep if inlist(razon_viaje, 1, 13)
 
-//rename id_encuesta id_hogar
-
-//label variable id_hogar "ID del hogar"
+// rename id_encuesta id_hogar
+// label variable id_hogar "Household ID"
 
 /*
-Como una persona puede hacer varios viajes el dia anterior y puede que al mismo destino, hay valores repetidos que no nos interesa
+Since a person can make several trips on the previous day and may go to the same destination more than once,
+there are repeated values that are not of interest.
 */
 
-duplicates report id_hogar numero_persona zat_destino
+duplicates report id_hogar id_persona zat_destino
 
-duplicates drop id_hogar numero_persona zat_destino, force   // borrar duplicados que tengan esa combinacion
+duplicates drop id_hogar id_persona zat_destino, force   // drop duplicates with this combination
 
-duplicates report id_hogar numero_persona zat_destino   // comprobar que ya no haya duplicados
+duplicates report id_hogar id_persona zat_destino        // verify that there are no longer duplicates
 
-//variables que no usare
-drop zat_hogar trabajo_casa realizo_desplazamiento  puntaje_sisben parentesco numero_viaje numero_persona longitud_hogar longitud_destino latitud_hogar latitud_destino id_municipio_destino id_municipio id_manzana id_hogar id clasificacion_sisben barrio_vivienda
+// variables that will not be used
+drop zat_hogar trabajo_casa realizo_desplazamiento puntaje_sisben parentesco numero_viaje ///
+     longitud_hogar longitud_destino latitud_hogar latitud_destino id_mun_destino ///
+     id_mun_hogar id_manzana_hogar id_hogar id clasificacion_sisben nom_barrio_hogar
 
-//drop numero_etapa id_municipio_descenso
+// drop numero_etapa id_municipio_descenso
 
-//NOTA LO QUE PASA ES QUE TRABAJR EN CASE ES IMPORTANTE, PERO EN OTRAS ENCUENTAS NO SE UTILIZA MUCHO, POR LO QUE NO SE SI VALE LA PENA TENERLO EN CUENTA
-//SI SE QUIERE TENER EN CUENTA, SE DEBE DEJAR LOS QUE NO SALEN DE LA CASA Y TRABAJAN EN CASA PORQUE ESO TAMBIEN CUENTA
+// NOTE: working from home is important, but in other surveys it is not used much,
+// so I am not sure whether it is worth keeping it.
+// If it is to be considered, those who do not leave home and work from home
+// should be kept, because that also counts.
 
 *******************************************************************************
-*GENERAR DUMMIES PARA LAS CATEGORICAS
+* GENERATE DUMMIES FOR CATEGORICAL VARIABLES
 *******************************************************************************
+
 
 makedummies nivel_educativo tipo_vivienda tipo_propiedad_vivienda razon_viaje ocupacion1 actividad_economica1
 
+
 *******************************************************************************
-*GENERAR DUMMIES PARA LA VARIABLE DEPENDIENTE
+* GENERATE DUMMIES FOR THE DEPENDENT VARIABLE
 *******************************************************************************
+
 
 //en formal pero no independiente
 //(27) "Empleado público", (28) "Empleado de empresa particular" (7) "Patrón o empleador" 
@@ -134,29 +138,30 @@ replace independiente_buscando = 0 if !inlist(ocupacion1,5,6)
 label variable independiente_buscando "trabajador independiente yendo a buscar trabajo"	
 
 
-//toca usar mejor motivo del viajes
-//hay personas que tienen una ocupacion pero estan buscando trabajo
-gen buscar_trabajo=.
-replace buscar_trabajo = 1 if inlist(razon_viaje,13)
-replace buscar_trabajo = 0 if !inlist(razon_viaje,13)
-label variable buscar_trabajo "la persona busca trabajo"
+// it is better to use the trip motive
+// there are people who have an occupation but are looking for a job
+
+gen buscar_trabajo = .
+replace buscar_trabajo = 1 if inlist(razon_viaje, 13)
+replace buscar_trabajo = 0 if !inlist(razon_viaje, 13)
+label variable buscar_trabajo "person is looking for a job"
 
 
-gen desempleado=.
-replace desempleado = 1 if inlist(ocupacion1,20)
+gen desempleado = .
+replace desempleado = 1 if inlist(ocupacion1, 20)
+replace desempleado = 0 if !inlist(ocupacion1, 20)
+label variable desempleado "unemployed according to occupation (job search)"
 
-replace desempleado = 0 if !inlist(ocupacion1,20)
-label variable desempleado "desempleado que dice que ocupacion es buscar trabajo"
 
-//toca usar mejor motivo del viajes
-//hay personas que no tienen una ocupacion pero estan  trabajando
-gen con_trabajo=.
-replace con_trabajo = 1 if !inlist(razon_viaje,13)
-replace con_trabajo = 0 if inlist(razon_viaje,13)
-label variable con_trabajo "empleado"
+// it is better to use the trip motive
+// there are people who do not have an occupation but are working
+
+gen con_trabajo = .
+replace con_trabajo = 1 if !inlist(razon_viaje, 13)
+replace con_trabajo = 0 if inlist(razon_viaje, 13)
+label variable con_trabajo "employed"
 
 gen tot=1
-
 
 gen a2015=1
 

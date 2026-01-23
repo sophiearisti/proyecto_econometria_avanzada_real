@@ -33,9 +33,10 @@ drop numero_hogares id_beneficiositp fecha_upload duracion encuesta_completa utc
 // NEIGHBORHOOD
 ******************************************************************************************* 
 
-rename barrio barrio_vivienda
+rename barrio nom_barrio_hogar
+label variable nom_barrio_hogar "Barrio/vereda"
 
-label variable barrio_vivienda "Barrio/vereda"
+
 
 
 *******************************************************************************************
@@ -136,8 +137,11 @@ replace puntaje_sisben=. if puntaje_sisben ==-1
 
 
 rename id_encuesta id_hogar
-
 label variable id_hogar "ID del hogar"
+
+rename id_manzana id_manzana_hogar
+
+rename id_municipio id_mun_hogar
 
 *******************************************************************************************
 // SAVE CSV
@@ -257,12 +261,12 @@ label variable camino_minutos "Tiempo caminado"
 ******************************************************************************************* 
 
 rename id_encuesta id_hogar
-
 label variable id_hogar "ID del hogar"
 
 rename numero_persona id_persona
-
 label variable id_persona "ID PERSONA"
+
+rename id_municipio_destino id_mun_destino
 
 
 *******************************************************************************************
@@ -308,6 +312,20 @@ label variable camino_cuadras "Cuadras caminadas"
 
 rename minutos camino_minutos
 label variable camino_minutos "Tiempo caminado"
+
+
+*******************************************************************************************
+// CHANGE ID
+******************************************************************************************* 
+
+
+rename id_encuesta id_hogar
+label variable id_hogar "ID del hogar"
+
+rename numero_persona id_persona
+label variable id_persona "ID PERSONA"
+
+
 
 
 *******************************************************************************************
@@ -577,9 +595,6 @@ label variable id_persona "ID PERSONA"
 cd "$dir_BDD_clean"
 
 save "nuevo_MOD_persona.dta", replace
-
-
-
 
 
 

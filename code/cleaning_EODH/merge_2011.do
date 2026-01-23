@@ -73,8 +73,7 @@ duplicates report id_hogar id_persona zat_destino        // verify that there ar
 drop mun_origen barrio_origen zat_origen
 
 // drop variables that could be used in another study but not in this one
-drop numero_viaje f_exp parentesco municipio predio idm localidad upz barrio zat
-
+drop numero_viaje f_exp parentesco id_mun_hogar id_predio_hogar idm id_localidad_hogar id_upz_hogar nom_barrio_hogar zat_hogar
 
 
 ******************************************************************

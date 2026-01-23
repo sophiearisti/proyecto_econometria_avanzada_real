@@ -27,7 +27,9 @@ global dir_BDD_2023 "$dir_data/sample 2023"
 
 global dir_BDD_clean "dta_limpios" 
 
-global dir_BDD_buffers "$global_dir/data/buffer_data" 
+global dir_BDD_buffers "$global_dir/data/panel" 
+
+global dir_BDD_collapsed "$dir_BDD_buffers/collapsed_years" 
 
 global dir_reg_dif_med_results "$global_dir/data/reg_dif_med_results"
 
@@ -103,5 +105,5 @@ do "$dir_dofile_EODH/merge_2023.do"
 
 
 * Mean differences between cohorts to assess homogeneity across cross-sectional data
-* Initial buffers are also created here
+* Initial panel data is also created here
 do "$dir_dofile_EODH/dif_medias_entre_anos.do"

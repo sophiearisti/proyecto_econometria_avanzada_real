@@ -57,11 +57,15 @@ label variable cod_viv "codigo de la vivienda"
 
 label variable cod_hog "codigo del hogar"
 
-rename cod_hog cod_hg
+rename cod_hog id_hogar
 
 label variable cod_utam_hg "codigo UTAM del hogar"
 
+rename cod_utam_hg id_utam_hogar
+
 label variable nom_utam_hg "nombre UTAM del hogar"
+
+rename nom_utam_hg nom_utam_hogar
 
 
 *******************************************************************************************
@@ -70,28 +74,38 @@ label variable nom_utam_hg "nombre UTAM del hogar"
 
 
 label variable zat_hg "ZAT del hogar"
+rename zat_hg zat_hogar
 
 label variable cod_upl_hg "codigo UPL del hogar"
+rename cod_upl_hg id_upl_hogar
 
 label variable nom_upl_hg "nombre UPL del hogar"
+rename nom_upl_hg nom_upl_hogar
 
 label variable cod_mpio_hg "codigo municipio del hogar"
+rename cod_mpio_hg id_mun_hogar
 
 label variable nom_mpio_hg "nombre municipio del hogar"
+rename nom_mpio_hg nom_mun_hogar
 
 label variable cod_loc_hg "codigo localidad del hogar"
+rename cod_loc_hg id_localidad_hogar
+
 
 label variable nom_loc_hg "nombre localidad del hogar"
+rename nom_loc_hg nom_localidad_hogar 
 
 label variable cod_dane_manzana_hg "codigo manzana del hogar"
 
 label variable tipo_zona_hg "urbano o centro poblado"
 
 label variable cod_barrio_vereda_hg "codigo barrio o vereda del hogar"
+rename cod_barrio_vereda_hg id_barrio_hogar
 
 label variable nom_barrio_vereda_hg "nombre barrio o vereda del hogar"
+rename nom_barrio_vereda_hg nom_barrio_hogar
 
-label variable nom_barrio_vereda_hg "nombre barrio o vereda del hogar"
+rename cod_dane_manzana_hg id_manzana_hogar
 
 
 *******************************************************************************************
@@ -214,7 +228,7 @@ drop hora_ini hora_fin duracion_min t_acceso_min t_espera_min t_egreso_min modo_
 
 
 label variable cod_hg "codigo del hogar"
-
+rename cod_hg id_hogar
 
 *******************************************************
 // GENDER
@@ -240,10 +254,13 @@ label variable mujer "1 si es mujer"
 
 
 label variable nom_mun_hg "nombre municipio del hogar"
+rename nom_mun_hg nom_mun_hogar
 
 label variable cod_utam_hg "codigo UTAM del hogar"
+rename cod_utam_hg id_utam_hogar
 
 label variable cod_upl_hg "codigo UPL del hogar"
+rename cod_upl_hg id_upl_hogar
 
 
 *******************************************************
@@ -252,6 +269,7 @@ label variable cod_upl_hg "codigo UPL del hogar"
 
 
 label variable zat_hg "ZAT del hogar"
+rename zat_hg zat_hogar
 
 
 *******************************************************
@@ -260,10 +278,19 @@ label variable zat_hg "ZAT del hogar"
 
 
 label variable zat_ori "ZAT de origen"
+rename zat_ori zat_origen
+
 label variable utam_ori "UTAM de origen"
+rename utam_ori utam_origen
+
 label variable upl_ori "UPL de origen"
+rename upl_ori upl_origen
+
 label variable nom_mun_ori "Nombre municipio de origen"
+rename nom_mun_ori nom_mun_origen
+
 label variable localidad_ori "Localidad de origen"
+rename localidad_ori localidad_origen
 
 
 *******************************************************
@@ -273,10 +300,18 @@ label variable localidad_ori "Localidad de origen"
 
 rename zat_des zat_destino
 label variable zat_destino "ZAT de destino"
+
 label variable utam_des "UTAM de destino"
+rename utam_des utam_destino
+
 label variable upl_des "UPL de destino"
+rename upl_des upl_destino
+
 label variable localidad_des "Localidad de destino"
+rename localidad_des localidad_destino
+
 label variable nom_mun_des "Nombre municipio de destino"
+rename nom_mun_des nom_mun_destino 
 
 
 *******************************************************
@@ -344,9 +379,9 @@ label variable edad "Edad de la persona"
 *******************************************************
 
 
-rename cod_pers cod_per
-label variable cod_per "codigo de la persona"
+rename cod_per id_persona
 
+label variable id_persona "codigo de la persona"
 
 label variable cod_vj "Código del viaje"
 label variable orden_vj "Orden del viaje"
@@ -448,14 +483,19 @@ label variable mujer "1 si es mujer"
 
 
 label variable cod_per "codigo de la persona"
+rename cod_per id_persona
 
 label variable cod_hg "codigo del hogar"
+rename cod_hg id_hogar
 
 label variable nom_mun_hg "nombre municipio del hogar"
+rename nom_mun_hg nom_mun_hogar
 
 label variable cod_utam_hg "codigo UTAM del hogar"
+rename cod_utam_hg id_utam_hogar
 
 label variable cod_upl_hg "codigo UPL del hogar"
+rename cod_upl_hg id_upl_hogar
 
 
 ***************************************************************************
@@ -464,6 +504,7 @@ label variable cod_upl_hg "codigo UPL del hogar"
 
 
 label variable zat_hg "ZAT del hogar"
+rename zat_hg zat_hogar
 
 
 ***************************************************************************

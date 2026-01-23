@@ -1,16 +1,24 @@
 **********************************************************
-*VERSION 2
-*MERGE de los datos de la encuesta de movilidad del 2023
-*tambien se limpiara aun mas la bdd, esto con el objetivo de dejar todo listo para crear los buffers
+* VERSION 3
+* MERGE of the 2023 mobility survey data
+* the database will also be further cleaned, with the goal
+* of leaving everything ready to create the buffers
 **********************************************************
 cd "$dir_BDD_2023"
 cd "$dir_BDD_clean"
 
-//los mismo aqui. toca hacer 2 merges
+// same as before: we need to perform two merges
 
 use "nuevo_MOD_persona.dta", clear
 
-merge 1:m cod_per cod_hg using nuevo_MOD_viajes.dta
+merge 1:m id_persona id_hogar using nuevo_MOD_viajes.dta
+
+/*
+The merge is correct.
+
+There are people who do not appear in the trips module,
+which is expected.
+*/
 
 /*
 . merge 1:m cod_per cod_hg using nuevo_MOD_viajes.dta
@@ -28,20 +36,21 @@ merge 1:m cod_per cod_hg using nuevo_MOD_viajes.dta
 . 
 end of do-file
 
-esta bien la asociacion
-
 */
 
 keep if _merge==3
 drop _merge
 
 
-merge m:1 cod_hg using nuevo_MOD_hogar.dta
+merge m:1 id_hogar using nuevo_MOD_hogar.dta
 
 
 /*
-esta bien hay 1000 hogares que no tienen las otras encuestas
+This is fine: there are around 1,000 households
+that do not appear in the other survey modules.
+*/
 
+/*
 . merge m:1 cod_hg using nuevo_MOD_hogar.dta
 
     Result                      Number of obs
@@ -58,101 +67,99 @@ keep if _merge==3
 drop _merge
 
 **************************************************************
-*vamos a borrar algunas variables redundantes y otras les cambiaremos el label
+* we will drop some redundant variables and relabel others
 **************************************************************
 
-//variables redundantes o innecesarias
-drop key_hg key_persona fexp_per5años cod_vj orden_vj zat_ori utam_ori upl_ori nom_mun_ori key_pers key_pers_viaja key_viaje localidad_ori orden cod_viv fexp_vj fexp_hg realiza_desplazamientos
+// redundant or unnecessary variables
+drop key_hg key_persona fexp_per5años cod_vj orden_vj zat_origen utam_origen upl_origen nom_mun_origen key_pers key_pers_viaja key_viaje localidad_origen orden cod_viv fexp_vj fexp_hg realiza_desplazamientos
 
-//variables que para otra investigacion pueden servir, pero aca no 
+// variables that may be useful for other research,
+// but are not needed here
+drop nom_barrio_hogar id_barrio_hogar tipo_zona_hg id_manzana_hogar nom_localidad_hogar id_localidad_hogar nom_mun_hogar id_mun_hogar nom_upl_hogar nom_utam_hogar motivo_viaje_cuidado nom_mun_destino localidad_destino upl_destino utam_destino otro_vj zat_hogar id_utam_hogar id_upl_hogar nom_mun_hogar
 
-drop nom_barrio_vereda_hg cod_barrio_vereda_hg tipo_zona_hg cod_dane_manzana_hg nom_loc_hg cod_loc_hg nom_mpio_hg cod_mpio_hg nom_upl_hg nom_utam_hg motivo_viaje_cuidado nom_mun_des localidad_des upl_des utam_des otro_vj zat_hg cod_utam_hg cod_upl_hg nom_mun_hg
-
-//con esto solo nos quedamos con las razones de viaje de:
-//A buscar trabajo, A trabajar [estan en str],  A realizar algún trámite personal
-//lo otro se dropea
+// with this we keep only the following trip reasons:
+// Job search, Going to work [stored as strings]
+// All other reasons are dropped
 keep if inlist(razon_viaje, 1, 13)
 
 /*
-la persona pudo haber hecho varios viajes al mismo lugar, por la misma razon entonces esos no nos interesa
+A person may have made several trips to the same destination
+for the same reason; those repetitions are not of interest
 */
 
-duplicates report cod_per cod_hg zat_destino
+duplicates report id_persona id_hogar zat_destino
 
-duplicates drop cod_per cod_hg zat_destino, force   // borrar duplicados que tengan esa combinacion
+duplicates drop id_persona id_hogar zat_destino, force   // drop duplicates with this combination
 
-duplicates report cod_per cod_hg zat_destino  // comprobar que ya no haya duplicados
+duplicates report id_persona id_hogar zat_destino        // check that no duplicates remain
 
 
-//no me sirve si el viaje es ocasional o esporadico
-//etiquetas: Esporádicamente en el año, En algunas ocasiones al mes, Nunca lo realizo
-
+// occasional or sporadic trips are not useful
+// labels: Sporadically during the year, Occasionally during the month, Never
 drop if strpos(frecuencia_viaje, "Esporádicamente en el año") | ///
         strpos(frecuencia_viaje, "Nunca") | ///
         strpos(frecuencia_viaje, "No aplica")
 		
-		
+tostring id_hogar, replace		
 *******************************************************************************
-*GENERAR DUMMIES PARA LAS CATEGORICAS
+* GENERATE DUMMIES FOR CATEGORICAL VARIABLES
 *******************************************************************************
 
 makedummies actividad_economica1 ocupacion1 nivel_educativo razon_viaje tipo_vivienda
 
 *******************************************************************************
-*GENERAR DUMMIES PARA LA VARIABLE DEPENDIENTE
+* GENERATE DUMMIES FOR THE DEPENDENT VARIABLE
 *******************************************************************************
 
 gen formal_no_indep = .
 replace formal_no_indep = 1 if inlist(ocupacion1,27,28,7)
 replace formal_no_indep = 0 if !inlist(ocupacion1,27,28,7)
-label variable formal_no_indep "ocupacion Empleado público, Empleado de empresa particular, Patrón o empleador"
+label variable formal_no_indep "occupation: public employee, private employee, or employer"
 
 gen vendedor_informal = .
 replace vendedor_informal = 1 if ocupacion1==26 
 replace vendedor_informal = 0 if ocupacion1!=26
-label variable vendedor_informal "ocupacion vendedor informal"
+label variable vendedor_informal "occupation: informal vendor"
 
-* Dummy independientes
+* Independent worker dummy
 gen independiente_total = .
 replace independiente_total = 1 if inlist(ocupacion1,5,6)
 replace independiente_total = 0 if !inlist(ocupacion1,5,6)
-label variable independiente_total "ocupacion trabajador independiente"
+label variable independiente_total "occupation: independent worker"
 
 gen independiente_trabajando = .
 replace independiente_trabajando = 1 if inlist(ocupacion1,5,6) & razon_viaje==1
 replace independiente_trabajando = 0 if !inlist(ocupacion1,5,6)
-label variable independiente_trabajando "trabajador independiente yendo a trabajar"
+label variable independiente_trabajando "independent worker going to work"
 
 gen independiente_buscando = .
 replace independiente_buscando = 1 if inlist(ocupacion1,5,6) & razon_viaje==13
 replace independiente_buscando = 0 if !inlist(ocupacion1,5,6)
-label variable independiente_buscando "trabajador independiente yendo a buscar trabajo"
+label variable independiente_buscando "independent worker searching for a job"
 
-//toca usar mejor motivo del viajes
-//hay personas que tienen una ocupacion pero estan buscando trabajo
-gen buscar_trabajo=.
+// it is better to rely on trip motive
+// some people have an occupation but are searching for a job
+gen buscar_trabajo = .
 replace buscar_trabajo = 1 if inlist(razon_viaje,13)
 replace buscar_trabajo = 0 if !inlist(razon_viaje,13)
-label variable buscar_trabajo "la persona busca trabajo"
+label variable buscar_trabajo "person is looking for a job"
 
 
-gen desempleado=.
+gen desempleado = .
 replace desempleado = 1 if inlist(ocupacion1,20)
 replace desempleado = 0 if !inlist(ocupacion1,20)
-label variable desempleado "desempleado que dice que ocupacion es buscar trabajo"
+label variable desempleado "unemployed (occupation reports job search)"
 
-//toca usar mejor motivo del viajes
-//hay personas que no tienen una ocupacion pero estan  trabajando
-gen con_trabajo=.
+// some people do not have an occupation but are working
+gen con_trabajo = .
 replace con_trabajo = 1 if !inlist(razon_viaje,13)
 replace con_trabajo = 0 if inlist(razon_viaje,13)
-label variable con_trabajo "empleado"	
+label variable con_trabajo "employed"	
 
-//para hacer el collapse y saber cant de personas en el zat
-gen tot=1
+// used later to collapse and count the number of people per ZAT
+gen tot = 1
 
-gen a2023=1
+gen a2023 = 1
+label variable a2023 "=1 if year is 2023"
 
-label variable a2023 "=1 si ano 2023"
-
-save "merge_2023.dta", replace	
+save "merge_2023.dta", replace
